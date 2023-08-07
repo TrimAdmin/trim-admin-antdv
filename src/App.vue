@@ -20,7 +20,7 @@ onMounted(() => {
 
 <template>
   <div ref="animated">
-    <div v-if="show">
+    <div v-if="show" class="relative">
       <AConfigProvider :locale="zhCN" :theme="themeToken">
         <KeepAlive v-if="route.meta.keepAlive">
           <component :is="route.meta.noLayout ? RouterView : Layout" />

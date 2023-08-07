@@ -1,5 +1,15 @@
 @use 'tailwind';
 
 body {
+  width: 100vw;
+  overflow-x: hidden;
   font-family: -apple-system, "Helvetica Neue", "Helvetica", "Arial", "PingFang SC", "JetBrains Mono", "Microsoft YaHei", "Microsoft YaHei UI", sans-serif;
+}
+
+// nprogress实例
+#nprogress {
+  // 进度条颜色
+  .bar {
+    background: var(--el-color-primary);
+  }
 }

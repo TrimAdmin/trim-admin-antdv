@@ -19,6 +19,8 @@ import TurboConsole from 'vite-plugin-turbo-console'
 import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
 // jsx
 import vueJsxPlugin from '@vitejs/plugin-vue-jsx'
+// svg loader
+import svgLoader from 'vite-svg-loader'
 
 // https://vitejs.dev/config/
 export default ({ mode }) =>
@@ -40,6 +42,7 @@ export default ({ mode }) =>
     },
     plugins: [
       vue(),
+      svgLoader(),
       mockDevServerPlugin(),
       vueJsxPlugin({
         transformOn: true,

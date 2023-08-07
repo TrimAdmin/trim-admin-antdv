@@ -1,9 +1,11 @@
 import { Router } from 'vue-router'
 import { useUserStoreHook } from '@/store'
 import { message } from '@/utils'
+import pluginNProgress from '@/plugins/nprogress.ts'
 
 const routerInterceptor = (router: Router) => {
   router.beforeEach((to, from, next) => {
+    pluginNProgress.start()
     // 设置文档标题
     if (to.meta.title) {
       useTitle(to.meta.title + ' - ' + import.meta.env.VITE_DOCUMENT_NAME)
@@ -20,6 +22,11 @@ const routerInterceptor = (router: Router) => {
     } else {
       next()
     }
+  })
+
+  router.afterEach(async () => {
+    await router.isReady()
+    pluginNProgress.done()
   })
 }
 
