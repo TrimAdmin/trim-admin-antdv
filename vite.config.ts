@@ -61,7 +61,16 @@ export default ({ mode }) =>
         }
       }),
       AutoImport({
-        imports: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
+        imports: [
+          'vue',
+          'vue-router',
+          'pinia',
+          '@vueuse/core',
+          // 自定义自动导入
+          {
+            'vue-i18n': ['useI18n']
+          }
+        ],
         eslintrc: {
           enabled: true
         },

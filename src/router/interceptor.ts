@@ -18,7 +18,7 @@ const routerInterceptor = (router: Router) => {
       next({ name: 'login' })
     } else if (useUserStoreHook().isLogged && to.name === 'login') {
       message.info('您已经登录过了')
-      next({ name: from.name })
+      next({ name: from.name as string })
     } else {
       next()
     }

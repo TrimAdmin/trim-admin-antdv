@@ -1,0 +1,11 @@
+{
+  "message": {
+    "login": "Login",
+    "username-placeholder": "Please enter username",
+    "password-placeholder": "Please enter password",
+    "remember-me": "Remember me",
+    "forget-password": "Forget password?",
+    "register": "Register",
+    "welcome": "Welcome to DC Admin"
+  }
+}

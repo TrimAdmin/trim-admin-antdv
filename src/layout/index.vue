@@ -1,16 +1,16 @@
 <script setup lang="ts"></script>
 
 <template>
-  <ALayout>
-    <ALayoutSider>Sider</ALayoutSider>
-    <ALayout>
-      <ALayoutHeader>Header</ALayoutHeader>
-      <ALayoutContent>
-        <RouterView />
-      </ALayoutContent>
-      <ALayoutFooter>Footer</ALayoutFooter>
-    </ALayout>
-  </ALayout>
+  <a-layout>
+    <a-layout-sider>Sider</a-layout-sider>
+    <a-layout>
+      <a-layout-header>Header</a-layout-header>
+      <a-layout-content>
+        <router-view />
+      </a-layout-content>
+      <a-layout-footer>Footer</a-layout-footer>
+    </a-layout>
+  </a-layout>
 </template>
 
 <style scoped lang="scss"></style>

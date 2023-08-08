@@ -21,12 +21,12 @@ onMounted(() => {
 <template>
   <div ref="animated">
     <div v-if="show" class="relative">
-      <AConfigProvider :locale="zhCN" :theme="themeToken">
-        <KeepAlive v-if="route.meta.keepAlive">
+      <a-config-provider :locale="zhCN" :theme="themeToken">
+        <keep-alive v-if="route.meta.keepAlive">
           <component :is="route.meta.noLayout ? RouterView : Layout" />
-        </KeepAlive>
+        </keep-alive>
         <component :is="route.meta.noLayout ? RouterView : Layout" v-else />
-      </AConfigProvider>
+      </a-config-provider>
     </div>
     <Loading v-else />
   </div>

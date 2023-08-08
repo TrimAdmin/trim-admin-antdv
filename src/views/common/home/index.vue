@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <AButton type="primary">aaa</AButton>
+    <a-button type="primary">aaa</a-button>
   </div>
 </template>
 

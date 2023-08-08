@@ -1,4 +1,5 @@
 import store from '@/store'
+import router from '@/router'
 
 interface IUserStoreState {
   isLogged: boolean
@@ -13,6 +14,7 @@ const useUserStore = defineStore('userStore', {
   actions: {
     login() {
       this.isLogged = true
+      router.replace({ name: 'home' })
     }
   },
   persist: [

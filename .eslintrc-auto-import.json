@@ -293,6 +293,20 @@
     "watchThrottled": true,
     "watchTriggerable": true,
     "watchWithFilter": true,
-    "whenever": true
+    "whenever": true,
+    "/": true,
+    "@": true,
+    "Icon": true,
+    "c": true,
+    "e": true,
+    "f": true,
+    "i": true,
+    "n": true,
+    "o": true,
+    "u": true,
+    "v": true,
+    "y": true,
+    "Iconify": true,
+    "useI18n": true
   }
 }
