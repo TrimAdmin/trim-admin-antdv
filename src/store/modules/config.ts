@@ -1,4 +1,4 @@
-import store from '@/store'
+import store from '..'
 import router from '@/router'
 
 interface IConfigStoreState {

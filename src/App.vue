@@ -13,6 +13,7 @@ const [animated] = useAutoAnimate()
 
 onMounted(() => {
   router.isReady().then(() => {
+    console.log('当前环境：' + import.meta.env.MODE)
     show.value = true
   })
 })

@@ -1,4 +1,5 @@
-import store from '@/store'
+import { message } from '@/utils'
+import store from '..'
 import router from '@/router'
 
 interface IUserStoreState {
@@ -12,9 +13,23 @@ const useUserStore = defineStore('userStore', {
     token: ''
   }),
   actions: {
-    login() {
+    // 登录逻辑
+    async login(params: IUsernameLoginParams) {
+      // 这里编写你自己的逻辑
+      if (params.username !== 'admin' || params.password !== '123456') {
+        message.error('用户名或密码错误')
+        return
+      }
+      if (params.remember) {
+      }
       this.isLogged = true
-      router.replace({ name: 'home' })
+      await router.replace({ name: 'home' })
+    },
+    // 登出逻辑
+    async logout() {
+      this.token = ''
+      this.isLogged = false
+      await router.replace({ name: 'login' })
     }
   },
   persist: [

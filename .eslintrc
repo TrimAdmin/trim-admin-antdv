@@ -6,6 +6,7 @@
     "./.eslintrc-auto-import.json",
     "plugin:vue/vue3-essential",
     "plugin:vue/vue3-recommended",
+    "@vue/eslint-config-typescript/recommended",
     "eslint:recommended",
     "eslint-config-prettier",
     "plugin:@typescript-eslint/recommended",
@@ -13,7 +14,7 @@
   ],
   "overrides": [
     {
-      "files": ["*.ts", "*.js","*.tsx", "*.jsx", "*.vue"],
+      "files": ["*.ts", "*.js", "*.tsx", "*.jsx", "*.vue"],
       "rules": {
         "no-undef": "off"
       }
@@ -55,7 +56,8 @@
     "vue/first-attribute-linebreak": "off",
     "@typescript-eslint/no-empty-function": ["off"],
     "@typescript-eslint/no-unused-vars": [
-      "error", {
+      "error",
+      {
         "varsIgnorePattern": ".*",
         "args": "none"
       }

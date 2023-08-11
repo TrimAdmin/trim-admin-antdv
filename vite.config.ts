@@ -29,8 +29,6 @@ export default ({ mode }) =>
     server: {
       // 默认端口
       port: 8000,
-      // 编译后打开
-      open: true,
       // 代理api
       proxy: {
         '/proxyApi': {

@@ -1,6 +1,6 @@
-import { defineMock } from 'vite-plugin-mock-dev-server'
+import defineApiMock from '@/mock'
 
-export default defineMock({
+export default defineApiMock({
   url: '/api/test',
   body: {
     data: {
