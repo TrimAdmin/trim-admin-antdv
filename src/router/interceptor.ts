@@ -14,10 +14,11 @@ const routerInterceptor = (router: Router) => {
     }
     // 登录判断逻辑
     if (!to.meta.publicRoute && !useUserStoreHook().isLogged) {
-      message.error('请先登录')
+      message.error('未登录或登录过期')
       next({ name: 'login' })
     } else if (useUserStoreHook().isLogged && to.name === 'login') {
       message.info('您已经登录过了')
+      pluginNProgress.done()
       next({ name: from.name as string })
     } else {
       next()

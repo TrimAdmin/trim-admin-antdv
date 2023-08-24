@@ -3,6 +3,7 @@
   "private": true,
   "version": "dev-0.0.1",
   "type": "module",
+  "module": "es2020",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",

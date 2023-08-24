@@ -1,7 +1,9 @@
-@use 'tailwind';
+@use "tailwind";
+@use "css-variables";
 
 body {
   width: 100vw;
+  height: 100vh;
   overflow-x: hidden;
   font-family: -apple-system, "Helvetica Neue", "Helvetica", "Arial", "PingFang SC", "JetBrains Mono", "Microsoft YaHei", "Microsoft YaHei UI", sans-serif;
 }
@@ -12,4 +14,8 @@ body {
   .bar {
     background: var(--el-color-primary);
   }
+}
+
+#app {
+  height: 100%;
 }

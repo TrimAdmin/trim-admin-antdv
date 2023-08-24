@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUserStoreHook } from '@/store'
+import { cryptoMD5 } from '@/utils'
 
 const { t } = useI18n()
 const loginFormRef = shallowRef()
@@ -15,9 +16,12 @@ const loginFormRules = reactive({
 
 async function handleLogin() {
   const values = await loginFormRef.value.validateFields()
-  console.log(loginFormModel)
+  // console.log(loginFormModel)
   if (values) {
-    useUserStoreHook().login(loginFormModel)
+    await useUserStoreHook().login({
+      ...loginFormModel,
+      password: cryptoMD5(loginFormModel.password)
+    })
   }
 }
 </script>
@@ -50,4 +54,8 @@ async function handleLogin() {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.a-login {
+  background-color: white;
+}
+</style>
