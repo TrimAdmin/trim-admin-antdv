@@ -1,16 +1,16 @@
 @use "tailwind";
-@use "css-variables";
+@use "transitions";
 
 body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
-  font-family: -apple-system, "Helvetica Neue", "Helvetica", "Arial", "PingFang SC", "JetBrains Mono", "Microsoft YaHei", "Microsoft YaHei UI", sans-serif;
+  font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "JetBrains Mono", "Microsoft YaHei", "Microsoft YaHei UI", sans-serif;
 }
 
-// nprogress实例
+/* nprogress实例 */
 #nprogress {
-  // 进度条颜色
+  /* 进度条颜色 */
   .bar {
     background: var(--el-color-primary);
   }

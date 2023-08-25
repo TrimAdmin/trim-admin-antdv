@@ -1,9 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import router from '@/router'
+
+function handleJump() {
+  router.push({ name: 'basic-components-button' })
+}
+</script>
 
 <template>
-  <div>
-    <a-button type="primary">aaa</a-button>
-  </div>
+  <RegularLayout>
+    <a-button type="primary" @click="handleJump">aaa</a-button>
+  </RegularLayout>
 </template>
 
 <style scoped lang="scss"></style>

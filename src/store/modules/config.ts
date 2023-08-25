@@ -10,6 +10,7 @@ const useConfigStore = defineStore('configStore', {
     i18n: 'zhHans'
   }),
   actions: {
+    // 改变i18n语言
     setI18n(i18n: string) {
       if (i18n === this.i18n) {
         return

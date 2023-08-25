@@ -1,12 +1,13 @@
 import { RouteRecordRaw } from 'vue-router'
 
-const commonRoute: Array<RouteRecordRaw> = [
+export const commonRoutes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: () => import('@/views/common/home/index.vue'),
     meta: {
-      title: '首页'
+      title: '首页',
+      icon: 'ant-design:home-filled'
     }
   },
   {
@@ -16,8 +17,8 @@ const commonRoute: Array<RouteRecordRaw> = [
     meta: {
       publicRoute: true,
       noLayout: true,
+      hideMenu: true,
       title: '登录'
     }
   }
 ]
-export default commonRoute

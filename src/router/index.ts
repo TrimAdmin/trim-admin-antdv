@@ -1,9 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import commonRoutes from '@/router/modules/common.ts'
-import routerInterceptor from '@/router/interceptor.ts'
+import routerInterceptor from '@/router/interceptor'
+import { commonRoutes, basicComponentsRoutes } from './modules'
+
+const routes = [...commonRoutes, ...basicComponentsRoutes]
 
 const router = createRouter({
-  routes: [...commonRoutes],
+  routes,
   history: createWebHashHistory()
 })
 

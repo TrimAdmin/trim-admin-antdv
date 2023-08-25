@@ -1,16 +1,22 @@
 import { cryptoMD5, message } from '@/utils'
 import store from '..'
 import router from '@/router'
+import { ItemType } from 'ant-design-vue'
+import { generateMenus } from '@/router/routes.ts'
 
 interface IUserStoreState {
   isLogged: boolean
   token: string
+  remember: boolean
+  menuList: Array<ItemType>
 }
 
 const useUserStore = defineStore('userStore', {
   state: (): IUserStoreState => ({
     isLogged: false,
-    token: ''
+    token: '',
+    remember: false,
+    menuList: []
   }),
   actions: {
     // 登录逻辑
@@ -21,7 +27,7 @@ const useUserStore = defineStore('userStore', {
         return
       }
       if (params.remember) {
-        // 推荐这里编写无感刷新token逻辑
+        this.remember = true
       }
       this.isLogged = true
       this.token = cryptoMD5('access-token')
@@ -31,6 +37,10 @@ const useUserStore = defineStore('userStore', {
     // 判断登录状态
     async checkLogged() {
       // 这里编写你自己的逻辑
+      if (this.remember) {
+        // 推荐这里编写无感刷新token逻辑
+        this.isLogged = true
+      }
       if (this.token) {
         this.isLogged = true
         await router.replace({ name: 'home' })
@@ -42,13 +52,28 @@ const useUserStore = defineStore('userStore', {
       this.token = ''
       this.isLogged = false
       await router.replace({ name: 'login' })
+    },
+    // 获取菜单
+    getMenuList() {
+      this.menuList = generateMenus()
+      console.log('菜单项：', this.menuList)
     }
   },
   persist: [
     {
-      key: 'token',
+      key: 'trim-token',
       paths: ['token'],
       storage: localStorage
+    },
+    {
+      key: 'trim-remember',
+      paths: ['remember'],
+      storage: localStorage
+    },
+    {
+      key: 'trim-menu-list',
+      paths: ['menuList'],
+      storage: sessionStorage
     }
   ]
 })

@@ -12,12 +12,11 @@ const show = ref<boolean>(false)
 
 const [animated] = useAutoAnimate()
 
-onMounted(async () => {
-  await useUserStoreHook().checkLogged()
-  await router.isReady().then(() => {
-    console.log('当前环境：' + import.meta.env.MODE)
-    show.value = true
-  })
+useUserStoreHook().checkLogged()
+router.isReady().then(() => {
+  console.log('当前环境：' + import.meta.env.MODE)
+  show.value = true
+  useUserStoreHook().getMenuList()
 })
 </script>
 
@@ -33,4 +32,4 @@ onMounted(async () => {
   <Loading v-else />
 </template>
 
-<style scoped></style>
+<style scoped lang="scss"></style>

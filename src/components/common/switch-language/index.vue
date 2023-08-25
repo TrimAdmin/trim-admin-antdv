@@ -3,7 +3,7 @@ import { Icon } from '@iconify/vue'
 import { CI18n } from '@/constants'
 import { useConfigStoreHook } from '@/store'
 
-const selectedKeys = computed(() => [useConfigStoreHook().i18n])
+const selectedKeys = computed<Array<string>>(() => [useConfigStoreHook().i18n])
 
 function handleChangeI18n({ key }: { key: string }) {
   useConfigStoreHook().setI18n(key)
@@ -11,12 +11,8 @@ function handleChangeI18n({ key }: { key: string }) {
 </script>
 
 <template>
-  <a-dropdown>
-    <a-button>
-      <template #icon>
-        <Icon icon="ooui:language" inline :height="20" />
-      </template>
-    </a-button>
+  <a-dropdown arrow placement="bottom">
+    <Icon :height="18" icon="ooui:language" height="16px" class="cursor-pointer" />
     <template #overlay>
       <a-menu v-model:selected-keys="selectedKeys" @click="handleChangeI18n">
         <a-menu-item v-for="item in Object.entries(CI18n)" :key="item[0]">

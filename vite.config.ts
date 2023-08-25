@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 // 自动引入图标
 import Icons from 'unplugin-icons/vite'
-import IconResolver from 'unplugin-icons/resolver'
 // 自动引入
 import AutoImport from 'unplugin-auto-import/vite'
 // 自动引入vue组件
@@ -78,11 +77,6 @@ export default ({ mode }) =>
         resolvers: [
           AntDesignVueResolver({
             importStyle: false
-          }),
-          // 自动引入icon
-          IconResolver({
-            prefix: 'icon',
-            enabledCollections: ['ant-design']
           })
         ],
         include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/],
