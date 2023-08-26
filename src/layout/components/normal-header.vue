@@ -59,11 +59,11 @@ function handleDropdown(key: Key) {
 <template>
   <div class="h-full flex justify-between items-center">
     <!-- 菜单折叠按钮 -->
-    <Icon :height="18" icon="ant-design:menu-fold-outlined" class="cursor-pointer" />
+    <MenuCollapse />
     <!-- 右侧菜单 -->
-    <div class="flex items-center gap-4">
+    <div class="flex items-center h-full">
       <!-- 搜索 -->
-      <Icon :height="18" icon="ant-design:search-outlined" class="cursor-pointer" />
+      <GlobalSearch />
       <!-- 切换语言 -->
       <SwitchLanguage />
       <!-- 全屏 -->
@@ -71,7 +71,9 @@ function handleDropdown(key: Key) {
       <!-- 主题 -->
       <ToggleTheme />
       <!-- 刷新 -->
-      <Icon :height="18" icon="ant-design:sync-outlined" class="cursor-pointer" />
+      <Refresh />
+      <!-- 全局设置 -->
+      <ConfigDrawer />
       <!-- 用户下拉框 -->
       <a-dropdown class="cursor-pointer ml-2" arrow placement="bottom">
         <div class="flex items-center gap-1">
@@ -80,8 +82,8 @@ function handleDropdown(key: Key) {
               <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-[4px]" inline />
             </template>
           </a-avatar>
-          <span class="text-gray-700">admin</span>
-          <Icon icon="ant-design:caret-down-filled" class="cursor-pointer text-[12px] text-gray-500" />
+          <span class="text-gray-700 dark:text-white">admin</span>
+          <Icon icon="ant-design:caret-down-filled" class="cursor-pointer text-[12px] text-gray-500 dark:text-gray-300" />
         </div>
         <template #overlay>
           <a-menu :items="dropdownMenuItems" @click="({ key }) => handleDropdown(key)" />

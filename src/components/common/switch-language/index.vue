@@ -12,16 +12,18 @@ function handleChangeI18n(key: Key) {
 </script>
 
 <template>
-  <a-dropdown arrow>
-    <Icon :height="18" icon="ooui:language" class="cursor-pointer" />
-    <template #overlay>
-      <a-menu v-model:selected-keys="selectedKeys" @click="({ key }) => handleChangeI18n(key)">
-        <a-menu-item v-for="item in Object.entries(CI18n)" :key="item[0]">
-          {{ item[1] }}
-        </a-menu-item>
-      </a-menu>
-    </template>
-  </a-dropdown>
+  <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">
+    <a-dropdown arrow placement="bottom">
+      <Icon :height="18" icon="ooui:language" class="cursor-pointer hover:text-blue-500" />
+      <template #overlay>
+        <a-menu v-model:selected-keys="selectedKeys" @click="({ key }) => handleChangeI18n(key)">
+          <a-menu-item v-for="item in Object.entries(CI18n)" :key="item[0]">
+            {{ item[1] }}
+          </a-menu-item>
+        </a-menu>
+      </template>
+    </a-dropdown>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

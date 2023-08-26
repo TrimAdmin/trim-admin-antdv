@@ -19,3 +19,9 @@ body {
 #app {
   height: 100%;
 }
+
+*,
+*::before,
+*::after {
+  transition: all 0.1s;
+}

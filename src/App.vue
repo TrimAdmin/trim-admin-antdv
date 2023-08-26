@@ -1,12 +1,24 @@
 <script setup lang="ts">
-import Layout from '@/layout/index.vue'
+import Layout from '@/layout/normal.vue'
 import zhCN from 'ant-design-vue/locale/zh_CN'
 import zhTW from 'ant-design-vue/locale/zh_TW'
 import enUS from 'ant-design-vue/locale/en_US'
 import { RouterView } from 'vue-router'
 import { useAutoAnimate } from '@formkit/auto-animate/vue'
-import lightTheme from '@/theme/light-theme'
-import darkTheme from '@/theme/dark-theme'
+import {
+  lightTheme,
+  darkTheme,
+  elementPlusTheme,
+  tdesignTheme,
+  forestGreenTheme,
+  elementPlusDarkTheme,
+  tdesignDarkTheme,
+  forestGreenDarkTheme,
+  brightYellowTheme,
+  brightYellowDarkTheme,
+  energyOrangeTheme,
+  energyOrangeDarkTheme
+} from '@/theme'
 import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
 import { theme } from 'ant-design-vue'
 
@@ -24,6 +36,46 @@ const locale = computed(() => {
       return enUS
     default:
       return zhCN
+  }
+})
+
+// 亮色颜色模式
+const colorScheme = computed(() => {
+  switch (useConfigStoreHook().colorScheme) {
+    case 'antd':
+      return darkTheme
+    case 'element':
+      return elementPlusTheme
+    case 'tdesign':
+      return tdesignTheme
+    case 'forest-green':
+      return forestGreenTheme
+    case 'bright-yellow':
+      return brightYellowTheme
+    case 'energy-orange':
+      return energyOrangeTheme
+    default:
+      break
+  }
+})
+
+// 暗色颜色模式
+const darkColorScheme = computed(() => {
+  switch (useConfigStoreHook().colorScheme) {
+    case 'antd':
+      return lightTheme
+    case 'element':
+      return elementPlusDarkTheme
+    case 'tdesign':
+      return tdesignDarkTheme
+    case 'forest-green':
+      return forestGreenDarkTheme
+    case 'bright-yellow':
+      return brightYellowDarkTheme
+    case 'energy-orange':
+      return energyOrangeDarkTheme
+    default:
+      break
   }
 })
 
@@ -59,7 +111,7 @@ router.isReady().then(async () => {
 
 <template>
   <div v-if="show" ref="animated" class="relative h-full">
-    <a-config-provider :locale="locale" :theme="isDarkTheme ? { algorithm: theme.darkAlgorithm, ...darkTheme } : lightTheme">
+    <a-config-provider :locale="locale" :theme="isDarkTheme ? { algorithm: theme.darkAlgorithm, ...darkColorScheme } : colorScheme">
       <keep-alive v-if="route.meta.keepAlive">
         <component :is="route.meta.noLayout ? RouterView : Layout" />
       </keep-alive>

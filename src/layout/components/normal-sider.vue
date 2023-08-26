@@ -2,10 +2,11 @@
 import { useTrimConfig } from '@/hooks'
 import { Key } from 'ant-design-vue/es/_util/type'
 import { RouteRecordName } from 'vue-router'
-import { useCommonStoreHook, useUserStoreHook } from '@/store'
+import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
 import { ItemType } from 'ant-design-vue/es/menu/src/hooks/useItems'
 
 const router = useRouter()
+const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
 
 // 系统标题
 const title = computed<string>(() => import.meta.env.VITE_DOCUMENT_NAME)
@@ -38,7 +39,10 @@ function handleMenuChange(key: Key) {
 </script>
 
 <template>
-  <div class="sider-title"><img src="@/assets/images/logo.png" alt="logo" class="h-4/5 mr-2 inline-block" />{{ title }}</div>
+  <div class="sider-title bg-[#001529] text-white font-bold w-full flex items-center justify-center px-2">
+    <img src="@/assets/images/logo.png" alt="logo" class="h-4/5 inline-block" />
+    <span class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2" v-if="!collapsed">{{ title }}</span>
+  </div>
   <a-menu :selected-keys="defaultSelect" :open-keys="defaultOpen" mode="inline" :items="menus" @click="({ key }) => handleMenuChange(key)"></a-menu>
 </template>
 
@@ -46,14 +50,6 @@ function handleMenuChange(key: Key) {
 .sider-title {
   height: v-bind(headerHeight);
   line-height: v-bind(headerHeight);
-  width: 100%;
-  font-weight: bold;
-  text-align: center;
-  font-size: 18px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  @apply dark:text-white;
 }
 
 .ant-menu {
