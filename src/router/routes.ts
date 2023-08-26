@@ -23,7 +23,7 @@ export function routesToMenu(routes: RouterOptions['routes'], pname?: RouteRecor
     menuItems.push({
       label: pRoute[0].meta.title,
       title: pRoute[0].meta.title,
-      key: pRoute[0].name as unknown as Key,
+      key: pRoute[0].name as unknown as str,
       order: pRoute[0].meta?.order,
       icon: pRoute[0].meta?.icon && useIcon(pRoute[0].meta.icon),
       children

@@ -10,7 +10,8 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     component: () => import('@/views/common/home/index.vue'),
     meta: {
       title: t('menu.home'),
-      icon: 'ant-design:home-filled'
+      icon: 'ant-design:home-filled',
+      tabAffix: true
     }
   },
   {

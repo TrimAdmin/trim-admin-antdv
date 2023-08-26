@@ -23,6 +23,8 @@ const defaultOpen = computed<Array<Key>>(() => {
   name.pop()
   return [name.join('-')]
 })
+// 侧边栏logo
+const hideLogo = computed<boolean>(() => useConfigStoreHook().hideLogo)
 
 // 由于selected-keys是v-model 故没有直接监听defaultSelect 改为监听路由位置
 watch(
@@ -39,7 +41,7 @@ function handleMenuChange(key: Key) {
 </script>
 
 <template>
-  <div class="sider-title bg-[#001529] text-white font-bold w-full flex items-center justify-center px-2">
+  <div class="sider-title bg-[#001529] text-white font-bold w-full flex items-center justify-center px-2" v-if="!hideLogo">
     <img src="@/assets/images/logo.png" alt="logo" class="h-4/5 inline-block" />
     <span class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2" v-if="!collapsed">{{ title }}</span>
   </div>

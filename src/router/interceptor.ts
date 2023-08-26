@@ -1,5 +1,5 @@
 import { Router } from 'vue-router'
-import { useUserStoreHook } from '@/store'
+import { useCommonStoreHook, useUserStoreHook } from '@/store'
 import { message } from '@/utils'
 import pluginNProgress from '@/plugins/nprogress.ts'
 
@@ -22,6 +22,11 @@ const routerInterceptor = (router: Router) => {
       next({ name: from.name as string })
     } else {
       next()
+      useCommonStoreHook().addTab({
+        key: to.name as string,
+        title: to.meta.title,
+        tabAffix: to.meta.tabAffix || false
+      })
     }
   })
 

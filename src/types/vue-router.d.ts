@@ -38,6 +38,11 @@ declare module 'vue-router' {
      * @type {boolean}
      */
     hideMenu?: boolean
+    /**
+     * 标签页不可关闭
+     * @type {boolean}
+     */
+    tabAffix?: boolean
   }
 }
 

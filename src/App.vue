@@ -43,7 +43,7 @@ const locale = computed(() => {
 const colorScheme = computed(() => {
   switch (useConfigStoreHook().colorScheme) {
     case 'antd':
-      return darkTheme
+      return lightTheme
     case 'element':
       return elementPlusTheme
     case 'tdesign':
@@ -63,7 +63,7 @@ const colorScheme = computed(() => {
 const darkColorScheme = computed(() => {
   switch (useConfigStoreHook().colorScheme) {
     case 'antd':
-      return lightTheme
+      return darkTheme
     case 'element':
       return elementPlusDarkTheme
     case 'tdesign':

@@ -25,6 +25,8 @@ const siderWidth = computed<string | number>(() =>
     ? useTrimConfig().theme.siderWidthCollapse
     : useTrimConfig().theme.siderWidthCollapse + 'px'
 )
+// 隐藏标签页
+const hideTabs = computed<boolean>(() => useConfigStoreHook().hideTabs)
 </script>
 
 <template>
@@ -36,6 +38,7 @@ const siderWidth = computed<string | number>(() =>
       <a-layout-header>
         <Header />
       </a-layout-header>
+      <SimpleTab v-if="!hideTabs" />
       <a-layout-content>
         <div ref="animated" class="h-full">
           <router-view />
@@ -55,6 +58,9 @@ const siderWidth = computed<string | number>(() =>
   padding-inline: 16px;
   @apply bg-white;
   @apply dark:bg-[#001529];
+  border-bottom: 1px solid;
+  @apply border-gray-100;
+  @apply dark:border-gray-700;
 }
 
 .ant-layout-sider {
