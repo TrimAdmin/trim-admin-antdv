@@ -1,5 +1,5 @@
 import { cryptoMD5, message } from '@/utils'
-import store from '..'
+import store, { useCommonStoreHook } from '..'
 import router from '@/router'
 import { ItemType } from 'ant-design-vue'
 import { generateMenus } from '@/router/routes.ts'
@@ -33,6 +33,7 @@ const useUserStore = defineStore('userStore', {
       this.token = cryptoMD5('access-token')
       message.success('登录成功')
       await router.replace({ name: 'home' })
+      useCommonStoreHook().setCurrentRouteName('home')
     },
     // 判断登录状态
     async checkLogged() {

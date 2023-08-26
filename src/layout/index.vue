@@ -19,7 +19,7 @@ const siderWidth = computed<string | number>(() =>
 
 <template>
   <a-layout class="h-full">
-    <a-layout-sider>
+    <a-layout-sider theme="light">
       <Sider />
     </a-layout-sider>
     <a-layout>
@@ -42,8 +42,9 @@ const siderWidth = computed<string | number>(() =>
 .ant-layout-header {
   height: v-bind(headerHeight);
   line-height: v-bind(headerHeight);
-  background-color: white !important;
   padding-inline: 16px;
+  @apply bg-white;
+  @apply dark:bg-[#001529];
 }
 
 .ant-layout-sider {
@@ -51,9 +52,9 @@ const siderWidth = computed<string | number>(() =>
   min-width: v-bind(siderWidth) !important;
   max-width: v-bind(siderWidth) !important;
   height: 100%;
-  background-color: white !important;
   @apply shadow-lg;
   @apply shadow-gray-300;
+  @apply dark:shadow-gray-600;
 }
 
 .ant-layout-content {

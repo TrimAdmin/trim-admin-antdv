@@ -20,5 +20,3 @@ export function cryptoMD5(origin: string): string {
 export function cryptoSHA256(origin: string): string {
   return SHA256(origin).toString()
 }
-
-export function encodeHEX()

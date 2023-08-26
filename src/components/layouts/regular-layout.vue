@@ -1,9 +1,13 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="h-full bg-white overflow-hidden rounded-md">
+  <a-card :bordered="false" class="h-full">
     <slot />
-  </div>
+  </a-card>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+:deep(.ant-card-body) {
+  padding: 12px;
+}
+</style>

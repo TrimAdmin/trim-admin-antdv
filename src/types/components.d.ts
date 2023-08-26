@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AAvatar: typeof import('ant-design-vue/es')['Avatar']
     AButton: typeof import('ant-design-vue/es')['Button']
+    ACard: typeof import('ant-design-vue/es')['Card']
     ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ADropdown: typeof import('ant-design-vue/es')['Dropdown']
@@ -31,10 +32,12 @@ declare module 'vue' {
     ATypography: typeof import('ant-design-vue/es')['Typography']
     ATypographyTitle: typeof import('ant-design-vue/es')['TypographyTitle']
     ConfigDrawer: typeof import('./../components/common/config-drawer/index.vue')['default']
+    FullScreen: typeof import('./../components/common/full-screen/index.vue')['default']
     Loading: typeof import('./../components/common/loading/index.vue')['default']
     RegularLayout: typeof import('./../components/layouts/regular-layout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SwitchLanguage: typeof import('./../components/common/switch-language/index.vue')['default']
+    ToggleTheme: typeof import('./../components/common/toggle-theme/index.vue')['default']
   }
 }

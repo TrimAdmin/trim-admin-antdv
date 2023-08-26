@@ -12,7 +12,7 @@ const messages = {
 
 const i18n = createI18n<MessageSchema, 'enUS' | 'zhHans' | 'zhHant'>({
   legacy: false,
-  locale: JSON.parse(localStorage.getItem('user-config') || '{}').i18n || 'zhHans',
+  locale: JSON.parse(localStorage.getItem('trim-user-config') || '{}').i18n || 'zhHans',
   messages,
   fallbackLocale: 'zh'
 })

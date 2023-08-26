@@ -3,11 +3,13 @@ import router from '@/router'
 
 interface IConfigStoreState {
   i18n: string
+  darkTheme: boolean
 }
 
 const useConfigStore = defineStore('configStore', {
   state: (): IConfigStoreState => ({
-    i18n: 'zhHans'
+    i18n: 'zhHans',
+    darkTheme: false
   }),
   actions: {
     // 改变i18n语言
@@ -17,12 +19,16 @@ const useConfigStore = defineStore('configStore', {
       }
       this.i18n = i18n
       router.go(0)
+    },
+    // 改变主题
+    setDarkTheme(darkTheme: boolean) {
+      this.darkTheme = darkTheme
     }
   },
   persist: [
     {
-      key: 'user-config',
-      paths: ['i18n'],
+      key: 'trim-user-config',
+      paths: ['i18n', 'darkTheme'],
       storage: localStorage
     }
   ]

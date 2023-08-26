@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { ItemType } from 'ant-design-vue'
+import { ItemType, Modal } from 'ant-design-vue'
 import { useIcon } from '@/hooks'
+import { Key } from 'ant-design-vue/lib/_util/type'
+import { useUserStoreHook } from '@/store'
 
-const dropdownMenuItems = reactive<
-  Array<
-    | ItemType
-    | {
-        type: 'divider' | 'group'
-      }
-  >
->([
+const router = useRouter()
+
+const dropdownMenuItems = reactive<Array<ItemType>>([
   {
     label: '首页',
     title: '首页',
@@ -33,6 +30,30 @@ const dropdownMenuItems = reactive<
     icon: useIcon('ant-design:logout-outlined')
   }
 ])
+
+function handleDropdown(key: Key) {
+  switch (key) {
+    case 'home':
+      router.push({ name: 'home' })
+      break
+    case 'user-info':
+      break
+    case 'logout':
+      Modal.confirm({
+        title: '提示',
+        content: '确定退出登录吗？',
+        okText: '确定',
+        centered: true,
+        maskClosable: true,
+        onOk: () => {
+          useUserStoreHook().logout()
+        }
+      })
+      break
+    default:
+      break
+  }
+}
 </script>
 
 <template>
@@ -46,11 +67,9 @@ const dropdownMenuItems = reactive<
       <!-- 切换语言 -->
       <SwitchLanguage />
       <!-- 全屏 -->
-      <Icon v-if="true" :height="18" icon="ant-design:fullscreen-outlined" class="cursor-pointer" />
-      <Icon v-else :height="18" icon="ant-design:fullscreen-exit-outlined" class="cursor-pointer" />
+      <FullScreen />
       <!-- 主题 -->
-      <Icon v-if="true" :height="18" icon="ri:sun-line" class="cursor-pointer" />
-      <Icon v-else :height="18" icon="ri:moon-line" class="cursor-pointer" />
+      <ToggleTheme />
       <!-- 刷新 -->
       <Icon :height="18" icon="ant-design:sync-outlined" class="cursor-pointer" />
       <!-- 用户下拉框 -->
@@ -65,7 +84,7 @@ const dropdownMenuItems = reactive<
           <Icon icon="ant-design:caret-down-filled" class="cursor-pointer text-[12px] text-gray-500" />
         </div>
         <template #overlay>
-          <a-menu :items="dropdownMenuItems" />
+          <a-menu :items="dropdownMenuItems" @click="({ key }) => handleDropdown(key)" />
         </template>
       </a-dropdown>
     </div>

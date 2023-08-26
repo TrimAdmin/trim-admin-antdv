@@ -1,4 +1,7 @@
+import { useI18nHook } from '@/hooks'
 import { RouteRecordRaw } from 'vue-router'
+
+const { t } = useI18nHook()
 
 export const commonRoutes: Array<RouteRecordRaw> = [
   {
@@ -6,7 +9,7 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     name: 'home',
     component: () => import('@/views/common/home/index.vue'),
     meta: {
-      title: '首页',
+      title: t('menu.home'),
       icon: 'ant-design:home-filled'
     }
   },

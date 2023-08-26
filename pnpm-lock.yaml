@@ -34,6 +34,9 @@ dependencies:
     version: 9.2.2(vue@3.3.4)
 
 devDependencies:
+  '@types/crypto-js':
+    specifier: ^4.1.1
+    version: 4.1.1
   '@types/node':
     specifier: ^18.6.3
     version: 18.6.3
@@ -1192,6 +1195,10 @@ packages:
   /@trysound/sax@0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
+    dev: true
+
+  /@types/crypto-js@4.1.1:
+    resolution: {integrity: sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==}
     dev: true
 
   /@types/eslint@8.44.2:
