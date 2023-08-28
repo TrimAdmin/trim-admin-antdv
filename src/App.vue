@@ -21,6 +21,7 @@ import {
 } from '@/theme'
 import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
 import { theme } from 'ant-design-vue'
+import { setTrimConfig } from '@/hooks'
 
 const route = useRoute()
 const router = useRouter()
@@ -100,6 +101,7 @@ watch(
 useUserStoreHook().checkLogged()
 router.isReady().then(async () => {
   console.log('当前环境：' + import.meta.env.MODE)
+  setTrimConfig()
   // 刷新时跳转到刷新前的路由
   await router.push({ name: useCommonStoreHook().currentRouteName })
   useUserStoreHook().getMenuList()
@@ -111,8 +113,7 @@ router.isReady().then(async () => {
 
 <template>
   <div v-if="show" ref="animated" class="relative h-full">
-    <a-config-provider :locale="locale"
-      :theme="isDarkTheme ? { algorithm: theme.darkAlgorithm, ...darkColorScheme } : colorScheme">
+    <a-config-provider :locale="locale" :theme="isDarkTheme ? { algorithm: theme.darkAlgorithm, ...darkColorScheme } : colorScheme">
       <keep-alive v-if="route.meta.keepAlive">
         <component :is="route.meta.noLayout ? RouterView : Layout" />
       </keep-alive>

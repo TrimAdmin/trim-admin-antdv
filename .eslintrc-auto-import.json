@@ -307,6 +307,7 @@
     "v": true,
     "y": true,
     "Iconify": true,
-    "useI18n": true
+    "useI18n": true,
+    "WritableComputedRef": true
   }
 }

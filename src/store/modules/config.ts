@@ -1,9 +1,10 @@
 import { colorSchemeList } from '@/trim-config'
 import store from '..'
 import router from '@/router'
+import { ITrimConfig } from '@/types/trim-config'
 
 interface IConfigStoreState {
-  i18n: string
+  i18n: 'zhHans' | 'zhHant' | 'enUS'
   darkTheme: boolean
   menuCollapsed: boolean
   hideTabs: boolean
@@ -22,7 +23,7 @@ const useConfigStore = defineStore('configStore', {
   }),
   actions: {
     // 改变i18n语言
-    setI18n(i18n: string) {
+    setI18n(i18n: 'zhHans' | 'zhHant' | 'enUS') {
       if (i18n === this.i18n) {
         return
       }
@@ -48,6 +49,13 @@ const useConfigStore = defineStore('configStore', {
     // 改变配色方案
     setColorScheme(colorScheme: string) {
       this.colorScheme = colorScheme
+    },
+    // 更新配置
+    setConfig(config: ITrimConfig) {
+      this.colorScheme = config.theme.colorScheme
+      this.i18n = config.defaultI18n
+      this.hideLogo = config.theme.hideLogo
+      this.hideTabs = config.theme.hideTabs
     }
   },
   persist: [

@@ -1,18 +1,23 @@
-# Vue 3 + TypeScript + Vite
+# Trim Admin Antdv完整版
+[Trim Admin Antdv](http://dcwedu.gitee.io/trim-admin-antdv)是一款使用Ant Design Vue开发的中后台系统模板，主要技术栈涵盖`Vue3.3`、`Vite4.4`、`Vue Router`、`Ant Design Vue 4`、`TypeScript`、`Pinia`、`TailwindCSS`等。
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 项目预览
+[Trim Admin Antdv完整版预览](http://dcwedu.gitee.io/trim-admin-antdv)
+[Trim Admin Antdv精简版预览](http://dcwedu.gitee.io/trim-admin-antdv-lite)
 
-## Recommended IDE Setup
+### 完整版与精简版的区别
+完整版包含i18n国际化、多套页面布局、多套主题配色、更多自定义配置项以及更多业务组件，为中大型项目提供开箱即用的体验；精简版则不包含i18n国际化和主题配色，仅有三套页面布局和基础业务组件。
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 浏览器支持
+支持`Chrome`、`Safari`、`Firefox`、`Edge`、`Opera`等主流浏览器的最近5个版本。
+> 由于Vue3已经不支持IE，故本项目也不提供对IE的支持。
 
-## Type Support For `.vue` Imports in TS
+## 安装依赖
+- npm i
+- yarn
+- pnpm i
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## 启动项目
+- npm run dev
+- yarn dev
+- pnpm dev

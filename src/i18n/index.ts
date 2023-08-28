@@ -13,6 +13,8 @@ const messages = {
 const i18n = createI18n<MessageSchema, 'enUS' | 'zhHans' | 'zhHant'>({
   legacy: false,
   locale: JSON.parse(localStorage.getItem('trim-user-config') || '{}').i18n || 'zhHans',
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   messages,
   fallbackLocale: 'zh'
 })

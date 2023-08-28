@@ -2,6 +2,7 @@ import { colorSchemeList } from '@/trim-config'
 
 interface ITrimConfig {
   theme: ITrimConfigTheme
+  defaultI18n: 'zhHans' | 'zhHant' | 'enUS'
 }
 
 interface IColorScheme {
@@ -16,4 +17,6 @@ interface ITrimConfigTheme {
   siderWidthCollapse: string | number
   layout: 'normal' | 'mix' | 'top'
   colorScheme: (typeof colorSchemeList)[number]['scheme']
+  hideTabs: boolean
+  hideLogo: boolean
 }
