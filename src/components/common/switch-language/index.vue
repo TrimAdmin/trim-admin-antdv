@@ -12,7 +12,7 @@ function handleChangeI18n(key: Key) {
 </script>
 
 <template>
-  <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">
+  <div class="flex items-center hover:bg-gray-50 p-2 dark:hover:bg-slate-700">
     <a-dropdown arrow placement="bottom">
       <Icon :height="18" icon="ooui:language" class="cursor-pointer hover:text-blue-500" />
       <template #overlay>

@@ -31,15 +31,15 @@ const useCommonStore = defineStore('commonStore', {
       this.currentRouteName = name
     },
     // 刷新路由
-    refreshRoute() {
+    async refreshRoute() {
       this.refreshing = true
-      nextTick(() => {
+      await nextTick(() => {
         this.refreshing = false
       })
     },
     // 新增标签
     addTab(tab: ITabObject) {
-      if (this.tabsList.findIndex((item) => item.key === tab.key) > -1) return
+      if (this.tabsList.findIndex((item) => item.key === tab.key) > -1 || tab.key === 'login') return
       this.tabsList.push(tab)
     },
     // 关闭标签

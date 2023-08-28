@@ -6,18 +6,18 @@ import enUS from 'ant-design-vue/locale/en_US'
 import { RouterView } from 'vue-router'
 import { useAutoAnimate } from '@formkit/auto-animate/vue'
 import {
-  lightTheme,
-  darkTheme,
-  elementPlusTheme,
-  tdesignTheme,
-  forestGreenTheme,
-  elementPlusDarkTheme,
-  tdesignDarkTheme,
-  forestGreenDarkTheme,
-  brightYellowTheme,
   brightYellowDarkTheme,
+  brightYellowTheme,
+  darkTheme,
+  elementPlusDarkTheme,
+  elementPlusTheme,
+  energyOrangeDarkTheme,
   energyOrangeTheme,
-  energyOrangeDarkTheme
+  forestGreenDarkTheme,
+  forestGreenTheme,
+  lightTheme,
+  tdesignDarkTheme,
+  tdesignTheme
 } from '@/theme'
 import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
 import { theme } from 'ant-design-vue'
@@ -25,7 +25,7 @@ import { theme } from 'ant-design-vue'
 const route = useRoute()
 const router = useRouter()
 const show = ref<boolean>(false)
-const isDarkTheme = computed(() => useConfigStoreHook().darkTheme)
+const isDarkTheme = computed<boolean>(() => useConfigStoreHook().darkTheme)
 const locale = computed(() => {
   switch (useConfigStoreHook().i18n) {
     case 'zhHans':
@@ -111,7 +111,8 @@ router.isReady().then(async () => {
 
 <template>
   <div v-if="show" ref="animated" class="relative h-full">
-    <a-config-provider :locale="locale" :theme="isDarkTheme ? { algorithm: theme.darkAlgorithm, ...darkColorScheme } : colorScheme">
+    <a-config-provider :locale="locale"
+      :theme="isDarkTheme ? { algorithm: theme.darkAlgorithm, ...darkColorScheme } : colorScheme">
       <keep-alive v-if="route.meta.keepAlive">
         <component :is="route.meta.noLayout ? RouterView : Layout" />
       </keep-alive>

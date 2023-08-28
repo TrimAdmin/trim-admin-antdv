@@ -4,8 +4,10 @@ import Header from './components/normal-header.vue'
 import Sider from './components/normal-sider.vue'
 import Footer from './components/normal-footer.vue'
 import { useTrimConfig } from '@/hooks'
-import { useConfigStoreHook } from '@/store'
+import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 
+// 是否刷新路由
+const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
 // auto-animate的ref
 const [animated] = useAutoAnimate()
@@ -41,7 +43,7 @@ const hideTabs = computed<boolean>(() => useConfigStoreHook().hideTabs)
       <SimpleTab v-if="!hideTabs" />
       <a-layout-content>
         <div ref="animated" class="h-full">
-          <router-view />
+          <router-view v-if="!refreshing" />
         </div>
       </a-layout-content>
       <a-layout-footer class="!p-0 mb-4">

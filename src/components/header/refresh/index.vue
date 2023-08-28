@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-
-const router = useRouter()
+import { useCommonStoreHook } from '@/store'
 
 function handleRefresh() {
-  router.go(0)
+  useCommonStoreHook().refreshRoute()
 }
 </script>
 
