@@ -7,7 +7,8 @@ export const advancedComponentsRoutes: Array<RouteRecordRaw> = [
     redirect: { name: 'advanced-components-button' },
     meta: {
       title: '进阶组件',
-      icon: 'ant-design:database-outlined'
+      icon: 'ant-design:database-outlined',
+      order: 2
     },
     children: [
       {
@@ -21,3 +22,5 @@ export const advancedComponentsRoutes: Array<RouteRecordRaw> = [
     ]
   }
 ]
+
+export default advancedComponentsRoutes

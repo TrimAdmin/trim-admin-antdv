@@ -25,5 +25,25 @@ export const commonRoutes: Array<RouteRecordRaw> = [
       hideMenu: true,
       title: '登录'
     }
+  },
+  {
+    path: '/not-found',
+    name: 'not-found',
+    component: () => import('@/views/error-page/not-found/index.vue'),
+    meta: {
+      publicRoute: true,
+      title: '404',
+      hideMenu: true
+    }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: { name: 'not-found' },
+    meta: {
+      hideMenu: true,
+      publicRoute: true
+    }
   }
 ]
+
+export default commonRoutes

@@ -7,7 +7,8 @@ export const multiNavRoutes: Array<RouteRecordRaw> = [
     redirect: { name: 'multi-nav-1' },
     meta: {
       title: '多级菜单',
-      icon: 'ant-design:database-outlined'
+      icon: 'ant-design:unordered-list-outlined',
+      order: 3
     },
     children: [
       {
@@ -27,7 +28,7 @@ export const multiNavRoutes: Array<RouteRecordRaw> = [
             }
           },
           {
-            path: 'nav-1-1',
+            path: 'nav-1-2',
             name: 'multi-nav-1-2',
             component: () => import('@/views/multi-nav/nav-1/nav-1-1/nav-1-1-2/index.vue'),
             meta: {
@@ -47,3 +48,5 @@ export const multiNavRoutes: Array<RouteRecordRaw> = [
     ]
   }
 ]
+
+export default multiNavRoutes

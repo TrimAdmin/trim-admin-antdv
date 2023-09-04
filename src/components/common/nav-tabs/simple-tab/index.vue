@@ -37,6 +37,10 @@ function handleTabAction(action: string, key: string) {
     case 'close-right':
       useCommonStoreHook().removeRightTabs(key as string)
       break
+    // 关闭所有
+    case 'close-all':
+      useCommonStoreHook().closeAllTabs()
+      break
     default:
       break
   }
@@ -86,6 +90,12 @@ function handleTabAction(action: string, key: string) {
                   <div class="flex items-center">
                     <Icon icon="ant-design:vertical-left-outlined" class="mr-1" inline />
                     关闭右侧标签页
+                  </div>
+                </a-menu-item>
+                <a-menu-item key="close-all">
+                  <div class="flex items-center">
+                    <Icon icon="ant-design:minus-outlined" class="mr-1" inline />
+                    关闭所有标签页
                   </div>
                 </a-menu-item>
               </a-menu>

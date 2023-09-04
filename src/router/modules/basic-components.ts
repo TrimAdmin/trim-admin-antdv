@@ -8,7 +8,7 @@ export const basicComponentsRoutes: Array<RouteRecordRaw> = [
     meta: {
       title: '基础组件',
       icon: 'ant-design:appstore-outlined',
-      order: 3
+      order: 1
     },
     children: [
       {
@@ -22,3 +22,5 @@ export const basicComponentsRoutes: Array<RouteRecordRaw> = [
     ]
   }
 ]
+
+export default basicComponentsRoutes

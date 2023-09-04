@@ -1,5 +1,6 @@
 import router from '@/router'
 import store from '..'
+import { getParentRoutes } from '@/router/utils.ts'
 
 interface ICommonStoreState {
   loading: boolean
@@ -31,6 +32,7 @@ const useCommonStore = defineStore('commonStore', {
     // 设置当前激活的路由name
     setCurrentRouteName(name: string) {
       this.currentRouteName = name
+      this.currentOpenMenu = getParentRoutes(name)
     },
     // 设置当前打开的菜单
     setCurrentOpenMenu(list: Array<string>) {
@@ -92,6 +94,12 @@ const useCommonStore = defineStore('commonStore', {
         this.currentRouteName = this.tabsList[index - 1].key
         router.push({ name: this.tabsList[index - 1].key })
       }
+    },
+    // 关闭所有标签页
+    closeAllTabs() {
+      this.tabsList = this.tabsList.filter((item) => item.tabAffix)
+      this.currentRouteName = this.tabsList[0]
+      router.push({ name: this.tabsList[0].key })
     }
   },
   persist: [

@@ -2,7 +2,7 @@ import { cryptoMD5, message } from '@/utils'
 import store, { useCommonStoreHook } from '..'
 import router from '@/router'
 import { ItemType } from 'ant-design-vue'
-import { generateMenus } from '@/router/routes.ts'
+import { generateMenus } from '@/router/utils.ts'
 
 interface IUserStoreState {
   isLogged: boolean
