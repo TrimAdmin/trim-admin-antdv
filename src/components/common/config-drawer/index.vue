@@ -91,8 +91,8 @@ function handleRouteAnimate(animate: (typeof routeAnimateList)[number]['value'])
       </div>
       <div class="flex justify-between items-center px-2 mb-4">
         <div class="dark:text-white">路由动画</div>
-        <a-select :value="useConfigStoreHook().config.theme.routeAnimate" class="w-[120px]" @change="handleRouteAnimate">
-          <a-select-option v-for="item in routeAnimateList" :key="item.value" :value="item.value">{{ item.label }}</a-select-option>
+        <a-select :value="useConfigStoreHook().config.theme.routeAnimate" class="w-[120px]" @change="(value) => handleRouteAnimate(value as string)">
+          <a-select-option v-for="item in routeAnimateList" :key="item.value" :value="item.value">{{ item.label }} </a-select-option>
         </a-select>
       </div>
     </div>

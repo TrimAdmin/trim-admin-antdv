@@ -5,13 +5,13 @@ import { useIcon } from '@/hooks'
 import { sortBy } from 'lodash'
 
 // 自动从modules文件夹导入路由
-export function autoImportRoutes() {
+export function autoImportRoutes(): Array<RouteRecordRaw> {
   const modules = import.meta.glob(['./modules/*.ts', '!./modules/index.ts'], {
     eager: true
   })
   const routes = []
   // 路由处理
-  for (const [key, value] of Object.entries(modules)) {
+  for (const [_, value] of Object.entries(modules) as any) {
     if (Array.isArray(value.default)) {
       routes.push(...value.default)
     } else {
@@ -22,8 +22,8 @@ export function autoImportRoutes() {
 }
 
 // 路由递归转换为菜单
-export function routesToMenu(routes: RouterOptions['routes']) {
-  const tree = []
+export function routesToMenu(routes: RouterOptions['routes']): Array<any> {
+  const tree: Array<any> = []
 
   routes.map((route) => {
     const node = { ...route }
@@ -39,7 +39,7 @@ export function routesToMenu(routes: RouterOptions['routes']) {
       key: node.name as unknown as Key,
       order: node.meta?.order,
       icon: node.meta?.icon && useIcon(node.meta.icon),
-      children: node.children || null
+      children: node.children || undefined
     })
   })
 
@@ -49,7 +49,7 @@ export function routesToMenu(routes: RouterOptions['routes']) {
 // 生成菜单并排序
 export function generateMenus() {
   const menus = routesToMenu(router.options.routes)
-  return sortBy(menus, (item) => item.order || 0)
+  return sortBy(menus, (item: RouteRecordRaw['meta']) => item?.order || 0)
 }
 
 // 获取父级路由节点列表
@@ -57,7 +57,7 @@ export function getParentRoutes(value: string) {
   const routes = router.options.routes
 
   // 深度遍历
-  function dfs(routes: RouteRecordRaw[], value: string, parents: RouteRecordRaw[]) {
+  function dfs(routes: ReadonlyArray<RouteRecordRaw>, value: string, parents: Array<RouteRecordRaw>): Array<RouteRecordRaw> {
     for (let i = 0; i < routes.length; i++) {
       const item = routes[i]
       // 返回父级

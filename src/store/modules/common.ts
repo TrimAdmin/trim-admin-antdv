@@ -32,7 +32,7 @@ const useCommonStore = defineStore('commonStore', {
     // 设置当前激活的路由name
     setCurrentRouteName(name: string) {
       this.currentRouteName = name
-      this.currentOpenMenu = getParentRoutes(name).map((item) => item.name)
+      this.currentOpenMenu = getParentRoutes(name).map((item) => item.name) as Array<string>
     },
     // 设置当前打开的菜单
     setCurrentOpenMenu(list: Array<string>) {
@@ -61,7 +61,6 @@ const useCommonStore = defineStore('commonStore', {
     },
     // 关闭其他标签页
     removeOtherTabs(key: string) {
-      const index = this.tabsList.findIndex((item) => item.key === key)
       this.tabsList = this.tabsList.filter((item) => item.tabAffix || item.key === key)
       this.currentRouteName = this.tabsList[this.tabsList.length - 1].key
       router.push({ name: this.tabsList[this.tabsList.length - 1].key })
@@ -93,7 +92,7 @@ const useCommonStore = defineStore('commonStore', {
     // 关闭所有标签页
     closeAllTabs() {
       this.tabsList = this.tabsList.filter((item) => item.tabAffix)
-      this.currentRouteName = this.tabsList[0]
+      this.currentRouteName = this.tabsList[0].key
       router.push({ name: this.tabsList[0].key })
     }
   },

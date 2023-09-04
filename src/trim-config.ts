@@ -1,34 +1,61 @@
 import { IColorScheme, ITrimConfig } from './types/trim-config'
 
+const trimConfig: ITrimConfig = {
+  theme: {
+    // 顶栏高度
+    headerHeight: '48px',
+    // 展开时侧边栏宽度
+    siderWidth: '240px',
+    // 折叠后侧边栏宽度
+    siderWidthCollapse: '64px',
+    // 布局模式
+    layout: 'normal',
+    // 配色方案
+    colorScheme: 'antd',
+    // 隐藏标签页
+    hideTabs: false,
+    // 隐藏logo
+    hideLogo: false,
+    // 隐藏面包屑
+    hideBreadcrumb: false,
+    // 路由动画
+    routeAnimate: 'slide-left'
+  },
+  // 默认国际化语言
+  defaultI18n: 'zhHans'
+}
+
+export default trimConfig
+
 export const colorSchemeList: Array<IColorScheme> = [
   {
     scheme: 'antd',
-    primaryColor: '#1778ff',
+    primaryColor: '#1778FF',
     name: 'Ant Design'
   },
   {
     scheme: 'element',
-    primaryColor: '#409eff',
+    primaryColor: '#409EFF',
     name: 'Element Plus'
   },
   {
     scheme: 'tdesign',
-    primaryColor: '#0052d9',
+    primaryColor: '#0052D9',
     name: 'TDesign'
   },
   {
     scheme: 'forest-green',
-    primaryColor: '#07c160',
+    primaryColor: '#07C160',
     name: '森林绿'
   },
   {
     scheme: 'bright-yellow',
-    primaryColor: '#fcec0c',
+    primaryColor: '#FCEC0C',
     name: '明亮黄'
   },
   {
     scheme: 'energy-orange',
-    primaryColor: '#fe7300',
+    primaryColor: '#FE7300',
     name: '能量橙'
   }
 ]
@@ -78,29 +105,4 @@ export const layoutList: Array<{ label: string; value: string }> = [
   }
 ]
 
-const trimConfig: ITrimConfig = {
-  theme: {
-    // 顶栏高度
-    headerHeight: '48px',
-    // 展开时侧边栏宽度
-    siderWidth: '240px',
-    // 折叠后侧边栏宽度
-    siderWidthCollapse: '64px',
-    // 布局模式
-    layout: 'normal',
-    // 配色方案
-    colorScheme: 'antd',
-    // 隐藏标签页
-    hideTabs: false,
-    // 隐藏logo
-    hideLogo: false,
-    // 隐藏面包屑
-    hideBreadcrumb: false,
-    // 路由动画
-    routeAnimate: 'slide-left'
-  },
-  // 默认国际化语言
-  defaultI18n: 'zhHans'
-}
-
-export default trimConfig
+export const i18nList: Array<string> = ['zhHans', 'zhHant', 'enUS']

@@ -40,6 +40,7 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     path: '/:pathMatch(.*)*',
     redirect: { name: 'not-found' },
     meta: {
+      title: '',
       hideMenu: true,
       publicRoute: true
     }

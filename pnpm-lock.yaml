@@ -46,6 +46,9 @@ devDependencies:
   '@types/crypto-js':
     specifier: ^4.1.1
     version: 4.1.1
+  '@types/lodash':
+    specifier: ^4.14.197
+    version: 4.14.197
   '@types/node':
     specifier: ^18.17.14
     version: 18.17.14
@@ -1296,6 +1299,10 @@ packages:
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
+    dev: true
+
+  /@types/lodash@4.14.197:
+    resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
     dev: true
 
   /@types/minimist@1.2.2:

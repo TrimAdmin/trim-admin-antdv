@@ -2,8 +2,8 @@
 import { useIcon } from '@/hooks'
 import { message } from '@/utils'
 
-function handleMenuClick(item) {
-  message.info(`您点击了：${item.key}`)
+function handleMenuClick(key: string) {
+  message.info(`您点击了：${key}`)
 }
 </script>
 
@@ -79,7 +79,7 @@ function handleMenuClick(item) {
           <a-button type="primary" danger>删除</a-button>
           <a-dropdown>
             <template #overlay>
-              <a-menu @click="handleMenuClick">
+              <a-menu @click="({ key }) => handleMenuClick(key as string)">
                 <a-menu-item key="1">操作1</a-menu-item>
                 <a-menu-item key="2">操作2</a-menu-item>
                 <a-menu-item key="3">操作3</a-menu-item>

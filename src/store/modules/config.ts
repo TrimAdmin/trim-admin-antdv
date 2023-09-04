@@ -4,7 +4,7 @@ import { ITrimConfig } from '@/types/trim-config'
 import { colorSchemeList, routeAnimateList } from '@/trim-config.ts'
 
 interface IConfigStoreState {
-  i18n: 'zhHans' | 'zhHant' | 'enUS'
+  i18n: ITrimConfig['defaultI18n']
   darkTheme: boolean
   menuCollapsed: boolean
   config: ITrimConfig
@@ -19,7 +19,7 @@ const useConfigStore = defineStore('configStore', {
   }),
   actions: {
     // 改变i18n语言
-    setI18n(i18n: 'zhHans' | 'zhHant' | 'enUS') {
+    setI18n(i18n: ITrimConfig['defaultI18n']) {
       if (i18n === this.i18n) {
         return
       }

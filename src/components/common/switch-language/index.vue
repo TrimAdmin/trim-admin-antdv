@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { CI18n } from '@/constants'
 import { useConfigStoreHook } from '@/store'
-import { Key } from 'ant-design-vue/es/_util/type'
+import { ITrimConfig } from '@/types/trim-config'
 
 const selectedKeys = computed<Array<string>>(() => [useConfigStoreHook().i18n])
 
-function handleChangeI18n(key: Key) {
-  useConfigStoreHook().setI18n(key as string)
+function handleChangeI18n(key: ITrimConfig['defaultI18n']) {
+  useConfigStoreHook().setI18n(key)
 }
 </script>
 
@@ -15,7 +15,7 @@ function handleChangeI18n(key: Key) {
     <a-dropdown arrow placement="bottom">
       <Icon :height="18" icon="ooui:language" class="cursor-pointer hover:text-blue-500" />
       <template #overlay>
-        <a-menu v-model:selected-keys="selectedKeys" @click="({ key }) => handleChangeI18n(key)">
+        <a-menu v-model:selected-keys="selectedKeys" @click="({ key }) => handleChangeI18n(key as ITrimConfig['defaultI18n'])">
           <a-menu-item v-for="item in Object.entries(CI18n)" :key="item[0]">
             {{ item[1] }}
           </a-menu-item>

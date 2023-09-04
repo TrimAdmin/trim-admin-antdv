@@ -1,10 +1,10 @@
-import { colorSchemeList, layoutList, routeAnimateList } from '@/trim-config'
+import { colorSchemeList, i18nList, layoutList, routeAnimateList } from '@/trim-config'
 
 interface ITrimConfig {
   // 主题
   theme: ITrimConfigTheme
   // 默认国际化语言
-  defaultI18n: 'zhHans' | 'zhHant' | 'enUS'
+  defaultI18n: (typeof i18nList)[number]
 }
 
 interface IColorScheme {

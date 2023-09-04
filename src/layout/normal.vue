@@ -2,7 +2,6 @@
 import Header from './components/normal-header.vue'
 import Sider from './components/normal-sider.vue'
 import { useTrimConfig } from '@/hooks'
-import type { Component } from 'vue'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import SlideLeft from '@/components/animates/slide-left.vue'
 import SlideRight from '@/components/animates/slide-right.vue'
@@ -32,7 +31,7 @@ const siderWidth = computed<string | number>(() =>
 // 隐藏标签页
 const hideTabs = computed<boolean>(() => useConfigStoreHook().config.theme.hideTabs)
 // 路由动画
-const routeAnimate = computed<Component>(() => {
+const routeAnimate = computed<any>(() => {
   switch (useConfigStoreHook().config.theme.routeAnimate) {
     case 'slide-left':
       return SlideLeft

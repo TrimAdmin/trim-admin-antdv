@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { getParentRoutes } from '@/router/utils.ts'
-import { RouteRecordRaw } from 'vue-router'
+import { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 
 const router = useRouter()
 const breadcrumbList = ref<Array<RouteRecordRaw>>([])
-const currentRoute = ref<RouteRecordRaw>()
+const currentRoute = ref<RouteLocationNormalizedLoaded>()
 
 watch(
-  () => router.currentRoute,
+  () => router.currentRoute.value,
   (newVal) => {
-    currentRoute.value = newVal.value
-    breadcrumbList.value = getParentRoutes(newVal.value.name)
+    currentRoute.value = newVal
+    breadcrumbList.value = getParentRoutes(newVal.name as string)
   },
   {
     deep: true,
@@ -18,7 +18,7 @@ watch(
   }
 )
 
-function handleBreadcrumbChange(item) {
+function handleBreadcrumbChange(item: RouteRecordRaw) {
   router.push({ name: item.name })
 }
 </script>
@@ -33,7 +33,7 @@ function handleBreadcrumbChange(item) {
         <a @click="handleBreadcrumbChange(item)">{{ item.meta?.title }}</a>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        {{ currentRoute?.meta.title }}
+        {{ currentRoute?.meta.title! }}
       </a-breadcrumb-item>
     </a-breadcrumb>
   </Motion>

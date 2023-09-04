@@ -4,7 +4,6 @@ import { Key } from 'ant-design-vue/es/_util/type'
 import { RouteRecordName } from 'vue-router'
 import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
 import { ItemType } from 'ant-design-vue/es/menu/src/hooks/useItems'
-import { getParentRoutes } from '@/router/utils.ts'
 
 const router = useRouter()
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
@@ -32,8 +31,8 @@ watch(
 )
 
 // 菜单变化时
-function handleMenuChange(key) {
-  router.push({ name: key as RouteRecordName })
+function handleMenuChange(key: RouteRecordName) {
+  router.push({ name: key })
 }
 </script>
 
@@ -42,7 +41,13 @@ function handleMenuChange(key) {
     <img src="@/assets/images/logo.png" alt="logo" class="h-4/5 inline-block" />
     <span v-if="!collapsed" class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2">{{ title }}</span>
   </div>
-  <a-menu :open-keys="openKeys" :selected-keys="defaultSelect" mode="inline" :items="menus" @click="({ key }) => handleMenuChange(key)"></a-menu>
+  <a-menu
+    :open-keys="openKeys"
+    :selected-keys="defaultSelect"
+    mode="inline"
+    :items="menus"
+    @click="({ key }) => handleMenuChange(key as RouteRecordName)"
+  ></a-menu>
 </template>
 
 <style scoped lang="scss">

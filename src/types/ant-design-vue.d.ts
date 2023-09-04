@@ -17,7 +17,7 @@ declare module 'ant-design-vue/es/menu/src/hooks/useItems.d' {
   export type MenuItemType = {
     danger?: boolean
     disabled?: boolean
-    icon?: JSX.Element | undefined | string
+    icon?: JSX.Element | undefined | string | null
     key: string | Key
     order?: number
     label: string | undefined
