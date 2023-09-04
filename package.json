@@ -1,7 +1,7 @@
 {
   "name": "trim-admin-antdv",
   "private": true,
-  "version": "dev-0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "module": "es2020",
   "scripts": {
