@@ -1,32 +1,51 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   noBackground?: boolean
   title: string
+  withFooter?: boolean
 }>()
 </script>
 
 <template>
-  <div class="w-full bg-white">
-    <div></div>
-    <div class="prose-xl font-bold">{{ title }}</div>
-  </div>
-  <div
-    :class="`regular-layout text-black dark:text-white
+  <div :class="`layout-with-header ${withFooter ? 'pb-[64px]' : ''}`">
+    <div class="w-full bg-white dark:bg-gray-900 dark:text-white px-4 py-3 flex-bc gap-[16px]">
+      <div>
+        <slot name="left" />
+      </div>
+      <div class="flex-1">
+        <div>
+          <slot name="extra" />
+        </div>
+        <div class="prose-2xl leading-[2] font-bold">{{ title }}</div>
+        <div>
+          <slot name="subtitle" />
+        </div>
+      </div>
+      <div>
+        <slot name="right" />
+      </div>
+    </div>
+    <div
+      :class="`content text-black dark:text-white
       ${noBackground ? 'transparent' : 'bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
     `"
-  >
-    <slot />
+    >
+      <slot />
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.regular-layout {
-  padding: 12px;
-  //width: 100%;
+.layout-with-header {
   height: 100%;
-  border-radius: 8px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin: 16px;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 16px;
+  }
 }
 </style>

@@ -58,7 +58,7 @@ function handleDropdown(key: Key) {
 
 <template>
   <div class="h-full flex justify-between items-center">
-    <div class="flex-c">
+    <div class="flex-c h-full">
       <!-- 菜单折叠按钮 -->
       <MenuCollapse />
       <!-- 面包屑 -->
@@ -69,7 +69,7 @@ function handleDropdown(key: Key) {
       <!-- 搜索 -->
       <GlobalSearch />
       <!-- 切换语言 -->
-      <SwitchLanguage />
+      <SwitchLanguage class="h-full" />
       <!-- 全屏 -->
       <FullScreen />
       <!-- 主题 -->

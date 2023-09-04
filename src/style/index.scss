@@ -25,3 +25,8 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
+// 去除焦点在iconify图标上时的外边框
+.iconify:focus {
+  outline: none;
+}

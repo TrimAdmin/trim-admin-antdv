@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Header from './components/normal-header.vue'
 import Sider from './components/normal-sider.vue'
-import Footer from './components/normal-footer.vue'
 import { useTrimConfig } from '@/hooks'
 import type { Component } from 'vue'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
@@ -65,9 +64,6 @@ const routeAnimate = computed<Component>(() => {
         <component :is="routeAnimate || 'div'" class="content">
           <router-view v-if="!refreshing" />
         </component>
-        <a-layout-footer class="!px-0 !py-2">
-          <Footer />
-        </a-layout-footer>
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -79,9 +75,9 @@ const routeAnimate = computed<Component>(() => {
   line-height: v-bind(headerHeight);
   padding-inline: 16px;
   z-index: 999;
+  border-bottom: 1px solid;
   @apply bg-white;
   @apply dark:bg-[#001529];
-  border-bottom: 1px solid;
   @apply border-gray-100;
   @apply dark:border-gray-700;
 }
@@ -104,6 +100,6 @@ const routeAnimate = computed<Component>(() => {
 }
 
 .content {
-  height: calc(100% - v-bind(headerHeight));
+  height: 100%;
 }
 </style>

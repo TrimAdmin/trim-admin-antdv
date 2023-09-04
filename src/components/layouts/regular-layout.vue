@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   noBackground?: boolean
 }>()
 </script>
@@ -22,6 +22,5 @@ const props = defineProps<{
   border-radius: 8px;
   overflow-x: hidden;
   overflow-y: auto;
-  margin: 16px;
 }
 </style>

@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@formkit/auto-animate':
     specifier: ^0.7.0
@@ -1630,7 +1634,7 @@ packages:
       vite: ^3.1.0 || ^4.0.0-0
     dependencies:
       '@babel/parser': 7.22.14
-      birpc: 0.2.13
+      birpc: 0.2.14
       estree-walker: 2.0.2
       magic-string: 0.30.3
       vite: 4.4.9(@types/node@18.17.14)(sass@1.66.1)
@@ -2104,8 +2108,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /birpc@0.2.13:
-    resolution: {integrity: sha512-30rz9OBSJoGfiWox7dpyqoSVo6664PBEYSTfmmG1GBridUxnMysyovNpnwhaPMvjtKn3Y1UfII+HMTU0kqJFjA==}
+  /birpc@0.2.14:
+    resolution: {integrity: sha512-37FHE8rqsYM5JEKCnXFyHpBCzvgHEExwVVTq+nUmloInU7l8ezD1TpOhKpS8oe1DTYFqEK27rFZVKG43oTqXRA==}
     dev: true
 
   /boolbase@1.0.0:
@@ -5616,7 +5620,7 @@ packages:
     dependencies:
       '@vite-plugin-vue-devtools/core': 1.0.0-beta.6(vite@4.4.9)
       '@webfansplz/vuedoc-parser': 0.0.3(@types/node@18.17.14)(pug@3.0.2)
-      birpc: 0.2.13
+      birpc: 0.2.14
       execa: 7.2.0
       sirv: 2.0.3
       vite: 4.4.9(@types/node@18.17.14)(sass@1.66.1)
@@ -5907,7 +5911,3 @@ packages:
     dependencies:
       tslib: 2.3.0
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

@@ -51,7 +51,7 @@ function handleRouteAnimate(animate: (typeof routeAnimateList)[number]['value'])
       <Icon :height="18" icon="ant-design:setting-outlined" class="cursor-pointer hover:text-blue-500" @click="handleDrawerOpen" />
     </a-tooltip>
   </div>
-  <a-drawer v-model:open="open" title="全局设置" body-style="padding: 0 16px">
+  <a-drawer v-model:open="open" title="全局设置" :body-style="{ padding: '0 16px' }">
     <div class="text-center">
       <a-divider plain>颜色模式</a-divider>
       <a-switch :checked="darkTheme" checked-children="黑暗" un-checked-children="明亮" @change="handleDarkTheme"></a-switch>
