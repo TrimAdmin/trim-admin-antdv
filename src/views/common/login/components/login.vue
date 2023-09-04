@@ -13,6 +13,9 @@ const loginFormRules = reactive({
   username: [{ required: true, message: t('message.username-placeholder') }],
   password: [{ required: true, message: t('message.password-placeholder') }]
 })
+const emit = defineEmits<{
+  (e: 'register'): void
+}>()
 
 async function handleLogin() {
   const values = await loginFormRef.value.validateFields()
@@ -43,12 +46,14 @@ async function handleLogin() {
         </div>
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" block size="large" @click="handleLogin">{{ t('message.login') }}</a-button>
+        <a-button type="primary" block size="large" @click="handleLogin" @keyup.enter="handleLogin">
+          {{ t('message.login') }}
+        </a-button>
       </a-form-item>
       <a-form-item>
-        <a-space>
-          <a-button>{{ t('message.register') }}</a-button>
-        </a-space>
+        <div class="text-center">
+          <a-button type="link" @click="() => emit('register')">{{ t('message.to-register') }}</a-button>
+        </div>
       </a-form-item>
     </a-form>
   </div>

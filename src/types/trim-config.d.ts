@@ -1,4 +1,4 @@
-import { colorSchemeList } from '@/trim-config'
+import { colorSchemeList, routeAnimateList } from '@/trim-config'
 
 interface ITrimConfig {
   theme: ITrimConfigTheme
@@ -19,4 +19,5 @@ interface ITrimConfigTheme {
   colorScheme: (typeof colorSchemeList)[number]['scheme']
   hideTabs: boolean
   hideLogo: boolean
+  routeAnimate: (typeof routeAnimateList)[number]['value']
 }

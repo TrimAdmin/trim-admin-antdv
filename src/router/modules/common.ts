@@ -11,7 +11,8 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     meta: {
       title: t('menu.home'),
       icon: 'ant-design:home-filled',
-      tabAffix: true
+      tabAffix: true,
+      order: 0
     }
   },
   {

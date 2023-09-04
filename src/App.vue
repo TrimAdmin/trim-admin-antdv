@@ -22,6 +22,7 @@ import {
 import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
 import { theme } from 'ant-design-vue'
 import { setTrimConfig } from '@/hooks'
+import trimConfig from '@/trim-config.ts'
 
 const route = useRoute()
 const router = useRouter()
@@ -42,7 +43,7 @@ const locale = computed(() => {
 
 // 亮色颜色模式
 const colorScheme = computed(() => {
-  switch (useConfigStoreHook().colorScheme) {
+  switch (useConfigStoreHook().config.theme.colorScheme || trimConfig.theme.colorScheme) {
     case 'antd':
       return lightTheme
     case 'element':
@@ -62,7 +63,7 @@ const colorScheme = computed(() => {
 
 // 暗色颜色模式
 const darkColorScheme = computed(() => {
-  switch (useConfigStoreHook().colorScheme) {
+  switch (useConfigStoreHook().config.theme.colorScheme || trimConfig.theme.colorScheme) {
     case 'antd':
       return darkTheme
     case 'element':

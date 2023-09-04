@@ -33,6 +33,36 @@ export const colorSchemeList: Array<IColorScheme> = [
   }
 ]
 
+export const routeAnimateList: Array<{
+  value: string
+  label: string
+}> = [
+  {
+    value: 'none',
+    label: '无'
+  },
+  {
+    value: 'slide-left',
+    label: '向左滑动'
+  },
+  {
+    value: 'slide-right',
+    label: '向右滑动'
+  },
+  {
+    value: 'fade',
+    label: '淡入淡出'
+  },
+  {
+    value: 'scale-up',
+    label: '放大淡入淡出'
+  },
+  {
+    value: 'scale-down',
+    label: '缩小淡入淡出'
+  }
+]
+
 const trimConfig: ITrimConfig = {
   theme: {
     // 顶栏高度
@@ -48,7 +78,9 @@ const trimConfig: ITrimConfig = {
     // 隐藏标签页
     hideTabs: false,
     // 隐藏logo
-    hideLogo: false
+    hideLogo: false,
+    // 路由动画
+    routeAnimate: 'slide-left'
   },
   // 默认国际化语言
   defaultI18n: 'zhHans'

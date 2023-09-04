@@ -18,34 +18,30 @@ const headerHeight = computed<string | number>(() =>
 const menus = computed<Array<ItemType>>(() => useUserStoreHook().menuList)
 // 默认选中的菜单
 const defaultSelect = computed<Array<Key>>(() => [useCommonStoreHook().currentRouteName] as Array<Key>)
-const defaultOpen = computed<Array<Key>>(() => {
-  const name = useCommonStoreHook().currentRouteName.split('-')
-  name.pop()
-  return [name.join('-')]
-})
+const openKeys = ref<Array<Key>>(useCommonStoreHook().currentOpenMenu)
 // 侧边栏logo
-const hideLogo = computed<boolean>(() => useConfigStoreHook().hideLogo)
-
-// 由于selected-keys是v-model 故没有直接监听defaultSelect 改为监听路由位置
-watch(
-  () => router.currentRoute.value.name,
-  (newVal) => {
-    useCommonStoreHook().setCurrentRouteName(newVal as string)
-  }
-)
+const hideLogo = computed<boolean>(() => useConfigStoreHook().config.theme.hideLogo)
 
 // 菜单变化时
-function handleMenuChange(key: Key) {
+function handleMenuChange(key) {
+  useCommonStoreHook().setCurrentRouteName(key)
+  useCommonStoreHook().setCurrentOpenMenu(openKeys.value)
   router.push({ name: key as RouteRecordName })
 }
 </script>
 
 <template>
-  <div class="sider-title bg-[#001529] text-white font-bold w-full flex items-center justify-center px-2" v-if="!hideLogo">
+  <div v-if="!hideLogo" class="sider-title bg-[#001529] text-white font-bold w-full flex items-center justify-center px-2">
     <img src="@/assets/images/logo.png" alt="logo" class="h-4/5 inline-block" />
-    <span class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2" v-if="!collapsed">{{ title }}</span>
+    <span v-if="!collapsed" class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2">{{ title }}</span>
   </div>
-  <a-menu :selected-keys="defaultSelect" :open-keys="defaultOpen" mode="inline" :items="menus" @click="({ key }) => handleMenuChange(key)"></a-menu>
+  <a-menu
+    v-model:open-keys="openKeys"
+    :selected-keys="defaultSelect"
+    mode="inline"
+    :items="menus"
+    @click="({ key }) => handleMenuChange(key)"
+  ></a-menu>
 </template>
 
 <style scoped lang="scss">

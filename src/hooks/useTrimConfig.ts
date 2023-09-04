@@ -6,5 +6,5 @@ export function useTrimConfig() {
 }
 
 export function setTrimConfig() {
-  useConfigStoreHook().setConfig(trimConfig)
+  useConfigStoreHook().setConfig(Object.entries(useConfigStoreHook().config).length ? useConfigStoreHook().config : trimConfig)
 }

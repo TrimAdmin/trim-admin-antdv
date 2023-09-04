@@ -7,7 +7,8 @@ export const basicComponentsRoutes: Array<RouteRecordRaw> = [
     redirect: { name: 'basic-components-button' },
     meta: {
       title: '基础组件',
-      icon: 'ant-design:appstore-outlined'
+      icon: 'ant-design:appstore-outlined',
+      order: 3
     },
     children: [
       {

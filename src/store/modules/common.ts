@@ -5,6 +5,7 @@ interface ICommonStoreState {
   loading: boolean
   refreshing: boolean
   currentRouteName: string
+  currentOpenMenu: Array<string>
   tabsList: Array<ITabObject>
 }
 
@@ -19,6 +20,7 @@ const useCommonStore = defineStore('commonStore', {
     loading: false,
     refreshing: false,
     currentRouteName: 'home',
+    currentOpenMenu: [''],
     tabsList: []
   }),
   actions: {
@@ -30,12 +32,16 @@ const useCommonStore = defineStore('commonStore', {
     setCurrentRouteName(name: string) {
       this.currentRouteName = name
     },
+    // 设置当前打开的菜单
+    setCurrentOpenMenu(list: Array<string>) {
+      this.currentOpenMenu = list
+    },
     // 刷新路由
-    async refreshRoute() {
+    refreshRoute() {
       this.refreshing = true
-      await nextTick(() => {
+      setTimeout(() => {
         this.refreshing = false
-      })
+      }, 100)
     },
     // 新增标签
     addTab(tab: ITabObject) {
@@ -50,12 +56,48 @@ const useCommonStore = defineStore('commonStore', {
         this.currentRouteName = this.tabsList[index - 1].key
         router.push({ name: this.tabsList[index - 1].key })
       }
+    },
+    // 关闭其他标签页
+    removeOtherTabs(key: string) {
+      const index = this.tabsList.findIndex((item) => item.key === key)
+      this.tabsList = this.tabsList.filter((item) => item.tabAffix || item.key === key)
+      if (this.currentRouteName !== key) {
+        this.currentRouteName = this.tabsList[index].key
+        router.push({ name: this.tabsList[index].key })
+      } else {
+        this.currentRouteName = this.tabsList[index - 1].key
+        router.push({ name: this.tabsList[index - 1].key })
+      }
+    },
+    // 关闭左侧标签页
+    removeLeftTabs(key: string) {
+      const index = this.tabsList.findIndex((item) => item.key === key)
+      this.tabsList = this.tabsList.filter((item, i) => i >= index || item.tabAffix)
+      if (this.currentRouteName !== key) {
+        this.currentRouteName = this.tabsList[index].key
+        router.push({ name: this.tabsList[index].key })
+      } else {
+        this.currentRouteName = this.tabsList[index - 1].key
+        router.push({ name: this.tabsList[index - 1].key })
+      }
+    },
+    // 关闭右侧标签页
+    removeRightTabs(key: string) {
+      const index = this.tabsList.findIndex((item) => item.key === key)
+      this.tabsList = this.tabsList.filter((item, i) => i <= index || item.tabAffix)
+      if (this.currentRouteName !== key) {
+        this.currentRouteName = this.tabsList[index].key
+        router.push({ name: this.tabsList[index].key })
+      } else {
+        this.currentRouteName = this.tabsList[index - 1].key
+        router.push({ name: this.tabsList[index - 1].key })
+      }
     }
   },
   persist: [
     {
-      key: 'trim-current-route-name',
-      paths: ['currentRouteName'],
+      key: 'trim-current-route',
+      paths: ['currentRouteName', 'currentOpenMenu'],
       storage: sessionStorage
     },
     {

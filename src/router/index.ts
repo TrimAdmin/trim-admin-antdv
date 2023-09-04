@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import routerInterceptor from '@/router/interceptor'
-import { commonRoutes, basicComponentsRoutes } from './modules'
+import { advancedComponentsRoutes, basicComponentsRoutes, commonRoutes, multiNavRoutes } from './modules'
 
-const routes = [...commonRoutes, ...basicComponentsRoutes]
+const routes = [...commonRoutes, ...basicComponentsRoutes, ...advancedComponentsRoutes, ...multiNavRoutes]
 
 const router = createRouter({
   routes,

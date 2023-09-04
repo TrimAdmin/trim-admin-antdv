@@ -3,8 +3,11 @@
     "login": "Login",
     "username-placeholder": "Please enter username",
     "password-placeholder": "Please enter password",
+    "confirm-password-placeholder": "Please enter password again",
+    "email-placeholder": "Please enter email",
     "remember-me": "Remember me",
     "forget-password": "Forget password?",
+    "to-register": "No account? Go to register",
     "register": "Register",
     "welcome": "Welcome to Trim Admin Antdv"
   },

@@ -1,14 +1,17 @@
 {
   "message": {
-    "login": "登錄",
+    "login": "登入",
     "username-placeholder": "請輸入用戶名",
+    "email-placeholder": "請輸入郵箱",
     "password-placeholder": "請輸入密碼",
+    "confirm-password-placeholder": "請再次輸入密碼",
     "remember-me": "記住密碼",
     "forget-password": "忘記密碼？",
-    "register": "註冊",
+    "to-register": "沒有帳號？去注册",
+    "register": "注册",
     "welcome": "歡迎使用Trim Admin Antdv"
   },
   "menu": {
-    "home": "首页"
+    "home": "首頁"
   }
 }

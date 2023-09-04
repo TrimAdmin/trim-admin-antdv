@@ -1,25 +1,21 @@
-import { colorSchemeList } from '@/trim-config'
 import store from '..'
 import router from '@/router'
 import { ITrimConfig } from '@/types/trim-config'
+import { colorSchemeList, routeAnimateList } from '@/trim-config.ts'
 
 interface IConfigStoreState {
   i18n: 'zhHans' | 'zhHant' | 'enUS'
   darkTheme: boolean
   menuCollapsed: boolean
-  hideTabs: boolean
-  hideLogo: boolean
-  colorScheme: (typeof colorSchemeList)[number]['scheme']
+  config: ITrimConfig
 }
 
 const useConfigStore = defineStore('configStore', {
   state: (): IConfigStoreState => ({
     i18n: 'zhHans',
     darkTheme: false,
-    menuCollapsed: false,
-    hideTabs: false,
-    hideLogo: false,
-    colorScheme: 'antd'
+    config: {} as ITrimConfig,
+    menuCollapsed: false
   }),
   actions: {
     // 改变i18n语言
@@ -40,28 +36,29 @@ const useConfigStore = defineStore('configStore', {
     },
     // 隐藏标签页
     setHideTabs(hide: boolean) {
-      this.hideTabs = hide
+      this.config.theme.hideTabs = hide
     },
     // 隐藏logo
     setHideLogo(hide: boolean) {
-      this.hideLogo = hide
+      this.config.theme.hideLogo = hide
     },
     // 改变配色方案
-    setColorScheme(colorScheme: string) {
-      this.colorScheme = colorScheme
+    setColorScheme(colorScheme: (typeof colorSchemeList)[number]['scheme']) {
+      this.config.theme.colorScheme = colorScheme
     },
-    // 更新配置
+    // 更新路由动画
+    setRouteAnimate(animate: (typeof routeAnimateList)[number]['value']) {
+      this.config.theme.routeAnimate = animate
+    },
+    // 更新配置 更新单个配置时请使用上面的方法单独更新
     setConfig(config: ITrimConfig) {
-      this.colorScheme = config.theme.colorScheme
-      this.i18n = config.defaultI18n
-      this.hideLogo = config.theme.hideLogo
-      this.hideTabs = config.theme.hideTabs
+      this.config = config
     }
   },
   persist: [
     {
       key: 'trim-user-config',
-      paths: ['i18n', 'darkTheme', 'menuCollapsed', 'hideTabs', 'colorScheme'],
+      paths: ['i18n', 'darkTheme', 'menuCollapsed', 'config'],
       storage: localStorage
     }
   ]

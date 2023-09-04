@@ -8,6 +8,7 @@
     "PropType": true,
     "Ref": true,
     "VNode": true,
+    "WritableComputedRef": true,
     "acceptHMRUpdate": true,
     "asyncComputed": true,
     "autoResetRef": true,
@@ -184,6 +185,7 @@
     "useFullscreen": true,
     "useGamepad": true,
     "useGeolocation": true,
+    "useI18n": true,
     "useIdle": true,
     "useImage": true,
     "useInfiniteScroll": true,
@@ -293,21 +295,6 @@
     "watchThrottled": true,
     "watchTriggerable": true,
     "watchWithFilter": true,
-    "whenever": true,
-    "/": true,
-    "@": true,
-    "Icon": true,
-    "c": true,
-    "e": true,
-    "f": true,
-    "i": true,
-    "n": true,
-    "o": true,
-    "u": true,
-    "v": true,
-    "y": true,
-    "Iconify": true,
-    "useI18n": true,
-    "WritableComputedRef": true
+    "whenever": true
   }
 }

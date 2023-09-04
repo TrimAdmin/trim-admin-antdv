@@ -15,7 +15,7 @@ function handleClose(key: Key) {
   useCommonStoreHook().removeTab(key as string)
 }
 
-function handleTabAction(action: string, key: Key) {
+function handleTabAction(action: string, key: string) {
   switch (action) {
     // 刷新当前
     case 'refresh':
@@ -27,6 +27,15 @@ function handleTabAction(action: string, key: Key) {
       break
     // 关闭其他
     case 'close-other':
+      useCommonStoreHook().removeOtherTabs(key as string)
+      break
+    // 关闭左侧
+    case 'close-left':
+      useCommonStoreHook().removeLeftTabs(key as string)
+      break
+    // 关闭右侧
+    case 'close-right':
+      useCommonStoreHook().removeRightTabs(key as string)
       break
     default:
       break
@@ -47,7 +56,7 @@ function handleTabAction(action: string, key: Key) {
               </div>
             </div>
             <template #overlay>
-              <a-menu @click="({ key }) => handleTabAction(key, item.key)">
+              <a-menu @click="({ key }) => handleTabAction(key as string, item.key)">
                 <a-menu-item key="refresh">
                   <div class="flex items-center">
                     <Icon icon="ant-design:sync-outlined" class="mr-1" inline />

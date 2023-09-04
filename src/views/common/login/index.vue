@@ -1,8 +1,18 @@
 <script setup lang="ts">
-import TeamUp from '@/assets/svg/undraw_team_up_re_84ok.svg'
+import TeamUp from '@/assets/svg/home_team_up.svg'
 import Login from './components/login.vue'
+import Register from '@/views/common/login/components/register.vue'
 
 const { t } = useI18n()
+const type = ref<'login' | 'register'>('login')
+
+function handleRegister() {
+  type.value = 'register'
+}
+
+function handleLogin() {
+  type.value = 'login'
+}
 </script>
 
 <template>
@@ -15,7 +25,8 @@ const { t } = useI18n()
       <TeamUp />
     </div>
     <div class="flex-1 my-auto">
-      <Login />
+      <Login v-if="type === 'login'" @register="handleRegister" />
+      <Register v-else @login="handleLogin" />
     </div>
   </div>
   <SwitchLanguage class="absolute right-[16px] top-[16px]" />
