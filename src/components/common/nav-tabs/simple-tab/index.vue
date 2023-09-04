@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ITabObject, useCommonStoreHook } from '@/store'
 import { Key } from 'ant-design-vue/es/_util/type'
-import { Icon } from '@iconify/vue'
 
 const router = useRouter()
 const tabsList = computed<Array<ITabObject>>(() => useCommonStoreHook().tabsList)
@@ -50,7 +49,7 @@ function handleTabAction(action: string, key: string) {
 <template>
   <div class="bg-white dark:bg-[#001529] w-full block p-1">
     <a-tabs hide-add :active-key="currentTab" size="small" @change="handleChange">
-      <a-tab-pane v-for="item in tabsList" :key="item.key" :closable="false">
+      <a-tab-pane v-for="(item, index) in tabsList" :key="item.key" :closable="false">
         <template #tab>
           <a-dropdown :trigger="['contextmenu']" placement="bottomLeft">
             <div class="flex items-center">
@@ -74,19 +73,19 @@ function handleTabAction(action: string, key: string) {
                   </div>
                 </a-menu-item>
                 <a-divider class="my-2" />
-                <a-menu-item key="close-other">
+                <a-menu-item key="close-other" :disabled="tabsList.length === tabsList.filter((item) => item.tabAffix).length + 1">
                   <div class="flex items-center">
                     <Icon icon="ant-design:aim-outlined" class="mr-1" inline />
                     关闭其他标签页
                   </div>
                 </a-menu-item>
-                <a-menu-item key="close-left">
+                <a-menu-item key="close-left" :disabled="index === 0 || index === 1">
                   <div class="flex items-center">
                     <Icon icon="ant-design:vertical-right-outlined" class="mr-1" inline />
                     关闭左侧标签页
                   </div>
                 </a-menu-item>
-                <a-menu-item key="close-right">
+                <a-menu-item key="close-right" :disabled="index === tabsList.length - 1">
                   <div class="flex items-center">
                     <Icon icon="ant-design:vertical-left-outlined" class="mr-1" inline />
                     关闭右侧标签页

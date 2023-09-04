@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { useCommonStoreHook } from '@/store'
 
 function handleRefresh() {

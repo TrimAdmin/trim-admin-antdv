@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useConfigStoreHook } from '@/store'
-import { Icon } from '@iconify/vue'
 
 const isDarkTheme = computed<boolean>(() => useConfigStoreHook().darkTheme)
 

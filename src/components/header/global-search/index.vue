@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { Icon } from '@iconify/vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">

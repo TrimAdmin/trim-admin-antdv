@@ -63,6 +63,21 @@ export const routeAnimateList: Array<{
   }
 ]
 
+export const layoutList: Array<{ label: string; value: string }> = [
+  {
+    label: '普通布局',
+    value: 'normal'
+  },
+  {
+    label: '顶栏布局',
+    value: 'top'
+  },
+  {
+    label: '混合布局',
+    value: 'mix'
+  }
+]
+
 const trimConfig: ITrimConfig = {
   theme: {
     // 顶栏高度
@@ -79,6 +94,8 @@ const trimConfig: ITrimConfig = {
     hideTabs: false,
     // 隐藏logo
     hideLogo: false,
+    // 隐藏面包屑
+    hideBreadcrumb: false,
     // 路由动画
     routeAnimate: 'slide-left'
   },

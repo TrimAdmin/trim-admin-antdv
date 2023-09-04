@@ -2,7 +2,9 @@
 export default {
   content: ['./src/**/*.{vue,jsx,tsx}', './index.html'],
   theme: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
   darkMode: 'class',
   corePlugins: {
     preflight: false

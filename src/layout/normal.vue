@@ -52,7 +52,7 @@ const routeAnimate = computed<Component>(() => {
 </script>
 
 <template>
-  <a-layout class="h-full">
+  <a-layout class="h-full overflow-hidden">
     <a-layout-sider theme="light" :collapsed="collapsed">
       <Sider />
     </a-layout-sider>
@@ -62,13 +62,13 @@ const routeAnimate = computed<Component>(() => {
       </a-layout-header>
       <SimpleTab v-if="!hideTabs" />
       <a-layout-content>
-        <component :is="routeAnimate || 'div'" class="h-full">
+        <component :is="routeAnimate || 'div'" class="content">
           <router-view v-if="!refreshing" />
         </component>
+        <a-layout-footer class="!px-0 !py-2">
+          <Footer />
+        </a-layout-footer>
       </a-layout-content>
-      <a-layout-footer class="!p-0 mb-4">
-        <Footer />
-      </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
@@ -98,7 +98,12 @@ const routeAnimate = computed<Component>(() => {
 }
 
 .ant-layout-content {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content {
   height: calc(100% - v-bind(headerHeight));
-  margin: 16px;
 }
 </style>

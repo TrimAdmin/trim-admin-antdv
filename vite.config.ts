@@ -77,7 +77,31 @@ export default ({ mode }) =>
         resolvers: [
           AntDesignVueResolver({
             importStyle: false
-          })
+          }),
+          (name) => {
+            if (name === 'Motion') {
+              return {
+                from: 'motion/vue',
+                name: 'Motion'
+              }
+            }
+            if (name === 'Icon') {
+              return {
+                from: '@iconify/vue',
+                name: 'Icon'
+              }
+            }
+          }
+        ],
+        types: [
+          {
+            from: 'motion/vue',
+            names: ['Motion']
+          },
+          {
+            from: '@iconify/vue',
+            names: ['Icon']
+          }
         ],
         include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/],
         dts: './src/types/components.d.ts'

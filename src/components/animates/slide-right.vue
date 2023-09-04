@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { Motion } from 'motion/vue'
-
 const currentRoute = computed<string>(() => useRouter().currentRoute.value.name as string)
 </script>
 

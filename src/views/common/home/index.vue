@@ -7,7 +7,7 @@ function handleJump() {
 </script>
 
 <template>
-  <RegularLayout>
+  <RegularLayout no-background>
     <a-button type="primary" @click="handleJump">aaa</a-button>
   </RegularLayout>
 </template>

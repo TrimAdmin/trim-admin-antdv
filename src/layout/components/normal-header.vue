@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { ItemType, Modal } from 'ant-design-vue'
 import { useIcon } from '@/hooks'
 import { Key } from 'ant-design-vue/lib/_util/type'
-import { useUserStoreHook } from '@/store'
+import { useConfigStoreHook, useUserStoreHook } from '@/store'
 
 const router = useRouter()
+const hideBreadcrumb = computed<boolean>(() => useConfigStoreHook().config.theme.hideBreadcrumb)
 
 const dropdownMenuItems = reactive<Array<ItemType>>([
   {
@@ -58,8 +58,12 @@ function handleDropdown(key: Key) {
 
 <template>
   <div class="h-full flex justify-between items-center">
-    <!-- 菜单折叠按钮 -->
-    <MenuCollapse />
+    <div class="flex-c">
+      <!-- 菜单折叠按钮 -->
+      <MenuCollapse />
+      <!-- 面包屑 -->
+      <Breadcrumbs v-if="!hideBreadcrumb" class="ml-2" />
+    </div>
     <!-- 右侧菜单 -->
     <div class="flex items-center h-full">
       <!-- 搜索 -->

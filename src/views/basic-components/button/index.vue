@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useIcon } from '@/hooks'
-import { Icon } from '@iconify/vue'
 import { message } from '@/utils'
 
 function handleMenuClick(item) {

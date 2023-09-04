@@ -42,6 +42,10 @@ const useConfigStore = defineStore('configStore', {
     setHideLogo(hide: boolean) {
       this.config.theme.hideLogo = hide
     },
+    // 隐藏面包屑
+    setHideBreadcrumb(hide: boolean) {
+      this.config.theme.hideBreadcrumb = hide
+    },
     // 改变配色方案
     setColorScheme(colorScheme: (typeof colorSchemeList)[number]['scheme']) {
       this.config.theme.colorScheme = colorScheme

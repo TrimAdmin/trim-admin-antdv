@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useConfigStoreHook } from '@/store'
-import { Icon } from '@iconify/vue'
 
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
 

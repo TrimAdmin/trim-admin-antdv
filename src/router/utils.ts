@@ -12,7 +12,11 @@ export function autoImportRoutes() {
   const routes = []
   // 路由处理
   for (const [key, value] of Object.entries(modules)) {
-    routes.push(...value.default)
+    if (Array.isArray(value.default)) {
+      routes.push(...value.default)
+    } else {
+      routes.push(value.default)
+    }
   }
   return routes
 }
@@ -53,17 +57,17 @@ export function getParentRoutes(value: string) {
   const routes = router.options.routes
 
   // 深度遍历
-  function dfs(routes: RouteRecordRaw[], value: string, parents: string[]) {
+  function dfs(routes: RouteRecordRaw[], value: string, parents: RouteRecordRaw[]) {
     for (let i = 0; i < routes.length; i++) {
       const item = routes[i]
-      // 返回父级path
+      // 返回父级
       if (item.name === value) {
         return parents
       }
       if (!item.children || !item.children.length) {
         continue
       }
-      parents.push(item.name)
+      parents.push(item)
 
       if (dfs(item.children, value, parents).length) {
         return parents

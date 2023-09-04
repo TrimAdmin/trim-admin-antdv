@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { useConfigStoreHook } from '@/store'
-import { Icon } from '@iconify/vue'
 import { colorSchemeList, routeAnimateList } from '@/trim-config.ts'
-import { ITrimConfig } from '@/types/trim-config'
 
 const open = ref<boolean>(false)
 const darkTheme = computed<boolean>(() => useConfigStoreHook().darkTheme)
 const hideTabs = computed<boolean>(() => useConfigStoreHook().config.theme.hideTabs)
 const hideLogo = computed<boolean>(() => useConfigStoreHook().config.theme.hideLogo)
+const hideBreadcrumb = computed<boolean>(() => useConfigStoreHook().config.theme.hideBreadcrumb)
 const colorScheme = computed<string>(() => useConfigStoreHook().config.theme.colorScheme)
 
 function handleDrawerOpen() {
@@ -24,9 +23,14 @@ function handleHideTabs() {
   useConfigStoreHook().setHideTabs(!hideTabs.value)
 }
 
-// 更改隐藏标签页
+// 更改隐藏logo
 function handleHideLogo() {
   useConfigStoreHook().setHideLogo(!hideLogo.value)
+}
+
+// 更改隐藏面包屑
+function handleHideBreadcrumb() {
+  useConfigStoreHook().setHideBreadcrumb(!hideBreadcrumb.value)
 }
 
 // 更改配色方案
@@ -80,6 +84,10 @@ function handleRouteAnimate(animate: (typeof routeAnimateList)[number]['value'])
       <div class="flex justify-between items-center px-2 mb-4">
         <div class="dark:text-white">侧边栏logo</div>
         <a-switch :checked="hideLogo" checked-children="隐藏" un-checked-children="显示" @change="handleHideLogo"></a-switch>
+      </div>
+      <div class="flex justify-between items-center px-2 mb-4">
+        <div class="dark:text-white">隐藏面包屑</div>
+        <a-switch :checked="hideBreadcrumb" checked-children="隐藏" un-checked-children="显示" @change="handleHideBreadcrumb"></a-switch>
       </div>
       <div class="flex justify-between items-center px-2 mb-4">
         <div class="dark:text-white">路由动画</div>

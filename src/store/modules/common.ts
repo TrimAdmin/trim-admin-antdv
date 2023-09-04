@@ -32,7 +32,7 @@ const useCommonStore = defineStore('commonStore', {
     // 设置当前激活的路由name
     setCurrentRouteName(name: string) {
       this.currentRouteName = name
-      this.currentOpenMenu = getParentRoutes(name)
+      this.currentOpenMenu = getParentRoutes(name).map((item) => item.name)
     },
     // 设置当前打开的菜单
     setCurrentOpenMenu(list: Array<string>) {
@@ -63,24 +63,19 @@ const useCommonStore = defineStore('commonStore', {
     removeOtherTabs(key: string) {
       const index = this.tabsList.findIndex((item) => item.key === key)
       this.tabsList = this.tabsList.filter((item) => item.tabAffix || item.key === key)
-      if (this.currentRouteName !== key) {
-        this.currentRouteName = this.tabsList[index].key
-        router.push({ name: this.tabsList[index].key })
-      } else {
-        this.currentRouteName = this.tabsList[index - 1].key
-        router.push({ name: this.tabsList[index - 1].key })
-      }
+      this.currentRouteName = this.tabsList[this.tabsList.length - 1].key
+      router.push({ name: this.tabsList[this.tabsList.length - 1].key })
     },
     // 关闭左侧标签页
     removeLeftTabs(key: string) {
       const index = this.tabsList.findIndex((item) => item.key === key)
       this.tabsList = this.tabsList.filter((item, i) => i >= index || item.tabAffix)
       if (this.currentRouteName !== key) {
-        this.currentRouteName = this.tabsList[index].key
-        router.push({ name: this.tabsList[index].key })
-      } else {
         this.currentRouteName = this.tabsList[index - 1].key
         router.push({ name: this.tabsList[index - 1].key })
+      } else {
+        this.currentRouteName = this.tabsList[this.tabsList.length - 1].key
+        router.push({ name: this.tabsList[this.tabsList.length - 1].key })
       }
     },
     // 关闭右侧标签页

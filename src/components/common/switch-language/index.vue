@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { CI18n } from '@/constants'
 import { useConfigStoreHook } from '@/store'
 import { Key } from 'ant-design-vue/es/_util/type'

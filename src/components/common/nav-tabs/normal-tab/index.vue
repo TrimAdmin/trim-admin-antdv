@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ITabObject, useCommonStoreHook } from '@/store'
 import { Key } from 'ant-design-vue/es/_util/type'
-import { Icon } from '@iconify/vue'
 
 const router = useRouter()
 const tabsList = computed<Array<ITabObject>>(() => useCommonStoreHook().tabsList)
@@ -18,14 +17,14 @@ function handleClose(key: Key) {
 
 <template>
   <div class="nav-tab bg-white dark:bg-[#001529] w-full block p-1">
-    <a-tabs hide-add :activeKey="currentTab" @change="handleChange" size="small">
+    <a-tabs hide-add :active-key="currentTab" size="small" @change="handleChange">
       <a-tab-pane v-for="item in tabsList" :key="item.key" :closable="false">
         <template #tab>
           <a-dropdown arrow :trigger="['contextmenu']" placement="bottom">
             <div class="flex items-center">
               {{ item.title }}
-              <div class="h-full flex items-center ml-1 cursor-pointer" v-if="!item.tabAffix">
-                <Icon icon="ant-design:close-outlined" :height="14" @click.stop="handleClose(item.key)" inline />
+              <div v-if="!item.tabAffix" class="h-full flex items-center ml-1 cursor-pointer">
+                <Icon icon="ant-design:close-outlined" :height="14" inline @click.stop="handleClose(item.key)" />
               </div>
             </div>
             <template #overlay>
