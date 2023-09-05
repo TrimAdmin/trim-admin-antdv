@@ -20,6 +20,7 @@
     "echarts": "^5.4.3",
     "motion": "^10.16.2",
     "nprogress": "^0.2.0",
+    "odometer": "^0.4.8",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2"
   },
@@ -39,6 +40,7 @@
     "@vueuse/core": "^10.4.1",
     "autoprefixer": "^10.4.15",
     "cssnano": "^6.0.1",
+    "dayjs": "^1.11.9",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^5.0.0",

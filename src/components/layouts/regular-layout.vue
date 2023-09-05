@@ -1,5 +1,6 @@
 <script setup lang="ts">
 defineProps<{
+  // 是否无背景
   noBackground?: boolean
 }>()
 </script>
@@ -17,10 +18,11 @@ defineProps<{
 <style scoped lang="scss">
 .regular-layout {
   padding: 12px;
-  height: 100%;
-  max-width: 100%;
+  max-height: calc(100% - 32px);
+  max-width: calc(100% - 32px);
   border-radius: 8px;
   overflow-x: hidden;
   overflow-y: auto;
+  margin: 16px;
 }
 </style>

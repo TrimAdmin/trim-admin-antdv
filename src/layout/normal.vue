@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import Header from './components/normal-header.vue'
-import Sider from './components/normal-sider.vue'
+import NormalHeader from './components/normal-header.vue'
+import NormalSider from './components/normal-sider.vue'
+import NormalFooter from '@/layout/components/normal-footer.vue'
 import { useTrimConfig } from '@/hooks'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import SlideLeft from '@/components/animates/slide-left.vue'
@@ -52,18 +53,21 @@ const routeAnimate = computed<any>(() => {
 <template>
   <a-layout class="h-full overflow-hidden">
     <a-layout-sider theme="light" :collapsed="collapsed">
-      <Sider />
+      <NormalSider />
     </a-layout-sider>
-    <a-layout>
+    <a-layout class="h-full overflow-y-auto overflow-x-hidden">
       <a-layout-header>
-        <Header />
+        <NormalHeader />
       </a-layout-header>
       <SimpleTab v-if="!hideTabs" />
       <a-layout-content>
-        <component :is="routeAnimate || 'div'" class="content">
-          <router-view v-if="!refreshing" />
+        <component :is="routeAnimate || 'div'" v-if="!refreshing">
+          <router-view />
         </component>
       </a-layout-content>
+      <a-layout-footer class="!px-0 !py-4">
+        <NormalFooter />
+      </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
@@ -90,15 +94,5 @@ const routeAnimate = computed<any>(() => {
   @apply shadow-lg;
   @apply shadow-gray-300;
   @apply dark:shadow-gray-600;
-}
-
-.ant-layout-content {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.content {
-  height: 100%;
 }
 </style>

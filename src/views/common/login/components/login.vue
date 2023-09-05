@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import { useUserStoreHook } from '@/store'
-import { cryptoMD5 } from '@/utils'
+import { cryptoMD5, message } from '@/utils'
+import { toUpper } from 'lodash'
 
 const { t } = useI18n()
 const loginFormRef = shallowRef()
+const captcha = ref<string>()
+const captchaRef = shallowRef()
 const loginFormModel = reactive<IUsernameLoginParams>({
   username: '',
   password: '',
+  captcha: '',
   remember: false
 })
 const loginFormRules = reactive({
   username: [{ required: true, message: t('message.username-placeholder') }],
-  password: [{ required: true, message: t('message.password-placeholder') }]
+  password: [{ required: true, message: t('message.password-placeholder') }],
+  captcha: [{ required: true, message: t('message.captcha-placeholder') }]
 })
 const emit = defineEmits<{
   (e: 'register'): void
@@ -20,6 +25,11 @@ const emit = defineEmits<{
 async function handleLogin() {
   const values = await loginFormRef.value.validateFields()
   // console.log(loginFormModel)
+  if (toUpper(loginFormModel.captcha) !== toUpper(captcha.value)) {
+    message.error('验证码错误')
+    captchaRef.value.draw()
+    return
+  }
   if (values) {
     await useUserStoreHook().login({
       ...loginFormModel,
@@ -27,6 +37,10 @@ async function handleLogin() {
     })
   }
 }
+
+onMounted(() => {
+  captchaRef.value.draw()
+})
 </script>
 
 <template>
@@ -38,6 +52,12 @@ async function handleLogin() {
       </a-form-item>
       <a-form-item name="password" :rules="loginFormRules.password">
         <a-input-password v-model:value="loginFormModel.password" :placeholder="t('message.password-placeholder')" size="large" />
+      </a-form-item>
+      <a-form-item name="password" :rules="loginFormRules.captcha">
+        <div class="flex">
+          <a-input v-model:value="loginFormModel.captcha" :placeholder="t('message.captcha-placeholder')" size="large" />
+          <Captcha ref="captchaRef" v-model="captcha" />
+        </div>
       </a-form-item>
       <a-form-item>
         <div class="flex justify-between items-center">

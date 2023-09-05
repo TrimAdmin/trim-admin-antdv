@@ -3,6 +3,7 @@
     "login": "Login",
     "username-placeholder": "Please enter username",
     "password-placeholder": "Please enter password",
+    "captcha-placeholder": "Please enter captcha",
     "confirm-password-placeholder": "Please enter password again",
     "email-placeholder": "Please enter email",
     "remember-me": "Remember me",

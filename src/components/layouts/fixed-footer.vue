@@ -1,5 +1,6 @@
 <script setup lang="ts">
 defineProps<{
+  // 水平对齐方向
   align?: 'start' | 'center' | 'end'
 }>()
 </script>

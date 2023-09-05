@@ -3,9 +3,16 @@ import { ItemType, Modal } from 'ant-design-vue'
 import { useIcon } from '@/hooks'
 import { Key } from 'ant-design-vue/lib/_util/type'
 import { useConfigStoreHook, useUserStoreHook } from '@/store'
+import MenuCollapse from './header/menu-collapse/index.vue'
+import GlobalSearch from './header/global-search/index.vue'
+import Refresh from './header/refresh/index.vue'
+import FullScreen from './header/full-screen/index.vue'
+import ToggleTheme from './header/toggle-theme/index.vue'
 
 const router = useRouter()
 const hideBreadcrumb = computed<boolean>(() => useConfigStoreHook().config.theme.hideBreadcrumb)
+const username = computed<string>(() => useUserStoreHook().userInfo.username)
+const avatar = computed<string>(() => useUserStoreHook().userInfo.avatar || '')
 
 const dropdownMenuItems = reactive<Array<ItemType>>([
   {
@@ -81,12 +88,12 @@ function handleDropdown(key: Key) {
       <!-- 用户下拉框 -->
       <a-dropdown class="cursor-pointer ml-2" arrow placement="bottom">
         <div class="flex items-center gap-1">
-          <a-avatar size="small">
+          <a-avatar size="small" :src="avatar">
             <template #icon>
               <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-[4px]" inline />
             </template>
           </a-avatar>
-          <span class="text-gray-700 dark:text-white">admin</span>
+          <span class="text-gray-700 dark:text-white">{{ username }}</span>
           <Icon icon="ant-design:caret-down-filled" class="cursor-pointer text-[12px] text-gray-500 dark:text-gray-300" />
         </div>
         <template #overlay>

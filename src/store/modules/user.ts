@@ -9,6 +9,7 @@ interface IUserStoreState {
   token: string
   remember: boolean
   menuList: Array<ItemType>
+  userInfo: IUserInfo
 }
 
 const useUserStore = defineStore('userStore', {
@@ -16,7 +17,8 @@ const useUserStore = defineStore('userStore', {
     isLogged: false,
     token: '',
     remember: false,
-    menuList: []
+    menuList: [],
+    userInfo: {} as IUserInfo
   }),
   actions: {
     // 登录逻辑
@@ -32,6 +34,11 @@ const useUserStore = defineStore('userStore', {
       this.isLogged = true
       this.token = cryptoMD5('access-token')
       message.success('登录成功')
+      this.setUserInfo({
+        username: 'admin',
+        email: 'w729567588@163.com',
+        avatar: 'http://img.dcwedu.top/i/2023/08/14/64d9ed0eafb95.jpg'
+      })
       await router.replace({ name: 'home' })
       useCommonStoreHook().setCurrentRouteName('home')
     },
@@ -43,7 +50,13 @@ const useUserStore = defineStore('userStore', {
         this.isLogged = true
       }
       if (this.token) {
+        // 这里判断token是否有效
         this.isLogged = true
+        this.setUserInfo({
+          username: 'admin',
+          email: 'w729567588@163.com',
+          avatar: 'http://img.dcwedu.top/i/2023/08/14/64d9ed0eafb95.jpg'
+        })
         await router.replace({ name: 'home' })
         return
       }
@@ -58,6 +71,10 @@ const useUserStore = defineStore('userStore', {
     getMenuList() {
       this.menuList = generateMenus()
       console.log('菜单项：', this.menuList)
+    },
+    // 设置用户信息
+    setUserInfo(info: IUserInfo) {
+      this.userInfo = info
     }
   },
   persist: [

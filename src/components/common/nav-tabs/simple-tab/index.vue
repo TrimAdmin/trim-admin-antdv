@@ -47,7 +47,7 @@ function handleTabAction(action: string, key: string) {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-[#001529] w-full block p-1">
+  <div class="simple-tab bg-white dark:bg-[#001529] w-full block p-1">
     <a-tabs hide-add :active-key="currentTab" size="small" @change="handleChange">
       <a-tab-pane v-for="(item, index) in tabsList" :key="item.key" :closable="false">
         <template #tab>
@@ -107,6 +107,10 @@ function handleTabAction(action: string, key: string) {
 </template>
 
 <style lang="scss" scoped>
+.simple-tab {
+  border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+}
+
 :deep(.ant-tabs-nav) {
   margin: 0;
 

@@ -1,20 +1,39 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useUserStoreHook } from '@/store'
+import { getTimeSlotString } from '@/utils'
+
+const username = computed<string>(() => useUserStoreHook().userInfo.username)
+const avatar = computed<string | undefined>(() => useUserStoreHook().userInfo.avatar)
+const timeSlot = computed<string>(() => getTimeSlotString())
+</script>
 
 <template>
-  <LayoutWithHeader no-background title="分析页">
-    <div class="cards">
-      <a-card :bordered="false" class="!shadow-none">aaa</a-card>
-      <a-card :bordered="false" class="!shadow-none">bbb</a-card>
-      <a-card :bordered="false" class="!shadow-none">ccc</a-card>
-      <a-card :bordered="false" class="!shadow-none">ddd</a-card>
-    </div>
+  <LayoutWithHeader no-background :title="`${timeSlot}好，${username}`" subtitle="开始今天的工作吧">
+    <template #left>
+      <a-avatar :size="64" :src="avatar">
+        <template #icon>
+          <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-[4px]" inline />
+        </template>
+      </a-avatar>
+    </template>
+    <template #right>
+      <div class="flex gap-[16px]">
+        <div>
+          <div class="text-red-500">推进中项目</div>
+          <div class="text-right text-2xl text-red-600 font-bold">7</div>
+        </div>
+        <div>
+          <div class="text-green-500">已完成项目</div>
+          <div class="text-right text-2xl text-green-600 font-bold">4</div>
+        </div>
+        <div>
+          <div class="text-yellow-500">未结算项目</div>
+          <div class="text-right text-2xl text-yellow-600 font-bold">2</div>
+        </div>
+      </div>
+    </template>
+    <div class="content"></div>
   </LayoutWithHeader>
 </template>
 
-<style scoped lang="scss">
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-</style>
+<style scoped lang="scss"></style>

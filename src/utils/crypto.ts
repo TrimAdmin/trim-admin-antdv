@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 // 加密方法
 // https://cryptojs.gitbook.io/docs/
 import md5 from 'crypto-js/md5'

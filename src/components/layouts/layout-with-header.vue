@@ -1,14 +1,19 @@
 <script setup lang="ts">
 defineProps<{
+  // 是否无背景
   noBackground?: boolean
+  // 标题
   title: string
+  // 副标题
+  subtitle?: string
+  // 是否带有footer，为true时会带64px的下内边距
   withFooter?: boolean
 }>()
 </script>
 
 <template>
   <div :class="`layout-with-header ${withFooter ? 'pb-[64px]' : ''}`">
-    <div class="w-full bg-white dark:bg-gray-900 dark:text-white px-4 py-3 flex-bc gap-[16px]">
+    <div class="w-full bg-white dark:bg-gray-900 dark:text-white p-4 flex-bc gap-[16px]">
       <div>
         <slot name="left" />
       </div>
@@ -16,9 +21,9 @@ defineProps<{
         <div>
           <slot name="extra" />
         </div>
-        <div class="prose-2xl leading-[2] font-bold">{{ title }}</div>
-        <div>
-          <slot name="subtitle" />
+        <div class="prose-2xl leading-[1] pb-2 font-bold">{{ title }}</div>
+        <div class="text-gray-500">
+          {{ subtitle }}
         </div>
       </div>
       <div>

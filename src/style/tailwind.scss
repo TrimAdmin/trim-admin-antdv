@@ -8,28 +8,33 @@
     justify-content: center;
     align-items: center;
   }
+
   .flex-bc {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .flex-ac {
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
+
   .flex-col-c {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
   .flex-col-bc {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
   }
+
   .flex-col-ac {
     display: flex;
     flex-direction: column;

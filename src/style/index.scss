@@ -1,11 +1,8 @@
 @use 'tailwind';
-@use 'transitions';
+@use 'odometer';
 
-body {
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  font-family: Lato, PingFang SC, Microsoft YaHei, sans-serif;
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 }
 
 /* nprogress实例 */
@@ -23,7 +20,8 @@ body {
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  padding: 0;
 }
 
 // 去除焦点在iconify图标上时的外边框
