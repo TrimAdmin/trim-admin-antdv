@@ -37,6 +37,7 @@ const useUserStore = defineStore('userStore', {
       this.setUserInfo({
         username: 'admin',
         email: 'w729567588@163.com',
+        roleName: '超级管理员',
         avatar: 'http://img.dcwedu.top/i/2023/08/14/64d9ed0eafb95.jpg'
       })
       await router.replace({ name: 'home' })
@@ -55,6 +56,7 @@ const useUserStore = defineStore('userStore', {
         this.setUserInfo({
           username: 'admin',
           email: 'w729567588@163.com',
+          roleName: '超级管理员',
           avatar: 'http://img.dcwedu.top/i/2023/08/14/64d9ed0eafb95.jpg'
         })
         await router.replace({ name: 'home' })

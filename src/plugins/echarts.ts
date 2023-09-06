@@ -12,6 +12,7 @@ import type {
 import { DatasetComponent, GridComponent, TitleComponent, TooltipComponent, TransformComponent, LegendComponent } from 'echarts/components'
 import { LabelLayout, UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
+import 'echarts-liquidfill'
 
 // 通过 ComposeOption 来组合出一个只有必须组件和图表的 Option 类型
 export type ECOption = ComposeOption<

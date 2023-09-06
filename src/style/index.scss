@@ -28,3 +28,25 @@ html, body {
 .iconify:focus {
   outline: none;
 }
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e6f4ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1778ff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #e6f4ff;
+}

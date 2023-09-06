@@ -64,7 +64,7 @@ function handleDropdown(key: Key) {
 </script>
 
 <template>
-  <div class="h-full flex justify-between items-center">
+  <div class="normal-header h-full flex justify-between items-center px-4">
     <div class="flex-c h-full">
       <!-- 菜单折叠按钮 -->
       <MenuCollapse />
@@ -104,4 +104,8 @@ function handleDropdown(key: Key) {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.normal-header {
+  outline: 1px solid rgba(100, 100, 100, 0.1);
+}
+</style>

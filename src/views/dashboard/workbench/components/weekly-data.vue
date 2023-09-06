@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { echarts } from '@/plugins'
+import { echarts, ECOption } from '@/plugins'
 
 const typeList = ref<Array<{ label: string; value: string }>>([
   {
@@ -78,7 +78,7 @@ function initChart() {
         }
       }
     ]
-  }
+  } as ECOption
   chart.value.setOption(option)
 }
 
@@ -102,7 +102,6 @@ function handleRandomData() {
 
 <template>
   <a-card
-    class="weekly-data"
     :head-style="{
       padding: 20
     }"
@@ -113,26 +112,58 @@ function handleRandomData() {
         <a-select-option v-for="item in typeList" :key="item.value" :value="item.value">{{ item.label }} </a-select-option>
       </a-select>
     </div>
-    <div class="flex items-center text-[14px] text-[#202020aa] dark:text-gray-200">
+    <div class="flex items-center text-[14px] text-gray-500 dark:text-gray-200">
       本周考勤
       <Icon icon="ant-design:right-outlined" class="ml-1" />
     </div>
     <div class="flex items-center mb-[16px]">
       <DigitScroll v-if="showDigit" :value="totalCount" class="text-[32px] font-bold mr-2 h-[48px]" />
       <div class="flex items-center">
-        <span class="text-[#202020aa] dark:text-gray-200 mr-1">比较上周</span>
+        <span class="text-gray-500 dark:text-gray-200 mr-1">比较上周</span>
         <DigitScroll :value="312" prefix="+" class="text-[#186DF5]" />
       </div>
     </div>
-    <div class="w-full h-[100px] flex items-center">
-      <div ref="weeklyPieChartRef" class="w-[85px] h-[85px] mr-2" />
-      <div class="flex-1 flex flex-wrap gap-y-2">
+    <div class="w-full h-[100px] flex-ac items-center mb-4">
+      <div ref="weeklyPieChartRef" class="h-[85px] w-[85px]" />
+      <div class="flex flex-wrap gap-y-2">
         <div v-for="(item, index) in dataList" :key="index" class="flex w-1/4">
           <div class="w-[4px] h-[4px] mt-[8px] mr-2 rounded" :style="{ backgroundColor: colorList[index] }"></div>
           <div>
-            <div class="text-[12px] text-[#202020aa] dark:text-gray-200">{{ item.name }}</div>
+            <div class="text-[12px] text-gray-500 dark:text-gray-200">{{ item.name }}</div>
             <DigitScroll v-if="showDigit" :value="item.value" class="text-[#202020] dark:text-gray-200 font-bold text-[16px] min-h-[20px]" />
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="weekly-info pt-4 flex">
+      <div class="w-1/3">
+        <div class="flex items-center text-[14px] text-gray-500 dark:text-gray-200">
+          本周审批
+          <Icon icon="ant-design:right-outlined" class="ml-1" />
+        </div>
+        <DigitScroll :value="23" class="font-bold text-[22px] my-2" />
+        <div class="text-gray-500 dark:text-gray-200">
+          已通过<span class="text-green-500 mx-1">2</span> 驳回<span class="text-red-500 mx-1">2</span>
+        </div>
+      </div>
+      <div class="w-1/3">
+        <div class="flex items-center text-[14px] text-gray-500 dark:text-gray-200">
+          本周报销
+          <Icon icon="ant-design:right-outlined" class="ml-1" />
+        </div>
+        <DigitScroll :value="14" class="font-bold text-[22px] my-2" />
+        <div class="text-gray-500 dark:text-gray-200">
+          已报销<span class="text-green-500 mx-1">2</span> 未报销<span class="text-blue-500 mx-1">2</span>
+        </div>
+      </div>
+      <div class="w-1/3">
+        <div class="flex items-center text-[14px] text-gray-500 dark:text-gray-200">
+          本周人事
+          <Icon icon="ant-design:right-outlined" class="ml-1" />
+        </div>
+        <DigitScroll :value="17" class="font-bold text-[22px] my-2" />
+        <div class="text-gray-500 dark:text-gray-200">
+          入职<span class="text-blue-500 mx-1">+4</span> 转正<span class="text-blue-500 mx-1">+6</span>
         </div>
       </div>
     </div>
@@ -140,8 +171,7 @@ function handleRandomData() {
 </template>
 
 <style scoped lang="scss">
-.weekly-data {
-  border-radius: 8px;
-  overflow: hidden;
+.weekly-info {
+  border-top: 1px solid rgba(100, 100, 100, 0.1);
 }
 </style>

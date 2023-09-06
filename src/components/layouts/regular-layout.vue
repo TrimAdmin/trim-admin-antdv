@@ -18,7 +18,7 @@ defineProps<{
 <style scoped lang="scss">
 .regular-layout {
   padding: 12px;
-  max-height: calc(100% - 32px);
+  height: 100%;
   max-width: calc(100% - 32px);
   border-radius: 8px;
   overflow-x: hidden;

@@ -20,10 +20,12 @@ import {
   tdesignTheme
 } from '@/theme'
 import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
-import { theme } from 'ant-design-vue'
 import { setTrimConfig } from '@/hooks'
 import trimConfig from '@/trim-config.ts'
+import dayjs from 'dayjs'
+import { theme } from 'ant-design-vue'
 
+const antTheme = theme
 const route = useRoute()
 const router = useRouter()
 const show = ref<boolean>(false)
@@ -31,12 +33,16 @@ const isDarkTheme = computed<boolean>(() => useConfigStoreHook().darkTheme)
 const locale = computed(() => {
   switch (useConfigStoreHook().i18n) {
     case 'zhHans':
+      dayjs.locale('zh-cn')
       return zhCN
     case 'zhHant':
+      dayjs.locale('zh-tw')
       return zhTW
     case 'enUS':
+      dayjs.locale('en')
       return enUS
     default:
+      dayjs.locale('zh-cn')
       return zhCN
   }
 })
@@ -113,19 +119,21 @@ router.isReady().then(async () => {
 </script>
 
 <template>
-  <div v-if="show" ref="animated" class="relative h-full">
-    <a-config-provider
-      :locale="locale"
-      :theme="isDarkTheme ? { algorithm: theme.darkAlgorithm, ...darkColorScheme } : colorScheme"
-      :auto-insert-space-in-button="false"
-    >
-      <keep-alive v-if="route.meta.keepAlive">
-        <component :is="route.meta.noLayout ? RouterView : Layout" />
-      </keep-alive>
-      <component :is="route.meta.noLayout ? RouterView : Layout" v-else />
-    </a-config-provider>
-  </div>
-  <Loading v-else />
+  <a-config-provider
+    :locale="locale"
+    :theme="isDarkTheme ? { algorithm: antTheme.darkAlgorithm, ...darkColorScheme } : colorScheme"
+    :auto-insert-space-in-button="false"
+  >
+    <a-app>
+      <div v-if="show" ref="animated" class="relative h-full">
+        <keep-alive v-if="route.meta.keepAlive">
+          <component :is="route.meta.noLayout ? RouterView : Layout" />
+        </keep-alive>
+        <component :is="route.meta.noLayout ? RouterView : Layout" v-else />
+      </div>
+      <Loading v-else />
+    </a-app>
+  </a-config-provider>
 </template>
 
 <style scoped lang="scss"></style>

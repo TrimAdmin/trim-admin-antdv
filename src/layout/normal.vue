@@ -55,34 +55,44 @@ const routeAnimate = computed<any>(() => {
     <a-layout-sider theme="light" :collapsed="collapsed">
       <NormalSider />
     </a-layout-sider>
-    <a-layout class="h-full overflow-y-auto overflow-x-hidden">
+    <a-layout class="overflow-hidden h-full">
       <a-layout-header>
         <NormalHeader />
+        <SimpleTab v-if="!hideTabs" />
       </a-layout-header>
-      <SimpleTab v-if="!hideTabs" />
       <a-layout-content>
         <component :is="routeAnimate || 'div'" v-if="!refreshing">
           <router-view />
         </component>
+        <a-layout-footer class="!px-0 !py-4">
+          <NormalFooter />
+        </a-layout-footer>
       </a-layout-content>
-      <a-layout-footer class="!px-0 !py-4">
-        <NormalFooter />
-      </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
 
 <style scoped lang="scss">
 .ant-layout-header {
-  height: v-bind(headerHeight);
+  --header-height: v-bind(headerHeight);
+  --sider-width: v-bind(siderWidth);
+  height: var(--header-height);
   line-height: v-bind(headerHeight);
-  padding-inline: 16px;
+  padding-inline: 0;
   z-index: 999;
-  border-bottom: 1px solid;
+  position: fixed;
+  width: calc(100% - var(--sider-width));
   @apply bg-white;
   @apply dark:bg-[#001529];
   @apply border-gray-100;
   @apply dark:border-gray-700;
+}
+
+.ant-layout-content {
+  --header-height: v-bind(headerHeight);
+  margin-top: calc(var(--header-height) + 42px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .ant-layout-sider {
