@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Card from './card.vue'
 import { echarts, ECOption } from '@/plugins'
+import { useConfigStoreHook } from '@/store'
 
 const rangeList = ref<Array<string>>(['全公司', '中心', '部门'])
 const methodList = ref<Array<string>>(['按离职日期', '按部门'])
@@ -15,8 +16,21 @@ onMounted(() => {
   const chart = echarts.init(chartRef.value)
   const option = {
     color: ['rgba(54, 218, 185, 1)', 'rgba(102, 153, 255, 1)'],
+    grid: {
+      left: 40,
+      top: 30,
+      width: '96%',
+      height: '72%'
+    },
     legend: {
-      show: true
+      show: true,
+      bottom: 0,
+      icon: 'circle',
+      itemWidth: 8,
+      itemHeight: 8,
+      textStyle: {
+        color: 'rgba(108, 116, 130, 1)'
+      }
     },
     tooltip: {
       trigger: 'axis',
@@ -25,20 +39,97 @@ onMounted(() => {
       }
     },
     xAxis: {
-      data: xAxisData,
-      type: 'category'
+      data: xAxisData.value,
+      type: 'category',
+      axisTick: {
+        show: false
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(237, 237, 237, 1)'
+        }
+      },
+      axisLabel: {
+        color: 'rgba(153, 153, 153, 1)'
+      }
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
+      axisTick: {
+        show: false
+      },
+      splitLine: {
+        lineStyle: {
+          type: 'dashed',
+          color: 'rgba(237, 237, 237, 0.6)'
+        }
+      },
+      axisLabel: {
+        color: 'rgba(153, 153, 153, 1)'
+      }
     },
     series: [
       {
+        name: '新增人员',
         type: 'line',
-        data: entryDataList.value
+        data: entryDataList.value,
+        symbol: 'none',
+        smooth: true,
+        lineStyle: {
+          width: 3
+        },
+        areaStyle: {
+          shadowColor: 'rgba(54, 218, 185, 1)',
+          shadowBlur: 20,
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              {
+                offset: 0,
+                color: 'rgba(54, 218, 185, 0.5)'
+              },
+              {
+                offset: 1,
+                color: 'rgba(54, 218, 185, 0)'
+              }
+            ]
+          }
+        }
       },
       {
+        name: '离职人员',
         type: 'line',
-        data: leaveDataList.value
+        data: leaveDataList.value,
+        symbol: 'none',
+        smooth: true,
+        lineStyle: {
+          width: 3
+        },
+        areaStyle: {
+          shadowColor: 'rgba(102, 153, 255, 1)',
+          shadowBlur: 20,
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              {
+                offset: 0,
+                color: 'rgba(102, 153, 255, 0.5)'
+              },
+              {
+                offset: 1,
+                color: 'rgba(102, 153, 255, 0)'
+              }
+            ]
+          }
+        }
       }
     ]
   } as ECOption
@@ -59,12 +150,12 @@ onMounted(() => {
     </template>
     <a-form layout="inline" class="mb-4">
       <a-form-item label="选择范围">
-        <a-select v-model:value="range">
+        <a-select v-model:value="range" class="min-w-[84px]">
           <a-select-option v-for="item in rangeList" :key="item" :value="item">{{ item }}</a-select-option>
         </a-select>
       </a-form-item>
       <a-form-item label="统计方式">
-        <a-select v-model:value="method">
+        <a-select v-model:value="method" class="min-w-[110px]">
           <a-select-option v-for="item in methodList" :key="item" :value="item">{{ item }}</a-select-option>
         </a-select>
       </a-form-item>

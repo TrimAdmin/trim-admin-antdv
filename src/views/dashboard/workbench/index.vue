@@ -8,6 +8,7 @@ import EmployeeData from './components/employee-data.vue'
 import EmploymentRating from './components/employment-rating.vue'
 import Notice from './components/notice.vue'
 import EmployeeChange from './components/employee-change.vue'
+import LatestEmployeeChange from './components/latest-employee-change.vue'
 </script>
 
 <template>
@@ -22,6 +23,7 @@ import EmployeeChange from './components/employee-change.vue'
     <EmploymentRating style="grid-area: 4/2/5/3" />
     <Notice style="grid-area: 4/3/5/4" />
     <EmployeeChange style="grid-area: 5/1/7/3" />
+    <LatestEmployeeChange style="grid-area: 5/3/7/4" />
   </RegularLayout>
 </template>
 
