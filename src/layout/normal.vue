@@ -61,7 +61,7 @@ const routeAnimate = computed<any>(() => {
         <SimpleTab v-if="!hideTabs" />
       </a-layout-header>
       <a-layout-content>
-        <component :is="routeAnimate || 'div'" v-if="!refreshing">
+        <component :is="routeAnimate || 'div'" v-if="!refreshing" class="main-page">
           <router-view />
         </component>
         <a-layout-footer class="!px-0 !py-4">
@@ -104,5 +104,9 @@ const routeAnimate = computed<any>(() => {
   @apply shadow-lg;
   @apply shadow-gray-300;
   @apply dark:shadow-gray-600;
+}
+
+.main-page {
+  min-height: calc(100% - 64px);
 }
 </style>

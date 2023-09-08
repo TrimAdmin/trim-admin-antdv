@@ -2,6 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Odometer from 'odometer'
+import { CSSProperties } from 'vue'
 
 const props = defineProps<{
   // 数值
@@ -18,6 +19,10 @@ const props = defineProps<{
   prefix?: string
   // 后缀
   suffix?: string
+  // 数值样式
+  valueStyle?: CSSProperties
+  // 数值类名
+  valueClass?: string
 }>()
 
 const digitRef = shallowRef()
@@ -33,7 +38,6 @@ onMounted(() => {
     })
     const entry = entries[0]
     if (entry.isIntersecting) {
-      // digitRef.value.style.opacity = 100
       odometer.update(props.value)
     }
     if (!entry.isIntersecting && props.repeat) {
@@ -45,10 +49,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex items-center">
+  <div class="flex items-baseline">
     {{ prefix }}
-    <span ref="digitRef" />
+    <slot name="prefix" />
+    <span ref="digitRef" :style="valueStyle" :class="valueClass" />
     {{ suffix }}
+    <slot name="suffix" />
   </div>
 </template>
 

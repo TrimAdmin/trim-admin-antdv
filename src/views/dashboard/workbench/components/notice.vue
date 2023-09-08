@@ -31,9 +31,9 @@ const noticeList = ref<
       </div>
     </template>
     <div>
-      <div v-for="(item, index) in noticeList" :key="index" class="my-2">
+      <div v-for="(item, index) in noticeList" :key="index" class="my-2 overflow-hidden text-ellipsis whitespace-nowrap max-w-[99%]">
         <span class="font-bold mr-2">{{ item.time }}</span>
-        <span class="overflow-hidden text-ellipsis whitespace-nowrap max-w-[99%]">{{ item.title }}</span>
+        <span>{{ item.title }}</span>
       </div>
     </div>
   </Card>

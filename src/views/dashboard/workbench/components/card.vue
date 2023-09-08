@@ -7,8 +7,8 @@ defineProps<{
 
 <template>
   <a-card
-    :head-style="{
-      padding: 20
+    :body-style="{
+      padding: '20px'
     }"
   >
     <div v-if="!noHeader" class="flex-bc mb-[16px]">

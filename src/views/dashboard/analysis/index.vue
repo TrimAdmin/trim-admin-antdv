@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { useUserStoreHook } from '@/store'
 import { getTimeSlotString } from '@/utils'
+import { Icon } from '@iconify/vue'
+import Statistic from './components/statistic.vue'
+import SaleCharts from './components/sale-charts.vue'
 
 const username = computed<string>(() => useUserStoreHook().userInfo.username)
 const avatar = computed<string | undefined>(() => useUserStoreHook().userInfo.avatar)
@@ -32,7 +35,8 @@ const timeSlot = computed<string>(() => getTimeSlotString())
         </div>
       </div>
     </template>
-    <div class="content"></div>
+    <Statistic class="mb-4" />
+    <SaleCharts />
   </LayoutWithHeader>
 </template>
 

@@ -120,7 +120,7 @@ function handleRandomData() {
       <DigitScroll v-if="showDigit" :value="totalCount" class="text-[32px] font-bold mr-2 h-[48px]" />
       <div class="flex items-center">
         <span class="text-gray-500 dark:text-gray-200 mr-1">比较上周</span>
-        <DigitScroll :value="312" prefix="+" class="text-[#186DF5]" />
+        <span class="text-[#186DF5]">+312</span>
       </div>
     </div>
     <div class="w-full h-[100px] flex-ac items-center mb-4">
@@ -141,7 +141,7 @@ function handleRandomData() {
           本周审批
           <Icon icon="ant-design:right-outlined" class="ml-1" />
         </div>
-        <DigitScroll :value="23" class="font-bold text-[22px] my-2" />
+        <div class="font-bold text-[22px] my-2">23</div>
         <div class="text-gray-500 dark:text-gray-200">
           已通过<span class="text-green-500 mx-1">2</span> 驳回<span class="text-red-500 mx-1">2</span>
         </div>
@@ -151,7 +151,7 @@ function handleRandomData() {
           本周报销
           <Icon icon="ant-design:right-outlined" class="ml-1" />
         </div>
-        <DigitScroll :value="14" class="font-bold text-[22px] my-2" />
+        <div class="font-bold text-[22px] my-2">14</div>
         <div class="text-gray-500 dark:text-gray-200">
           已报销<span class="text-green-500 mx-1">2</span> 未报销<span class="text-blue-500 mx-1">2</span>
         </div>
@@ -161,7 +161,7 @@ function handleRandomData() {
           本周人事
           <Icon icon="ant-design:right-outlined" class="ml-1" />
         </div>
-        <DigitScroll :value="17" class="font-bold text-[22px] my-2" />
+        <div class="font-bold text-[22px] my-2">17</div>
         <div class="text-gray-500 dark:text-gray-200">
           入职<span class="text-blue-500 mx-1">+4</span> 转正<span class="text-blue-500 mx-1">+6</span>
         </div>
