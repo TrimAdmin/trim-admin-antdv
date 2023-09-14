@@ -27,6 +27,15 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/iframe',
+    name: 'iframe',
+    component: () => import('@/views/common/iframe/index.vue'),
+    meta: {
+      hideMenu: true,
+      title: 'iframe'
+    }
+  },
+  {
     path: '/not-found',
     name: 'not-found',
     component: () => import('@/views/error-page/not-found/index.vue'),

@@ -23,7 +23,8 @@
     "nprogress": "^0.2.0",
     "odometer": "^0.4.8",
     "vue": "^3.3.4",
-    "vue-i18n": "^9.2.2"
+    "vue-i18n": "^9.2.2",
+    "vuedraggable": "^4.1.0"
   },
   "packageManager": "pnpm@8.6.6",
   "devDependencies": {

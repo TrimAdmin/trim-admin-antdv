@@ -1,4 +1,3 @@
-import { RouteMeta } from 'vue-router'
 import { Key } from 'ant-design-vue/es/_util/type'
 
 declare module 'vue-router' {
@@ -43,6 +42,15 @@ declare module 'vue-router' {
      * @type {boolean}
      */
     tabAffix?: boolean
+    /**
+     * 外链，有值时直接打开新页面
+     * @type {string}
+     */
+    href?: string
+    /**
+     * iframe外链
+     */
+    iframeHref?: string
   }
 }
 

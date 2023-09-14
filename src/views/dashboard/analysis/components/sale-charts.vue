@@ -7,7 +7,7 @@ import { colorSchemeList } from '@/trim-config.ts'
 const activeKey = ref<number>(1)
 const optionList = ref<Array<string>>(['今日', '本周', '本月', '本季度', '全年'])
 const currentOption = ref<string>(optionList.value[0])
-const timeRange = ref<Array<Dayjs>>([])
+const timeRange = ref<[Dayjs, Dayjs]>()
 const saleChartRef = shallowRef<HTMLDivElement>()
 const saleChart = ref()
 const saleChartOption = ref<ECOption>()
@@ -65,6 +65,12 @@ function initChart() {
       left: 50,
       height: '80%'
     },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
     series: [
       {
         type: 'bar',
@@ -109,7 +115,16 @@ onMounted(() => {
         <div ref="saleChartRef" class="w-full h-[240px]" />
       </div>
       <div class="w-1/3">
-        <div>销售额排名</div>
+        <div class="mb-2">销售额排名</div>
+        <div>
+          <div v-for="index of 6" :key="index" class="flex-bc py-2">
+            <div class="flex">
+              <div class="text-center mr-4 bg-blue-600 rounded-full w-6 h-6 text-white">{{ index }}</div>
+              <div>迪荡{{ index }}号店</div>
+            </div>
+            <div class="flex-1 text-right font-bold">{{ ((11 - index) * 182.23).toFixed(2) }}万元</div>
+          </div>
+        </div>
       </div>
     </div>
     <div v-else class="flex">
@@ -118,7 +133,16 @@ onMounted(() => {
         <div ref="saleChartRef" class="w-full h-[240px]" />
       </div>
       <div class="w-1/3">
-        <div>销售额排名</div>
+        <div class="mb-2">转化率排名</div>
+        <div>
+          <div v-for="index of 6" :key="index" class="flex-bc py-2">
+            <div class="flex">
+              <div class="text-center mr-4 bg-blue-600 rounded-full w-6 h-6 text-white">{{ index }}</div>
+              <div>城南{{ index }}号店</div>
+            </div>
+            <div class="flex-1 text-right font-bold">{{ ((11 - index) * 214.23).toFixed(2) }}万元</div>
+          </div>
+        </div>
       </div>
     </div>
   </a-card>

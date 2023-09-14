@@ -124,15 +124,13 @@ router.isReady().then(async () => {
     :theme="isDarkTheme ? { algorithm: antTheme.darkAlgorithm, ...darkColorScheme } : colorScheme"
     :auto-insert-space-in-button="false"
   >
-    <a-app>
-      <div v-if="show" ref="animated" class="relative h-full">
-        <keep-alive v-if="route.meta.keepAlive">
-          <component :is="route.meta.noLayout ? RouterView : Layout" />
-        </keep-alive>
-        <component :is="route.meta.noLayout ? RouterView : Layout" v-else />
-      </div>
-      <Loading v-else />
-    </a-app>
+    <div v-if="show" ref="animated" class="relative h-full">
+      <keep-alive v-if="route.meta.keepAlive">
+        <component :is="route.meta.noLayout ? RouterView : Layout" />
+      </keep-alive>
+      <component :is="route.meta.noLayout ? RouterView : Layout" v-else />
+    </div>
+    <Loading v-else />
   </a-config-provider>
 </template>
 

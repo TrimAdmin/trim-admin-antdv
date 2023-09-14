@@ -4,6 +4,8 @@ import { getTimeSlotString } from '@/utils'
 import { Icon } from '@iconify/vue'
 import Statistic from './components/statistic.vue'
 import SaleCharts from './components/sale-charts.vue'
+import SearchHot from '@/views/dashboard/analysis/components/search-hot.vue'
+import CategoryRate from '@/views/dashboard/analysis/components/category-rate.vue'
 
 const username = computed<string>(() => useUserStoreHook().userInfo.username)
 const avatar = computed<string | undefined>(() => useUserStoreHook().userInfo.avatar)
@@ -15,12 +17,12 @@ const timeSlot = computed<string>(() => getTimeSlotString())
     <template #left>
       <a-avatar :size="64" :src="avatar">
         <template #icon>
-          <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-[4px]" inline />
+          <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-1" inline />
         </template>
       </a-avatar>
     </template>
     <template #right>
-      <div class="flex gap-[16px]">
+      <div class="flex gap-4">
         <div>
           <div class="text-red-500">推进中项目</div>
           <div class="text-right text-2xl text-red-600 font-bold">7</div>
@@ -37,6 +39,10 @@ const timeSlot = computed<string>(() => getTimeSlotString())
     </template>
     <Statistic class="mb-4" />
     <SaleCharts />
+    <div class="grid grid-cols-2 mt-4 gap-4">
+      <SearchHot />
+      <CategoryRate />
+    </div>
   </LayoutWithHeader>
 </template>
 

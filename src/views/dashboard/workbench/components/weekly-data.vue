@@ -130,7 +130,9 @@ function handleRandomData() {
           <div class="w-[4px] h-[4px] mt-[8px] mr-2 rounded" :style="{ backgroundColor: colorList[index] }"></div>
           <div>
             <div class="text-[12px] text-gray-500 dark:text-gray-200">{{ item.name }}</div>
-            <DigitScroll v-if="showDigit" :value="item.value" class="text-[#202020] dark:text-gray-200 font-bold text-[16px] min-h-[20px]" />
+            <div class="text-[#202020] dark:text-gray-200 font-bold text-[16px] min-h-[20px]">
+              {{ item.value }}
+            </div>
           </div>
         </div>
       </div>

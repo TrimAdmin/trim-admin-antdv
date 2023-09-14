@@ -18,37 +18,37 @@ import Card from './card.vue'
       <div class="flex-1 border-x px-4 flex flex-wrap">
         <div class="w-1/2 mb-2">
           <div class="text-[12px] text-gray-500 dark:text-gray-200">全职</div>
-          <DigitScroll :value="2830" class="text-[16px] font-bold" />
+          <div class="text-[16px] font-bold">2,830</div>
         </div>
         <div class="w-1/2">
           <div class="text-[12px] text-gray-500 dark:text-gray-200">兼职</div>
-          <DigitScroll :value="17" class="text-[16px] font-bold" />
+          <div class="text-[16px] font-bold">17</div>
         </div>
         <div class="w-1/2">
           <div class="text-[12px] text-gray-500 dark:text-gray-200">实习</div>
-          <DigitScroll :value="46" class="text-[16px] font-bold" />
+          <div class="text-[16px] font-bold">46</div>
         </div>
         <div class="w-1/2">
           <div class="text-[12px] text-gray-500 dark:text-gray-200">外包</div>
-          <DigitScroll :value="80" class="text-[16px] font-bold" />
+          <div class="text-[16px] font-bold">80</div>
         </div>
       </div>
       <div class="flex-1 ml-4 flex flex-wrap">
         <div class="w-1/2 mb-2">
           <div class="text-[12px] text-gray-500 dark:text-gray-200">试用</div>
-          <DigitScroll :value="32" class="text-[16px] font-bold" />
+          <div class="text-[16px] font-bold">32</div>
         </div>
         <div class="w-1/2">
           <div class="text-[12px] text-gray-500 dark:text-gray-200">正式</div>
-          <DigitScroll :value="2710" class="text-[16px] font-bold" />
+          <div class="text-[16px] font-bold">2,710</div>
         </div>
         <div class="w-1/2">
           <div class="text-[12px] text-gray-500 dark:text-gray-200">待离职</div>
-          <DigitScroll :value="18" class="text-[16px] font-bold" />
+          <div class="text-[16px] font-bold">18</div>
         </div>
         <div class="w-1/2">
           <div class="text-[12px] text-gray-500 dark:text-gray-200">空闲</div>
-          <DigitScroll :value="5" class="text-[16px] font-bold" />
+          <div class="text-[16px] font-bold">5</div>
         </div>
       </div>
     </div>

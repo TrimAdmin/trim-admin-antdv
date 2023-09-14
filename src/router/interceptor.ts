@@ -6,6 +6,12 @@ import pluginNProgress from '@/plugins/nprogress.ts'
 const routerInterceptor = (router: Router) => {
   router.beforeEach((to, from, next) => {
     pluginNProgress.start()
+    // 判断是否存在外链
+    if (to.meta.href) {
+      window.open(to.meta.href, '_blank')
+      next({ name: from.name as string })
+      return
+    }
     // 设置文档标题
     if (to.meta.title) {
       useTitle(to.meta.title + ' - ' + import.meta.env.VITE_DOCUMENT_NAME)

@@ -60,13 +60,11 @@ const routeAnimate = computed<any>(() => {
         <NormalHeader />
         <SimpleTab v-if="!hideTabs" />
       </a-layout-header>
-      <a-layout-content>
+      <a-layout-content :style="hideTabs ? { marginTop: headerHeight } : { marginTop: `calc(${headerHeight} + 42px)` }">
         <component :is="routeAnimate || 'div'" v-if="!refreshing" class="main-page">
           <router-view />
         </component>
-        <a-layout-footer class="!px-0 !py-4">
-          <NormalFooter />
-        </a-layout-footer>
+        <NormalFooter class="my-4" />
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -89,10 +87,11 @@ const routeAnimate = computed<any>(() => {
 }
 
 .ant-layout-content {
-  --header-height: v-bind(headerHeight);
-  margin-top: calc(var(--header-height) + 42px);
   overflow-y: auto;
   overflow-x: hidden;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 
 .ant-layout-sider {
@@ -107,6 +106,7 @@ const routeAnimate = computed<any>(() => {
 }
 
 .main-page {
-  min-height: calc(100% - 64px);
+  position: relative;
+  flex: auto;
 }
 </style>

@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <div
     :class="`regular-layout text-black dark:text-white
-      ${noBackground ? 'transparent' : 'bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
+      ${noBackground ? 'transparent pb-4' : 'p-3 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
     `"
   >
     <slot />
@@ -17,8 +17,7 @@ defineProps<{
 
 <style scoped lang="scss">
 .regular-layout {
-  padding: 12px;
-  height: 100%;
+  height: calc(100% - 32px);
   max-width: calc(100% - 32px);
   border-radius: 8px;
   overflow-x: hidden;
