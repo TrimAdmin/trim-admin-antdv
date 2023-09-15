@@ -24,6 +24,7 @@ defineProps<{
         <div class="prose-2xl leading-[1] pb-2 font-bold">{{ title }}</div>
         <div class="text-gray-500">
           {{ subtitle }}
+          <slot v-if="!subtitle" name="subtitle" />
         </div>
       </div>
       <div>
@@ -32,7 +33,7 @@ defineProps<{
     </div>
     <div
       :class="`content text-black dark:text-white
-      ${noBackground ? 'transparent' : 'bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
+      ${noBackground ? 'transparent' : 'p-3 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
     `"
     >
       <slot />
@@ -42,7 +43,7 @@ defineProps<{
 
 <style scoped lang="scss">
 .layout-with-header {
-  height: 100%;
+  //height: 100%;
   display: flex;
   flex-direction: column;
 
@@ -51,6 +52,8 @@ defineProps<{
     overflow-x: hidden;
     overflow-y: auto;
     margin: 16px;
+    border-radius: 8px;
+    max-width: calc(100% - 32px);
   }
 }
 </style>

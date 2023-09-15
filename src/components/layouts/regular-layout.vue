@@ -2,12 +2,14 @@
 defineProps<{
   // 是否无背景
   noBackground?: boolean
+  // 是否带有footer，为true时会带64px的下内边距
+  withFooter?: boolean
 }>()
 </script>
 
 <template>
   <div
-    :class="`regular-layout text-black dark:text-white
+    :class="`regular-layout text-black dark:text-white ${withFooter ? '!mb-[64px]' : ''}
       ${noBackground ? 'transparent pb-4' : 'p-3 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
     `"
   >
@@ -17,7 +19,7 @@ defineProps<{
 
 <style scoped lang="scss">
 .regular-layout {
-  height: calc(100% - 32px);
+  //height: calc(100% - 32px);
   max-width: calc(100% - 32px);
   border-radius: 8px;
   overflow-x: hidden;

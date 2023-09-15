@@ -63,8 +63,8 @@ const routeAnimate = computed<any>(() => {
       <a-layout-content :style="hideTabs ? { marginTop: headerHeight } : { marginTop: `calc(${headerHeight} + 42px)` }">
         <component :is="routeAnimate || 'div'" v-if="!refreshing" class="main-page">
           <router-view />
+          <NormalFooter class="py-4" />
         </component>
-        <NormalFooter class="my-4" />
       </a-layout-content>
     </a-layout>
   </a-layout>
