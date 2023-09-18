@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import packageJson from '/package.json'
+import packageJson from '../../../../../package.json'
 
 const depList = Object.entries(packageJson.dependencies)
 const devDepList = Object.entries(packageJson.devDependencies)
@@ -12,7 +12,7 @@ const devDepList = Object.entries(packageJson.devDependencies)
       <a-list size="small">
         <a-list-item v-for="item in depList" :key="item[0]"> {{ item[0] }}: {{ item[1] }}</a-list-item>
       </a-list>
-      <a-list v-for="index of devDepList.length % depList.length" :key="index" size="small">
+      <a-list v-for="index of devDepList.length / depList.length" :key="index" size="small">
         <a-list-item v-for="item in devDepList.slice(index * depList.length - 1, index * depList.length - 1 + depList.length)" :key="item[0]">
           {{ item[0] }}: {{ item[1] }}
         </a-list-item>

@@ -4,8 +4,6 @@ interface ImportMetaEnv {
   VITE_DOCUMENT_NAME: string
   // 基础请求地址
   VITE_REQUEST_BASE_URL: string
-  // tinyMCE apikey
-  VITE_TINYMCE_API_KEY: string
 }
 
 interface ImportMeta {

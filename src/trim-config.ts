@@ -22,7 +22,7 @@ const trimConfig: ITrimConfig = {
     routeAnimate: 'slide-left'
   },
   // 默认国际化语言
-  defaultI18n: 'zhHans'
+  defaultI18n: 'zh-Hans'
 }
 
 export default trimConfig
@@ -105,4 +105,4 @@ export const layoutList: Array<{ label: string; value: string }> = [
   }
 ]
 
-export const i18nList: Array<string> = ['zhHans', 'zhHant', 'enUS']
+export const i18nList: Array<string> = ['zh-Hans', 'zh-Hant', 'en-US']

@@ -12,7 +12,7 @@ interface IConfigStoreState {
 
 const useConfigStore = defineStore('configStore', {
   state: (): IConfigStoreState => ({
-    i18n: 'zhHans',
+    i18n: 'zh-Hans',
     darkTheme: false,
     config: {} as ITrimConfig,
     menuCollapsed: false

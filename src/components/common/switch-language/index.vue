@@ -6,6 +6,7 @@ import { ITrimConfig } from '@/types/trim-config'
 const selectedKeys = computed<Array<string>>(() => [useConfigStoreHook().i18n])
 
 function handleChangeI18n(key: ITrimConfig['defaultI18n']) {
+  console.log(key)
   useConfigStoreHook().setI18n(key)
 }
 </script>
