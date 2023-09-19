@@ -10,9 +10,52 @@
     "forget-password": "忘记密码？",
     "to-register": "没有账号？去注册",
     "register": "注册",
-    "welcome": "欢迎使用Trim Admin Antdv"
+    "welcome": "欢迎使用Trim Admin Antdv",
+    "back-home": "返回首页",
+    "403": "您没有权限查看此页面",
+    "404": "您所访问的页面走丢了",
+    "500": "服务器出错啦！"
   },
   "menu": {
-    "home": "首页"
+    "home": "首页",
+    "login": "登录",
+    "dashboard": {
+      "dashboard": "仪表盘",
+      "workbench": "工作台",
+      "analysis": "分析页"
+    },
+    "document": {
+      "document": "相关文档",
+      "external-links": "外链",
+      "inner-iframe": "内嵌（iframe）"
+    },
+    "error-page": {
+      "home": "异常页面"
+    },
+    "basic-components": {
+      "home": "基础组件",
+      "button": "按钮"
+    },
+    "advanced-components": {
+      "home": "进阶组件"
+    },
+    "extensions": {
+      "home": "扩展组件",
+      "rich-editor": "富文本编辑器"
+    },
+    "forms": {
+      "home": "表单页",
+      "basic": "基础表单",
+      "advanced": "高级表单",
+      "step": "分步表单"
+    },
+    "multi-nav": {
+      "home": "多级菜单",
+      "menu-1": "菜单1",
+      "menu-2": "菜单2",
+      "menu-1-1": "菜单1-1",
+      "menu-1-2": "菜单1-2",
+      "menu-1-1-1": "菜单1-1-1"
+    }
   }
 }

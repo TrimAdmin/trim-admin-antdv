@@ -10,6 +10,7 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     component: () => import('@/views/common/home/index.vue'),
     meta: {
       title: t('menu.home'),
+      i18n: 'menu.home',
       icon: 'ant-design:home-filled',
       tabAffix: true,
       order: 0
@@ -23,7 +24,8 @@ export const commonRoutes: Array<RouteRecordRaw> = [
       publicRoute: true,
       noLayout: true,
       hideMenu: true,
-      title: '登录'
+      title: t('menu.login'),
+      i18n: 'menu.login'
     }
   },
   {
@@ -32,7 +34,8 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     component: () => import('@/views/common/iframe/index.vue'),
     meta: {
       hideMenu: true,
-      title: 'iframe'
+      title: 'iframe',
+      i18n: ''
     }
   },
   {
@@ -42,7 +45,8 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     meta: {
       publicRoute: true,
       title: '404',
-      hideMenu: true
+      hideMenu: true,
+      i18n: ''
     }
   },
   {
@@ -51,7 +55,8 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     meta: {
       title: '',
       hideMenu: true,
-      publicRoute: true
+      publicRoute: true,
+      i18n: ''
     }
   }
 ]

@@ -1,12 +1,15 @@
 import { RouteRecordRaw } from 'vue-router'
+import { useI18nHook } from '@/hooks'
 
+const { t } = useI18nHook()
 export default {
   path: '/forms',
   name: 'forms',
   redirect: { name: 'forms-basic' },
   meta: {
-    title: '表单页',
-    icon: 'ant-design:form-outlined'
+    title: t('menu.forms.home'),
+    icon: 'ant-design:form-outlined',
+    i18n: 'menu.forms.home'
   },
   children: [
     {
@@ -14,7 +17,9 @@ export default {
       name: 'forms-basic',
       component: () => import('@/views/forms/basic/index.vue'),
       meta: {
-        title: '基础表单'
+        title: t('menu.forms.basic'),
+        i18n: 'menu.forms.basic',
+        keepAlive: true
       }
     },
     {
@@ -22,7 +27,9 @@ export default {
       name: 'forms-advanced',
       component: () => import('@/views/forms/advanced/index.vue'),
       meta: {
-        title: '高级表单'
+        title: t('menu.forms.advanced'),
+        i18n: 'menu.forms.advanced',
+        keepAlive: true
       }
     },
     {
@@ -30,7 +37,9 @@ export default {
       name: 'forms-step',
       component: () => import('@/views/forms/step/index.vue'),
       meta: {
-        title: '分步表单'
+        title: t('menu.forms.step'),
+        i18n: 'menu.forms.step',
+        keepAlive: true
       }
     }
   ]

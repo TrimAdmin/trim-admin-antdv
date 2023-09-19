@@ -1,13 +1,17 @@
 import { RouteRecordRaw } from 'vue-router'
+import { useI18nHook } from '@/hooks'
+
+const { t } = useI18nHook()
 
 export default {
   path: '/basic-components',
   name: 'basic-components',
   redirect: { name: 'basic-components-button' },
   meta: {
-    title: '基础组件',
+    title: t('menu.basic-components.home'),
     icon: 'ant-design:appstore-outlined',
-    order: 1
+    order: 1,
+    i18n: 'menu.basic-components.home'
   },
   children: [
     {
@@ -15,7 +19,8 @@ export default {
       name: 'basic-components-button',
       component: () => import('@/views/basic-components/button/index.vue'),
       meta: {
-        title: '按钮'
+        title: t('menu.basic-components.button'),
+        i18n: 'menu.basic-components.button'
       }
     }
   ]

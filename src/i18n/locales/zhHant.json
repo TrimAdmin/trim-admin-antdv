@@ -10,9 +10,52 @@
     "forget-password": "忘記密碼？",
     "to-register": "沒有帳號？去注册",
     "register": "注册",
-    "welcome": "歡迎使用Trim Admin Antdv"
+    "welcome": "歡迎使用Trim Admin Antdv",
+    "back-home": "返回首頁",
+    "403": "您沒有許可權查看此頁面",
+    "404": "您所訪問的頁面走丟了",
+    "500": "服務器出錯啦！"
   },
   "menu": {
-    "home": "首頁"
+    "home": "首頁",
+    "login": "登入",
+    "dashboard": {
+      "dashboard": "儀錶盤",
+      "workbench": "工作臺",
+      "analysis": "分析頁"
+    },
+    "document": {
+      "document": "相關文檔",
+      "external-links": "外鏈",
+      "inner-iframe": "內嵌（iframe）"
+    },
+    "error-page": {
+      "home": "异常頁面"
+    },
+    "basic-components": {
+      "home": "基礎組件",
+      "button": "按鈕"
+    },
+    "advanced-components": {
+      "home": "進階組件"
+    },
+    "extensions": {
+      "home": "擴展組件",
+      "rich-editor": "富文字編輯器"
+    },
+    "forms": {
+      "home": "表單頁",
+      "basic": "基礎表單",
+      "advanced": "高級表單",
+      "step": "分步表單"
+    },
+    "multi-nav": {
+      "home": "多級選單",
+      "menu-1": "選單1",
+      "menu-2": "選單2",
+      "menu-1-1": "選單1-1",
+      "menu-1-2": "選單1-2",
+      "menu-1-1-1": "選單1-1-1"
+    }
   }
 }

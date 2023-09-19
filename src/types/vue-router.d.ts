@@ -23,6 +23,10 @@ declare module 'vue-router' {
      */
     title: string
     /**
+     * i18n对象
+     */
+    i18n: string
+    /**
      * 菜单顺序
      * @type {number}
      */

@@ -10,6 +10,7 @@ import Fade from '@/components/animates/fade.vue'
 import ScaleUp from '@/components/animates/scale-up.vue'
 import ScaleDown from '@/components/animates/scale-down.vue'
 
+const route = useRoute()
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
@@ -55,15 +56,25 @@ const routeAnimate = computed<any>(() => {
     <a-layout-sider theme="light" :collapsed="collapsed">
       <NormalSider />
     </a-layout-sider>
-    <a-layout class="overflow-hidden h-full">
+    <a-layout>
       <a-layout-header>
         <NormalHeader />
         <SimpleTab v-if="!hideTabs" />
       </a-layout-header>
-      <a-layout-content :style="hideTabs ? { marginTop: headerHeight } : { marginTop: `calc(${headerHeight} + 42px)` }">
-        <component :is="routeAnimate || 'div'" v-if="!refreshing" class="main-page">
-          <router-view />
-          <NormalFooter class="py-4" />
+      <a-layout-content
+        :style="
+          hideTabs
+            ? { marginTop: headerHeight, maxHeight: `calc(100vh - ${headerHeight})` }
+            : { marginTop: `calc(${headerHeight} + 42px)`, maxHeight: `calc(100vh - ${headerHeight} - 42px)` }
+        "
+      >
+        <component :is="routeAnimate || 'div'" v-if="!refreshing">
+          <router-view v-slot="{ Component }">
+            <keep-alive>
+              <component :is="Component" v-if="route.meta.keepAlive" />
+            </keep-alive>
+            <component :is="Component" v-if="!route.meta.keepAlive" />
+          </router-view>
         </component>
       </a-layout-content>
     </a-layout>
@@ -87,11 +98,10 @@ const routeAnimate = computed<any>(() => {
 }
 
 .ant-layout-content {
+  position: relative;
   overflow-y: auto;
   overflow-x: hidden;
   transition: all 0.3s;
-  display: flex;
-  flex-direction: column;
 }
 
 .ant-layout-sider {
@@ -103,10 +113,5 @@ const routeAnimate = computed<any>(() => {
   @apply shadow-lg;
   @apply shadow-gray-300;
   @apply dark:shadow-gray-600;
-}
-
-.main-page {
-  position: relative;
-  flex: auto;
 }
 </style>

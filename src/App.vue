@@ -32,13 +32,13 @@ const show = ref<boolean>(false)
 const isDarkTheme = computed<boolean>(() => useConfigStoreHook().darkTheme)
 const locale = computed(() => {
   switch (useConfigStoreHook().i18n) {
-    case 'zhHans':
+    case 'zh-Hans':
       dayjs.locale('zh-cn')
       return zhCN
-    case 'zhHant':
+    case 'zh-Hant':
       dayjs.locale('zh-tw')
       return zhTW
-    case 'enUS':
+    case 'en-US':
       dayjs.locale('en')
       return enUS
     default:
@@ -125,10 +125,7 @@ router.isReady().then(async () => {
     :auto-insert-space-in-button="false"
   >
     <div v-if="show" ref="animated" class="relative h-full">
-      <keep-alive v-if="route.meta.keepAlive">
-        <component :is="route.meta.noLayout ? RouterView : Layout" />
-      </keep-alive>
-      <component :is="route.meta.noLayout ? RouterView : Layout" v-else />
+      <component :is="route.meta.noLayout ? RouterView : Layout" />
     </div>
     <Loading v-else />
   </a-config-provider>

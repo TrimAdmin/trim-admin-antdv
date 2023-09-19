@@ -14,6 +14,7 @@ export interface ITabObject {
   key: string
   title: string
   tabAffix: boolean
+  i18n: string
 }
 
 const useCommonStore = defineStore('commonStore', {
@@ -94,6 +95,10 @@ const useCommonStore = defineStore('commonStore', {
       this.tabsList = this.tabsList.filter((item) => item.tabAffix)
       this.currentRouteName = this.tabsList[0].key
       router.push({ name: this.tabsList[0].key })
+    },
+    // 清空标签页列表
+    clearTabs() {
+      this.tabsList = []
     }
   },
   persist: [

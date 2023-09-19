@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { useI18nHook } from '@/hooks'
+
 const router = useRouter()
+const { t } = useI18nHook()
 
 function backHome() {
   router.replace({ name: 'home' })
@@ -8,9 +11,9 @@ function backHome() {
 
 <template>
   <RegularLayout class="flex-c">
-    <a-result status="500" title="500" sub-title="服务器出错啦！">
+    <a-result status="500" title="500" :sub-title="t('message.500')">
       <template #extra>
-        <a-button type="primary" @click="backHome">返回首页</a-button>
+        <a-button type="primary" @click="backHome">{{ t('message.back-home') }}</a-button>
       </template>
     </a-result>
   </RegularLayout>

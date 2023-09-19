@@ -1,4 +1,7 @@
 import { RouteRecordRaw } from 'vue-router'
+import { useI18nHook } from '@/hooks'
+
+const { t } = useI18nHook()
 
 export const dashboardRoutes: Array<RouteRecordRaw> = [
   {
@@ -6,7 +9,8 @@ export const dashboardRoutes: Array<RouteRecordRaw> = [
     name: 'dashboard',
     redirect: { name: 'workbench' },
     meta: {
-      title: '仪表盘',
+      title: t('menu.dashboard.dashboard'),
+      i18n: 'menu.dashboard.dashboard',
       icon: 'ant-design:dashboard-outlined',
       order: 0
     },
@@ -16,7 +20,8 @@ export const dashboardRoutes: Array<RouteRecordRaw> = [
         name: 'workbench',
         component: () => import('@/views/dashboard/workbench/index.vue'),
         meta: {
-          title: '工作台'
+          title: t('menu.dashboard.workbench'),
+          i18n: 'menu.dashboard.workbench'
         }
       },
       {
@@ -24,7 +29,8 @@ export const dashboardRoutes: Array<RouteRecordRaw> = [
         name: 'analysis',
         component: () => import('@/views/dashboard/analysis/index.vue'),
         meta: {
-          title: '分析页'
+          title: t('menu.dashboard.analysis'),
+          i18n: 'menu.dashboard.analysis'
         }
       }
     ]

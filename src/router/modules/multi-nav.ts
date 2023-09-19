@@ -1,13 +1,16 @@
 import { RouteRecordRaw } from 'vue-router'
+import { useI18nHook } from '@/hooks'
 
+const { t } = useI18nHook()
 export default {
   path: '/multi-nav',
   name: 'multi-nav',
   redirect: { name: 'multi-nav-1' },
   meta: {
-    title: '多级菜单',
+    title: t('menu.multi-nav.home'),
     icon: 'ant-design:unordered-list-outlined',
-    order: 3
+    order: 3,
+    i18n: 'menu.multi-nav.home'
   },
   children: [
     {
@@ -15,23 +18,37 @@ export default {
       name: 'multi-nav-1',
       redirect: { name: 'multi-nav-1-1' },
       meta: {
-        title: '菜单1'
+        title: t('menu.multi-nav.menu-1'),
+        i18n: 'menu.multi-nav.menu-1'
       },
       children: [
         {
           path: 'nav-1-1',
           name: 'multi-nav-1-1',
-          component: () => import('@/views/multi-nav/nav-1/nav-1-1/nav-1-1-1/index.vue'),
+          redirect: { name: 'multi-nav-1-1-1' },
           meta: {
-            title: '菜单1-1-1'
-          }
+            title: t('menu.multi-nav.menu-1-1'),
+            i18n: 'menu.multi-nav.menu-1-1'
+          },
+          children: [
+            {
+              path: 'nav-1-1-1',
+              name: 'multi-nav-1-1-1',
+              component: () => import('@/views/multi-nav/nav-1/nav-1-1/nav-1-1-1/index.vue'),
+              meta: {
+                title: t('menu.multi-nav.menu-1-1-1'),
+                i18n: 'menu.multi-nav.menu-1-1-1'
+              }
+            }
+          ]
         },
         {
           path: 'nav-1-2',
           name: 'multi-nav-1-2',
-          component: () => import('@/views/multi-nav/nav-1/nav-1-1/nav-1-1-2/index.vue'),
+          component: () => import('@/views/multi-nav/nav-1/nav-1-2/index.vue'),
           meta: {
-            title: '菜单1-1-2'
+            title: t('menu.multi-nav.menu-1-2'),
+            i18n: 'menu.multi-nav.menu-1-2'
           }
         }
       ]
@@ -41,7 +58,8 @@ export default {
       name: 'multi-nav-2',
       component: () => import('@/views/multi-nav/nav-2/index.vue'),
       meta: {
-        title: '菜单2'
+        title: t('menu.multi-nav.menu-2'),
+        i18n: 'menu.multi-nav.menu-2'
       }
     }
   ]

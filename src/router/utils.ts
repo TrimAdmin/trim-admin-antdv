@@ -46,6 +46,14 @@ export function routesToMenu(routes: RouterOptions['routes']): Array<any> {
   return tree
 }
 
+// 获取keep-alive路由
+export function getKeepAliveMenus() {
+  return router
+    .getRoutes()
+    .filter((item) => item.meta.keepAlive)
+    .map((i) => i.name as string)
+}
+
 // 生成菜单并排序
 export function generateMenus() {
   const menus = routesToMenu(router.options.routes)

@@ -31,7 +31,8 @@ const routerInterceptor = (router: Router) => {
       useCommonStoreHook().addTab({
         key: to.name as string,
         title: to.meta.title,
-        tabAffix: to.meta.tabAffix || false
+        tabAffix: to.meta.tabAffix || false,
+        i18n: to.meta.i18n
       })
     }
   })

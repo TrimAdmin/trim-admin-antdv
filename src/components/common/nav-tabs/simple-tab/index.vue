@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ITabObject, useCommonStoreHook } from '@/store'
 import { Key } from 'ant-design-vue/es/_util/type'
+import { useI18nHook } from '@/hooks'
 
 const router = useRouter()
 const tabsList = computed<Array<ITabObject>>(() => useCommonStoreHook().tabsList)
 const currentTab = computed<string>(() => useCommonStoreHook().currentRouteName)
+const { t } = useI18nHook()
 
 function handleChange(key: Key) {
   router.push({ name: key as string })
@@ -53,7 +55,7 @@ function handleTabAction(action: string, key: string) {
         <template #tab>
           <a-dropdown :trigger="['contextmenu']" placement="bottomLeft">
             <div class="flex items-center">
-              {{ item.title }}
+              {{ item.i18n ? t(item.i18n) : item.title }}
               <div v-if="!item.tabAffix" class="h-full flex items-center ml-2 cursor-pointer">
                 <Icon icon="ant-design:close-outlined" :height="14" inline @click.stop="handleClose(item.key)" />
               </div>

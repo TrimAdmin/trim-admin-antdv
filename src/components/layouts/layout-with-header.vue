@@ -43,9 +43,11 @@ defineProps<{
 
 <style scoped lang="scss">
 .layout-with-header {
-  //height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .content {
     flex: 1;

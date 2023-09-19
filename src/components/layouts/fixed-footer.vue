@@ -6,9 +6,9 @@ defineProps<{
 </script>
 
 <template>
-  <a-space :class="`h-[64px] flex bg-white w-full fixed bottom-0 px-4 justify-${align || 'end'}`">
+  <div :class="`h-[64px] flex bg-white w-full fixed bottom-0 px-4 justify-${align || 'end'} gap-2 items-center z-[900]`">
     <slot />
-  </a-space>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

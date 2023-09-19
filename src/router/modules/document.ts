@@ -1,19 +1,25 @@
 import { RouteRecordRaw } from 'vue-router'
+import { useI18nHook } from '@/hooks'
+
+const { t } = useI18nHook()
 
 export default {
   path: '/document',
   name: 'document',
   redirect: { name: 'document-antdv' },
   meta: {
-    title: '相关文档',
-    icon: 'ant-design:profile-outlined'
+    title: t('menu.document.document'),
+    i18n: 'menu.document.document',
+    icon: 'ant-design:profile-outlined',
+    order: 100
   },
   children: [
     {
       path: 'external-links',
       name: 'document-external-links',
       meta: {
-        title: '外链'
+        title: t('menu.document.external-links'),
+        i18n: 'menu.document.external-links'
       },
       children: [
         {
@@ -30,7 +36,8 @@ export default {
       path: 'inner-iframe',
       name: 'document-inner-iframe',
       meta: {
-        title: '内嵌（iframe）'
+        title: t('menu.document.inner-iframe'),
+        i18n: 'menu.document.inner-iframe'
       },
       children: [
         {
@@ -38,8 +45,9 @@ export default {
           name: 'document-inner-antdv',
           component: () => import('@/views/common/iframe/index.vue'),
           meta: {
-            title: 'Ant Design Vue官方文档',
-            iframeHref: 'https://antdv.com/components/overview-cn'
+            title: 'Ant Design Vue',
+            iframeHref: 'https://antdv.com/components/overview-cn',
+            i18n: ''
           }
         },
         {
@@ -47,8 +55,9 @@ export default {
           name: 'document-inner-vue',
           component: () => import('@/views/common/iframe/index.vue'),
           meta: {
-            title: 'Vue.js官方文档',
-            iframeHref: 'https://cn.vuejs.org'
+            title: 'Vue.js',
+            iframeHref: 'https://cn.vuejs.org',
+            i18n: ''
           }
         },
         {
@@ -56,8 +65,9 @@ export default {
           name: 'document-inner-pinia',
           component: () => import('@/views/common/iframe/index.vue'),
           meta: {
-            title: 'Pinia官方文档',
-            iframeHref: 'https://pinia.vuejs.org/zh/'
+            title: 'Pinia',
+            iframeHref: 'https://pinia.vuejs.org/zh/',
+            i18n: ''
           }
         }
       ]

@@ -67,6 +67,7 @@ const useUserStore = defineStore('userStore', {
     async logout() {
       this.token = ''
       this.isLogged = false
+      useCommonStoreHook().clearTabs()
       await router.replace({ name: 'login' })
     },
     // 获取菜单

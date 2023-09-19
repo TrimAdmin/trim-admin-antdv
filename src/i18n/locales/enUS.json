@@ -10,9 +10,52 @@
     "forget-password": "Forget password?",
     "to-register": "No account? Go to register",
     "register": "Register",
-    "welcome": "Welcome to Trim Admin Antdv"
+    "welcome": "Welcome to Trim Admin Antdv",
+    "back-home": "Back Home",
+    "403": "You don't have the permission to access this page",
+    "404": "This page is gone",
+    "500": "The server has got some errors"
   },
   "menu": {
-    "home": "Home"
+    "home": "Home",
+    "login": "Login",
+    "dashboard": {
+      "dashboard": "Dashboard",
+      "workbench": "Workbench",
+      "analysis": "Analysis"
+    },
+    "document": {
+      "document": "Related Documents",
+      "external-links": "External Links",
+      "inner-iframe": "Embed Pages（iframe）"
+    },
+    "error-page": {
+      "home": "Error Pages"
+    },
+    "basic-components": {
+      "home": "Basic Components",
+      "button": "Button"
+    },
+    "advanced-components": {
+      "home": "Advanced Components"
+    },
+    "extensions": {
+      "home": "Extensions",
+      "rich-editor": "Rich Text Editor"
+    },
+    "forms": {
+      "home": "Forms Page",
+      "basic": "Basic Form",
+      "advanced": "Advanced Form",
+      "step": "Step by Step Form"
+    },
+    "multi-nav": {
+      "home": "Multi Level Menu",
+      "menu-1": "Menu 1",
+      "menu-2": "Menu 2",
+      "menu-1-1": "Menu 1-1",
+      "menu-1-2": "Menu 1-2",
+      "menu-1-1-1": "Menu 1-1-1"
+    }
   }
 }

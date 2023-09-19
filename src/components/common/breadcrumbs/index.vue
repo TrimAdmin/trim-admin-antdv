@@ -5,6 +5,7 @@ import { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 const router = useRouter()
 const breadcrumbList = ref<Array<RouteRecordRaw>>([])
 const currentRoute = ref<RouteLocationNormalizedLoaded>()
+const { t } = useI18n()
 
 watch(
   () => router.currentRoute.value,
@@ -27,7 +28,7 @@ function handleBreadcrumbChange(item: RouteRecordRaw) {
   <Motion>
     <a-breadcrumb>
       <a-breadcrumb-item v-if="breadcrumbList.length !== 0">
-        <RouterLink to="/home">首页</RouterLink>
+        <RouterLink to="/home">{{ t('menu.home') }}</RouterLink>
       </a-breadcrumb-item>
       <a-breadcrumb-item v-for="item in breadcrumbList" :key="item.name">
         <a @click="handleBreadcrumbChange(item)">{{ item.meta?.title }}</a>
