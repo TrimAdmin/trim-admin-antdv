@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NormalHeader from './components/normal-header.vue'
 import NormalSider from './components/normal-sider.vue'
-import { headerHeight, headerHeightWithTabs, siderWidth } from '@/hooks'
+import { headerHeightWithTabs, siderWidth } from '@/hooks'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import SlideLeft from '@/components/animates/slide-left.vue'
 import SlideRight from '@/components/animates/slide-right.vue'
