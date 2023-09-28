@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { headerHeightWithTabs } from '@/hooks'
+
 defineProps<{
   // 是否无背景
   noBackground?: boolean
@@ -9,7 +11,7 @@ defineProps<{
 
 <template>
   <div
-    :class="`regular-layout text-black dark:text-white ${withFooter ? '!mb-[64px]' : ''}
+    :class="`regular-layout text-black dark:text-white rounded-md ${withFooter ? '!mb-[64px]' : ''}
       ${noBackground ? 'transparent pb-4' : 'p-3 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
     `"
   >
@@ -19,11 +21,12 @@ defineProps<{
 
 <style scoped lang="scss">
 .regular-layout {
-  //height: calc(100% - 32px);
+  --header-height: v-bind(headerHeightWithTabs);
+  height: calc(100vh - var(--header-height) - 32px);
   max-width: calc(100% - 32px);
-  border-radius: 8px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  //border-radius: 8px;
+  //overflow-x: hidden;
+  //overflow-y: auto;
   margin: 16px;
 }
 </style>

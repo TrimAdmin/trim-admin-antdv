@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { headerHeight } from '@/hooks'
+
 defineProps<{
   // 是否无背景
   noBackground?: boolean
@@ -6,13 +8,13 @@ defineProps<{
   title: string
   // 副标题
   subtitle?: string
-  // 是否带有footer，为true时会带64px的下内边距
-  withFooter?: boolean
+  // 是否带有fixed-footer
+  fixedFooter?: boolean
 }>()
 </script>
 
 <template>
-  <div :class="`layout-with-header ${withFooter ? 'pb-[64px]' : ''}`">
+  <div :class="`layout-with-header ${fixedFooter ? 'pb-[64px]' : ''}`">
     <div class="w-full bg-white dark:bg-gray-900 dark:text-white p-4 flex-bc gap-[16px]">
       <div>
         <slot name="left" />
@@ -38,14 +40,19 @@ defineProps<{
     >
       <slot />
     </div>
+    <div v-if="fixedFooter" class="fixed bottom-0 bg-white w-full flex-c h-16 shadow-md">
+      <slot name="fixed-footer"></slot>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .layout-with-header {
+  --header-height: v-bind(headerHeight);
   position: relative;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - var(--header-height) - 42px);
   overflow-y: auto;
   overflow-x: hidden;
 

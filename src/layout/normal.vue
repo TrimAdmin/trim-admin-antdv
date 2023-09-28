@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import NormalHeader from './components/normal-header.vue'
 import NormalSider from './components/normal-sider.vue'
-import NormalFooter from '@/layout/components/normal-footer.vue'
-import { useTrimConfig } from '@/hooks'
+import { headerHeight, headerHeightWithTabs, siderWidth } from '@/hooks'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import SlideLeft from '@/components/animates/slide-left.vue'
 import SlideRight from '@/components/animates/slide-right.vue'
@@ -14,22 +13,7 @@ const route = useRoute()
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
-// 头部高度
-const headerHeight = computed<string | number>(() =>
-  typeof useTrimConfig().theme.headerHeight === 'string' ? useTrimConfig().theme.headerHeight : useTrimConfig().theme.headerHeight + 'px'
-)
-// 侧边栏宽度
-const siderWidth = computed<string | number>(() =>
-  !collapsed.value
-    ? // 侧边栏展开宽度
-      typeof useTrimConfig().theme.siderWidth === 'string'
-      ? useTrimConfig().theme.siderWidth
-      : useTrimConfig().theme.siderWidth + 'px'
-    : // 侧边栏收缩宽度
-    typeof useTrimConfig().theme.siderWidthCollapse === 'string'
-    ? useTrimConfig().theme.siderWidthCollapse
-    : useTrimConfig().theme.siderWidthCollapse + 'px'
-)
+
 // 隐藏标签页
 const hideTabs = computed<boolean>(() => useConfigStoreHook().config.theme.hideTabs)
 // 路由动画
@@ -52,22 +36,16 @@ const routeAnimate = computed<any>(() => {
 </script>
 
 <template>
-  <a-layout class="h-full overflow-hidden">
+  <a-layout class="h-full overflow-hidden" has-sider>
     <a-layout-sider theme="light" :collapsed="collapsed">
       <NormalSider />
     </a-layout-sider>
-    <a-layout>
+    <a-layout class="main-page">
       <a-layout-header>
         <NormalHeader />
         <SimpleTab v-if="!hideTabs" />
       </a-layout-header>
-      <a-layout-content
-        :style="
-          hideTabs
-            ? { marginTop: headerHeight, maxHeight: `calc(100vh - ${headerHeight})` }
-            : { marginTop: `calc(${headerHeight} + 42px)`, maxHeight: `calc(100vh - ${headerHeight} - 42px)` }
-        "
-      >
+      <a-layout-content>
         <component :is="routeAnimate || 'div'" v-if="!refreshing">
           <router-view v-slot="{ Component }">
             <keep-alive>
@@ -83,10 +61,10 @@ const routeAnimate = computed<any>(() => {
 
 <style scoped lang="scss">
 .ant-layout-header {
-  --header-height: v-bind(headerHeight);
+  --header-height: v-bind(headerHeightWithTabs);
   --sider-width: v-bind(siderWidth);
   height: var(--header-height);
-  line-height: v-bind(headerHeight);
+  line-height: v-bind(headerHeightWithTabs);
   padding-inline: 0;
   z-index: 999;
   position: fixed;
@@ -98,10 +76,11 @@ const routeAnimate = computed<any>(() => {
 }
 
 .ant-layout-content {
-  position: relative;
-  overflow-y: auto;
+  --header-height: v-bind(headerHeightWithTabs);
+  height: calc(100vh - var(--header-height));
+  margin-top: var(--header-height);
   overflow-x: hidden;
-  transition: all 0.3s;
+  overflow-y: auto;
 }
 
 .ant-layout-sider {
@@ -110,8 +89,18 @@ const routeAnimate = computed<any>(() => {
   max-width: v-bind(siderWidth) !important;
   height: 100%;
   z-index: 998;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
   @apply shadow-lg;
   @apply shadow-gray-300;
   @apply dark:shadow-gray-600;
+}
+
+.main-page {
+  margin-left: v-bind(siderWidth);
+  transition: all 0.3s;
 }
 </style>

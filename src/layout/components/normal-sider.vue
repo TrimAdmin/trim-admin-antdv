@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTrimConfig } from '@/hooks'
+import { headerHeight } from '@/hooks'
 import { Key } from 'ant-design-vue/es/_util/type'
 import { RouteRecordName } from 'vue-router'
 import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
@@ -8,12 +8,10 @@ import { ItemType } from 'ant-design-vue/es/menu/src/hooks/useItems'
 const router = useRouter()
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
 
+console.log(headerHeight.value)
+
 // 系统标题
 const title = computed<string>(() => import.meta.env.VITE_DOCUMENT_NAME)
-// 标题高度
-const headerHeight = computed<string | number>(() =>
-  typeof useTrimConfig().theme.headerHeight === 'string' ? useTrimConfig().theme.headerHeight : useTrimConfig().theme.headerHeight + 'px'
-)
 // 菜单项
 const menus = computed<Array<ItemType>>(() => useUserStoreHook().menuList)
 // 默认选中的菜单
@@ -48,6 +46,7 @@ function handleMenuChange(key: RouteRecordName) {
     :items="menus"
     @click="({ key }) => handleMenuChange(key as RouteRecordName)"
   ></a-menu>
+  <div class="sider-placeholder"></div>
 </template>
 
 <style scoped lang="scss">

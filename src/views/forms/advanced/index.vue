@@ -88,7 +88,7 @@ function handleAddItem() {
 </script>
 
 <template>
-  <LayoutWithHeader title="高级表单" subtitle="表单的高级用法" with-footer no-background>
+  <LayoutWithHeader title="高级表单" subtitle="表单的高级用法" fixed-footer no-background>
     <a-card title="分类信息" class="mb-4">
       <a-form
         :colon="false"
@@ -166,11 +166,11 @@ function handleAddItem() {
       </a-table>
       {{ formObj.itemList }}
     </a-card>
+    <template #fixed-footer>
+      <a-button type="primary">提交</a-button>
+      <a-button>取消</a-button>
+    </template>
   </LayoutWithHeader>
-  <FixedFooter align="center">
-    <a-button type="primary">提交</a-button>
-    <a-button>取消</a-button>
-  </FixedFooter>
 </template>
 
 <style scoped lang="scss"></style>

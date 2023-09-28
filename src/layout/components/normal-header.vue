@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ItemType, Modal } from 'ant-design-vue'
-import { useIcon } from '@/hooks'
+import { headerHeight, useIcon } from '@/hooks'
 import { Key } from 'ant-design-vue/lib/_util/type'
 import { useConfigStoreHook, useUserStoreHook } from '@/store'
 import MenuCollapse from './header/menu-collapse/index.vue'
@@ -107,5 +107,6 @@ function handleDropdown(key: Key) {
 <style scoped lang="scss">
 .normal-header {
   outline: 1px solid rgba(100, 100, 100, 0.1);
+  height: v-bind(headerHeight);
 }
 </style>

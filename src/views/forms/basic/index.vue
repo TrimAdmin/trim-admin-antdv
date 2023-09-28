@@ -70,7 +70,7 @@ const fruitOptions = ref<
 </script>
 
 <template>
-  <LayoutWithHeader title="基础表单" subtitle="表单的基础用法" with-footer>
+  <LayoutWithHeader title="基础表单" subtitle="表单的基础用法" fixed-footer>
     <a-form
       ref="formRef"
       :colon="false"
@@ -108,11 +108,11 @@ const fruitOptions = ref<
         <a-textarea v-model:value="formObj.introduction" placeholder="请输入个人简介" allow-clear />
       </a-form-item>
     </a-form>
+    <template #fixed-footer>
+      <a-button type="primary">提交</a-button>
+      <a-button>取消</a-button>
+    </template>
   </LayoutWithHeader>
-  <FixedFooter align="center">
-    <a-button type="primary">提交</a-button>
-    <a-button>取消</a-button>
-  </FixedFooter>
 </template>
 
 <style scoped lang="scss"></style>

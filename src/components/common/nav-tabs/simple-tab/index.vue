@@ -111,6 +111,7 @@ function handleTabAction(action: string, key: string) {
 <style lang="scss" scoped>
 .simple-tab {
   border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+  height: 42px;
 }
 
 :deep(.ant-tabs-nav) {
