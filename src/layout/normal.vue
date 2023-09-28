@@ -13,6 +13,8 @@ const route = useRoute()
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
+// 侧边栏暗色模式
+const siderDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.siderDarkMode)
 
 // 隐藏标签页
 const hideTabs = computed<boolean>(() => useConfigStoreHook().config.theme.hideTabs)
@@ -37,7 +39,7 @@ const routeAnimate = computed<any>(() => {
 
 <template>
   <a-layout class="h-full overflow-hidden" has-sider>
-    <a-layout-sider theme="light" :collapsed="collapsed">
+    <a-layout-sider :theme="siderDarkMode ? 'dark' : 'light'" :collapsed="collapsed">
       <NormalSider />
     </a-layout-sider>
     <a-layout class="main-page">

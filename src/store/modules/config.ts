@@ -57,6 +57,9 @@ const useConfigStore = defineStore('configStore', {
     // 更新配置 更新单个配置时请使用上面的方法单独更新
     setConfig(config: ITrimConfig) {
       this.config = config
+    },
+    setSiderDarkMode(dark: boolean) {
+      this.config.theme.siderDarkMode = dark
     }
   },
   persist: [

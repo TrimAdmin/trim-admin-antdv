@@ -6,6 +6,8 @@ defineProps<{
   noBackground?: boolean
   // 是否带有footer，为true时会带64px的下内边距
   withFooter?: boolean
+  // 是否带有fixed-footer
+  fixedFooter?: boolean
 }>()
 </script>
 
@@ -16,6 +18,9 @@ defineProps<{
     `"
   >
     <slot />
+    <div v-if="fixedFooter" class="fixed bottom-0 bg-white w-full flex-c h-16 shadow-md">
+      <slot name="fixed-footer"></slot>
+    </div>
   </div>
 </template>
 

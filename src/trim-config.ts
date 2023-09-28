@@ -8,6 +8,8 @@ const trimConfig: ITrimConfig = {
     siderWidth: '240px',
     // 折叠后侧边栏宽度
     siderWidthCollapse: '64px',
+    // 侧边栏暗色模式
+    siderDarkMode: true,
     // 布局模式
     layout: 'normal',
     // 配色方案

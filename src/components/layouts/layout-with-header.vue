@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import { headerHeight } from '@/hooks'
 
-defineProps<{
-  // 是否无背景
-  noBackground?: boolean
-  // 标题
-  title: string
-  // 副标题
-  subtitle?: string
-  // 是否带有fixed-footer
-  fixedFooter?: boolean
-}>()
+withDefaults(
+  defineProps<{
+    // 是否无背景
+    noBackground?: boolean
+    // 标题
+    title: string
+    // 副标题
+    subtitle?: string
+    // 是否带有fixed-footer
+    fixedFooter?: boolean | 'start' | 'center' | 'end'
+  }>(),
+  {
+    fixedFooter: false
+  }
+)
 </script>
 
 <template>
@@ -40,7 +45,10 @@ defineProps<{
     >
       <slot />
     </div>
-    <div v-if="fixedFooter" class="fixed bottom-0 bg-white w-full flex-c h-16 shadow-md">
+    <div
+      v-if="fixedFooter"
+      :class="`fixed bottom-0 bg-white w-full flex-c h-16 shadow-md items-${typeof fixedFooter === 'boolean' ? 'center' : fixedFooter}`"
+    >
       <slot name="fixed-footer"></slot>
     </div>
   </div>

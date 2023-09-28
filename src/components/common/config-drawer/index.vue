@@ -8,6 +8,7 @@ const hideTabs = computed<boolean>(() => useConfigStoreHook().config.theme.hideT
 const hideLogo = computed<boolean>(() => useConfigStoreHook().config.theme.hideLogo)
 const hideBreadcrumb = computed<boolean>(() => useConfigStoreHook().config.theme.hideBreadcrumb)
 const colorScheme = computed<string>(() => useConfigStoreHook().config.theme.colorScheme)
+const siderDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.siderDarkMode)
 
 function handleDrawerOpen() {
   open.value = true
@@ -33,6 +34,11 @@ function handleHideBreadcrumb() {
   useConfigStoreHook().setHideBreadcrumb(!hideBreadcrumb.value)
 }
 
+// 更改侧边栏暗色模式
+function handleSiderDarkMode() {
+  useConfigStoreHook().setSiderDarkMode(!siderDarkMode.value)
+}
+
 // 更改配色方案
 function handleColorScheme(colorScheme: string) {
   useConfigStoreHook().setColorScheme(colorScheme)
@@ -55,6 +61,10 @@ function handleRouteAnimate(animate: (typeof routeAnimateList)[number]['value'])
     <div class="text-center">
       <a-divider plain>颜色模式</a-divider>
       <a-switch :checked="darkTheme" checked-children="黑暗" un-checked-children="明亮" @change="handleDarkTheme"></a-switch>
+    </div>
+    <div class="text-center">
+      <a-divider plain>侧边栏颜色模式</a-divider>
+      <a-switch :checked="siderDarkMode" checked-children="黑暗" un-checked-children="明亮" @change="handleSiderDarkMode"></a-switch>
     </div>
     <div class="text-center">
       <a-divider plain>页面布局</a-divider>

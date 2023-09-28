@@ -8,8 +8,6 @@ import { ItemType } from 'ant-design-vue/es/menu/src/hooks/useItems'
 const router = useRouter()
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
 
-console.log(headerHeight.value)
-
 // 系统标题
 const title = computed<string>(() => import.meta.env.VITE_DOCUMENT_NAME)
 // 菜单项
@@ -19,6 +17,8 @@ const defaultSelect = computed<Array<Key>>(() => [useCommonStoreHook().currentRo
 const openKeys = computed<Array<Key>>(() => useCommonStoreHook().currentOpenMenu)
 // 侧边栏logo
 const hideLogo = computed<boolean>(() => useConfigStoreHook().config.theme.hideLogo)
+// 侧边栏暗色模式
+const siderDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.siderDarkMode)
 
 // 由于selected-keys是v-model 故没有直接监听defaultSelect 改为监听路由位置
 watch(
@@ -43,6 +43,7 @@ function handleMenuChange(key: RouteRecordName) {
     :open-keys="openKeys"
     :selected-keys="defaultSelect"
     mode="inline"
+    :theme="siderDarkMode ? 'dark' : 'light'"
     :items="menus"
     @click="({ key }) => handleMenuChange(key as RouteRecordName)"
   ></a-menu>

@@ -23,6 +23,8 @@ interface ITrimConfigTheme {
   siderWidth: string | number
   // 侧边栏折叠宽度
   siderWidthCollapse: string | number
+  // 侧边栏暗色模式
+  siderDarkMode: boolean
   // 布局类型
   layout: (typeof layoutList)[number]['value']
   // 配色方案
