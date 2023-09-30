@@ -17,7 +17,7 @@ const i18n = createI18n<MessageSchema, (typeof i18nList)[number]>({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   messages,
-  fallbackLocale: 'zh'
+  fallbackLocale: 'zh-Hans'
 })
 
 export default i18n

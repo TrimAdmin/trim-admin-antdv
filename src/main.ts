@@ -7,6 +7,8 @@ import router from '@/router'
 import store from '@/store'
 import i18n from '@/i18n'
 import { useTable } from '@/plugins/vxe-table.ts'
+import 'uno.css'
+import 'virtual:unocss-devtools'
 
 const app = createApp(App)
 app.use(router)

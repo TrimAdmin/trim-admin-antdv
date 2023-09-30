@@ -66,15 +66,12 @@ const routeAnimate = computed<any>(() => {
   --header-height: v-bind(headerHeightWithTabs);
   --sider-width: v-bind(siderWidth);
   height: var(--header-height);
-  line-height: v-bind(headerHeightWithTabs);
+  line-height: var(--header-height);
   padding-inline: 0;
   z-index: 999;
   position: fixed;
   width: calc(100% - var(--sider-width));
-  @apply bg-white;
-  @apply dark:bg-[#001529];
-  @apply border-gray-100;
-  @apply dark:border-gray-700;
+  @apply bg-white dark:bg-[#001529] border-gray-100 dark:border-gray-700;
 }
 
 .ant-layout-content {
@@ -96,9 +93,7 @@ const routeAnimate = computed<any>(() => {
   position: fixed;
   left: 0;
   top: 0;
-  @apply shadow-lg;
-  @apply shadow-gray-300;
-  @apply dark:shadow-gray-600;
+  @apply shadow-md shadow-gray-300 dark:shadow-gray-700;
 }
 
 .main-page {

@@ -20,10 +20,13 @@ import vueJsxPlugin from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
 // 自动引入vxe样式
 import { createStyleImportPlugin, VxeTableResolve } from 'vite-plugin-style-import'
+// unocss
+import UnoCSS from 'unocss/vite'
 
 export const plugins = [
   vue(),
   svgLoader(),
+  UnoCSS(),
   mockDevServerPlugin(),
   vueJsxPlugin({
     transformOn: true,

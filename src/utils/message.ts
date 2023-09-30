@@ -1,18 +1,54 @@
-// 消息hook
-import { useMessage } from '@/hooks'
+import { ModalOptionsEx, ModalOptionsPartial, useMessage } from '@/hooks'
+import { NotificationArgsProps } from 'ant-design-vue/es/notification'
 
-const { createMessage } = useMessage()
+// 全局提示
 export const message = Object.assign({
   success: (msg: string) => {
-    createMessage.success(msg)
+    return useMessage().message.success(msg)
   },
   error: (msg: string) => {
-    createMessage.error(msg)
+    return useMessage().message.error(msg)
   },
   warning: (msg: string) => {
-    createMessage.warning(msg)
+    return useMessage().message.warning(msg)
   },
   info: (msg: string) => {
-    createMessage.info(msg)
+    return useMessage().message.info(msg)
+  }
+})
+
+export const modal = Object.assign({
+  confirm: (options: ModalOptionsEx) => {
+    useMessage().createConfirm(options)
+  },
+  success: (options: ModalOptionsPartial) => {
+    useMessage().createSuccessModal(options)
+  },
+  error: (options: ModalOptionsPartial) => {
+    useMessage().createErrorModal(options)
+  },
+  info: (options: ModalOptionsPartial) => {
+    useMessage().createInfoModal(options)
+  },
+  warn: (options: ModalOptionsPartial) => {
+    useMessage().createWarningModal(options)
+  }
+})
+
+export const notification = Object.assign({
+  success: (options: NotificationArgsProps) => {
+    useMessage().notification.createSuccessNotification(options)
+  },
+  error: (options: NotificationArgsProps) => {
+    useMessage().notification.createErrorNotification(options)
+  },
+  info: (options: NotificationArgsProps) => {
+    useMessage().notification.createInfoNotification(options)
+  },
+  warn: (options: NotificationArgsProps) => {
+    useMessage().notification.createWarningNotification(options)
+  },
+  close: (key: string) => {
+    useMessage().notification.closeNotification(key)
   }
 })

@@ -35,7 +35,10 @@ function handleMenuChange(key: RouteRecordName) {
 </script>
 
 <template>
-  <div v-if="!hideLogo" class="sider-title bg-[#001529] text-white font-bold w-full flex items-center justify-center px-2">
+  <div
+    v-if="!hideLogo"
+    :class="`sider-title ${siderDarkMode ? 'bg-[#001529] text-white' : ''} dark:text-white font-bold w-full flex items-center justify-center px-2`"
+  >
     <img src="@/assets/images/logo.png" alt="logo" class="h-4/5 inline-block" />
     <span v-if="!collapsed" class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2">{{ title }}</span>
   </div>

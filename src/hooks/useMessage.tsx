@@ -13,8 +13,6 @@ export interface NotifyApi {
 
   warn(config: NotificationArgsProps): void
 
-  warning(config: NotificationArgsProps): void
-
   open(args: NotificationArgsProps): void
 
   close(key: string): void
@@ -114,13 +112,39 @@ notification.config({
   duration: 3
 })
 
+function createSuccessNotification(options: NotificationArgsProps) {
+  return notification.success(options)
+}
+
+function createErrorNotification(options: NotificationArgsProps) {
+  return notification.error(options)
+}
+
+function createWarningNotification(options: NotificationArgsProps) {
+  return notification.warn(options)
+}
+
+function createInfoNotification(options: NotificationArgsProps) {
+  return notification.info(options)
+}
+
+function closeNotification(key: string) {
+  return notification.close(key)
+}
+
 /**
  * @description: message
  */
 export function useMessage() {
   return {
-    createMessage: Message,
-    notification: notification as NotifyApi,
+    message: Message,
+    notification: {
+      createSuccessNotification,
+      createErrorNotification,
+      createWarningNotification,
+      createInfoNotification,
+      closeNotification
+    },
     createConfirm: createConfirm,
     createSuccessModal,
     createErrorModal,

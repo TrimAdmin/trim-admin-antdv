@@ -8,7 +8,7 @@ defineOptions({
 </script>
 
 <template>
-  <LayoutWithHeader title="高级表单" subtitle="表单的高级用法" fixed-footer="start" no-background>
+  <LayoutWithHeader title="高级表单" subtitle="表单的高级用法" fixed-footer no-background>
     <BasicForm />
     <SubForm />
     <template #fixed-footer>

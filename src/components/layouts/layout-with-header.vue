@@ -28,7 +28,7 @@ withDefaults(
         <div>
           <slot name="extra" />
         </div>
-        <div class="prose-2xl leading-[1] pb-2 font-bold">{{ title }}</div>
+        <div class="text-2xl leading-[1] pb-2 font-bold">{{ title }}</div>
         <div class="text-gray-500">
           {{ subtitle }}
           <slot v-if="!subtitle" name="subtitle" />
@@ -47,7 +47,7 @@ withDefaults(
     </div>
     <div
       v-if="fixedFooter"
-      :class="`fixed bottom-0 bg-white w-full flex-c h-16 shadow-md items-${typeof fixedFooter === 'boolean' ? 'center' : fixedFooter}`"
+      :class="`fixed bottom-0 bg-white dark:bg-dark w-full flex-c h-16 px-4 justify-${typeof fixedFooter === 'boolean' ? 'center' : fixedFooter}`"
     >
       <slot name="fixed-footer"></slot>
     </div>

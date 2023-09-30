@@ -1,16 +1,8 @@
 <script lang="ts" setup>
-import { Dayjs } from 'dayjs'
+import { formObjType } from './types'
 
 const formRef = shallowRef()
-const formObj = reactive<{
-  name: string
-  sex: number
-  type: number
-  timeRange: Array<Dayjs>
-  turboMode: boolean
-  fruit: Array<number>
-  introduction: string
-}>({
+const formObj = reactive<formObjType>({
   name: '',
   sex: 1,
   type: 1,

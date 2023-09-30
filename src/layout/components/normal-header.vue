@@ -93,7 +93,7 @@ function handleDropdown(key: Key) {
               <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-[4px]" inline />
             </template>
           </a-avatar>
-          <span class="text-gray-700 dark:text-white">{{ username }}</span>
+          <span class="text-gray-700 dark:text-white leading-[1]">{{ username }}</span>
           <Icon icon="ant-design:caret-down-filled" class="cursor-pointer text-[12px] text-gray-500 dark:text-gray-300" />
         </div>
         <template #overlay>
