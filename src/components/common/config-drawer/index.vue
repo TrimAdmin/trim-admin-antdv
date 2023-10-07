@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useConfigStoreHook } from '@/store'
-import { colorSchemeList, routeAnimateList } from '@/trim-config.ts'
+import { colorSchemeList, routeAnimateList } from '@/constants'
 
 const open = ref<boolean>(false)
 const darkTheme = computed<boolean>(() => useConfigStoreHook().darkTheme)

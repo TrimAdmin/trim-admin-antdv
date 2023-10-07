@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ECOption } from '@/plugins'
-import { colorSchemeList } from '@/trim-config.ts'
+import { colorSchemeList } from '@/constants'
 import { useConfigStoreHook } from '@/store'
 import { useECharts } from '@/hooks'
 

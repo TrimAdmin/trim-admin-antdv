@@ -1,4 +1,5 @@
-import trimConfig, { colorSchemeList } from '@/trim-config'
+import trimConfig from '@/trim-config'
+import { colorSchemeList } from '@/constants'
 import { useConfigStoreHook } from '@/store'
 import { hexToRgba } from '@/utils'
 

@@ -1,7 +1,7 @@
 import store from '..'
 import router from '@/router'
 import { ITrimConfig } from '@/types/trim-config'
-import { colorSchemeList, routeAnimateList } from '@/trim-config.ts'
+import { colorSchemeList, routeAnimateList } from '@/constants'
 
 interface IConfigStoreState {
   i18n: ITrimConfig['defaultI18n']

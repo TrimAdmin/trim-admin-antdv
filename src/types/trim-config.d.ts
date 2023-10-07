@@ -1,4 +1,4 @@
-import { colorSchemeList, i18nList, layoutList, routeAnimateList } from '@/trim-config'
+import { colorSchemeList, i18nList, layoutList, routeAnimateList } from '@/constants'
 
 interface ITrimConfig {
   // 主题

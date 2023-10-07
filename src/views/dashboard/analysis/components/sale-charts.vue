@@ -2,7 +2,7 @@
 import { Dayjs } from 'dayjs'
 import { echarts, ECOption } from '@/plugins'
 import { useConfigStoreHook } from '@/store'
-import { colorSchemeList } from '@/trim-config.ts'
+import { colorSchemeList } from '@/constants'
 
 const activeKey = ref<number>(1)
 const optionList = ref<Array<string>>(['今日', '本周', '本月', '本季度', '全年'])
