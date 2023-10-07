@@ -4,9 +4,6 @@ import { plugins } from './vite/plugins'
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
-  const env = loadEnv(mode, process.cwd())
-  console.log(env)
-
   return defineConfig({
     base: '',
     server: {

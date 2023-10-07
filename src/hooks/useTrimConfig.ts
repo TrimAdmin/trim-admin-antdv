@@ -1,8 +1,23 @@
-import trimConfig from '@/trim-config'
+import trimConfig, { colorSchemeList } from '@/trim-config'
 import { useConfigStoreHook } from '@/store'
+import { hexToRgba } from '@/utils'
 
 export function useTrimConfig() {
   return trimConfig
+}
+
+/**
+ * 获取当前主题的主色，默认返回hex
+ * @param type hex, rgba
+ * @param alpha
+ */
+export function getCurrentThemeColor(type?: 'hex' | 'rgba', alpha: number = 1) {
+  const hexColor = colorSchemeList.filter((item) => useTrimConfig().theme.colorScheme === item.scheme)[0].primaryColor
+  if (type === 'rgba') {
+    return hexToRgba(hexColor, alpha)
+  } else {
+    return hexColor
+  }
 }
 
 export function setTrimConfig() {

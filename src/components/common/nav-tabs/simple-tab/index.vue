@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ITabObject, useCommonStoreHook } from '@/store'
 import { Key } from 'ant-design-vue/es/_util/type'
-import { useI18nHook } from '@/hooks'
+import { getCurrentThemeColor, useI18nHook } from '@/hooks'
 
 const router = useRouter()
 const tabsList = computed<Array<ITabObject>>(() => useCommonStoreHook().tabsList)
 const currentTab = computed<string>(() => useCommonStoreHook().currentRouteName)
 const { t } = useI18nHook()
+const currentThemeColor = computed<string>(() => getCurrentThemeColor('rgba', 0.3))
 
 function handleChange(key: Key) {
   router.push({ name: key as string })
@@ -56,8 +57,8 @@ function handleTabAction(action: string, key: string) {
           <a-dropdown :trigger="['contextmenu']" placement="bottomLeft">
             <div class="flex items-center">
               {{ item.i18n ? t(item.i18n) : item.title }}
-              <div v-if="!item.tabAffix" class="h-full flex items-center ml-2 cursor-pointer">
-                <Icon icon="ant-design:close-outlined" :height="14" inline @click.stop="handleClose(item.key)" />
+              <div v-if="!item.tabAffix" class="icon-close h-full flex items-center ml-2 cursor-pointer rounded-xl p-[2px]">
+                <Icon icon="ant-design:close-outlined" :height="12" inline @click.stop="handleClose(item.key)" />
               </div>
             </div>
             <template #overlay>
@@ -112,6 +113,15 @@ function handleTabAction(action: string, key: string) {
 .simple-tab {
   border-bottom: 1px solid rgba(100, 100, 100, 0.1);
   height: 42px;
+
+  .icon-close {
+    --theme-color: v-bind(currentThemeColor);
+    transition: background-color 0.25s;
+
+    &:hover {
+      background-color: var(--theme-color);
+    }
+  }
 }
 
 :deep(.ant-tabs-nav) {

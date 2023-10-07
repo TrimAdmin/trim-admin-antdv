@@ -9,7 +9,6 @@ import Fade from '@/components/animates/fade.vue'
 import ScaleUp from '@/components/animates/scale-up.vue'
 import ScaleDown from '@/components/animates/scale-down.vue'
 
-const route = useRoute()
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
@@ -35,6 +34,10 @@ const routeAnimate = computed<any>(() => {
       return
   }
 })
+
+function getBackTopEl() {
+  return document.getElementById('back-top-element')!
+}
 </script>
 
 <template>
@@ -47,15 +50,16 @@ const routeAnimate = computed<any>(() => {
         <NormalHeader />
         <SimpleTab v-if="!hideTabs" />
       </a-layout-header>
-      <a-layout-content>
+      <a-layout-content id="back-top-element">
         <component :is="routeAnimate || 'div'" v-if="!refreshing">
-          <router-view v-slot="{ Component }">
+          <router-view v-slot="{ Component, route }">
             <keep-alive>
-              <component :is="Component" v-if="route.meta.keepAlive" />
+              <component :is="Component" v-if="route.meta.keepAlive" :key="route.path" />
             </keep-alive>
-            <component :is="Component" v-if="!route.meta.keepAlive" />
+            <component :is="Component" v-if="!route.meta.keepAlive" :key="route.path" />
           </router-view>
         </component>
+        <a-back-top :target="getBackTopEl" />
       </a-layout-content>
     </a-layout>
   </a-layout>

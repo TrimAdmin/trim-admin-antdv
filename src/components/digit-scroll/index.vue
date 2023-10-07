@@ -49,7 +49,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex items-baseline">
+  <div class="flex items-center">
     {{ prefix }}
     <slot name="prefix" />
     <span ref="digitRef" :style="valueStyle" :class="valueClass" />

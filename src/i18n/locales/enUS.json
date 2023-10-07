@@ -41,7 +41,8 @@
     },
     "extensions": {
       "home": "Extensions",
-      "rich-editor": "Rich Text Editor"
+      "rich-editor": "Rich Text Editor",
+      "digit-scroll": "Digit Scroll Animate"
     },
     "forms": {
       "home": "Forms Page",

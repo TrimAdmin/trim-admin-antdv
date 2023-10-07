@@ -22,6 +22,15 @@ export default {
         title: t('menu.extensions.rich-editor'),
         i18n: 'menu.extensions.rich-editor'
       }
+    },
+    {
+      path: 'digit-scroll',
+      name: 'extensions-digit-scroll',
+      component: () => import('@/views/extensions/digit-scroll/index.vue'),
+      meta: {
+        title: t('menu.extensions.digit-scroll'),
+        i18n: 'menu.extensions.digit-scroll'
+      }
     }
   ]
 } as RouteRecordRaw

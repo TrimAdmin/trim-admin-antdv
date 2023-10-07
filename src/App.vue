@@ -4,7 +4,6 @@ import zhCN from 'ant-design-vue/locale/zh_CN'
 import zhTW from 'ant-design-vue/locale/zh_TW'
 import enUS from 'ant-design-vue/locale/en_US'
 import { RouterView } from 'vue-router'
-import { useAutoAnimate } from '@formkit/auto-animate/vue'
 import {
   brightYellowDarkTheme,
   brightYellowTheme,
@@ -87,8 +86,6 @@ const darkColorScheme = computed(() => {
   }
 })
 
-const [animated] = useAutoAnimate()
-
 // 监听是否暗色模式 给html添加dark类 与tailwind同步
 watch(
   () => useConfigStoreHook().darkTheme,
@@ -124,10 +121,12 @@ router.isReady().then(async () => {
     :theme="isDarkTheme ? { algorithm: antTheme.darkAlgorithm, ...darkColorScheme } : colorScheme"
     :auto-insert-space-in-button="false"
   >
-    <div v-if="show" ref="animated" class="relative h-full">
+    <div v-if="show" class="relative h-full">
       <component :is="route.meta.noLayout ? RouterView : Layout" />
     </div>
-    <Loading v-else />
+    <div v-else class="w-screen h-screen flex-c">
+      <a-spin size="large" tip="加载中..." />
+    </div>
   </a-config-provider>
 </template>
 

@@ -11,7 +11,6 @@
     "lint:css": "stylelint **/*.{html,vue,css,sass,scss,less,postcss}"
   },
   "dependencies": {
-    "@formkit/auto-animate": "^0.7.0",
     "@iconify/vue": "^4.1.1",
     "@tinymce/tinymce-vue": "^5.1.1",
     "animate.css": "^4.1.1",

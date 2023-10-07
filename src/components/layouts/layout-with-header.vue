@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { headerHeight } from '@/hooks'
+import { headerHeight, headerHeightWithTabs } from '@/hooks'
 
 withDefaults(
   defineProps<{
@@ -16,6 +16,10 @@ withDefaults(
     fixedFooter: false
   }
 )
+
+function getBackTopEl() {
+  return document.getElementById('layout-with-header-back-top')
+}
 </script>
 
 <template>
@@ -39,11 +43,13 @@ withDefaults(
       </div>
     </div>
     <div
+      id="layout-with-header-back-top"
       :class="`content text-black dark:text-white
-      ${noBackground ? 'transparent' : 'p-3 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
+      ${noBackground ? 'transparent' : 'rounded-[8px] p-3 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-700'}
     `"
     >
       <slot />
+      <a-back-top :target="getBackTopEl" :visibility-height="300" />
     </div>
     <div
       v-if="fixedFooter"
@@ -56,11 +62,11 @@ withDefaults(
 
 <style scoped lang="scss">
 .layout-with-header {
-  --header-height: v-bind(headerHeight);
+  --header-height: v-bind(headerHeightWithTabs);
   position: relative;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--header-height) - 42px);
+  height: calc(100vh - var(--header-height));
   overflow-y: auto;
   overflow-x: hidden;
 
@@ -69,7 +75,6 @@ withDefaults(
     overflow-x: hidden;
     overflow-y: auto;
     margin: 16px;
-    border-radius: 8px;
     max-width: calc(100% - 32px);
   }
 }
