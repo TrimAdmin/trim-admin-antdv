@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { formObjType } from './types'
 
+defineOptions({
+  name: 'forms-basic'
+})
+
 const formRef = shallowRef()
 const formObj = reactive<formObjType>({
   name: '',

@@ -53,10 +53,10 @@ function getBackTopEl() {
       <a-layout-content id="back-top-element">
         <component :is="routeAnimate || 'div'" v-if="!refreshing">
           <router-view v-slot="{ Component, route }">
-            <keep-alive>
-              <component :is="Component" v-if="route.meta.keepAlive" :key="route.path" />
+            <keep-alive v-if="route.meta.keepAlive" :include="useCommonStoreHook().keepAliveList">
+              <component :is="Component" :key="route.fullPath" />
             </keep-alive>
-            <component :is="Component" v-if="!route.meta.keepAlive" :key="route.path" />
+            <component :is="Component" v-else :key="route.fullPath" />
           </router-view>
         </component>
         <a-back-top :target="getBackTopEl" />

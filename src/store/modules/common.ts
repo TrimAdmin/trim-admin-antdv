@@ -8,6 +8,7 @@ interface ICommonStoreState {
   currentRouteName: string
   currentOpenMenu: Array<string>
   tabsList: Array<ITabObject>
+  keepAliveList: Array<string>
 }
 
 export interface ITabObject {
@@ -23,7 +24,8 @@ const useCommonStore = defineStore('commonStore', {
     refreshing: false,
     currentRouteName: 'home',
     currentOpenMenu: [''],
-    tabsList: []
+    tabsList: [],
+    keepAliveList: []
   }),
   actions: {
     // 设置loading状态
@@ -99,6 +101,10 @@ const useCommonStore = defineStore('commonStore', {
     // 清空标签页列表
     clearTabs() {
       this.tabsList = []
+    },
+    // keep-alive路由列表
+    setKeepAliveList(list: Array<string>) {
+      this.keepAliveList = list
     }
   },
   persist: [

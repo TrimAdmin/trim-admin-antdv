@@ -23,6 +23,7 @@ import { setTrimConfig } from '@/hooks'
 import trimConfig from '@/trim-config.ts'
 import dayjs from 'dayjs'
 import { theme } from 'ant-design-vue'
+import { getKeepAliveMenus } from '@/router/utils.ts'
 
 const antTheme = theme
 const route = useRoute()
@@ -109,6 +110,7 @@ router.isReady().then(async () => {
   // 刷新时跳转到刷新前的路由
   await router.push({ name: useCommonStoreHook().currentRouteName })
   useUserStoreHook().getMenuList()
+  useCommonStoreHook().setKeepAliveList(getKeepAliveMenus())
   await nextTick(() => {
     show.value = true
   })
