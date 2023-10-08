@@ -12,4 +12,5 @@ export type itemType = {
   serialNumber: string
   name: string
   count: number
+  editing: boolean
 }

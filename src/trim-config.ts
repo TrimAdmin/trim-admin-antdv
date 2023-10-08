@@ -3,11 +3,11 @@ import { ITrimConfig } from './types/trim-config'
 const trimConfig: ITrimConfig = {
   theme: {
     // 顶栏高度
-    headerHeight: '48px',
+    headerHeight: 48,
     // 展开时侧边栏宽度
-    siderWidth: '240px',
+    siderWidth: 240,
     // 折叠后侧边栏宽度
-    siderWidthCollapse: '64px',
+    siderWidthCollapse: 64,
     // 侧边栏暗色模式
     siderDarkMode: true,
     // 布局模式
