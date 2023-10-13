@@ -2,7 +2,7 @@ import { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
 
 export const forestGreenTheme = {
   token: {
-    colorPrimary: '#07c160',
+    colorPrimary: '#00b96b',
     colorSuccess: '#33ca76',
     colorWarning: '#ff976a',
     colorError: '#ee0a24',

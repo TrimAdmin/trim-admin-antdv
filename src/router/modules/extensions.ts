@@ -31,6 +31,15 @@ export default {
         title: t('menu.extensions.digit-scroll'),
         i18n: 'menu.extensions.digit-scroll'
       }
+    },
+    {
+      path: 'vxe-table',
+      name: 'extensions-vxe-table',
+      component: () => import('@/views/extensions/vxe-table/index.vue'),
+      meta: {
+        title: t('menu.extensions.vxe-table'),
+        i18n: 'menu.extensions.vxe-table'
+      }
     }
   ]
 } as RouteRecordRaw

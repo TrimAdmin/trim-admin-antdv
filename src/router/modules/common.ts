@@ -24,6 +24,7 @@ export const commonRoutes: Array<RouteRecordRaw> = [
       publicRoute: true,
       noLayout: true,
       hideMenu: true,
+      hideTab: true,
       title: t('menu.login'),
       i18n: 'menu.login'
     }
@@ -35,6 +36,19 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     meta: {
       hideMenu: true,
       title: 'iframe',
+      i18n: ''
+    }
+  },
+  {
+    path: '/screen',
+    name: 'screen',
+    component: () => import('@/views/screen/index.vue'),
+    meta: {
+      noLayout: true,
+      title: '数字大屏',
+      icon: 'ant-design:bar-chart-outlined',
+      order: 20,
+      hideTab: true,
       i18n: ''
     }
   },

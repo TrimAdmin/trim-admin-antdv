@@ -47,6 +47,10 @@ declare module 'vue-router' {
      */
     tabAffix?: boolean
     /**
+     * 隐藏标签页
+     */
+    hideTab?: boolean
+    /**
      * 外链，有值时直接打开新页面
      * @type {string}
      */

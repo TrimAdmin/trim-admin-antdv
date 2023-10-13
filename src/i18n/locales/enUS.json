@@ -42,7 +42,8 @@
     "extensions": {
       "home": "Extensions",
       "rich-editor": "Rich Text Editor",
-      "digit-scroll": "Digit Scroll Animate"
+      "digit-scroll": "Digit Scroll Animate",
+      "vxe-table": "vxe-table"
     },
     "forms": {
       "home": "Forms Page",

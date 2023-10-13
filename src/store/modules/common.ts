@@ -16,6 +16,7 @@ export interface ITabObject {
   title: string
   tabAffix: boolean
   i18n: string
+  hideTab: boolean
 }
 
 const useCommonStore = defineStore('commonStore', {
@@ -50,7 +51,7 @@ const useCommonStore = defineStore('commonStore', {
     },
     // 新增标签
     addTab(tab: ITabObject) {
-      if (this.tabsList.findIndex((item) => item.key === tab.key) > -1 || tab.key === 'login') return
+      if (this.tabsList.findIndex((item) => item.key === tab.key) > -1 || tab.hideTab) return
       this.tabsList.push(tab)
     },
     // 关闭标签

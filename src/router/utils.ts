@@ -1,8 +1,9 @@
-import { RouteRecordRaw, RouterOptions } from 'vue-router'
+import { RouteParamsRaw, RouteRecordName, RouteRecordRaw, RouterOptions } from 'vue-router'
 import router from '@/router/index.ts'
 import { Key } from 'ant-design-vue/es/_util/type'
 import { useIcon } from '@/hooks'
 import { sortBy } from 'lodash'
+import { useCommonStoreHook } from '@/store'
 
 // 自动从modules文件夹导入路由
 export function autoImportRoutes(): Array<RouteRecordRaw> {
@@ -89,4 +90,10 @@ export function getParentRoutes(value: string) {
   }
 
   return dfs(routes, value, [])
+}
+
+export function handleJumpTo(name: RouteRecordName, params?: RouteParamsRaw) {
+  router.push({ name, params }).then(() => {
+    useCommonStoreHook().setCurrentRouteName(name.toString())
+  })
 }

@@ -32,7 +32,8 @@ const routerInterceptor = (router: Router) => {
         key: to.name as string,
         title: to.meta.title,
         tabAffix: to.meta.tabAffix || false,
-        i18n: to.meta.i18n
+        i18n: to.meta.i18n,
+        hideTab: to.meta.hideTab || false
       })
     }
   })

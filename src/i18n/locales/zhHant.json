@@ -42,7 +42,8 @@
     "extensions": {
       "home": "擴展組件",
       "rich-editor": "富文字編輯器",
-      "digit-scroll": "滾動數位"
+      "digit-scroll": "滾動數位",
+      "vxe-table": "vxe-table"
     },
     "forms": {
       "home": "表單頁",
