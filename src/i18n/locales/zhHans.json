@@ -1,4 +1,22 @@
 {
+  "constant": {
+    "dark": "黑暗",
+    "light": "明亮",
+    "hide": "隐藏",
+    "show": "显示"
+  },
+  "config": {
+    "title": "全局设置",
+    "colorScheme": "配色方案",
+    "darkMode": "颜色模式",
+    "siderDarkMode": "侧边栏颜色模式",
+    "layout": "页面布局",
+    "view": "页面显示",
+    "hideTabs": "隐藏标签页",
+    "siderLogo": "侧边栏Logo",
+    "hideBreadcrumb": "隐藏面包屑",
+    "routerAnimate": "路由动画"
+  },
   "message": {
     "login": "登录",
     "username-placeholder": "请输入用户名",

@@ -1,7 +1,7 @@
 import store from '..'
 import router from '@/router'
 import { ITrimConfig } from '@/types/trim-config'
-import { colorSchemeList, routeAnimateList } from '@/constants'
+import { colorSchemeList, layoutList, routeAnimateList } from '@/constants'
 
 interface IConfigStoreState {
   i18n: ITrimConfig['defaultI18n']
@@ -53,6 +53,10 @@ const useConfigStore = defineStore('configStore', {
     // 更新路由动画
     setRouteAnimate(animate: (typeof routeAnimateList)[number]['value']) {
       this.config.theme.routeAnimate = animate
+    },
+    // 更改页面布局
+    setLayout(layout: (typeof layoutList)[number]['value']) {
+      this.config.theme.layout = layout
     },
     // 更新配置 更新单个配置时请使用上面的方法单独更新
     setConfig(config: ITrimConfig) {

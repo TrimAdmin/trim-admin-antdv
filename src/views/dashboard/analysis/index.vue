@@ -13,37 +13,41 @@ const timeSlot = computed<string>(() => getTimeSlotString())
 </script>
 
 <template>
-  <LayoutWithHeader no-background :title="`${timeSlot}好，${username}`" subtitle="开始今天的工作吧">
-    <template #left>
-      <a-avatar :size="64" :src="avatar">
-        <template #icon>
-          <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-1" inline />
-        </template>
-      </a-avatar>
-    </template>
-    <template #right>
-      <div class="flex gap-4">
-        <div>
-          <div class="text-red-500">推进中项目</div>
-          <div class="text-right text-2xl text-red-600 font-bold">7</div>
+  <div>
+    <PageHeader :title="`${timeSlot}好，${username}`" subtitle="开始今天的工作吧">
+      <template #left>
+        <a-avatar :size="64" :src="avatar">
+          <template #icon>
+            <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-1" inline />
+          </template>
+        </a-avatar>
+      </template>
+      <template #right>
+        <div class="flex gap-4">
+          <div>
+            <div class="text-red-500">推进中项目</div>
+            <div class="text-right text-2xl text-red-600 font-bold">7</div>
+          </div>
+          <div>
+            <div class="text-green-500">已完成项目</div>
+            <div class="text-right text-2xl text-green-600 font-bold">4</div>
+          </div>
+          <div>
+            <div class="text-yellow-500">未结算项目</div>
+            <div class="text-right text-2xl text-yellow-600 font-bold">2</div>
+          </div>
         </div>
-        <div>
-          <div class="text-green-500">已完成项目</div>
-          <div class="text-right text-2xl text-green-600 font-bold">4</div>
-        </div>
-        <div>
-          <div class="text-yellow-500">未结算项目</div>
-          <div class="text-right text-2xl text-yellow-600 font-bold">2</div>
-        </div>
+      </template>
+    </PageHeader>
+    <RegularLayout no-background>
+      <Statistic class="mb-4" />
+      <SaleCharts />
+      <div class="grid grid-cols-2 mt-4 gap-4">
+        <SearchHot />
+        <CategoryRate />
       </div>
-    </template>
-    <Statistic class="mb-4" />
-    <SaleCharts />
-    <div class="grid grid-cols-2 mt-4 gap-4">
-      <SearchHot />
-      <CategoryRate />
-    </div>
-  </LayoutWithHeader>
+    </RegularLayout>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

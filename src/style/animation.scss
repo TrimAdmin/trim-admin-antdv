@@ -1,0 +1,31 @@
+// 向右淡入滑动
+@keyframes slideInRightFade {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+}
+
+// 向右淡出滑动
+@keyframes slideOutLeftFade {
+  100% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+}
+
+// 向左淡入滑动
+@keyframes slideInLeftFade {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+}
+
+// 向左淡出滑动
+@keyframes slideOutRightFade {
+  100% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+}

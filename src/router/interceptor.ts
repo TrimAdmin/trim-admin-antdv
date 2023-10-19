@@ -22,20 +22,26 @@ const routerInterceptor = (router: Router) => {
     if (!to.meta.publicRoute && !useUserStoreHook().isLogged) {
       message.error('未登录或登录过期')
       next({ name: 'login' })
-    } else if (useUserStoreHook().isLogged && to.name === 'login') {
+    }
+    // 已经登录，返回上一级
+    if (useUserStoreHook().isLogged && to.name === 'login') {
       message.info('您已经登录过了')
       pluginNProgress.done()
       next({ name: from.name as string })
-    } else {
-      next()
-      useCommonStoreHook().addTab({
-        key: to.name as string,
-        title: to.meta.title,
-        tabAffix: to.meta.tabAffix || false,
-        i18n: to.meta.i18n,
-        hideTab: to.meta.hideTab || false
-      })
     }
+    // 加入keep-alive列表
+    if (to.meta.keepAlive) {
+      useCommonStoreHook().addKeepAliveItem(to.name!.toString())
+    }
+    // 新增tab
+    useCommonStoreHook().addTab({
+      key: to.name as string,
+      title: to.meta.title,
+      tabAffix: to.meta.tabAffix || false,
+      i18n: to.meta.i18n,
+      hideTab: to.meta.hideTab || false
+    })
+    next()
   })
 
   router.afterEach(async () => {

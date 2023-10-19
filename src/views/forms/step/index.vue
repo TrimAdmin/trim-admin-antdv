@@ -6,6 +6,10 @@ import { infoType } from '@/views/forms/step/types'
 import ConfirmInfo from '@/views/forms/step/components/confirm-info.vue'
 import Finish from '@/views/forms/step/components/finish.vue'
 
+defineOptions({
+  name: 'forms-step'
+})
+
 const current = ref<number>(0)
 const fillInfoRef = ref()
 const formData = reactive<infoType>({

@@ -58,6 +58,8 @@ const useCommonStore = defineStore('commonStore', {
     removeTab(key: string) {
       const index = this.tabsList.findIndex((item) => item.key === key)
       this.tabsList.splice(index, 1)
+      // 从keep-alive中移除
+      this.removeKeepAliveItem(key)
       if (this.currentRouteName === key) {
         this.currentRouteName = this.tabsList[index - 1].key
         router.push({ name: this.tabsList[index - 1].key })
@@ -65,12 +67,22 @@ const useCommonStore = defineStore('commonStore', {
     },
     // 关闭其他标签页
     removeOtherTabs(key: string) {
+      this.tabsList
+        .filter((item) => item.key !== key)
+        .map((item) => {
+          this.removeKeepAliveItem(item.key)
+        })
       this.tabsList = this.tabsList.filter((item) => item.tabAffix || item.key === key)
       this.currentRouteName = this.tabsList[this.tabsList.length - 1].key
       router.push({ name: this.tabsList[this.tabsList.length - 1].key })
     },
     // 关闭左侧标签页
     removeLeftTabs(key: string) {
+      this.tabsList
+        .filter((item) => item.key !== key)
+        .map((item) => {
+          this.removeKeepAliveItem(item.key)
+        })
       const index = this.tabsList.findIndex((item) => item.key === key)
       this.tabsList = this.tabsList.filter((item, i) => i >= index || item.tabAffix)
       if (this.currentRouteName !== key) {
@@ -83,6 +95,11 @@ const useCommonStore = defineStore('commonStore', {
     },
     // 关闭右侧标签页
     removeRightTabs(key: string) {
+      this.tabsList
+        .filter((item) => item.key !== key)
+        .map((item) => {
+          this.removeKeepAliveItem(item.key)
+        })
       const index = this.tabsList.findIndex((item) => item.key === key)
       this.tabsList = this.tabsList.filter((item, i) => i <= index || item.tabAffix)
       if (this.currentRouteName !== key) {
@@ -95,6 +112,9 @@ const useCommonStore = defineStore('commonStore', {
     },
     // 关闭所有标签页
     closeAllTabs() {
+      this.tabsList.map((item) => {
+        this.removeKeepAliveItem(item.key)
+      })
       this.tabsList = this.tabsList.filter((item) => item.tabAffix)
       this.currentRouteName = this.tabsList[0].key
       router.push({ name: this.tabsList[0].key })
@@ -104,8 +124,11 @@ const useCommonStore = defineStore('commonStore', {
       this.tabsList = []
     },
     // keep-alive路由列表
-    setKeepAliveList(list: Array<string>) {
-      this.keepAliveList = list
+    addKeepAliveItem(name: string) {
+      this.keepAliveList.push(name)
+    },
+    removeKeepAliveItem(name: string) {
+      this.keepAliveList = this.keepAliveList.filter((item) => item !== name)
     }
   },
   persist: [

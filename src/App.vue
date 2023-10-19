@@ -110,7 +110,6 @@ router.isReady().then(async () => {
   // 刷新时跳转到刷新前的路由
   await router.push({ name: useCommonStoreHook().currentRouteName })
   useUserStoreHook().getMenuList()
-  useCommonStoreHook().setKeepAliveList(getKeepAliveMenus())
   await nextTick(() => {
     show.value = true
   })

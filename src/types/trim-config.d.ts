@@ -38,3 +38,16 @@ interface ITrimConfigTheme {
   // 路由动画
   routeAnimate: (typeof routeAnimateList)[number]['value']
 }
+
+interface ITrimRouteAnimate {
+  // 进入动画，设置animate.css中对应的类名，也可以自定义
+  in?: string
+  // 退出动画，设置animate.css中对应的类名，也可以自定义
+  out?: string
+  // 唯一标识
+  value: string
+  // 下拉框中显示的文本
+  label: string
+  // 持续时间，默认300ms
+  duration?: string
+}

@@ -1,5 +1,6 @@
 import { defineConfig, presetAttributify, presetMini, presetWind } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
+import transformerVariantGroup from '@unocss/transformer-variant-group'
 
 export default defineConfig({
   presets: [
@@ -15,7 +16,8 @@ export default defineConfig({
   transformers: [
     transformerDirectives({
       applyVariable: ['@apply', '--uno']
-    })
+    }),
+    transformerVariantGroup({})
   ],
   preflights: [],
   shortcuts: {
@@ -25,5 +27,6 @@ export default defineConfig({
     'flex-col-c': 'flex flex-col justify-center items-center',
     'flex-col-bc': 'flex flex-col justify-between items-center',
     'flex-col-ac': 'flex flex-col justify-around items-center'
-  }
+  },
+  rules: [['w-ih', { width: 'inherit' }]]
 })

@@ -97,3 +97,9 @@ export function handleJumpTo(name: RouteRecordName, params?: RouteParamsRaw) {
     useCommonStoreHook().setCurrentRouteName(name.toString())
   })
 }
+
+export function handleCloseTag(name: RouteRecordName, message?: string) {
+  if (message) {
+  }
+  useCommonStoreHook().removeTab(name.toString())
+}

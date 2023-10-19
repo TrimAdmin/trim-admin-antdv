@@ -1,4 +1,4 @@
-import { IColorScheme } from '@/types/trim-config'
+import { IColorScheme, ITrimRouteAnimate } from '@/types/trim-config'
 import { CI18n } from '@/constants/i18n.ts'
 
 export const colorSchemeList: Array<IColorScheme> = [
@@ -34,33 +34,50 @@ export const colorSchemeList: Array<IColorScheme> = [
   }
 ]
 
-export const routeAnimateList: Array<{
-  value: string
-  label: string
-}> = [
+export const routeAnimateList: Array<ITrimRouteAnimate> = [
   {
     value: 'none',
     label: '无'
   },
   {
+    in: 'slideInLeftFade',
+    out: 'slideOutRightFade',
+    value: 'slide-left-fade',
+    label: '向左滑动淡入',
+    duration: '500ms'
+  },
+  {
+    in: 'slideInRightFade',
+    out: 'slideOutLeftFade',
+    value: 'slide-right-fade',
+    label: '向右滑动淡入',
+    duration: '500ms'
+  },
+  {
+    in: 'slideInRight',
+    out: 'slideOutLeft',
     value: 'slide-left',
-    label: '向左滑动'
+    label: '向左滑动',
+    duration: '500ms'
   },
   {
+    in: 'slideInLeft',
+    out: 'slideOutRight',
     value: 'slide-right',
-    label: '向右滑动'
+    label: '向右滑动',
+    duration: '500ms'
   },
   {
+    in: 'fadeIn',
+    out: 'fadeOut',
     value: 'fade',
     label: '淡入淡出'
   },
   {
-    value: 'scale-up',
-    label: '放大淡入淡出'
-  },
-  {
-    value: 'scale-down',
-    label: '缩小淡入淡出'
+    in: 'zoomIn',
+    out: 'zoomOut',
+    value: 'zoom',
+    label: '缩放'
   }
 ]
 

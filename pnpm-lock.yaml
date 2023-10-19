@@ -72,6 +72,9 @@ devDependencies:
   '@unocss/transformer-directives':
     specifier: ^0.56.4
     version: 0.56.4
+  '@unocss/transformer-variant-group':
+    specifier: ^0.56.5
+    version: 0.56.5
   '@vitejs/plugin-vue':
     specifier: ^4.3.4
     version: 4.3.4(vite@4.4.9)(vue@3.3.4)
@@ -1714,6 +1717,10 @@ packages:
     resolution: {integrity: sha512-9DL+2adfjWWnFWp2QOJTq2OcfKKo++agaXnCX7CzeD8KgfWCBqxs2RDoxP3HrDbTflhDHdbjz23B+vJoVykhZw==}
     dev: true
 
+  /@unocss/core@0.56.5:
+    resolution: {integrity: sha512-fx5VhOjSHn0HdV2D34pEwFMAHJcJQRTCp1xEE4GzxY1irXzaa+m2aYf5PZjmDxehiOC16IH7TO9FOWANXk1E0w==}
+    dev: true
+
   /@unocss/extractor-arbitrary-variants@0.56.4:
     resolution: {integrity: sha512-Q93Bu3wZld+Vj5dqfJYH6phcmjm7fy6mEul64RexLWF00As9WrRzWEXbLVYmmVwUm9e5xcxZO6s98gKq1nTH6Q==}
     dependencies:
@@ -1812,7 +1819,7 @@ packages:
     resolution: {integrity: sha512-pZmTPqi/Tb+vbwjNXu9+PwxEh7PVe+FwP+pzUbfNSUpE5Hg9CCbl8hpsXRE/r8kdaoKhmw2ryxvjocOgKXG/ag==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/core': 0.56.4
+      '@unocss/core': 0.56.5
     dev: true
 
   /@unocss/scope@0.56.4:
@@ -1849,6 +1856,12 @@ packages:
     resolution: {integrity: sha512-4ebNLWgspeoaHDLQ6qW8ZEWl7rzXURxBJLaw1hUqMwfbM/HEc5gPwUy7k7W+4TJyB426UpBb6kWLgO2WRrJXWw==}
     dependencies:
       '@unocss/core': 0.56.4
+    dev: true
+
+  /@unocss/transformer-variant-group@0.56.5:
+    resolution: {integrity: sha512-e+7XtICuOtcOgGyxI06i0LK6R446KLFvzv+lw3WbwhD8OcsSFUAtCaAw0l+cyyiiZ/k2tLdUR0O4hYwQVa8f1A==}
+    dependencies:
+      '@unocss/core': 0.56.5
     dev: true
 
   /@unocss/vite@0.56.4(vite@4.4.9):

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { headerHeight, headerHeightWithTabs } from '@/hooks'
+import { headerHeightWithTabs, siderWidth } from '@/hooks'
 
 withDefaults(
   defineProps<{
@@ -24,24 +24,7 @@ function getBackTopEl() {
 
 <template>
   <div :class="`layout-with-header ${fixedFooter ? 'pb-[64px]' : ''}`">
-    <div class="w-full bg-white dark:bg-gray-900 dark:text-white p-4 flex-bc gap-[16px]">
-      <div>
-        <slot name="left" />
-      </div>
-      <div class="flex-1">
-        <div>
-          <slot name="extra" />
-        </div>
-        <div class="text-2xl leading-[1] pb-2 font-bold">{{ title }}</div>
-        <div class="text-gray-500">
-          {{ subtitle }}
-          <slot v-if="!subtitle" name="subtitle" />
-        </div>
-      </div>
-      <div>
-        <slot name="right" />
-      </div>
-    </div>
+    <!-- 主内容区 -->
     <div
       id="layout-with-header-back-top"
       :class="`content text-black dark:text-white
@@ -53,7 +36,9 @@ function getBackTopEl() {
     </div>
     <div
       v-if="fixedFooter"
-      :class="`fixed bottom-0 bg-white dark:bg-dark w-full flex-c h-16 px-4 justify-${typeof fixedFooter === 'boolean' ? 'center' : fixedFooter}`"
+      :class="`fixed-footer fixed bottom-0 left-auto w-full bg-white dark:bg-dark flex-c h-16 px-4 justify-${
+        typeof fixedFooter === 'boolean' ? 'center' : fixedFooter
+      }`"
     >
       <slot name="fixed-footer"></slot>
     </div>
@@ -63,19 +48,20 @@ function getBackTopEl() {
 <style scoped lang="scss">
 .layout-with-header {
   --header-height: v-bind(headerHeightWithTabs);
+  --sider-width: v-bind(siderWidth);
   position: relative;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--header-height));
-  overflow-y: auto;
-  overflow-x: hidden;
+  flex: 1;
+  height: 100%;
 
   .content {
     flex: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
     margin: 16px;
-    max-width: calc(100% - 32px);
+  }
+
+  .fixed-footer {
+    width: calc(100% - var(--sider-width));
   }
 }
 </style>
