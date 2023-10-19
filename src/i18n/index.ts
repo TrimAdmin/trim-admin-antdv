@@ -3,7 +3,7 @@ import zhHans from './locales/zhHans.json'
 import zhHant from './locales/zhHant.json'
 import enUS from './locales/enUS.json'
 import { MessageSchema } from '@/types/i18n'
-import { i18nList } from '@/trim-config.ts'
+import { i18nList } from '@/constants/trim-config'
 
 const messages = {
   'en-US': { ...enUS },

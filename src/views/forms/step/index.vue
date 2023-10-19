@@ -46,48 +46,51 @@ function handleValidate() {
 </script>
 
 <template>
-  <LayoutWithHeader title="分步表单" subtitle="用于较为复杂的表单场景">
-    <a-row>
-      <a-col :offset="4" :span="16">
-        <a-steps :current="current" :items="stepList" class="mx-auto mt-4 mb-8" />
-        <component :is="stepList[current].content" />
-        <div class="mt-4 text-center">
-          <a-button
-            v-if="current < 2"
-            type="primary"
-            @click="
-              () => {
-                if (current === 0) {
-                  handleValidate()
+  <div>
+    <page-header title="分步表单" subtitle="用于较为复杂的表单场景" />
+    <regular-layout>
+      <a-row>
+        <a-col :offset="4" :span="16">
+          <a-steps :current="current" :items="stepList" class="mx-auto mt-4 mb-8" />
+          <component :is="stepList[current].content" />
+          <div class="mt-4 text-center">
+            <a-button
+              v-if="current < 2"
+              type="primary"
+              @click="
+                () => {
+                  if (current === 0) {
+                    handleValidate()
+                  }
+                  current++
                 }
-                current++
-              }
-            "
-            >下一步
-          </a-button>
-          <a-button
-            v-if="current === 2"
-            type="primary"
-            @click="
-              () => {
-                current = 0
-              }
-            "
-            >再付一笔</a-button
-          >
-          <a-button
-            v-if="current === 1"
-            @click="
-              () => {
-                current--
-              }
-            "
-            >上一步
-          </a-button>
-        </div>
-      </a-col>
-    </a-row>
-  </LayoutWithHeader>
+              "
+              >下一步
+            </a-button>
+            <a-button
+              v-if="current === 2"
+              type="primary"
+              @click="
+                () => {
+                  current = 0
+                }
+              "
+              >再付一笔</a-button
+            >
+            <a-button
+              v-if="current === 1"
+              @click="
+                () => {
+                  current--
+                }
+              "
+              >上一步
+            </a-button>
+          </div>
+        </a-col>
+      </a-row>
+    </regular-layout>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

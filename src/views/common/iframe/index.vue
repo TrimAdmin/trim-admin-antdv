@@ -9,9 +9,11 @@ function handleLoad() {
 </script>
 
 <template>
-  <RegularLayout v-loading="loading" no-background>
-    <iframe :src="route.meta.iframeHref" class="h-full w-full" @load="handleLoad"></iframe>
-  </RegularLayout>
+  <div class="h-full">
+    <regular-layout v-loading="loading" no-background>
+      <iframe :src="route.meta.iframeHref" class="h-full w-full" @load="handleLoad"></iframe>
+    </regular-layout>
+  </div>
 </template>
 
 <style scoped lang="scss">

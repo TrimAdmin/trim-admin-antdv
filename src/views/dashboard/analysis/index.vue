@@ -14,7 +14,7 @@ const timeSlot = computed<string>(() => getTimeSlotString())
 
 <template>
   <div>
-    <PageHeader :title="`${timeSlot}好，${username}`" subtitle="开始今天的工作吧">
+    <page-header :title="`${timeSlot}好，${username}`" subtitle="开始今天的工作吧">
       <template #left>
         <a-avatar :size="64" :src="avatar">
           <template #icon>
@@ -38,15 +38,15 @@ const timeSlot = computed<string>(() => getTimeSlotString())
           </div>
         </div>
       </template>
-    </PageHeader>
-    <RegularLayout no-background>
+    </page-header>
+    <regular-layout no-background>
       <Statistic class="mb-4" />
       <SaleCharts />
       <div class="grid grid-cols-2 mt-4 gap-4">
         <SearchHot />
         <CategoryRate />
       </div>
-    </RegularLayout>
+    </regular-layout>
   </div>
 </template>
 

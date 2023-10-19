@@ -1,7 +1,9 @@
 <script lang="ts" setup></script>
 
 <template>
-  <RegularLayout>这是菜单2</RegularLayout>
+  <div>
+    <regular-layout>这是菜单2</regular-layout>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

@@ -16,7 +16,7 @@ withDefaults(
 
 <template>
   <!-- 头部 -->
-  <div :class="`${fixed && 'fixed z-[900]'} h-[96px] w-ih shadow-md bg-white dark:bg-gray-900 dark:text-white p-4 flex-bc gap-[16px]`">
+  <div :class="`${fixed && 'fixed z-[900]'} h-[96px] w-full shadow-md bg-white dark:bg-gray-900 dark:text-white p-4 flex-bc gap-[16px]`">
     <div>
       <slot name="left" />
     </div>

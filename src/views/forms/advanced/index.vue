@@ -10,15 +10,15 @@ defineOptions({
 
 <template>
   <div>
-    <PageHeader title="高级表单" subtitle="表单的高级用法" />
-    <RegularLayout fixed-footer>
+    <page-header title="高级表单" subtitle="表单的高级用法" />
+    <regular-layout fixed-footer>
       <BasicForm />
       <SubForm />
-    </RegularLayout>
-    <FixedFooter>
+    </regular-layout>
+    <fixed-footer>
       <a-button type="primary">提交</a-button>
       <a-button>取消</a-button>
-    </FixedFooter>
+    </fixed-footer>
   </div>
 </template>
 

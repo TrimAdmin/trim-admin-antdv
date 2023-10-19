@@ -5,6 +5,10 @@
     "hide": "隐藏",
     "show": "显示"
   },
+  "title": {
+    "warning": "警告",
+    "info": "提示"
+  },
   "config": {
     "title": "全局设置",
     "colorScheme": "配色方案",

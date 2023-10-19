@@ -14,7 +14,7 @@ import LatestEmployeeChange from './components/latest-employee-change.vue'
 <template>
   <div>
     <!-- 参考UI图：https://js.design/f/WwydKS?p=ynwGd8QEf8 -->
-    <RegularLayout no-background class="content">
+    <regular-layout no-background class="content">
       <WeeklyData style="grid-area: 1/1/3/2" />
       <TodayTodo style="grid-area: 1/2/3/3" />
       <Info style="grid-area: 1/3/2/4" />
@@ -25,7 +25,7 @@ import LatestEmployeeChange from './components/latest-employee-change.vue'
       <Notice style="grid-area: 4/3/5/4" />
       <EmployeeChange style="grid-area: 5/1/7/3" />
       <LatestEmployeeChange style="grid-area: 5/3/7/4" />
-    </RegularLayout>
+    </regular-layout>
   </div>
 </template>
 

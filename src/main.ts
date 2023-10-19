@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import './style/index.scss'
 import 'ant-design-vue/dist/reset.css'
+import 'overlayscrollbars/overlayscrollbars.css'
 import 'animate.css'
 import App from './App.vue'
 import router from '@/router'

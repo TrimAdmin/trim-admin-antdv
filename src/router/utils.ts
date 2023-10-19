@@ -1,7 +1,7 @@
 import { RouteParamsRaw, RouteRecordName, RouteRecordRaw, RouterOptions } from 'vue-router'
 import router from '@/router/index.ts'
 import { Key } from 'ant-design-vue/es/_util/type'
-import { useIcon } from '@/hooks'
+import { useI18nHook, useIcon, useMessage } from '@/hooks'
 import { sortBy } from 'lodash'
 import { useCommonStoreHook } from '@/store'
 
@@ -98,8 +98,18 @@ export function handleJumpTo(name: RouteRecordName, params?: RouteParamsRaw) {
   })
 }
 
-export function handleCloseTag(name: RouteRecordName, message?: string) {
-  if (message) {
+export function handleCloseTag(name: string, msg?: string) {
+  const { t } = useI18nHook()
+  if (msg) {
+    useMessage().createConfirm({
+      iconType: 'warning',
+      title: t('title.warning'),
+      content: msg,
+      onOk: () => {
+        useCommonStoreHook().removeTab(name)
+      }
+    })
+  } else {
+    useCommonStoreHook().removeTab(name)
   }
-  useCommonStoreHook().removeTab(name.toString())
 }

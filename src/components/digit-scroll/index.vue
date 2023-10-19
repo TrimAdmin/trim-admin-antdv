@@ -26,25 +26,39 @@ const props = defineProps<{
 }>()
 
 const digitRef = shallowRef()
+const odometer = ref()
 
 onMounted(() => {
-  // digitRef.value.style.opacity = 0
-  const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-    const odometer = new Odometer({
-      el: digitRef.value,
-      value: props.startValue,
-      format: props.format,
-      duration: props.duration
+  // 初始化odometer实例
+  odometer.value = new Odometer({
+    el: digitRef.value,
+    value: props.startValue,
+    format: props.format,
+    duration: props.duration
+  })
+  nextTick(() => {
+    // 创建交叉监听实例
+    // digitRef.value.style.opacity = 0
+    const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+      if (!odometer.value) {
+        return
+      }
+      const entry = entries[0]
+      if (!odometer.value) {
+        return
+      }
+      if (entry.isIntersecting) {
+        odometer.value.update(props.value)
+      }
+      if (!entry.isIntersecting && props.repeat) {
+        odometer.value.update(0)
+      }
     })
-    const entry = entries[0]
-    if (entry.isIntersecting) {
-      odometer.update(props.value)
-    }
-    if (!entry.isIntersecting && props.repeat) {
-      odometer.update(0)
+    // 监听odometer是否进入视图
+    if (digitRef.value) {
+      observer.observe(digitRef.value)
     }
   })
-  observer.observe(digitRef.value)
 })
 </script>
 
