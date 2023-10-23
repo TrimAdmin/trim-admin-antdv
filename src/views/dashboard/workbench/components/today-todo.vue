@@ -43,7 +43,7 @@ const todos = ref<
       <div class="text-[16px] font-bold">今日待办</div>
       <div class="flex items-center text-[12px] text-[#202020aa] dark:text-gray-200 cursor-pointer">
         全部待办
-        <Icon icon="ant-design:right-outlined" class="ml-1" />
+        <Icon class="ml-1" icon="ant-design:right-outlined" />
       </div>
     </div>
     <a-timeline>
@@ -56,4 +56,4 @@ const todos = ref<
   </a-card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

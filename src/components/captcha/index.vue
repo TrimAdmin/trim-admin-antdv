@@ -79,7 +79,7 @@ defineExpose({
 </script>
 
 <template>
-  <canvas ref="canvasRef" :width="width" :height="height" class="cursor-pointer" @click="draw" />
+  <canvas ref="canvasRef" :height="height" :width="width" class="cursor-pointer" @click="draw" />
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

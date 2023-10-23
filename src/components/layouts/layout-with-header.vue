@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { headerHeightWithTabs, siderWidth } from '@/hooks'
 
 withDefaults(
@@ -18,7 +18,7 @@ withDefaults(
 )
 
 function getBackTopEl() {
-  return document.getElementById('layout-with-header-back-top')
+  return document.getElementById('layout-with-header-back-top')!
 }
 </script>
 
@@ -45,14 +45,15 @@ function getBackTopEl() {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .layout-with-header {
   --header-height: v-bind(headerHeightWithTabs);
   --sider-width: v-bind(siderWidth);
+
   position: relative;
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
   height: 100%;
 
   .content {

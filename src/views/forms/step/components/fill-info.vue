@@ -33,17 +33,21 @@ defineExpose({
 </script>
 
 <template>
-  <a-form ref="formRef" :model="formData" :label-col="{ span: 6 }" :wrapper-col="{ span: 12 }" :rules="formRules">
+  <a-form ref="formRef" :label-col="{ span: 6 }" :model="formData" :rules="formRules" :wrapper-col="{ span: 12 }">
     <a-form-item label="付款账户" name="payAccountId">
       <a-select v-model:value="formData.payAccountId">
-        <a-select-option v-for="item in payAccountList" :key="item.value" :value="item.value">{{ item.label }}</a-select-option>
+        <a-select-option v-for="item in payAccountList" :key="item.value" :value="item.value"
+          >{{ item.label }}
+        </a-select-option>
       </a-select>
     </a-form-item>
     <a-form-item label="收款账户" name="receiveAccount">
       <a-input v-model:value="formData.receiveAccount">
         <template #addonBefore>
           <a-select v-model:value="formData.receiveAccountType" class="w-[90px]">
-            <a-select-option v-for="item in receiveAccountTypeList" :key="item.value" :value="item.value">{{ item.label }}</a-select-option>
+            <a-select-option v-for="item in receiveAccountTypeList" :key="item.value" :value="item.value"
+              >{{ item.label }}
+            </a-select-option>
           </a-select>
         </template>
       </a-input>
@@ -63,4 +67,4 @@ defineExpose({
   </a-form>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

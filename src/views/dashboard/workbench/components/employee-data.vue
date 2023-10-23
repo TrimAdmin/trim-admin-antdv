@@ -7,7 +7,7 @@ import Card from './card.vue'
     <template #right>
       <div class="flex items-center text-[12px] text-[#202020aa] dark:text-gray-200 cursor-pointer">
         刷新
-        <Icon icon="ant-design:sync-outlined" class="ml-1" />
+        <Icon class="ml-1" icon="ant-design:sync-outlined" />
       </div>
     </template>
     <div class="flex-bc">
@@ -55,9 +55,9 @@ import Card from './card.vue'
   </Card>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .border-x {
-  border-left: 1px solid rgba(100, 100, 100, 0.2);
-  border-right: 1px solid rgba(100, 100, 100, 0.2);
+  border-right: 1px solid rgb(100 100 100 / 20%);
+  border-left: 1px solid rgb(100 100 100 / 20%);
 }
 </style>

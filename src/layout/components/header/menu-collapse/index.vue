@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useConfigStoreHook } from '@/store'
 
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
@@ -14,8 +14,20 @@ function handleCollapse() {
       <template #title>
         {{ collapsed ? '展开菜单' : '折叠菜单' }}
       </template>
-      <Icon v-if="collapsed" :height="18" icon="ant-design:menu-unfold-outlined" class="cursor-pointer hover:text-blue-500" @click="handleCollapse" />
-      <Icon v-else :height="18" icon="ant-design:menu-fold-outlined" class="cursor-pointer hover:text-blue-500" @click="handleCollapse" />
+      <Icon
+        v-if="collapsed"
+        :height="18"
+        class="cursor-pointer hover:text-blue-500"
+        icon="ant-design:menu-unfold-outlined"
+        @click="handleCollapse"
+      />
+      <Icon
+        v-else
+        :height="18"
+        class="cursor-pointer hover:text-blue-500"
+        icon="ant-design:menu-fold-outlined"
+        @click="handleCollapse"
+      />
     </a-tooltip>
   </div>
 </template>

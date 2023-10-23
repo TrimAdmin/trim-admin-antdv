@@ -5,11 +5,18 @@ import { BarChart, LineChart, PieChart } from 'echarts/charts'
 import type {
   DatasetComponentOption,
   GridComponentOption,
+  LegendComponentOption,
   TitleComponentOption,
-  TooltipComponentOption,
-  LegendComponentOption
+  TooltipComponentOption
 } from 'echarts/components'
-import { DatasetComponent, GridComponent, TitleComponent, TooltipComponent, TransformComponent, LegendComponent } from 'echarts/components'
+import {
+  DatasetComponent,
+  GridComponent,
+  LegendComponent,
+  TitleComponent,
+  TooltipComponent,
+  TransformComponent
+} from 'echarts/components'
 import { LabelLayout, UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
 import 'echarts-liquidfill'

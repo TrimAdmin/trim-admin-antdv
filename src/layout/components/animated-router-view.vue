@@ -12,13 +12,15 @@ const routeAnimateOut = computed<string>(
 )
 
 const duration = computed<string>(
-  () => routeAnimateList.filter((item) => item.value === useConfigStoreHook().config.theme.routeAnimate)[0]?.duration || '300ms'
+  () =>
+    routeAnimateList.filter((item) => item.value === useConfigStoreHook().config.theme.routeAnimate)[0]?.duration ||
+    '300ms'
 )
 </script>
 
 <template>
   <router-view v-slot="{ Component, route }">
-    <transition :name="routeAnimateIn && routeAnimateOut && 'route_animate'" mode="out-in" appear>
+    <transition :name="routeAnimateIn && routeAnimateOut && 'route-animate'" appear mode="out-in">
       <keep-alive :include="useCommonStoreHook().keepAliveList">
         <component :is="Component" :key="route.fullPath" />
       </keep-alive>
@@ -26,12 +28,12 @@ const duration = computed<string>(
   </router-view>
 </template>
 
-<style scoped lang="scss">
-.route_animate-enter-active {
+<style lang="scss" scoped>
+.route-animate-enter-active {
   animation: v-bind(routeAnimateIn) v-bind(duration);
 }
 
-.route_animate-leave-active {
+.route-animate-leave-active {
   animation: v-bind(routeAnimateOut) v-bind(duration);
 }
 </style>

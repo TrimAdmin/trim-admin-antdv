@@ -22,22 +22,34 @@ export function getCurrentThemeColor(type?: 'hex' | 'rgba', alpha: number = 1) {
 }
 
 export function setTrimConfig() {
-  useConfigStoreHook().setConfig(Object.entries(useConfigStoreHook().config).length ? useConfigStoreHook().config : trimConfig)
+  useConfigStoreHook().setConfig(
+    Object.entries(useConfigStoreHook().config).length ? useConfigStoreHook().config : trimConfig
+  )
 }
 
 // 头部高度
 export const headerHeight = computed<string | number>(() => {
-  return typeof useTrimConfig().theme.headerHeight === 'string' ? useTrimConfig().theme.headerHeight : useTrimConfig().theme.headerHeight + 'px'
+  return typeof useTrimConfig().theme.headerHeight === 'string'
+    ? useTrimConfig().theme.headerHeight
+    : useTrimConfig().theme.headerHeight + 'px'
 })
 
 // 带tabs的头部高度
 export const headerHeightWithTabs = computed<string | number>(() => {
-  if (useConfigStoreHook().config.theme.hideTabs) {
-    return typeof useTrimConfig().theme.headerHeight === 'string' ? useTrimConfig().theme.headerHeight : useTrimConfig().theme.headerHeight + 'px'
+  if (useConfigStoreHook().config.theme.tabStyle === 'hide') {
+    return typeof useTrimConfig().theme.headerHeight === 'string'
+      ? useTrimConfig().theme.headerHeight
+      : useTrimConfig().theme.headerHeight + 'px'
   } else {
     // tab栏高度42px
     return typeof useTrimConfig().theme.headerHeight === 'string'
-      ? Number(useTrimConfig().theme.headerHeight.toString().substring(0, useTrimConfig().theme.headerHeight.toString().indexOf('p'))) + 42 + 'px'
+      ? Number(
+          useTrimConfig()
+            .theme.headerHeight.toString()
+            .substring(0, useTrimConfig().theme.headerHeight.toString().indexOf('p'))
+        ) +
+          42 +
+          'px'
       : Number(useTrimConfig().theme.headerHeight) + 42 + 'px'
   }
 })

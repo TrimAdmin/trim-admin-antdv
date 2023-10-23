@@ -27,11 +27,15 @@ const noticeList = ref<
     <template #right>
       <div class="flex items-center text-[12px] text-[#202020aa] dark:text-gray-200 cursor-pointer">
         查看全部
-        <Icon icon="ant-design:right-outlined" class="ml-1" />
+        <Icon class="ml-1" icon="ant-design:right-outlined" />
       </div>
     </template>
     <div>
-      <div v-for="(item, index) in noticeList" :key="index" class="my-2 overflow-hidden text-ellipsis whitespace-nowrap max-w-[99%]">
+      <div
+        v-for="(item, index) in noticeList"
+        :key="index"
+        class="my-2 overflow-hidden text-ellipsis whitespace-nowrap max-w-[99%]"
+      >
         <span class="font-bold mr-2">{{ item.time }}</span>
         <span>{{ item.title }}</span>
       </div>
@@ -39,4 +43,4 @@ const noticeList = ref<
   </Card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import TeamUp from '@/assets/svg/home_team_up.svg'
 import Login from './components/login.vue'
 import Register from '@/views/common/login/components/register.vue'
@@ -19,7 +19,7 @@ function handleLogin() {
   <div class="h-screen w-screen flex justify-center">
     <div class="banner flex-1 flex items-center justify-around flex-col bg-blue-900">
       <div class="text-left w-2/3">
-        <img src="@/assets/images/text_logo.png" alt="logo" class="mb-6 h-[80px]" />
+        <img alt="logo" class="mb-6 h-[80px]" src="@/assets/images/text_logo.png" />
         <h1 class="text-white text-[36px] font-bold">{{ t('message.welcome') }}</h1>
       </div>
       <TeamUp />
@@ -32,4 +32,4 @@ function handleLogin() {
   <SwitchLanguage class="absolute right-[16px] top-[16px]" />
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

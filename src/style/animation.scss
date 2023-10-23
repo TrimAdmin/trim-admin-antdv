@@ -1,31 +1,51 @@
 // 向右淡入滑动
-@keyframes slideInRightFade {
+@keyframes slide-in-right-fade {
   0% {
     transform: translateX(-50px);
     opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
 // 向右淡出滑动
-@keyframes slideOutLeftFade {
+@keyframes slide-out-left-fade {
   100% {
     transform: translateX(50px);
     opacity: 0;
+  }
+
+  0% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
 // 向左淡入滑动
-@keyframes slideInLeftFade {
+@keyframes slide-in-left-fade {
   0% {
     transform: translateX(50px);
     opacity: 0;
   }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 // 向左淡出滑动
-@keyframes slideOutRightFade {
+@keyframes slide-out-right-fade {
   100% {
     transform: translateX(-50px);
     opacity: 0;
+  }
+
+  0% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

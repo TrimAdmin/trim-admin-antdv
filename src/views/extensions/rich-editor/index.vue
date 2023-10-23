@@ -4,7 +4,7 @@ const value = ref<string>('<p>这是一段测试文字</p><p><b>这是一段测�
 
 <template>
   <div>
-    <page-header title="富文本编辑器" subtitle="基于TinyMCE6封装的富文本编辑器组件" />
+    <page-header subtitle="基于TinyMCE6封装的富文本编辑器组件" title="富文本编辑器" />
     <regular-layout>
       <rich-editor v-model="value" placeholder="请输入详情" />
       <div class="mt-4">
@@ -15,4 +15,4 @@ const value = ref<string>('<p>这是一段测试文字</p><p><b>这是一段测�
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

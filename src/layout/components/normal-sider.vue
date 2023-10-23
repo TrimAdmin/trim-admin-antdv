@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { headerHeight } from '@/hooks'
 import { Key } from 'ant-design-vue/es/_util/type'
 import { RouteRecordName } from 'vue-router'
@@ -18,7 +18,7 @@ const openKeys = computed<Array<Key>>(() => useCommonStoreHook().currentOpenMenu
 // 侧边栏logo
 const hideLogo = computed<boolean>(() => useConfigStoreHook().config.theme.hideLogo)
 // 侧边栏暗色模式
-const siderDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.siderDarkMode)
+const menuDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.menuDarkMode)
 
 // 由于selected-keys是v-model 故没有直接监听defaultSelect 改为监听路由位置
 watch(
@@ -37,23 +37,25 @@ function handleMenuChange(key: RouteRecordName) {
 <template>
   <div
     v-if="!hideLogo"
-    :class="`sider-title ${siderDarkMode ? 'bg-[#001529] text-white' : ''} dark:text-white font-bold w-full flex items-center justify-center px-2`"
+    :class="`sider-title ${
+      menuDarkMode ? 'bg-[#001529] text-white' : ''
+    } dark:text-white font-bold w-full flex items-center justify-center px-2`"
   >
-    <img src="@/assets/images/logo.png" alt="logo" class="h-4/5 inline-block" />
+    <img alt="logo" class="h-4/5 inline-block" src="@/assets/images/logo.png" />
     <span v-if="!collapsed" class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2">{{ title }}</span>
   </div>
   <a-menu
+    :items="menus"
     :open-keys="openKeys"
     :selected-keys="defaultSelect"
+    :theme="menuDarkMode ? 'dark' : 'light'"
     mode="inline"
-    :theme="siderDarkMode ? 'dark' : 'light'"
-    :items="menus"
     @click="({ key }) => handleMenuChange(key as RouteRecordName)"
   ></a-menu>
   <div class="sider-placeholder"></div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .sider-title {
   height: v-bind(headerHeight);
   line-height: v-bind(headerHeight);

@@ -34,18 +34,6 @@ const useConfigStore = defineStore('configStore', {
     setMenuCollapsed(collapsed: boolean) {
       this.menuCollapsed = collapsed
     },
-    // 隐藏标签页
-    setHideTabs(hide: boolean) {
-      this.config.theme.hideTabs = hide
-    },
-    // 隐藏logo
-    setHideLogo(hide: boolean) {
-      this.config.theme.hideLogo = hide
-    },
-    // 隐藏面包屑
-    setHideBreadcrumb(hide: boolean) {
-      this.config.theme.hideBreadcrumb = hide
-    },
     // 改变配色方案
     setColorScheme(colorScheme: (typeof colorSchemeList)[number]['scheme']) {
       this.config.theme.colorScheme = colorScheme
@@ -61,9 +49,6 @@ const useConfigStore = defineStore('configStore', {
     // 更新配置 更新单个配置时请使用上面的方法单独更新
     setConfig(config: ITrimConfig) {
       this.config = config
-    },
-    setSiderDarkMode(dark: boolean) {
-      this.config.theme.siderDarkMode = dark
     }
   },
   persist: [

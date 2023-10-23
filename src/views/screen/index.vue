@@ -6,4 +6,4 @@ import { handleJumpTo } from '@/router/utils.ts'
   <a-button type="primary" @click="handleJumpTo('home')">返回首页</a-button>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

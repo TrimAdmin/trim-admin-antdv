@@ -51,7 +51,16 @@ const dataList = ref<Array<{ name: string; value: number }>>([
   }
 ])
 const weeklyPieChartRef = shallowRef<HTMLDivElement>()
-const colorList = ref<Array<string>>(['#186df5', '#47cade', '#9c8ef4', '#ffc368', '#ff6969', '#75b6ff', '#ff8a4a', '#32dbb7'])
+const colorList = ref<Array<string>>([
+  '#186df5',
+  '#47cade',
+  '#9c8ef4',
+  '#ffc368',
+  '#ff6969',
+  '#75b6ff',
+  '#ff8a4a',
+  '#32dbb7'
+])
 const chart = ref()
 const showDigit = ref<boolean>(true)
 const totalCount = ref<number>(2640)
@@ -109,12 +118,14 @@ function handleRandomData() {
     <div class="flex-bc mb-[16px]">
       <div class="text-[16px] font-bold">本周数据</div>
       <a-select v-model:value="type" @change="handleRandomData">
-        <a-select-option v-for="item in typeList" :key="item.value" :value="item.value">{{ item.label }} </a-select-option>
+        <a-select-option v-for="item in typeList" :key="item.value" :value="item.value"
+          >{{ item.label }}
+        </a-select-option>
       </a-select>
     </div>
     <div class="flex items-center text-[14px] text-gray-500 dark:text-gray-200">
       本周考勤
-      <Icon icon="ant-design:right-outlined" class="ml-1" />
+      <Icon class="ml-1" icon="ant-design:right-outlined" />
     </div>
     <div class="flex items-center mb-[16px]">
       <DigitScroll v-if="showDigit" :value="totalCount" class="text-[32px] font-bold mr-2 h-[48px]" />
@@ -127,7 +138,7 @@ function handleRandomData() {
       <div ref="weeklyPieChartRef" class="h-[85px] w-[85px]" />
       <div class="flex flex-wrap gap-y-2">
         <div v-for="(item, index) in dataList" :key="index" class="flex w-1/4">
-          <div class="w-[4px] h-[4px] mt-[8px] mr-2 rounded" :style="{ backgroundColor: colorList[index] }"></div>
+          <div :style="{ backgroundColor: colorList[index] }" class="w-[4px] h-[4px] mt-[8px] mr-2 rounded"></div>
           <div>
             <div class="text-[12px] text-gray-500 dark:text-gray-200">{{ item.name }}</div>
             <div class="text-[#202020] dark:text-gray-200 font-bold text-[16px] min-h-[20px]">
@@ -141,7 +152,7 @@ function handleRandomData() {
       <div class="w-1/3">
         <div class="flex items-center text-[14px] text-gray-500 dark:text-gray-200">
           本周审批
-          <Icon icon="ant-design:right-outlined" class="ml-1" />
+          <Icon class="ml-1" icon="ant-design:right-outlined" />
         </div>
         <div class="font-bold text-[22px] my-2">23</div>
         <div class="text-gray-500 dark:text-gray-200">
@@ -151,7 +162,7 @@ function handleRandomData() {
       <div class="w-1/3">
         <div class="flex items-center text-[14px] text-gray-500 dark:text-gray-200">
           本周报销
-          <Icon icon="ant-design:right-outlined" class="ml-1" />
+          <Icon class="ml-1" icon="ant-design:right-outlined" />
         </div>
         <div class="font-bold text-[22px] my-2">14</div>
         <div class="text-gray-500 dark:text-gray-200">
@@ -161,7 +172,7 @@ function handleRandomData() {
       <div class="w-1/3">
         <div class="flex items-center text-[14px] text-gray-500 dark:text-gray-200">
           本周人事
-          <Icon icon="ant-design:right-outlined" class="ml-1" />
+          <Icon class="ml-1" icon="ant-design:right-outlined" />
         </div>
         <div class="font-bold text-[22px] my-2">17</div>
         <div class="text-gray-500 dark:text-gray-200">
@@ -172,8 +183,8 @@ function handleRandomData() {
   </a-card>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .weekly-info {
-  border-top: 1px solid rgba(100, 100, 100, 0.1);
+  border-top: 1px solid rgb(100 100 100 / 10%);
 }
 </style>

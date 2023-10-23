@@ -83,15 +83,26 @@ const dataSourceList = ref<
   }>
 >([])
 
-const nameList = ['Picasso', 'Klimt', 'Degas', 'Caravaggio', 'Kahlo', 'Munch', 'Renoir', 'Kandinsky', 'Joan Miro', 'Rothko']
+const nameList = [
+  'Picasso',
+  'Klimt',
+  'Degas',
+  'Caravaggio',
+  'Kahlo',
+  'Munch',
+  'Renoir',
+  'Kandinsky',
+  'Joan Miro',
+  'Rothko'
+]
 
 function mockDataSource() {
   for (let i = 0; i < 50; i++) {
     dataSourceList.value.push({
       name: nameList[i % 4],
-      ip: `${Math.round(Math.random() * 100) + 1}.${Math.round(Math.random() * 100) + 1}.${Math.round(Math.random() * 100) + 1}.${
+      ip: `${Math.round(Math.random() * 100) + 1}.${Math.round(Math.random() * 100) + 1}.${
         Math.round(Math.random() * 100) + 1
-      }`,
+      }.${Math.round(Math.random() * 100) + 1}`,
       address: `翻斗花园${i + 1}幢`
     })
   }
@@ -131,8 +142,8 @@ const columnList = [
         <div ref="aveChartRef" class="w-full h-16" />
       </div>
     </div>
-    <a-table size="small" :pagination="{ pageSize: 5 }" :data-source="dataSourceList" :columns="columnList" />
+    <a-table :columns="columnList" :data-source="dataSourceList" :pagination="{ pageSize: 5 }" size="small" />
   </a-card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

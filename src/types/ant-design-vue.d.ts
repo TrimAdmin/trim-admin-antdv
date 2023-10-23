@@ -1,4 +1,5 @@
 import { Key } from 'ant-design-vue/es/_util/type'
+
 declare module 'ant-design-vue' {
   export type ItemType = {
     danger?: boolean

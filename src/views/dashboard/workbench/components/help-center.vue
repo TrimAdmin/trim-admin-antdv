@@ -17,14 +17,14 @@ const helpList = ref<Array<string>>([
     <template #right>
       <div class="flex items-center text-[12px] text-[#202020aa] dark:text-gray-200 cursor-pointer">
         查看全部
-        <Icon icon="ant-design:right-outlined" class="ml-1" />
+        <Icon class="ml-1" icon="ant-design:right-outlined" />
       </div>
     </template>
     <a-radio-group
       v-model:value="currentType"
-      option-type="button"
       :options="typeList"
       class="flex-c whitespace-nowrap overflow-hidden text-ellipsis mb-4"
+      option-type="button"
     />
     <div
       v-for="(item, index) in helpList"
@@ -36,7 +36,7 @@ const helpList = ref<Array<string>>([
   </Card>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .help-item {
   border-left: 1px solid #186df5;
 }

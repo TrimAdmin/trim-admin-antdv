@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useIcon } from '@/hooks'
 import { message } from '@/utils'
 
@@ -25,8 +25,8 @@ function handleMenuClick(key: string) {
           <a-divider orientation="left" plain>幽灵按钮</a-divider>
           <a-space class="bg-gray-300 px-4 py-2 w-full">
             <a-button ghost>默认按钮</a-button>
-            <a-button type="primary" ghost>主要按钮</a-button>
-            <a-button type="dashed" ghost>虚线按钮</a-button>
+            <a-button ghost type="primary">主要按钮</a-button>
+            <a-button ghost type="dashed">虚线按钮</a-button>
             <a-button danger ghost>危险按钮</a-button>
           </a-space>
         </a-col>
@@ -34,17 +34,17 @@ function handleMenuClick(key: string) {
           <a-divider orientation="left" plain>危险按钮</a-divider>
           <a-space class="px-4 py-2 w-full">
             <a-button danger>默认按钮</a-button>
-            <a-button type="primary" danger>主要按钮</a-button>
-            <a-button type="dashed" danger>虚线按钮</a-button>
-            <a-button type="text" danger>文本按钮</a-button>
-            <a-button type="link" danger>链接按钮</a-button>
+            <a-button danger type="primary">主要按钮</a-button>
+            <a-button danger type="dashed">虚线按钮</a-button>
+            <a-button danger type="text">文本按钮</a-button>
+            <a-button danger type="link">链接按钮</a-button>
           </a-space>
         </a-col>
         <a-col :span="12">
           <a-divider orientation="left" plain>图标按钮</a-divider>
           <a-space class="px-4 py-2 w-full">
-            <a-button :icon="useIcon('ant-design:search-outlined')" type="primary" shape="circle" />
-            <a-button :icon="useIcon('ant-design:search-outlined')" type="dashed" shape="circle" />
+            <a-button :icon="useIcon('ant-design:search-outlined')" shape="circle" type="primary" />
+            <a-button :icon="useIcon('ant-design:search-outlined')" shape="circle" type="dashed" />
             <a-button :icon="useIcon('ant-design:link-outlined')" shape="circle" />
             <a-button :icon="useIcon('ant-design:close-outlined')" danger shape="circle" />
             <a-button
@@ -66,8 +66,8 @@ function handleMenuClick(key: string) {
                   }
                 })
               "
-              type="link"
               shape="circle"
+              type="link"
             >
               跳转
             </a-button>
@@ -77,7 +77,7 @@ function handleMenuClick(key: string) {
           <a-divider orientation="left" plain>按钮组合</a-divider>
           <a-space class="px-4 py-2 w-full">
             <a-button type="primary">新增</a-button>
-            <a-button type="primary" danger>删除</a-button>
+            <a-button danger type="primary">删除</a-button>
             <a-dropdown>
               <template #overlay>
                 <a-menu @click="({ key }) => handleMenuClick(key as string)">
@@ -98,4 +98,4 @@ function handleMenuClick(key: string) {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

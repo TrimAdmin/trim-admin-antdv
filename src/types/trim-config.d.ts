@@ -1,4 +1,4 @@
-import { colorSchemeList, i18nList, layoutList, routeAnimateList } from '@/constants'
+import { colorSchemeList, i18nList, layoutList, routeAnimateList, tabStyleList } from '@/constants'
 
 interface ITrimConfig {
   // 主题
@@ -23,14 +23,14 @@ interface ITrimConfigTheme {
   siderWidth: string | number
   // 侧边栏折叠宽度
   siderWidthCollapse: string | number
-  // 侧边栏暗色模式
-  siderDarkMode: boolean
+  // 菜单暗色模式
+  menuDarkMode: boolean
   // 布局类型
   layout: (typeof layoutList)[number]['value']
   // 配色方案
   colorScheme: (typeof colorSchemeList)[number]['scheme']
-  // 隐藏标签
-  hideTabs: boolean
+  // 标签样式
+  tabStyle: (typeof tabStyleList)[number]['value']
   // 隐藏logo
   hideLogo: boolean
   // 隐藏面包屑

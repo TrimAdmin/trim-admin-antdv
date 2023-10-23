@@ -1,15 +1,26 @@
 <script lang="ts" setup>
-import { ItemType, Modal } from 'ant-design-vue'
 import { headerHeight, useIcon } from '@/hooks'
-import { Key } from 'ant-design-vue/lib/_util/type'
-import { useConfigStoreHook, useUserStoreHook } from '@/store'
-import MenuCollapse from './header/menu-collapse/index.vue'
-import GlobalSearch from './header/global-search/index.vue'
-import Refresh from './header/refresh/index.vue'
-import FullScreen from './header/full-screen/index.vue'
-import ToggleTheme from './header/toggle-theme/index.vue'
+import { RouteRecordName } from 'vue-router'
+import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
+import { ItemType, Modal } from 'ant-design-vue'
+import { Key } from 'ant-design-vue/es/_util/type'
+import Refresh from '@/layout/components/header/refresh/index.vue'
+import FullScreen from '@/layout/components/header/full-screen/index.vue'
+import ToggleTheme from '@/layout/components/header/toggle-theme/index.vue'
+import GlobalSearch from '@/layout/components/header/global-search/index.vue'
 
 const router = useRouter()
+
+// 侧边栏logo
+const hideLogo = computed<boolean>(() => useConfigStoreHook().config.theme.hideLogo)
+// 系统标题
+const title = computed<string>(() => import.meta.env.VITE_DOCUMENT_NAME)
+// 菜单项
+const menus = computed<Array<ItemType>>(() => useUserStoreHook().menuList)
+// 默认选中的菜单
+const defaultSelect = computed<Array<Key>>(() => [useCommonStoreHook().currentRouteName] as Array<Key>)
+// 侧边栏暗色模式
+const menuDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.menuDarkMode)
 const hideBreadcrumb = computed<boolean>(() => useConfigStoreHook().config.theme.hideBreadcrumb)
 const username = computed<string>(() => useUserStoreHook().userInfo.username)
 const avatar = computed<string>(() => useUserStoreHook().userInfo.avatar || '')
@@ -61,18 +72,39 @@ function handleDropdown(key: Key) {
       break
   }
 }
+
+// 由于selected-keys是v-model 故没有直接监听defaultSelect 改为监听路由位置
+watch(
+  () => router.currentRoute.value.name,
+  (newVal) => {
+    useCommonStoreHook().setCurrentRouteName(newVal as string)
+  }
+)
+
+// 菜单变化时
+function handleMenuChange(key: RouteRecordName) {
+  router.push({ name: key })
+}
 </script>
 
 <template>
-  <div class="normal-header h-full flex justify-between items-center px-4">
-    <div class="flex-c h-full">
-      <!-- 菜单折叠按钮 -->
-      <MenuCollapse />
-      <!-- 面包屑 -->
-      <Breadcrumbs v-if="!hideBreadcrumb" class="ml-2" />
+  <div :class="`top-mix-header flex-bc px-4 ${menuDarkMode ? 'bg-[#001529] text-white' : ''}`">
+    <div
+      v-if="!hideLogo"
+      :class="`sider-title dark:text-white font-bold h-full flex items-center justify-center px-2 w-[220px]`"
+    >
+      <img alt="logo" class="h-4/5 inline-block" src="@/assets/images/logo.png" />
+      <span class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2">{{ title }}</span>
     </div>
+    <a-menu
+      :items="menus"
+      :selected-keys="defaultSelect"
+      :theme="menuDarkMode ? 'dark' : 'light'"
+      mode="horizontal"
+      @click="({ key }) => handleMenuChange(key as RouteRecordName)"
+    ></a-menu>
     <!-- 右侧菜单 -->
-    <div class="flex items-center h-full">
+    <div class="flex items-center h-full w-[300px]">
       <!-- 搜索 -->
       <GlobalSearch />
       <!-- 切换语言 -->
@@ -107,9 +139,31 @@ function handleDropdown(key: Key) {
   </div>
 </template>
 
-<style lang="scss" scoped>
-.normal-header {
+<style scoped lang="scss">
+.top-mix-header {
   height: v-bind(headerHeight);
   outline: 1px solid rgb(100 100 100 / 10%);
+}
+
+:deep(.ant-menu) {
+  max-width: calc(100% - 300px - 220px);
+  height: v-bind(headerHeight);
+  line-height: v-bind(headerHeight);
+  border: none;
+  @apply dark:bg-[#001529];
+
+  .ant-menu-item {
+    height: 100%;
+    line-height: v-bind(headerHeight);
+  }
+
+  .ant-menu-submenu {
+    height: 100%;
+
+    .ant-menu-submenu-title {
+      height: 100%;
+      line-height: v-bind(headerHeight);
+    }
+  }
 }
 </style>

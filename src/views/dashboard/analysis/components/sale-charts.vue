@@ -106,7 +106,7 @@ onMounted(() => {
       </a-tabs>
     </template>
     <template #extra>
-      <a-radio-group v-model:value="currentOption" class="mr-4" option-type="button" :options="optionList" />
+      <a-radio-group v-model:value="currentOption" :options="optionList" class="mr-4" option-type="button" />
       <a-range-picker v-model:value="timeRange" />
     </template>
     <div v-if="activeKey === 1" class="flex">
@@ -148,4 +148,4 @@ onMounted(() => {
   </a-card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

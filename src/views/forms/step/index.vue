@@ -47,7 +47,7 @@ function handleValidate() {
 
 <template>
   <div>
-    <page-header title="分步表单" subtitle="用于较为复杂的表单场景" />
+    <page-header subtitle="用于较为复杂的表单场景" title="分步表单" />
     <regular-layout>
       <a-row>
         <a-col :offset="4" :span="16">
@@ -75,8 +75,8 @@ function handleValidate() {
                   current = 0
                 }
               "
-              >再付一笔</a-button
-            >
+              >再付一笔
+            </a-button>
             <a-button
               v-if="current === 1"
               @click="
@@ -93,4 +93,4 @@ function handleValidate() {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

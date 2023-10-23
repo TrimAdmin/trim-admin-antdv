@@ -68,7 +68,11 @@ export function getParentRoutes(value: string) {
   const routes = router.options.routes
 
   // 深度遍历
-  function dfs(routes: ReadonlyArray<RouteRecordRaw>, value: string, parents: Array<RouteRecordRaw>): Array<RouteRecordRaw> {
+  function dfs(
+    routes: ReadonlyArray<RouteRecordRaw>,
+    value: string,
+    parents: Array<RouteRecordRaw>
+  ): Array<RouteRecordRaw> {
     for (let i = 0; i < routes.length; i++) {
       const item = routes[i]
       // 返回父级

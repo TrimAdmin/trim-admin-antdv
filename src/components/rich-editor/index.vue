@@ -22,10 +22,11 @@ const init = {
   language: i18n.value,
   readonly: props.readonly,
   // 插件
-  plugins: 'quickbars insertdatetime pagebreak autolink link image media lists advlist charmap preview fullscreen wordcount',
+  plugins:
+    'quickbars insertdatetime pagebreak autolink link image media lists advlist charmap preview fullscreen wordcount',
   // 工具栏
   toolbar:
-    'undo redo | styles | bold italic underline | blocks | alignleft aligncenter alignright | insertdatetime pagebreak quicktable | link image media | charmap | preview fullscreen',
+    'undo redo | styles | bold italic underline | blocks | alignleft aligncenter alignright | insertdatetime pagebreak quicktable | link image media | charmap | preview',
   // 选中后的工具栏
   quickbars_selection_toolbar: 'bold italic underline | blocks | quicklink blockquote',
   // 图片上传路径
@@ -52,4 +53,4 @@ watch(
   <Editor v-model="value" :init="init" />
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

@@ -66,10 +66,10 @@ onMounted(() => {
   <div class="flex items-center">
     {{ prefix }}
     <slot name="prefix" />
-    <span ref="digitRef" :style="valueStyle" :class="valueClass" />
+    <span ref="digitRef" :class="valueClass" :style="valueStyle" />
     {{ suffix }}
     <slot name="suffix" />
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

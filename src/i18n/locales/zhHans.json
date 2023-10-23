@@ -13,10 +13,10 @@
     "title": "全局设置",
     "colorScheme": "配色方案",
     "darkMode": "颜色模式",
-    "siderDarkMode": "侧边栏颜色模式",
+    "menuDarkMode": "菜单颜色模式",
     "layout": "页面布局",
     "view": "页面显示",
-    "hideTabs": "隐藏标签页",
+    "tabStyle": "标签页样式",
     "siderLogo": "侧边栏Logo",
     "hideBreadcrumb": "隐藏面包屑",
     "routerAnimate": "路由动画"
@@ -65,7 +65,7 @@
       "home": "扩展组件",
       "rich-editor": "富文本编辑器",
       "digit-scroll": "滚动数字",
-      "vxe-table": "vxe-table"
+      "vxe-table": "VXE Table"
     },
     "forms": {
       "home": "表单页",

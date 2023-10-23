@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useUserStoreHook } from '@/store'
 import { cryptoMD5, message } from '@/utils'
 import { toUpper } from 'lodash'
@@ -47,15 +47,27 @@ onMounted(() => {
   <div class="w-[500px] min-w-[500px] mx-auto relative">
     <a-typography-title :level="2">{{ t('message.login') }}</a-typography-title>
     <a-form ref="loginFormRef" :model="loginFormModel">
-      <a-form-item name="username" :rules="loginFormRules.username">
-        <a-input v-model:value="loginFormModel.username" :placeholder="t('message.username-placeholder')" size="large" />
+      <a-form-item :rules="loginFormRules.username" name="username">
+        <a-input
+          v-model:value="loginFormModel.username"
+          :placeholder="t('message.username-placeholder')"
+          size="large"
+        />
       </a-form-item>
-      <a-form-item name="password" :rules="loginFormRules.password">
-        <a-input-password v-model:value="loginFormModel.password" :placeholder="t('message.password-placeholder')" size="large" />
+      <a-form-item :rules="loginFormRules.password" name="password">
+        <a-input-password
+          v-model:value="loginFormModel.password"
+          :placeholder="t('message.password-placeholder')"
+          size="large"
+        />
       </a-form-item>
-      <a-form-item name="password" :rules="loginFormRules.captcha">
+      <a-form-item :rules="loginFormRules.captcha" name="password">
         <div class="flex">
-          <a-input v-model:value="loginFormModel.captcha" :placeholder="t('message.captcha-placeholder')" size="large" />
+          <a-input
+            v-model:value="loginFormModel.captcha"
+            :placeholder="t('message.captcha-placeholder')"
+            size="large"
+          />
           <Captcha ref="captchaRef" v-model="captcha" />
         </div>
       </a-form-item>
@@ -66,7 +78,7 @@ onMounted(() => {
         </div>
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" block size="large" @click="handleLogin" @keyup.enter="handleLogin">
+        <a-button block size="large" type="primary" @click="handleLogin" @keyup.enter="handleLogin">
           {{ t('message.login') }}
         </a-button>
       </a-form-item>
@@ -79,7 +91,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .a-login {
   background-color: white;
 }

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const { t } = useI18n()
 
 const registerFormRef = shallowRef()
@@ -23,20 +23,32 @@ const emit = defineEmits<{
   <div class="w-[500px] min-w-[500px] mx-auto relative">
     <a-typography-title :level="2">{{ t('message.register') }}</a-typography-title>
     <a-form ref="registerFormRef" :model="registerFormModel">
-      <a-form-item name="username" :rules="registerFormRules.username">
-        <a-input v-model:value="registerFormModel.username" :placeholder="t('message.username-placeholder')" size="large" />
+      <a-form-item :rules="registerFormRules.username" name="username">
+        <a-input
+          v-model:value="registerFormModel.username"
+          :placeholder="t('message.username-placeholder')"
+          size="large"
+        />
       </a-form-item>
-      <a-form-item name="email" :rules="registerFormRules.email">
+      <a-form-item :rules="registerFormRules.email" name="email">
         <a-input v-model:value="registerFormModel.email" :placeholder="t('message.email-placeholder')" size="large" />
       </a-form-item>
-      <a-form-item name="password" :rules="registerFormRules.password">
-        <a-input-password v-model:value="registerFormModel.password" :placeholder="t('message.password-placeholder')" size="large" />
+      <a-form-item :rules="registerFormRules.password" name="password">
+        <a-input-password
+          v-model:value="registerFormModel.password"
+          :placeholder="t('message.password-placeholder')"
+          size="large"
+        />
       </a-form-item>
-      <a-form-item name="confirmPassword" :rules="registerFormRules.confirmPassword">
-        <a-input-password v-model:value="registerFormModel.confirmPassword" :placeholder="t('message.confirm-password-placeholder')" size="large" />
+      <a-form-item :rules="registerFormRules.confirmPassword" name="confirmPassword">
+        <a-input-password
+          v-model:value="registerFormModel.confirmPassword"
+          :placeholder="t('message.confirm-password-placeholder')"
+          size="large"
+        />
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" block size="large">
+        <a-button block size="large" type="primary">
           {{ t('message.register') }}
         </a-button>
       </a-form-item>

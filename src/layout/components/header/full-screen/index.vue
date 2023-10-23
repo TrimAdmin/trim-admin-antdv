@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const isFullScreen = ref<boolean>(false)
 
 document.addEventListener('fullscreenchange', () => {
@@ -23,13 +23,19 @@ function handleExitFullScreen() {
       <Icon
         v-if="!isFullScreen"
         :height="18"
-        icon="ant-design:fullscreen-outlined"
         class="cursor-pointer hover:text-blue-500"
+        icon="ant-design:fullscreen-outlined"
         @click="handleFullScreen"
       />
-      <Icon v-else :height="18" icon="ant-design:fullscreen-exit-outlined" class="cursor-pointer hover:text-blue-500" @click="handleExitFullScreen" />
+      <Icon
+        v-else
+        :height="18"
+        class="cursor-pointer hover:text-blue-500"
+        icon="ant-design:fullscreen-exit-outlined"
+        @click="handleExitFullScreen"
+      />
     </a-tooltip>
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

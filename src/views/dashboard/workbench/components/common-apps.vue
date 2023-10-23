@@ -46,12 +46,16 @@ const appList = ref<
     <template #right>
       <div class="flex items-center text-[12px] text-[#202020aa] dark:text-gray-200 cursor-pointer">
         全部应用
-        <Icon icon="ant-design:right-outlined" class="ml-1" />
+        <Icon class="ml-1" icon="ant-design:right-outlined" />
       </div>
     </template>
     <div class="flex-ac">
       <div v-for="(item, index) in appList" :key="index" class="text-center">
-        <a :href="item.href" target="_blank" class="bg-[#E7F0FD] dark:bg-[#111A2C] p-[14px] rounded-md flex-c mb-2 cursor-pointer">
+        <a
+          :href="item.href"
+          class="bg-[#E7F0FD] dark:bg-[#111A2C] p-[14px] rounded-md flex-c mb-2 cursor-pointer"
+          target="_blank"
+        >
           <Icon :icon="item.icon" class="text-[#186DF5] text-[22px]" />
         </a>
         <div class="text-gray-500 dark:text-gray-200">{{ item.title }}</div>
@@ -60,4 +64,4 @@ const appList = ref<
   </Card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

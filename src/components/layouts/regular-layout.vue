@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { headerHeightWithTabs } from '@/hooks'
-
+<script lang="ts" setup>
 defineProps<{
   // 是否无背景
   noBackground?: boolean
@@ -17,10 +15,8 @@ defineProps<{
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .regular-layout {
-  --header-height: v-bind(headerHeightWithTabs);
-  //height: calc(100vh - var(--header-height) - 32px);
   max-width: calc(100% - 32px);
   margin: 16px;
 }

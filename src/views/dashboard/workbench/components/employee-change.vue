@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import Card from './card.vue'
 import { echarts, ECOption } from '@/plugins'
-import { useConfigStoreHook } from '@/store'
 
 const rangeList = ref<Array<string>>(['全公司', '中心', '部门'])
 const methodList = ref<Array<string>>(['按离职日期', '按部门'])
@@ -145,10 +144,10 @@ onMounted(() => {
     <template #right>
       <div class="flex items-center text-[12px] text-[#202020aa] dark:text-gray-200 cursor-pointer">
         刷新
-        <Icon icon="ant-design:sync-outlined" class="ml-1" />
+        <Icon class="ml-1" icon="ant-design:sync-outlined" />
       </div>
     </template>
-    <a-form layout="inline" class="mb-4">
+    <a-form class="mb-4" layout="inline">
       <a-form-item label="选择范围">
         <a-select v-model:value="range" class="min-w-[84px]">
           <a-select-option v-for="item in rangeList" :key="item" :value="item">{{ item }}</a-select-option>
@@ -165,17 +164,17 @@ onMounted(() => {
         <div class="text-gray-500 dark:text-gray-200 mb-1">期初人数</div>
         <DigitScroll :value="639" class="text-[24px] font-bold" />
       </div>
-      <a-divider type="vertical" class="h-[48px] mx-4" />
+      <a-divider class="h-[48px] mx-4" type="vertical" />
       <div>
         <div class="text-gray-500 dark:text-gray-200 mb-1">期末人数</div>
         <DigitScroll :value="320" class="text-[24px] font-bold" />
       </div>
-      <a-divider type="vertical" class="h-[48px] mx-4" />
+      <a-divider class="h-[48px] mx-4" type="vertical" />
       <div>
         <div class="text-gray-500 dark:text-gray-200 mb-1">新增人数</div>
         <DigitScroll :value="178" class="text-[24px] font-bold" />
       </div>
-      <a-divider type="vertical" class="h-[48px] mx-4" />
+      <a-divider class="h-[48px] mx-4" type="vertical" />
       <div>
         <div class="text-gray-500 dark:text-gray-200 mb-1">删除人数</div>
         <DigitScroll :value="245" class="text-[24px] font-bold" />
@@ -185,7 +184,7 @@ onMounted(() => {
   </Card>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 :deep(.ant-form-item .ant-form-item-label > label) {
   @apply text-gray-500;
   @apply dark:text-gray-200;

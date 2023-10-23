@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { CI18n } from '@/constants'
 import { useConfigStoreHook } from '@/store'
 import { ITrimConfig } from '@/types/trim-config'
@@ -14,9 +14,12 @@ function handleChangeI18n(key: ITrimConfig['defaultI18n']) {
 <template>
   <div class="flex items-center hover:bg-gray-50 p-2 dark:hover:bg-slate-700">
     <a-dropdown arrow placement="bottom">
-      <Icon :height="18" icon="ooui:language" class="cursor-pointer hover:text-blue-500" />
+      <Icon :height="18" class="cursor-pointer hover:text-blue-500" icon="ooui:language" />
       <template #overlay>
-        <a-menu v-model:selected-keys="selectedKeys" @click="({ key }) => handleChangeI18n(key as ITrimConfig['defaultI18n'])">
+        <a-menu
+          v-model:selected-keys="selectedKeys"
+          @click="({ key }) => handleChangeI18n(key as ITrimConfig['defaultI18n'])"
+        >
           <a-menu-item v-for="item in Object.entries(CI18n)" :key="item[0]">
             {{ item[1] }}
           </a-menu-item>
@@ -26,4 +29,4 @@ function handleChangeI18n(key: ITrimConfig['defaultI18n']) {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

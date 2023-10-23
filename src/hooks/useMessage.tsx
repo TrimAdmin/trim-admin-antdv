@@ -1,6 +1,6 @@
 import type { ModalFunc, ModalFuncProps } from 'ant-design-vue/lib/modal/Modal'
-import { Modal, message as Message, notification } from 'ant-design-vue'
-import { NotificationArgsProps, ConfigProps } from 'ant-design-vue/lib/notification'
+import { message as Message, Modal, notification } from 'ant-design-vue'
+import { ConfigProps, NotificationArgsProps } from 'ant-design-vue/lib/notification'
 import { isString } from 'ant-design-vue/es/_util/util'
 import { Icon } from '@iconify/vue'
 

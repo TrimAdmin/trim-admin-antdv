@@ -12,7 +12,7 @@ const timeSlot = computed<string>(() => getTimeSlotString())
     <div class="flex items-center mb-2">
       <a-avatar :size="48" :src="userInfo.avatar" class="mr-2">
         <template #icon>
-          <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-[4px]" inline />
+          <Icon class="cursor-pointer mt-[4px]" icon="ant-design:user-outlined" inline />
         </template>
       </a-avatar>
       <div class="flex-1">
@@ -25,8 +25,12 @@ const timeSlot = computed<string>(() => getTimeSlotString())
     <div class="flex-bc">
       <div class="flex-1">
         <div class="text-gray-500 dark:text-gray-300 text-[12px] mb-1">主管理员</div>
-        <a-avatar-group :size="36" :max-count="2">
-          <a-avatar v-for="item of 3" :key="item" :src="`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${item}`">
+        <a-avatar-group :max-count="2" :size="36">
+          <a-avatar
+            v-for="item of 3"
+            :key="item"
+            :src="`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${item}`"
+          >
             <template #icon>
               <Icon icon="ant-design:user-outlined" />
             </template>
@@ -35,8 +39,12 @@ const timeSlot = computed<string>(() => getTimeSlotString())
       </div>
       <div class="flex-1">
         <div class="text-gray-500 dark:text-gray-300 text-[12px] mb-1">管理员</div>
-        <a-avatar-group :size="36" :max-count="2">
-          <a-avatar v-for="item of 5" :key="item" :src="`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${item}`">
+        <a-avatar-group :max-count="2" :size="36">
+          <a-avatar
+            v-for="item of 5"
+            :key="item"
+            :src="`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${item}`"
+          >
             <template #icon>
               <Icon icon="ant-design:user-outlined" />
             </template>
@@ -47,4 +55,4 @@ const timeSlot = computed<string>(() => getTimeSlotString())
   </Card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

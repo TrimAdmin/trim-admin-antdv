@@ -4,7 +4,9 @@ import NormalSider from './components/normal-sider.vue'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import AnimatedRouterView from '@/layout/components/animated-router-view.vue'
 import NormalFooter from '@/layout/components/footer.vue'
-import { headerHeightWithTabs, siderWidth } from '@/hooks'
+import { scrollbarInstance } from '@/plugins'
+import { OverlayScrollbars } from 'overlayscrollbars'
+import { siderWidth, headerHeightWithTabs } from '@/hooks'
 
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
@@ -30,9 +32,9 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
       </a-layout-header>
       <div class="trim-header-placeholder" />
       <scroll-container class="trim-main-content">
-        <main>
+        <a-layout-content class="flex-auto">
           <animated-router-view v-if="!refreshing" />
-        </main>
+        </a-layout-content>
         <a-layout-footer>
           <normal-footer />
         </a-layout-footer>

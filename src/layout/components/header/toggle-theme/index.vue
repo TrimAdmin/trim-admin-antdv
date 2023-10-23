@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useConfigStoreHook } from '@/store'
 
 const isDarkTheme = computed<boolean>(() => useConfigStoreHook().darkTheme)
@@ -14,8 +14,14 @@ function toggleTheme() {
       <template #title>
         {{ isDarkTheme ? '亮色模式' : '暗色模式' }}
       </template>
-      <Icon v-if="isDarkTheme" :height="18" icon="ri:sun-line" class="cursor-pointer hover:text-blue-500" @click="toggleTheme" />
-      <Icon v-else :height="18" icon="ri:moon-line" class="cursor-pointer hover:text-blue-500" @click="toggleTheme" />
+      <Icon
+        v-if="isDarkTheme"
+        :height="18"
+        class="cursor-pointer hover:text-blue-500"
+        icon="ri:sun-line"
+        @click="toggleTheme"
+      />
+      <Icon v-else :height="18" class="cursor-pointer hover:text-blue-500" icon="ri:moon-line" @click="toggleTheme" />
     </a-tooltip>
   </div>
 </template>

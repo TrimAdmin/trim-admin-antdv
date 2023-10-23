@@ -44,7 +44,7 @@ onMounted(() => {
     <template #right>
       <div class="flex items-center text-[12px] text-[#202020aa] dark:text-gray-200 cursor-pointer">
         查看详情
-        <Icon icon="ant-design:right-outlined" class="ml-1" />
+        <Icon class="ml-1" icon="ant-design:right-outlined" />
       </div>
     </template>
     <div class="flex-bc">
@@ -67,12 +67,12 @@ onMounted(() => {
   </Card>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .indicator {
-  background-color: #ff8708;
   width: 4px;
   height: 4px;
-  border-radius: 50%;
   margin-right: 8px;
+  background-color: #ff8708;
+  border-radius: 50%;
 }
 </style>

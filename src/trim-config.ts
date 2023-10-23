@@ -9,19 +9,19 @@ const trimConfig: ITrimConfig = {
     // 折叠后侧边栏宽度
     siderWidthCollapse: 64,
     // 侧边栏暗色模式
-    siderDarkMode: true,
+    menuDarkMode: true,
     // 布局模式
     layout: 'normal',
     // 配色方案
     colorScheme: 'antd',
-    // 隐藏标签页
-    hideTabs: false,
+    // 标签页样式
+    tabStyle: 'normal',
     // 隐藏logo
     hideLogo: false,
     // 隐藏面包屑
     hideBreadcrumb: false,
     // 路由动画
-    routeAnimate: 'slide-left'
+    routeAnimate: 'slide-right-fade'
   },
   // 默认国际化语言
   defaultI18n: 'zh-Hans'

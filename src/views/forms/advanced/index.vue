@@ -10,7 +10,7 @@ defineOptions({
 
 <template>
   <div>
-    <page-header title="高级表单" subtitle="表单的高级用法" />
+    <page-header subtitle="表单的高级用法" title="高级表单" />
     <regular-layout fixed-footer>
       <BasicForm />
       <SubForm />
@@ -22,4 +22,4 @@ defineOptions({
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

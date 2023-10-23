@@ -36,15 +36,15 @@ const formObj = reactive<formObjType>({
 </script>
 
 <template>
-  <a-card title="分类信息" class="mb-4">
+  <a-card class="mb-4" title="分类信息">
     <a-form
       :colon="false"
-      :model="formObj"
       :label-col="{
         style: {
           width: '80px'
         }
       }"
+      :model="formObj"
     >
       <a-row :gutter="12">
         <a-col :span="8">
@@ -59,7 +59,12 @@ const formObj = reactive<formObjType>({
         </a-col>
         <a-col :span="8">
           <a-form-item label="父级分类">
-            <a-select v-model:value="formObj.parentCategory" :options="categoryList" class="w-full" placeholder="请选择父级分类"></a-select>
+            <a-select
+              v-model:value="formObj.parentCategory"
+              :options="categoryList"
+              class="w-full"
+              placeholder="请选择父级分类"
+            ></a-select>
           </a-form-item>
         </a-col>
         <a-col :span="8">
@@ -96,4 +101,4 @@ const formObj = reactive<formObjType>({
   </a-card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

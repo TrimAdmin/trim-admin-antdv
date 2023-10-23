@@ -4,32 +4,32 @@ import { CI18n } from '@/constants/i18n.ts'
 export const colorSchemeList: Array<IColorScheme> = [
   {
     scheme: 'antd',
-    primaryColor: '#1778FF',
+    primaryColor: '#1778ff',
     name: 'Ant Design'
   },
   {
     scheme: 'element',
-    primaryColor: '#409EFF',
+    primaryColor: '#409eff',
     name: 'Element Plus'
   },
   {
     scheme: 'tdesign',
-    primaryColor: '#0052D9',
+    primaryColor: '#0052d9',
     name: 'TDesign'
   },
   {
     scheme: 'forest-green',
-    primaryColor: '#07C160',
+    primaryColor: '#07c160',
     name: '森林绿'
   },
   {
     scheme: 'bright-yellow',
-    primaryColor: '#FCEC0C',
+    primaryColor: '#fcec0c',
     name: '明亮黄'
   },
   {
     scheme: 'energy-orange',
-    primaryColor: '#FE7300',
+    primaryColor: '#fe7300',
     name: '能量橙'
   }
 ]
@@ -40,15 +40,15 @@ export const routeAnimateList: Array<ITrimRouteAnimate> = [
     label: '无'
   },
   {
-    in: 'slideInLeftFade',
-    out: 'slideOutRightFade',
+    in: 'slide-in-left-fade',
+    out: 'slide-out-right-fade',
     value: 'slide-left-fade',
     label: '向左滑动淡入',
     duration: '500ms'
   },
   {
-    in: 'slideInRightFade',
-    out: 'slideOutLeftFade',
+    in: 'slide-in-right-fade',
+    out: 'slide-out-left-fade',
     value: 'slide-right-fade',
     label: '向右滑动淡入',
     duration: '500ms'
@@ -97,3 +97,18 @@ export const layoutList: Array<{ label: string; value: string }> = [
 ]
 
 export const i18nList: Array<string> = Object.keys(CI18n)
+
+export const tabStyleList: Array<{ label: string; value: string }> = [
+  {
+    label: '隐藏',
+    value: 'hide'
+  },
+  {
+    label: '简约',
+    value: 'normal'
+  },
+  {
+    label: '卡片',
+    value: 'card'
+  }
+]

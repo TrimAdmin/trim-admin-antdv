@@ -13,7 +13,10 @@ const devDepList = Object.entries(packageJson.devDependencies)
         <a-list-item v-for="item in depList" :key="item[0]"> {{ item[0] }}: {{ item[1] }}</a-list-item>
       </a-list>
       <a-list v-for="index of Math.floor(devDepList.length / depList.length)" :key="index" size="small">
-        <a-list-item v-for="item in devDepList.slice(index * depList.length - 1, index * depList.length - 1 + depList.length)" :key="item[0]">
+        <a-list-item
+          v-for="item in devDepList.slice(index * depList.length - 1, index * depList.length - 1 + depList.length)"
+          :key="item[0]"
+        >
           {{ item[0] }}: {{ item[1] }}
         </a-list-item>
       </a-list>
@@ -21,4 +24,4 @@ const devDepList = Object.entries(packageJson.devDependencies)
   </a-card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

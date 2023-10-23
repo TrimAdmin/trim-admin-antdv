@@ -63,10 +63,14 @@ function handleRemoveItem(index: number) {
     <template #extra>
       <a-button type="primary" @click="handleAddItem">新增一项</a-button>
     </template>
-    <a-table :data-source="formObj" :columns="itemColumns">
+    <a-table :columns="itemColumns" :data-source="formObj">
       <template #bodyCell="{ column, index }">
         <template v-if="column.dataIndex === 'count'">
-          <a-input-number v-if="formObj[index].editing" v-model:value="formObj[index][column.dataIndex]" class="w-full"></a-input-number>
+          <a-input-number
+            v-if="formObj[index].editing"
+            v-model:value="formObj[index][column.dataIndex]"
+            class="w-full"
+          ></a-input-number>
           <span v-else>{{ formObj[index][column.dataIndex] }}</span>
         </template>
         <template v-else-if="column.dataIndex === 'serialNumber' || column.dataIndex === 'name'">
@@ -76,7 +80,7 @@ function handleRemoveItem(index: number) {
         <template v-else>
           <a-button v-if="formObj[index].editing" type="link" @click="handleSaveItem(index)">保存</a-button>
           <a-button v-else type="link" @click="handleEditItem(index)">编辑</a-button>
-          <a-button type="link" danger @click="handleRemoveItem(index)">删除</a-button>
+          <a-button danger type="link" @click="handleRemoveItem(index)">删除</a-button>
         </template>
       </template>
     </a-table>
@@ -84,4 +88,4 @@ function handleRemoveItem(index: number) {
   </a-card>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

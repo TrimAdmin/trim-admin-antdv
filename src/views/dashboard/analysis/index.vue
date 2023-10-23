@@ -18,7 +18,7 @@ const timeSlot = computed<string>(() => getTimeSlotString())
       <template #left>
         <a-avatar :size="64" :src="avatar">
           <template #icon>
-            <Icon icon="ant-design:user-outlined" class="cursor-pointer mt-1" inline />
+            <Icon class="cursor-pointer mt-1" icon="ant-design:user-outlined" inline />
           </template>
         </a-avatar>
       </template>
@@ -50,4 +50,4 @@ const timeSlot = computed<string>(() => getTimeSlotString())
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

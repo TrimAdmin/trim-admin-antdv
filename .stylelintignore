@@ -2,6 +2,11 @@ node_modules
 .vscode
 .idea
 public
-src/api
-src/assets
+dist
 index.html
+*.min.css
+*.js
+*.ts
+*.svg
+*.ttf
+/src/style/odometer.scss

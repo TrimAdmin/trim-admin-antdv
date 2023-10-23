@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ITabObject, useCommonStoreHook } from '@/store'
 import { Key } from 'ant-design-vue/es/_util/type'
 import { getCurrentThemeColor, useI18nHook } from '@/hooks'
@@ -50,53 +50,66 @@ function handleTabAction(action: string, key: string) {
 </script>
 
 <template>
-  <div class="simple-tab bg-white dark:bg-[#001529] w-full block p-1">
-    <a-tabs hide-add :active-key="currentTab" size="small" @change="handleChange">
+  <div class="card-tab bg-white dark:bg-[#001529] w-full block p-1">
+    <a-tabs
+      :active-key="currentTab"
+      class="animate__animated animate__fadeInUp animate__faster"
+      hide-add
+      size="small"
+      type="card"
+      @change="handleChange"
+    >
       <a-tab-pane v-for="(item, index) in tabsList" :key="item.key" :closable="false">
         <template #tab>
           <a-dropdown :trigger="['contextmenu']" placement="bottomLeft">
             <div class="flex items-center">
               {{ item.i18n ? t(item.i18n) : item.title }}
-              <div v-if="!item.tabAffix" class="icon-close h-full flex items-center ml-2 cursor-pointer rounded-xl p-[2px]">
-                <Icon icon="ant-design:close-outlined" :height="12" inline @click.stop="handleClose(item.key)" />
+              <div
+                v-if="!item.tabAffix"
+                class="icon-close h-full flex items-center ml-2 cursor-pointer rounded-xl p-[2px]"
+              >
+                <Icon :height="12" icon="ant-design:close-outlined" inline @click.stop="handleClose(item.key)" />
               </div>
             </div>
             <template #overlay>
               <a-menu @click="({ key }) => handleTabAction(key as string, item.key)">
                 <a-menu-item key="refresh">
                   <div class="flex items-center">
-                    <Icon icon="ant-design:sync-outlined" class="mr-1" inline />
+                    <Icon class="mr-1" icon="ant-design:sync-outlined" inline />
                     重新加载
                   </div>
                 </a-menu-item>
                 <a-menu-item key="close" :disabled="item.tabAffix">
                   <div class="flex items-center">
-                    <Icon icon="ant-design:close-outlined" class="mr-1" inline />
+                    <Icon class="mr-1" icon="ant-design:close-outlined" inline />
                     关闭标签页
                   </div>
                 </a-menu-item>
                 <a-divider class="my-2" />
-                <a-menu-item key="close-other" :disabled="tabsList.length === tabsList.filter((item) => item.tabAffix).length + 1">
+                <a-menu-item
+                  key="close-other"
+                  :disabled="tabsList.length === tabsList.filter((item) => item.tabAffix).length + 1"
+                >
                   <div class="flex items-center">
-                    <Icon icon="ant-design:aim-outlined" class="mr-1" inline />
+                    <Icon class="mr-1" icon="ant-design:aim-outlined" inline />
                     关闭其他标签页
                   </div>
                 </a-menu-item>
                 <a-menu-item key="close-left" :disabled="index === 0 || index === 1">
                   <div class="flex items-center">
-                    <Icon icon="ant-design:vertical-right-outlined" class="mr-1" inline />
+                    <Icon class="mr-1" icon="ant-design:vertical-right-outlined" inline />
                     关闭左侧标签页
                   </div>
                 </a-menu-item>
                 <a-menu-item key="close-right" :disabled="index === tabsList.length - 1">
                   <div class="flex items-center">
-                    <Icon icon="ant-design:vertical-left-outlined" class="mr-1" inline />
+                    <Icon class="mr-1" icon="ant-design:vertical-left-outlined" inline />
                     关闭右侧标签页
                   </div>
                 </a-menu-item>
                 <a-menu-item key="close-all">
                   <div class="flex items-center">
-                    <Icon icon="ant-design:minus-outlined" class="mr-1" inline />
+                    <Icon class="mr-1" icon="ant-design:minus-outlined" inline />
                     关闭所有标签页
                   </div>
                 </a-menu-item>
@@ -110,12 +123,14 @@ function handleTabAction(action: string, key: string) {
 </template>
 
 <style lang="scss" scoped>
-.simple-tab {
-  border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+.card-tab {
   height: 42px;
+  overflow-y: hidden;
+  border-bottom: 1px solid rgb(100 100 100 / 10%);
 
   .icon-close {
     --theme-color: v-bind(currentThemeColor);
+
     transition: background-color 0.25s;
 
     &:hover {
@@ -125,6 +140,7 @@ function handleTabAction(action: string, key: string) {
 }
 
 :deep(.ant-tabs-nav) {
+  height: 38px;
   margin: 0;
 
   &::before {
@@ -133,12 +149,8 @@ function handleTabAction(action: string, key: string) {
 }
 
 :deep(.ant-tabs-tab) {
-  background: none !important;
-  padding: 4px 8px !important;
   font-size: 14px !important;
-  border: 1px solid rgba(5, 5, 5, 0.06);
-  border-radius: 4px !important;
-  margin-left: 4px !important;
+  border: 1px solid rgb(5 5 5 / 6%);
 
   &:first-child {
     margin-left: 0 !important;
@@ -150,13 +162,12 @@ function handleTabAction(action: string, key: string) {
 }
 
 :deep(.ant-tabs-tab-active) {
-  // border: 1px solid !important;
   font-weight: bold;
 }
 
 :deep(.ant-tabs-tab-remove) {
   margin-left: 0;
-  transform: scale(0.8);
   color: #1677ff;
+  transform: scale(0.8);
 }
 </style>

@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import Layout from '@/layout/normal.vue'
+<script lang="ts" setup>
+import Layout from '@/layout/index.vue'
 import zhCN from 'ant-design-vue/locale/zh_CN'
 import zhTW from 'ant-design-vue/locale/zh_TW'
 import enUS from 'ant-design-vue/locale/en_US'
@@ -23,7 +23,6 @@ import { setTrimConfig } from '@/hooks'
 import trimConfig from '@/trim-config.ts'
 import dayjs from 'dayjs'
 import { theme } from 'ant-design-vue'
-import { getKeepAliveMenus } from '@/router/utils.ts'
 
 const antTheme = theme
 const route = useRoute()
@@ -118,9 +117,9 @@ router.isReady().then(async () => {
 
 <template>
   <a-config-provider
+    :auto-insert-space-in-button="false"
     :locale="locale"
     :theme="isDarkTheme ? { algorithm: antTheme.darkAlgorithm, ...darkColorScheme } : colorScheme"
-    :auto-insert-space-in-button="false"
   >
     <div v-if="show" class="relative h-full">
       <component :is="route.meta.noLayout ? RouterView : Layout" />
@@ -131,4 +130,4 @@ router.isReady().then(async () => {
   </a-config-provider>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>
