@@ -20,10 +20,8 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
       <normal-tab v-if="tabStyle === 'normal'" />
     </a-layout-header>
     <div class="trim-header-placeholder" />
-    <scroll-container class="trim-main-content">
-      <main>
-        <animated-router-view v-if="!refreshing" />
-      </main>
+    <scroll-container v-if="!refreshing" class="trim-main-content">
+      <animated-router-view />
       <a-layout-footer>
         <normal-footer />
       </a-layout-footer>

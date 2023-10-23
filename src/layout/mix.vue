@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-import NormalHeader from './components/normal-header.vue'
-import NormalSider from './components/normal-sider.vue'
+import MixSider from './components/mix-sider.vue'
+import NormalFooter from '@/layout/components/footer.vue'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import AnimatedRouterView from '@/layout/components/animated-router-view.vue'
-import NormalFooter from '@/layout/components/footer.vue'
-import { scrollbarInstance } from '@/plugins'
-import { OverlayScrollbars } from 'overlayscrollbars'
-import { siderWidth, headerHeightWithTabs } from '@/hooks'
+import { headerHeight, siderWidth } from '@/hooks'
+import TopMixHeader from '@/layout/components/top-mix-header.vue'
 
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
@@ -16,36 +14,44 @@ const menuDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.m
 
 // 隐藏标签页
 const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabStyle)
+// 当前菜单
+const currentMenu = ref<string>('')
+
+function handleCurrentChange(name: string) {
+  currentMenu.value = name
+}
 </script>
 
 <template>
   <a-layout class="h-full overflow-x-hidden h-full">
-    <a-layout-sider :collapsed="collapsed" :theme="menuDarkMode ? 'dark' : 'light'">
-      <normal-sider />
-    </a-layout-sider>
     <div class="z-[1000] fixed inset-0 w-full h-full invisible" />
     <div class="trim-main-page">
       <a-layout-header>
-        <normal-header />
-        <card-tab v-if="tabStyle === 'card'" />
-        <normal-tab v-if="tabStyle === 'normal'" />
+        <top-mix-header @change="handleCurrentChange" />
       </a-layout-header>
       <div class="trim-header-placeholder" />
-      <scroll-container class="trim-main-content">
-        <a-layout-content class="flex-auto">
-          <animated-router-view v-if="!refreshing" />
-        </a-layout-content>
-        <a-layout-footer>
-          <normal-footer />
-        </a-layout-footer>
-      </scroll-container>
+      <a-layout class="flex">
+        <a-layout-sider :collapsed="collapsed" :theme="menuDarkMode ? 'dark' : 'light'">
+          <mix-sider :parent-menu="currentMenu" />
+        </a-layout-sider>
+        <scroll-container v-if="!refreshing" class="trim-main-content">
+          <div class="fixed w-full z-[999]">
+            <card-tab v-if="tabStyle === 'card'" />
+            <normal-tab v-if="tabStyle === 'normal'" />
+          </div>
+          <div class="trim-tabs-placeholder" />
+          <animated-router-view />
+          <a-layout-footer>
+            <normal-footer />
+          </a-layout-footer>
+        </scroll-container>
+      </a-layout>
     </div>
   </a-layout>
 </template>
 
 <style lang="scss" scoped>
 .ant-layout-sider {
-  position: fixed;
   z-index: 998;
   width: v-bind(siderWidth) !important;
   min-width: v-bind(siderWidth) !important;
@@ -58,20 +64,14 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
 }
 
 .trim-main-page {
-  --sider-width: v-bind(siderWidth);
-
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin-left: var(--sider-width);
   overflow: hidden;
-
-  // 解决fixed宽度溢出问题
-  transform: translate(0, 0);
 }
 
 .ant-layout-header {
-  --header-height: v-bind(headerHeightWithTabs);
+  --header-height: v-bind(headerHeight);
   --sider-width: v-bind(siderWidth);
 
   position: fixed;
@@ -86,17 +86,26 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
 }
 
 .trim-header-placeholder {
-  --header-height: v-bind(headerHeightWithTabs);
+  --header-height: v-bind(headerHeight);
 
   width: 100%;
-  height: var(--header-height);
+  min-height: var(--header-height);
+}
+
+.trim-tabs-placeholder {
+  display: block;
+  width: 100%;
+  min-height: 42px;
 }
 
 .trim-main-content {
-  --header-height: v-bind(headerHeightWithTabs);
+  --header-height: v-bind(headerHeight);
+  --sider-width: v-bind(siderWidth);
 
   flex: auto;
-  max-height: calc(100% - var(--header-height));
   overflow-y: auto;
+
+  // 解决fixed宽度溢出问题
+  transform: translate(0, 0);
 }
 </style>

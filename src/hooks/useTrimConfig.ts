@@ -12,10 +12,10 @@ export function useTrimConfig() {
  * @param type hex, rgba
  * @param alpha
  */
-export function getCurrentThemeColor(type?: 'hex' | 'rgba', alpha: number = 1) {
+export function getCurrentThemeColor(type?: 'hex' | 'rgba', alpha?: number) {
   const hexColor = colorSchemeList.filter((item) => useTrimConfig().theme.colorScheme === item.scheme)[0].primaryColor
   if (type === 'rgba') {
-    return hexToRgba(hexColor, alpha)
+    return hexToRgba(hexColor, alpha || 1)
   } else {
     return hexColor
   }

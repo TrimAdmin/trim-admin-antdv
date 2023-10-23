@@ -6,7 +6,6 @@ import { useConfigStoreHook } from '@/store'
 import type { Component } from 'vue'
 
 const Layout = computed<Component>(() => {
-  console.log(useConfigStoreHook().config.theme.layout)
   switch (useConfigStoreHook().config.theme.layout) {
     case 'normal':
       return Normal

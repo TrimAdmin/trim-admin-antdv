@@ -62,14 +62,17 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
     <!-- 页面布局 -->
     <div class="text-center">
       <a-divider plain>{{ $t('config.layout') }}</a-divider>
-      <div class="flex justify-around items-center">
+      <div class="flex justify-around items-center" :style="{ '--theme-color': currentColor }">
         <a-tooltip v-for="item in layoutList" :key="item.value">
           <div
-            :class="`layout-${item.value} ${
-              layout === item.value && 'current'
-            } border-2 border-solid shadow-md w-16 h-12 rounded-2 transition hover:(cursor-pointer shadow-gray-400)`"
+            :style="layout === item.value ? { borderColor: currentColor } : { border: 'none' }"
+            :class="`layout-${item.value} border-2 border-solid shadow-md dark:shadow-gray-600 w-16 h-12 rounded-2 transition hover:(cursor-pointer shadow-gray-400 dark:shadow-gray-500)`"
             @click="handleLayout(item.value)"
-          ></div>
+          >
+            <div class="header" />
+            <div class="content" />
+            <div class="sider" />
+          </div>
           <template #title> {{ item.label }}</template>
         </a-tooltip>
       </div>
@@ -140,15 +143,56 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
 </template>
 
 <style lang="scss" scoped>
-:root {
-  --theme-color: v-bind(currentColor);
-}
+.layout-normal,
+.layout-top,
+.layout-mix {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 8px;
 
-.current {
-  border-color: var(--theme-color);
+  .header {
+    grid-area: header;
+    background-color: var(--theme-color);
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+
+  .sider {
+    grid-area: sider;
+    background-color: var(--theme-color);
+    border-radius: 2px;
+  }
+
+  .content {
+    grid-area: content;
+    background-color: var(--theme-color);
+    border-radius: 2px;
+    opacity: 0.3;
+  }
 }
 
 .layout-normal {
-  background-color: var(--theme-color);
+  grid-template-areas:
+    'sider header header'
+    'sider content content'
+    'sider content content';
+}
+
+.layout-mix {
+  grid-template-areas:
+    'header header header'
+    'sider content content'
+    'sider content content';
+}
+
+.layout-top {
+  grid-template-areas:
+    'header header header'
+    'content content contet';
+
+  .sider {
+    display: none;
+  }
 }
 </style>

@@ -19,13 +19,15 @@ const duration = computed<string>(
 </script>
 
 <template>
-  <router-view v-slot="{ Component, route }">
-    <transition :name="routeAnimateIn && routeAnimateOut && 'route-animate'" appear mode="out-in">
-      <keep-alive :include="useCommonStoreHook().keepAliveList">
-        <component :is="Component" :key="route.fullPath" />
-      </keep-alive>
-    </transition>
-  </router-view>
+  <main>
+    <router-view v-slot="{ Component, route }">
+      <transition :name="routeAnimateIn && routeAnimateOut && 'route-animate'" appear mode="out-in">
+        <keep-alive :include="useCommonStoreHook().keepAliveList">
+          <component :is="Component" :key="route.fullPath" />
+        </keep-alive>
+      </transition>
+    </router-view>
+  </main>
 </template>
 
 <style lang="scss" scoped>

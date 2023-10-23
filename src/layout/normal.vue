@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import NormalHeader from './components/normal-header.vue'
 import NormalSider from './components/normal-sider.vue'
+import NormalFooter from '@/layout/components/footer.vue'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import AnimatedRouterView from '@/layout/components/animated-router-view.vue'
-import NormalFooter from '@/layout/components/footer.vue'
 import { headerHeightWithTabs, siderWidth } from '@/hooks'
 
 // 是否刷新路由
@@ -22,22 +22,18 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
       <normal-sider />
     </a-layout-sider>
     <div class="z-[1000] fixed inset-0 w-full h-full invisible" />
-    <div class="trim-main-page">
+    <scroll-container v-if="!refreshing" class="trim-main-content">
       <a-layout-header>
         <normal-header />
         <card-tab v-if="tabStyle === 'card'" />
         <normal-tab v-if="tabStyle === 'normal'" />
       </a-layout-header>
       <div class="trim-header-placeholder" />
-      <scroll-container class="trim-main-content">
-        <main>
-          <animated-router-view v-if="!refreshing" />
-        </main>
-        <a-layout-footer>
-          <normal-footer />
-        </a-layout-footer>
-      </scroll-container>
-    </div>
+      <animated-router-view />
+      <a-layout-footer>
+        <normal-footer />
+      </a-layout-footer>
+    </scroll-container>
   </a-layout>
 </template>
 
@@ -88,13 +84,5 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
 
   width: 100%;
   height: var(--header-height);
-}
-
-.trim-main-content {
-  --header-height: v-bind(headerHeightWithTabs);
-
-  flex: auto;
-  max-height: calc(100% - var(--header-height));
-  overflow-y: auto;
 }
 </style>

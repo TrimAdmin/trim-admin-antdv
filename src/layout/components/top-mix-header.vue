@@ -15,13 +15,21 @@ const router = useRouter()
 const hideLogo = computed<boolean>(() => useConfigStoreHook().config.theme.hideLogo)
 // 系统标题
 const title = computed<string>(() => import.meta.env.VITE_DOCUMENT_NAME)
+const layout = computed<string>(() => useConfigStoreHook().config.theme.layout)
 // 菜单项
-const menus = computed<Array<ItemType>>(() => useUserStoreHook().menuList)
+const menus = computed<Array<ItemType>>(() =>
+  layout.value === 'top'
+    ? useUserStoreHook().menuList
+    : useUserStoreHook().menuList.map((item) => ({ ...item, children: undefined }) as ItemType)
+)
 // 默认选中的菜单
-const defaultSelect = computed<Array<Key>>(() => [useCommonStoreHook().currentRouteName] as Array<Key>)
+const defaultSelect = computed<Array<Key>>(() =>
+  layout.value === 'top'
+    ? ([useCommonStoreHook().currentRouteName] as Array<Key>)
+    : (useCommonStoreHook().currentOpenMenu as Array<Key>)
+)
 // 侧边栏暗色模式
 const menuDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.menuDarkMode)
-const hideBreadcrumb = computed<boolean>(() => useConfigStoreHook().config.theme.hideBreadcrumb)
 const username = computed<string>(() => useUserStoreHook().userInfo.username)
 const avatar = computed<string>(() => useUserStoreHook().userInfo.avatar || '')
 
@@ -80,6 +88,22 @@ watch(
     useCommonStoreHook().setCurrentRouteName(newVal as string)
   }
 )
+
+watch(
+  () => defaultSelect.value,
+  (newVal) => {
+    if (layout.value === 'mix') {
+      emits('change', newVal.toString())
+    }
+  },
+  {
+    immediate: true
+  }
+)
+
+const emits = defineEmits<{
+  (e: 'change', value: string): void
+}>()
 
 // 菜单变化时
 function handleMenuChange(key: RouteRecordName) {
@@ -150,6 +174,7 @@ function handleMenuChange(key: RouteRecordName) {
   height: v-bind(headerHeight);
   line-height: v-bind(headerHeight);
   border: none;
+
   @apply dark:bg-[#001529];
 
   .ant-menu-item {

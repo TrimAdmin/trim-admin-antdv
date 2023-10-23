@@ -25,6 +25,7 @@ export function autoImportRoutes(): Array<RouteRecordRaw> {
 // 路由递归转换为菜单
 export function routesToMenu(routes: RouterOptions['routes']): Array<any> {
   const tree: Array<any> = []
+  // console.log(routes)
 
   routes.map((route) => {
     const node = { ...route }
@@ -64,27 +65,26 @@ export function generateMenus() {
 }
 
 // 获取父级路由节点列表
-export function getParentRoutes(value: string) {
+export function getParentRoutes(name: string) {
   const routes = router.options.routes
 
   // 深度遍历
   function dfs(
     routes: ReadonlyArray<RouteRecordRaw>,
-    value: string,
+    name: string,
     parents: Array<RouteRecordRaw>
   ): Array<RouteRecordRaw> {
-    for (let i = 0; i < routes.length; i++) {
-      const item = routes[i]
+    for (const route of routes) {
       // 返回父级
-      if (item.name === value) {
+      if (route.name === name) {
         return parents
       }
-      if (!item.children || !item.children.length) {
+      if (!route.children || !route.children.length) {
         continue
       }
-      parents.push(item)
+      parents.push(route)
 
-      if (dfs(item.children, value, parents).length) {
+      if (dfs(route.children, name, parents).length) {
         return parents
       }
       // 未找到时将当前节点出栈
@@ -93,7 +93,32 @@ export function getParentRoutes(value: string) {
     return []
   }
 
-  return dfs(routes, value, [])
+  return dfs(routes, name, [])
+}
+
+// 获取子路由列表
+export function getChildRoutes(routes: Array<RouteRecordRaw>, name: string) {
+  let childRoutes: Array<RouteRecordRaw> = []
+
+  for (const route of routes) {
+    if (route.name === name) {
+      // 找到目标节点，将其子路由添加到结果数组中
+      childRoutes = route.children || []
+      break
+    }
+    if (route.children && route.children.length > 0) {
+      // 递归查找子节点的子路由
+      childRoutes = getChildRoutes(route.children, route.children[0].name)
+      console.log(route.children)
+      if (childRoutes.length > 0) {
+        break
+      }
+    }
+  }
+
+  console.log(childRoutes)
+
+  return childRoutes
 }
 
 export function handleJumpTo(name: RouteRecordName, params?: RouteParamsRaw) {
