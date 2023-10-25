@@ -5,6 +5,8 @@ import NormalFooter from '@/layout/components/footer.vue'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import AnimatedRouterView from '@/layout/components/animated-router-view.vue'
 import { headerHeightWithTabs, siderWidth } from '@/hooks'
+import NormalTab from './components/header/nav-tabs/normal-tab/index.vue'
+import CardTab from './components/header/nav-tabs/card-tab/index.vue'
 
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)

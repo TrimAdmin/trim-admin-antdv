@@ -4,6 +4,9 @@ import AnimatedRouterView from '@/layout/components/animated-router-view.vue'
 import NormalFooter from '@/layout/components/footer.vue'
 import { headerHeightWithTabs, siderWidth } from '@/hooks'
 import TopMixHeader from './components/top-mix-header.vue'
+import NormalTab from './components/header/nav-tabs/normal-tab/index.vue'
+import CardTab from './components/header/nav-tabs/card-tab/index.vue'
+import Breadcrumbs from './components/header/breadcrumbs/index.vue'
 
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
@@ -21,6 +24,7 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
     </a-layout-header>
     <div class="trim-header-placeholder" />
     <scroll-container v-if="!refreshing" class="trim-main-content">
+      <breadcrumbs class="p-4" />
       <animated-router-view />
       <a-layout-footer>
         <normal-footer />

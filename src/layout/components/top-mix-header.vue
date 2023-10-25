@@ -4,10 +4,11 @@ import { RouteRecordName } from 'vue-router'
 import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
 import { ItemType, Modal } from 'ant-design-vue'
 import { Key } from 'ant-design-vue/es/_util/type'
-import Refresh from '@/layout/components/header/refresh/index.vue'
-import FullScreen from '@/layout/components/header/full-screen/index.vue'
-import ToggleTheme from '@/layout/components/header/toggle-theme/index.vue'
-import GlobalSearch from '@/layout/components/header/global-search/index.vue'
+import Refresh from './header/refresh/index.vue'
+import FullScreen from './header/full-screen/index.vue'
+import ToggleTheme from './header/toggle-theme/index.vue'
+import GlobalSearch from './header/global-search/index.vue'
+import ConfigDrawer from './header/config-drawer/index.vue'
 
 const router = useRouter()
 
@@ -92,7 +93,9 @@ watch(
 watch(
   () => useCommonStoreHook().currentOpenMenu,
   (newVal) => {
-    handleMenuChange(newVal[0] || 'home')
+    if (layout.value === 'mix') {
+      handleMenuChange(newVal[0] || 'home')
+    }
   }
 )
 

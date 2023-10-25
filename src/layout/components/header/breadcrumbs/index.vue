@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { getParentRoutes } from '@/router/utils.ts'
 import { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
+import { useConfigStoreHook } from '@/store'
 
 const router = useRouter()
 const breadcrumbList = ref<Array<RouteRecordRaw>>([])
@@ -25,19 +26,17 @@ function handleBreadcrumbChange(item: RouteRecordRaw) {
 </script>
 
 <template>
-  <Motion>
-    <a-breadcrumb>
-      <a-breadcrumb-item v-if="breadcrumbList.length !== 0">
-        <RouterLink to="/home">{{ t('menu.home') }}</RouterLink>
-      </a-breadcrumb-item>
-      <a-breadcrumb-item v-for="item in breadcrumbList" :key="item.name">
-        <a @click="handleBreadcrumbChange(item)">{{ item.meta?.title }}</a>
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>
-        {{ currentRoute?.meta.title! }}
-      </a-breadcrumb-item>
-    </a-breadcrumb>
-  </Motion>
+  <a-breadcrumb v-if="!useConfigStoreHook().config.theme.hideBreadcrumb">
+    <a-breadcrumb-item v-if="breadcrumbList.length !== 0">
+      <RouterLink to="/home">{{ t('menu.home') }}</RouterLink>
+    </a-breadcrumb-item>
+    <a-breadcrumb-item v-for="item in breadcrumbList" :key="item.name">
+      <a @click="handleBreadcrumbChange(item)">{{ item.meta?.title }}</a>
+    </a-breadcrumb-item>
+    <a-breadcrumb-item>
+      {{ currentRoute?.meta.title! }}
+    </a-breadcrumb-item>
+  </a-breadcrumb>
 </template>
 
 <style lang="scss" scoped></style>

@@ -8,9 +8,10 @@ import GlobalSearch from './header/global-search/index.vue'
 import Refresh from './header/refresh/index.vue'
 import FullScreen from './header/full-screen/index.vue'
 import ToggleTheme from './header/toggle-theme/index.vue'
+import ConfigDrawer from './header/config-drawer/index.vue'
+import Breadcrumbs from './header/breadcrumbs/index.vue'
 
 const router = useRouter()
-const hideBreadcrumb = computed<boolean>(() => useConfigStoreHook().config.theme.hideBreadcrumb)
 const username = computed<string>(() => useUserStoreHook().userInfo.username)
 const avatar = computed<string>(() => useUserStoreHook().userInfo.avatar || '')
 
@@ -69,7 +70,7 @@ function handleDropdown(key: Key) {
       <!-- 菜单折叠按钮 -->
       <MenuCollapse />
       <!-- 面包屑 -->
-      <Breadcrumbs v-if="!hideBreadcrumb" class="ml-2" />
+      <Breadcrumbs class="ml-2" />
     </div>
     <!-- 右侧菜单 -->
     <div class="flex items-center h-full">

@@ -108,9 +108,9 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
         <div class="dark:text-white">{{ $t('config.tabStyle') }}</div>
         <a-segmented v-model:value="useConfigStoreHook().config.theme.tabStyle" :options="tabStyleList" />
       </div>
-      <!-- 侧边栏Logo -->
+      <!-- 隐藏Logo -->
       <div class="flex justify-between items-center px-2 mb-4">
-        <div class="dark:text-white">{{ $t('config.siderLogo') }}</div>
+        <div class="dark:text-white">{{ $t('config.hideLogo') }}</div>
         <a-switch
           v-model:checked="useConfigStoreHook().config.theme.hideLogo"
           :checked-children="$t('constant.hide')"

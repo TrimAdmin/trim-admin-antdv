@@ -17,7 +17,7 @@
     "layout": "页面布局",
     "view": "页面显示",
     "tabStyle": "标签页样式",
-    "siderLogo": "侧边栏Logo",
+    "hideLogo": "隐藏Logo",
     "hideBreadcrumb": "隐藏面包屑",
     "routerAnimate": "路由动画"
   },
