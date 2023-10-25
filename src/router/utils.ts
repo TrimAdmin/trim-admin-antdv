@@ -98,7 +98,6 @@ export function getParentRoutes(name: string) {
 
 // 获取子路由列表
 export function getChildRoutes(name: string) {
-  console.log(router.options.routes.filter((item) => item.name === name))
   return router.options.routes.filter((item) => item.name === name)[0].children || []
 }
 

@@ -8,7 +8,6 @@ import TopMixHeader from '@/layout/components/top-mix-header.vue'
 
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
-const collapsed = ref<boolean>(useConfigStoreHook().menuCollapsed)
 // 侧边栏暗色模式
 const menuDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.menuDarkMode)
 

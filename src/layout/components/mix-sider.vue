@@ -31,8 +31,12 @@ watch(
 watch(
   () => props.parentMenu,
   (newVal: string) => {
-    console.log(newVal)
+    // console.log(newVal)
+    useCommonStoreHook().setCurrentOpenMenu([newVal])
     menus.value = routesToMenu(getChildRoutes(newVal))
+    if (!menus.value.length) {
+      router.push({ name: newVal })
+    }
   },
   {
     immediate: true

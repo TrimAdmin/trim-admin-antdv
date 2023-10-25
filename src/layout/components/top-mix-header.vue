@@ -89,6 +89,13 @@ watch(
   }
 )
 
+watch(
+  () => useCommonStoreHook().currentOpenMenu,
+  (newVal) => {
+    handleMenuChange(newVal[0] || 'home')
+  }
+)
+
 const emits = defineEmits<{
   (e: 'change', value: string): void
 }>()
@@ -100,6 +107,10 @@ function handleMenuChange(key: RouteRecordName) {
   } else {
     emits('change', key.toString())
   }
+}
+
+if (layout.value === 'mix') {
+  handleMenuChange(useCommonStoreHook().currentOpenMenu[0] || 'home')
 }
 </script>
 
