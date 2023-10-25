@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { headerHeight } from '@/hooks'
 import { Key } from 'ant-design-vue/es/_util/type'
-import { RouteRecordName, RouteRecordRaw } from 'vue-router'
+import { RouteRecordName } from 'vue-router'
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import { ItemType } from 'ant-design-vue/es/menu/src/hooks/useItems'
 import { getChildRoutes, routesToMenu } from '@/router/utils.ts'
@@ -31,7 +31,8 @@ watch(
 watch(
   () => props.parentMenu,
   (newVal: string) => {
-    menus.value = routesToMenu(getChildRoutes(router.options.routes as Array<RouteRecordRaw>, newVal))
+    console.log(newVal)
+    menus.value = routesToMenu(getChildRoutes(newVal))
   },
   {
     immediate: true

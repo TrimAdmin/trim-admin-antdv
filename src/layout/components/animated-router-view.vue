@@ -19,8 +19,8 @@ const duration = computed<string>(
 </script>
 
 <template>
-  <main>
-    <router-view v-slot="{ Component, route }">
+  <main class="flex-1">
+    <router-view v-slot="{ Component, route }" class="h-full">
       <transition :name="routeAnimateIn && routeAnimateOut && 'route-animate'" appear mode="out-in">
         <keep-alive :include="useCommonStoreHook().keepAliveList">
           <component :is="Component" :key="route.fullPath" />

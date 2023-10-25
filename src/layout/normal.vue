@@ -22,7 +22,7 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
       <normal-sider />
     </a-layout-sider>
     <div class="z-[1000] fixed inset-0 w-full h-full invisible" />
-    <scroll-container v-if="!refreshing" class="trim-main-content">
+    <scroll-container v-if="!refreshing" class="trim-main-page">
       <a-layout-header>
         <normal-header />
         <card-tab v-if="tabStyle === 'card'" />
@@ -83,6 +83,6 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
   --header-height: v-bind(headerHeightWithTabs);
 
   width: 100%;
-  height: var(--header-height);
+  min-height: var(--header-height);
 }
 </style>

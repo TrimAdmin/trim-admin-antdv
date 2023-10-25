@@ -97,28 +97,9 @@ export function getParentRoutes(name: string) {
 }
 
 // 获取子路由列表
-export function getChildRoutes(routes: Array<RouteRecordRaw>, name: string) {
-  let childRoutes: Array<RouteRecordRaw> = []
-
-  for (const route of routes) {
-    if (route.name === name) {
-      // 找到目标节点，将其子路由添加到结果数组中
-      childRoutes = route.children || []
-      break
-    }
-    if (route.children && route.children.length > 0) {
-      // 递归查找子节点的子路由
-      childRoutes = getChildRoutes(route.children, route.children[0].name)
-      console.log(route.children)
-      if (childRoutes.length > 0) {
-        break
-      }
-    }
-  }
-
-  console.log(childRoutes)
-
-  return childRoutes
+export function getChildRoutes(name: string) {
+  console.log(router.options.routes.filter((item) => item.name === name))
+  return router.options.routes.filter((item) => item.name === name)[0].children || []
 }
 
 export function handleJumpTo(name: RouteRecordName, params?: RouteParamsRaw) {

@@ -89,25 +89,17 @@ watch(
   }
 )
 
-watch(
-  () => defaultSelect.value,
-  (newVal) => {
-    if (layout.value === 'mix') {
-      emits('change', newVal.toString())
-    }
-  },
-  {
-    immediate: true
-  }
-)
-
 const emits = defineEmits<{
   (e: 'change', value: string): void
 }>()
 
 // 菜单变化时
 function handleMenuChange(key: RouteRecordName) {
-  router.push({ name: key })
+  if (layout.value === 'top') {
+    router.push({ name: key })
+  } else {
+    emits('change', key.toString())
+  }
 }
 </script>
 

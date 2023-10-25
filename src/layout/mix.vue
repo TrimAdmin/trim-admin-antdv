@@ -8,7 +8,7 @@ import TopMixHeader from '@/layout/components/top-mix-header.vue'
 
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
-const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
+const collapsed = ref<boolean>(useConfigStoreHook().menuCollapsed)
 // 侧边栏暗色模式
 const menuDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.menuDarkMode)
 
@@ -31,7 +31,11 @@ function handleCurrentChange(name: string) {
       </a-layout-header>
       <div class="trim-header-placeholder" />
       <a-layout class="flex">
-        <a-layout-sider :collapsed="collapsed" :theme="menuDarkMode ? 'dark' : 'light'">
+        <a-layout-sider
+          v-model:collapsed="useConfigStoreHook().menuCollapsed"
+          collapsible
+          :theme="menuDarkMode ? 'dark' : 'light'"
+        >
           <mix-sider :parent-menu="currentMenu" />
         </a-layout-sider>
         <scroll-container v-if="!refreshing" class="trim-main-content">
@@ -61,6 +65,12 @@ function handleCurrentChange(name: string) {
   inset: 0;
 
   @apply shadow-md shadow-gray-300 dark:shadow-gray-700;
+}
+
+:deep(.ant-layout-sider-trigger) {
+  width: v-bind(siderWidth) !important;
+  min-width: v-bind(siderWidth) !important;
+  max-width: v-bind(siderWidth) !important;
 }
 
 .trim-main-page {
