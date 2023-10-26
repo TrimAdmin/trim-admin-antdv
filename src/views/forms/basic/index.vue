@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { formObjType } from './types'
+import { typeOptions, fruitOptions } from './data'
+import { handleCloseTag } from '@/router/utils.ts'
 
 defineOptions({
   name: 'forms-basic'
@@ -15,54 +17,6 @@ const formObj = reactive<formObjType>({
   fruit: [2, 3],
   introduction: ''
 })
-
-const typeOptions = ref<
-  Array<{
-    label: string
-    value: number
-  }>
->([
-  {
-    label: '类型1',
-    value: 1
-  },
-  {
-    label: '类型2',
-    value: 2
-  },
-  {
-    label: '类型3',
-    value: 3
-  }
-])
-
-const fruitOptions = ref<
-  Array<{
-    label: string
-    value: number
-  }>
->([
-  {
-    label: '苹果',
-    value: 1
-  },
-  {
-    label: '香蕉',
-    value: 2
-  },
-  {
-    label: '西瓜',
-    value: 3
-  },
-  {
-    label: '葡萄',
-    value: 4
-  },
-  {
-    label: '草莓',
-    value: 5
-  }
-])
 </script>
 
 <template>
@@ -114,7 +68,7 @@ const fruitOptions = ref<
     </regular-layout>
     <fixed-footer>
       <a-button type="primary">提交</a-button>
-      <a-button>取消</a-button>
+      <a-button @click="handleCloseTag($route.name!.toString(), '确认要取消吗？')">取消</a-button>
     </fixed-footer>
   </div>
 </template>

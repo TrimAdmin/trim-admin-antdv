@@ -62,7 +62,7 @@ const colorScheme = computed(() => {
     case 'energy-orange':
       return energyOrangeTheme
     default:
-      break
+      return lightTheme
   }
 })
 
@@ -82,7 +82,7 @@ const darkColorScheme = computed(() => {
     case 'energy-orange':
       return energyOrangeDarkTheme
     default:
-      break
+      return darkTheme
   }
 })
 

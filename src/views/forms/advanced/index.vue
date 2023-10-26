@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import SubForm from './components/sub-form.vue'
 import BasicForm from './components/basic-form.vue'
-import FixedFooter from '@/components/fixed-footer/index.vue'
 
 defineOptions({
   name: 'forms-advanced'
@@ -11,7 +10,7 @@ defineOptions({
 <template>
   <div>
     <page-header subtitle="表单的高级用法" title="高级表单" />
-    <regular-layout fixed-footer>
+    <regular-layout>
       <BasicForm />
       <SubForm />
     </regular-layout>

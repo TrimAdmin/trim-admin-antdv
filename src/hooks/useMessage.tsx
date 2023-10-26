@@ -53,15 +53,12 @@ function getIcon(iconType: string) {
 
 function renderContent({ content }: Pick<ModalOptionsEx, 'content'>) {
   if (isString(content)) {
-    return <div innerHTML={`<div>${content as string}</div>`}></div>
+    return <div>{content}</div>
   } else {
     return content
   }
 }
 
-/**
- * @description: Create confirmation box
- */
 function createConfirm(options: ModalOptionsEx): ConfirmOptions {
   const iconType = options.iconType || 'warning'
   Reflect.deleteProperty(options, 'iconType')
@@ -77,7 +74,7 @@ function createConfirm(options: ModalOptionsEx): ConfirmOptions {
 const getBaseOptions = () => {
   const { t } = useI18n()
   return {
-    okText: t('common.okText'),
+    okText: t('constant.ok'),
     centered: true
   }
 }
@@ -132,9 +129,6 @@ function closeNotification(key: string) {
   return notification.close(key)
 }
 
-/**
- * @description: message
- */
 export function useMessage() {
   return {
     message: Message,

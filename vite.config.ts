@@ -40,6 +40,8 @@ export default ({ mode }) => {
       }
     },
     resolve: {
+      // 文件后缀
+      extensions: ['.ts', '.vue', '.json', '.js', '.tsx'],
       // 配置别名
       alias: [
         // @表示src目录下

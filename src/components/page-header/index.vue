@@ -9,7 +9,7 @@ withDefaults(
     fixed?: boolean
   }>(),
   {
-    fixed: false
+    fixed: true
   }
 )
 </script>

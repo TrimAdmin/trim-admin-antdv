@@ -1,15 +1,10 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { scrollbarInstance } from '@/plugins'
 import { OverlayScrollbars } from 'overlayscrollbars'
 
-withDefaults(
-  defineProps<{
-    backTop: boolean
-  }>(),
-  {
-    backTop: true
-  }
-)
+defineProps<{
+  showBackTop: boolean
+}>()
 
 const contentEl = shallowRef<HTMLDivElement>()
 const scrollTop = ref<number>(0)
@@ -36,14 +31,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="contentEl" class="trim-main-content">
+  <div ref="contentEl">
     <slot />
-    <a-back-top
-      v-if="backTop && scrollTop > 200"
-      class="z-[999] animate__animated animate__fadeIn animate__faster"
-      :visibility-height="0"
-      @click="handleBackTop"
-    />
+    <a-back-top v-if="scrollTop > 200 && showBackTop" :visibility-height="0" @click="handleBackTop" />
   </div>
 </template>
 

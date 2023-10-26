@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetMini, presetWind } from 'unocss'
+import { defineConfig, presetAttributify, presetMini, presetWind, SourceCodeTransformer } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
 
@@ -17,7 +17,7 @@ export default defineConfig({
     transformerDirectives({
       applyVariable: ['@apply', '--uno']
     }),
-    transformerVariantGroup({})
+    transformerVariantGroup({}) as unknown as SourceCodeTransformer
   ],
   preflights: [],
   shortcuts: {

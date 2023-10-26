@@ -6,7 +6,9 @@
   "module": "es2020",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "dev:host": "vite --host",
+    "build:test": "vue-tsc && vite build -m dev",
+    "build": "vue-tsc && vite build -m prod",
     "preview": "vite preview",
     "link": "eslint **/*.{ts,js,vue,jsx,tsx,html} --fix",
     "lint:css": "stylelint **/*.{html,vue,css,sass,scss,less,postcss} --fix"
