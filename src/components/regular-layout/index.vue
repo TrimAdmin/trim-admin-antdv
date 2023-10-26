@@ -17,6 +17,8 @@ const props = withDefaults(
     bodyStyle?: CSSProperties
     // 最大高度，超出提供展开按钮
     maxHeight?: string
+    // 只展开一次
+    once?: boolean
   }>(),
   {
     shadow: true,
@@ -25,11 +27,21 @@ const props = withDefaults(
 )
 
 const collapsed = ref<boolean>(false)
+const hide = ref<boolean>(false)
 const elRef = shallowRef<HTMLDivElement>()
 const slots = useSlots()
+const elHeight = ref<string>()
+
+function handleCollapse() {
+  collapsed.value = !collapsed.value
+  if (props.once) {
+    hide.value = true
+  }
+}
 
 onMounted(() => {
-  if (props.maxHeight && (elRef.value?.offsetHeight || 0) >= +(+props.maxHeight.replace(/[^0-9]/g, ''))) {
+  if (props.maxHeight && (elRef.value?.offsetHeight || 0) >= +props.maxHeight.replace(/[^0-9]/g, '')) {
+    elHeight.value = elRef.value?.offsetHeight + 'px'
     collapsed.value = true
   }
 })
@@ -42,27 +54,23 @@ onMounted(() => {
       ${transparent ? '' : 'with-bg'}
       ${shadow && !transparent ? 'with-shadow' : ''}
       ${rounded ? 'with-rounded' : ''}
-      ${borderless || transparent ? '' : 'with-border'}
-      ${maxHeight && !collapsed ? 'with-collapse' : ''}
+      ${borderless || transparent ? '' : 'trim-border-1'}
+      ${maxHeight && !collapsed ? 'opened' : ''}
     `"
     :style="maxHeight && collapsed ? { height: maxHeight } : {}"
   >
     <div v-if="slots.header" class="header">
       <slot name="header" />
     </div>
-    <div :class="`${bodyClass} ${transparent ? '' : 'p-6'}`" :style="bodyStyle">
+    <div :class="`${bodyClass || ''} ${transparent ? '' : 'p-6'}`" :style="bodyStyle || {}">
       <slot />
     </div>
     <div
-      v-if="maxHeight && collapsed"
-      class="btn-collapse absolute bottom-0 w-full flex-c py-4 text-gray hover:(cursor-pointer text-black) transition"
-      @click="
-        () => {
-          collapsed = false
-        }
-      "
+      v-if="maxHeight && !hide"
+      class="btn-collapse absolute bottom-0 w-full flex-c py-4 text-gray hover:(cursor-pointer trim-text-color) transition"
+      @click="handleCollapse"
     >
-      <Icon icon="ant-design:down-outlined" />
+      <Icon icon="ant-design:down-outlined" :class="`${collapsed ? '' : 'rotate-180'} transition`" />
     </div>
   </div>
 </template>
@@ -72,7 +80,8 @@ onMounted(() => {
   max-width: calc(100% - 32px);
   margin: 16px;
   color: var(--trim-text-color);
-  transition: all 0.25s ease;
+  //transition: height 0.25s;
+  overflow: hidden;
 
   .header {
     padding: 12px;
@@ -90,18 +99,17 @@ onMounted(() => {
 
 .with-rounded {
   border-radius: 8px;
-  overflow: hidden;
 }
 
 .with-shadow {
   box-shadow: var(--trim-box-shadow-sm);
 }
 
-.with-collapse {
-  height: auto !important;
+.opened {
+  height: v-bind(elHeight);
 }
 
 .btn-collapse {
-  background: linear-gradient(to bottom, transparent, var(--trim-bg-color));
+  background: linear-gradient(to bottom, transparent 0%, var(--trim-bg-color) 100%);
 }
 </style>

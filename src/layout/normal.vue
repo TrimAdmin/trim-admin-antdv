@@ -59,7 +59,8 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
   flex: 1;
   flex-direction: column;
   margin-left: var(--sider-width);
-  overflow: hidden;
+  overflow-x: hidden;
+  transition: margin-left 0.25s ease;
 
   // 解决fixed宽度溢出问题
   transform: translate(0, 0);

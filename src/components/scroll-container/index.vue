@@ -24,14 +24,14 @@ onMounted(() => {
   scrollbar.value = scrollbarInstance(contentEl.value!)
   // console.log(scrollbar.value.elements())
   scrollbar.value.on('scroll', (instance: OverlayScrollbars) => {
-    // console.log(instance.elements().scrollbarVertical.handle.offsetTop)
+    // console.log(scrollbar.value.elements().scrollOffsetElement.scrollTop)
     scrollTop.value = instance.elements().scrollOffsetElement.scrollTop
   })
 })
 </script>
 
 <template>
-  <div ref="contentEl">
+  <div ref="contentEl" data-overlayscrollbars-initialize>
     <slot />
     <a-back-top v-if="scrollTop > 200 && showBackTop" :visibility-height="0" @click="handleBackTop" />
   </div>

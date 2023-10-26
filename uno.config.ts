@@ -28,5 +28,15 @@ export default defineConfig({
     'flex-col-bc': 'flex flex-col justify-between items-center',
     'flex-col-ac': 'flex flex-col justify-around items-center'
   },
-  rules: [['w-ih', { width: 'inherit' }]]
+  rules: [
+    ['w-ih', { width: 'inherit' }],
+    ['trim-text-color', { color: 'var(--trim-text-color)' }],
+    ['trim-bg-color', { color: 'var(--trim-bg-color)' }],
+    [
+      /^trim-border-(\d+)$/,
+      (match) => ({
+        border: `${match[1]}px solid var(--trim-border-color-light)`
+      })
+    ]
+  ]
 })

@@ -9,12 +9,21 @@ import EmploymentRating from './components/employment-rating.vue'
 import Notice from './components/notice.vue'
 import EmployeeChange from './components/employee-change.vue'
 import LatestEmployeeChange from './components/latest-employee-change.vue'
+import { CSSProperties } from 'vue'
+
+const contentStyle: CSSProperties = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr) 0.6fr',
+  gap: '16px',
+  width: '100%',
+  height: ' 100%'
+}
 </script>
 
 <template>
   <div>
     <!-- 参考UI图：https://js.design/f/WwydKS?p=ynwGd8QEf8 -->
-    <regular-layout class="content" transparent>
+    <regular-layout :body-style="contentStyle" transparent>
       <WeeklyData style="grid-area: 1/1/3/2" />
       <TodayTodo style="grid-area: 1/2/3/3" />
       <Info style="grid-area: 1/3/2/4" />
@@ -29,12 +38,4 @@ import LatestEmployeeChange from './components/latest-employee-change.vue'
   </div>
 </template>
 
-<style lang="scss" scoped>
-.content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr) 0.6fr;
-  gap: 16px;
-  width: 100%;
-  height: 100%;
-}
-</style>
+<style lang="scss" scoped></style>
