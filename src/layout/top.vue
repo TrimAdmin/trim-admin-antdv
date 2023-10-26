@@ -24,7 +24,6 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
     </a-layout-header>
     <div class="trim-header-placeholder" />
     <scroll-container v-if="!refreshing" class="trim-main-content">
-      <breadcrumbs class="p-4" />
       <animated-router-view />
       <a-layout-footer>
         <normal-footer />

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import SubForm from './components/sub-form.vue'
 import BasicForm from './components/basic-form.vue'
-import FixedFooter from '@/components/layouts/fixed-footer.vue'
+import FixedFooter from '@/components/fixed-footer/index.vue'
 
 defineOptions({
   name: 'forms-advanced'

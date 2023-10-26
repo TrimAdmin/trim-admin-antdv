@@ -16,7 +16,7 @@ function generateRandom() {
         <a-button type="primary" @click="generateRandom">随机数字</a-button>
       </template>
     </page-header>
-    <regular-layout no-background>
+    <regular-layout transparent>
       <a-alert banner class="mb-4" type="info">
         <template #message>
           组件位置：/src/components/digit-scroll/index.vue，官方文档：<a

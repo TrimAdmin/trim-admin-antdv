@@ -38,7 +38,12 @@ onMounted(() => {
 <template>
   <div ref="contentEl" class="trim-main-content">
     <slot />
-    <a-back-top v-if="backTop && scrollTop > 200" :visibility-height="0" @click="handleBackTop" />
+    <a-back-top
+      v-if="backTop && scrollTop > 200"
+      class="z-[999] animate__animated animate__fadeIn animate__faster"
+      :visibility-height="0"
+      @click="handleBackTop"
+    />
   </div>
 </template>
 

@@ -41,7 +41,7 @@ import Dependencies from '@/views/common/home/components/dependencies.vue'
         </a-button-group>
       </template>
     </page-header>
-    <regular-layout no-background>
+    <regular-layout transparent>
       <Feature class="mb-4" />
       <Dependencies />
     </regular-layout>

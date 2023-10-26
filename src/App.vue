@@ -125,7 +125,7 @@ router.isReady().then(async () => {
       <component :is="route.meta.noLayout ? RouterView : Layout" />
     </div>
     <div v-else class="w-screen h-screen flex-c">
-      <a-spin size="large" tip="加载中..." />
+      <loading loading />
     </div>
   </a-config-provider>
 </template>

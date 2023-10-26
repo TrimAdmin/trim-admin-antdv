@@ -50,7 +50,7 @@ function handleTabAction(action: string, key: string) {
 </script>
 
 <template>
-  <div class="card-tab bg-white dark:bg-[#001529] w-full block p-1">
+  <div class="card-tab w-full block p-1">
     <a-tabs
       :active-key="currentTab"
       class="animate__animated animate__fadeInUp animate__faster"
@@ -126,7 +126,8 @@ function handleTabAction(action: string, key: string) {
 .card-tab {
   height: 42px;
   overflow-y: hidden;
-  border-bottom: 1px solid rgb(100 100 100 / 10%);
+  background-color: var(--trim-bg-color);
+  border-bottom: 1px solid var(--trim-border-color-light);
 
   .icon-close {
     --theme-color: v-bind(currentThemeColor);
@@ -150,7 +151,7 @@ function handleTabAction(action: string, key: string) {
 
 :deep(.ant-tabs-tab) {
   font-size: 14px !important;
-  border: 1px solid rgb(5 5 5 / 6%);
+  border: 1px solid var(--trim-border-color-lighter);
 
   &:first-child {
     margin-left: 0 !important;

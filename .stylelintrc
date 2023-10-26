@@ -22,6 +22,7 @@
     ],
     "font-family-name-quotes": "always-where-required",
     "color-no-invalid-hex": true,
+    "color-hex-length": "long",
     "block-no-empty": true,
     "property-no-vendor-prefix": null,
     "no-empty-source": null,

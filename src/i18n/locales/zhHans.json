@@ -58,11 +58,14 @@
       "home": "基础组件",
       "button": "按钮"
     },
-    "advanced-components": {
-      "home": "进阶组件"
+    "extended-components": {
+      "home": "扩展组件",
+      "page-header": "页头",
+      "fixed-footer": "固定页脚",
+      "regular-layout": "基础内容块"
     },
     "extensions": {
-      "home": "扩展组件",
+      "home": "插件",
       "rich-editor": "富文本编辑器",
       "digit-scroll": "滚动数字",
       "vxe-table": "VXE Table"

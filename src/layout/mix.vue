@@ -46,7 +46,6 @@ function handleCurrentChange(name: string) {
             <normal-tab v-if="tabStyle === 'normal'" />
           </div>
           <div v-if="tabStyle !== 'hide'" class="trim-tabs-placeholder" />
-          <breadcrumbs class="p-4" />
           <animated-router-view />
           <a-layout-footer>
             <normal-footer />

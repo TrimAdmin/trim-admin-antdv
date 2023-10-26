@@ -14,7 +14,7 @@ import LatestEmployeeChange from './components/latest-employee-change.vue'
 <template>
   <div>
     <!-- 参考UI图：https://js.design/f/WwydKS?p=ynwGd8QEf8 -->
-    <regular-layout class="content" no-background>
+    <regular-layout class="content" transparent>
       <WeeklyData style="grid-area: 1/1/3/2" />
       <TodayTodo style="grid-area: 1/2/3/3" />
       <Info style="grid-area: 1/3/2/4" />

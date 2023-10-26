@@ -1,4 +1,6 @@
+// 官方文档：https://kingsora.github.io/OverlayScrollbars/
 import { OverlayScrollbars, ScrollbarsHidingPlugin, SizeObserverPlugin } from 'overlayscrollbars'
+import { useConfigStoreHook } from '@/store'
 
 export function scrollbarInstance(el: HTMLElement) {
   OverlayScrollbars.plugin([SizeObserverPlugin, ScrollbarsHidingPlugin])

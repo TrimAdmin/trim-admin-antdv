@@ -38,7 +38,7 @@ function handleMenuChange(key: RouteRecordName) {
   <div
     v-if="!hideLogo"
     :class="`sider-title ${
-      menuDarkMode ? 'bg-[#001529] text-white' : ''
+      menuDarkMode ? 'text-white' : ''
     } dark:text-white font-bold w-full flex items-center justify-center px-2`"
   >
     <img alt="logo" class="h-4/5 inline-block" src="@/assets/images/logo.png" />
@@ -63,5 +63,6 @@ function handleMenuChange(key: RouteRecordName) {
 
 .ant-menu {
   height: calc(100% - var(--t-header-height));
+  border: none !important;
 }
 </style>

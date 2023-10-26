@@ -39,7 +39,7 @@ const timeSlot = computed<string>(() => getTimeSlotString())
         </div>
       </template>
     </page-header>
-    <regular-layout no-background>
+    <regular-layout transparent>
       <Statistic class="mb-4" />
       <SaleCharts />
       <div class="grid grid-cols-2 mt-4 gap-4">

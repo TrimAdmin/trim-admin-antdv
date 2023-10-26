@@ -49,8 +49,7 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
   overflow-x: hidden;
   overflow-y: auto;
   inset: 0;
-
-  @apply shadow-md shadow-gray-300 dark:shadow-gray-700;
+  box-shadow: var(--trim-box-shadow-md);
 }
 
 .trim-main-page {
@@ -76,9 +75,10 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
   height: var(--header-height);
   line-height: var(--header-height);
   padding-inline: 0;
+  background-color: var(--trim-bg-color);
+  border-bottom: 1px solid var(--trim-border-color-light);
 
   // width: calc(100% - var(--sider-width));
-  @apply bg-white dark:bg-[#001529] border-gray-100 dark:border-gray-700;
 }
 
 .trim-header-placeholder {

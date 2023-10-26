@@ -1,0 +1,31 @@
+html {
+  // 阴影模糊
+  --trim-shadow-blur-sm: 4px;
+  --trim-shadow-blur-md: 8px;
+  --trim-shadow-blur-lg: 12px;
+
+  // 全局变量
+  --trim-scrollbar-color: rgb(51 51 51 / 50%);
+  --trim-text-color: #333333;
+  --trim-bg-color: white;
+  --trim-border-color-lighter: #f6f6f6;
+  --trim-border-color-light: #e3e3e3;
+  --trim-border-color-dark: #b9b9b9;
+  --trim-box-shadow-sm: 0 0 var(--trim-shadow-blur-sm) rgb(209 213 219);
+  --trim-box-shadow-md: 0 0 var(--trim-shadow-blur-md) rgb(209 213 219);
+  --trim-box-shadow-lg: 0 0 var(--trim-shadow-blur-lg) rgb(209 213 219);
+}
+
+// 暗色模式
+html.dark {
+  // 全局变量
+  --trim-scrollbar-color: rgb(209 213 219 / 50%);
+  --trim-text-color: white;
+  --trim-bg-color: #141414;
+  --trim-border-color-lighter: #3f3f3f;
+  --trim-border-color-light: #3a3a3a;
+  --trim-border-color-dark: #333333;
+  --trim-box-shadow-sm: 0 0 var(--trim-shadow-blur-sm) rgb(100 100 100 / 50%);
+  --trim-box-shadow-md: 0 0 var(--trim-shadow-blur-md) rgb(100 100 100 / 50%);
+  --trim-box-shadow-lg: 0 0 var(--trim-shadow-blur-lg) rgb(100 100 100 / 50%);
+}
