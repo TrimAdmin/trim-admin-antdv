@@ -79,9 +79,9 @@ onMounted(() => {
 .regular-layout {
   max-width: calc(100% - 32px);
   margin: 16px;
-  color: var(--trim-text-color);
-  //transition: height 0.25s;
   overflow: hidden;
+  color: var(--trim-text-color);
+  transition: height 0.25s;
 
   .header {
     padding: 12px;

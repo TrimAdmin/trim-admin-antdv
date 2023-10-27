@@ -78,7 +78,7 @@ function handleTabAction(action: string, key: string) {
                     重新加载
                   </div>
                 </a-menu-item>
-                <a-menu-item key="close" :disabled="item.tabAffix">
+                <a-menu-item v-if="!item.tabAffix" key="close">
                   <div class="flex items-center">
                     <Icon class="mr-1" icon="ant-design:close-outlined" inline />
                     关闭标签页
@@ -86,21 +86,21 @@ function handleTabAction(action: string, key: string) {
                 </a-menu-item>
                 <a-divider class="my-2" />
                 <a-menu-item
+                  v-if="tabsList.length !== tabsList.filter((item) => item.tabAffix).length + 1"
                   key="close-other"
-                  :disabled="tabsList.length === tabsList.filter((item) => item.tabAffix).length + 1"
                 >
                   <div class="flex items-center">
                     <Icon class="mr-1" icon="ant-design:aim-outlined" inline />
                     关闭其他标签页
                   </div>
                 </a-menu-item>
-                <a-menu-item key="close-left" :disabled="index === 0 || index === 1">
+                <a-menu-item v-if="[0, 1].indexOf(index) === -1" key="close-left">
                   <div class="flex items-center">
                     <Icon class="mr-1" icon="ant-design:vertical-right-outlined" inline />
                     关闭左侧标签页
                   </div>
                 </a-menu-item>
-                <a-menu-item key="close-right" :disabled="index === tabsList.length - 1">
+                <a-menu-item v-if="index !== tabsList.length - 1" key="close-right">
                   <div class="flex items-center">
                     <Icon class="mr-1" icon="ant-design:vertical-left-outlined" inline />
                     关闭右侧标签页

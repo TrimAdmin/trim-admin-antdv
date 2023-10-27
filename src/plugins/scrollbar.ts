@@ -1,5 +1,5 @@
 // 官方文档：https://kingsora.github.io/OverlayScrollbars/
-import { OverlayScrollbars, ScrollbarsHidingPlugin, SizeObserverPlugin, ClickScrollPlugin } from 'overlayscrollbars'
+import { ClickScrollPlugin, OverlayScrollbars, ScrollbarsHidingPlugin, SizeObserverPlugin } from 'overlayscrollbars'
 
 export function scrollbarInstance(el: HTMLElement) {
   OverlayScrollbars.plugin([SizeObserverPlugin, ScrollbarsHidingPlugin, ClickScrollPlugin])
@@ -8,6 +8,12 @@ export function scrollbarInstance(el: HTMLElement) {
     {
       overflow: {
         x: 'hidden'
+      },
+      update: {
+        elementEvents: [
+          ['img', 'load'],
+          ['*', 'transitionstart transitionend']
+        ]
       },
       showNativeOverlaidScrollbars: false,
       scrollbars: {
