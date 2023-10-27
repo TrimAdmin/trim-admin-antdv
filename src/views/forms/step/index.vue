@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { StepProps } from 'ant-design-vue'
 import FillInfo from './components/fill-info.vue'
-import type { Component } from 'vue'
 import { infoType } from '@/views/forms/step/types'
 import ConfirmInfo from '@/views/forms/step/components/confirm-info.vue'
 import Finish from '@/views/forms/step/components/finish.vue'
@@ -20,28 +19,23 @@ const formData = reactive<infoType>({
   amount: 4000
 } as infoType)
 
-const stepList: Array<StepProps & { content?: Component }> = [
+const stepList: Array<StepProps> = [
   {
-    title: '填写付款信息',
-    content: h(FillInfo, {
-      formData,
-      ref: fillInfoRef
-    })
+    title: '填写付款信息'
   },
   {
-    title: '确认付款信息',
-    content: h(ConfirmInfo, {
-      formData
-    })
+    title: '确认付款信息'
   },
   {
-    title: '付款完成',
-    content: Finish
+    title: '付款完成'
   }
 ]
 
-function handleValidate() {
-  console.log(fillInfoRef.value)
+// 下一步
+async function handleNext() {
+  if ((current.value === 0 && (await fillInfoRef.value.validate())) || current.value !== 0) {
+    current.value++
+  }
 }
 </script>
 
@@ -52,21 +46,11 @@ function handleValidate() {
       <a-row>
         <a-col :offset="4" :span="16">
           <a-steps :current="current" :items="stepList" class="mx-auto mt-4 mb-8" />
-          <component :is="stepList[current].content" />
+          <FillInfo v-if="current === 0" ref="fillInfoRef" :form-data="formData" />
+          <ConfirmInfo v-if="current === 1" :form-data="formData" />
+          <Finish v-if="current === 2" />
           <div class="mt-4 text-center">
-            <a-button
-              v-if="current < 2"
-              type="primary"
-              @click="
-                () => {
-                  if (current === 0) {
-                    handleValidate()
-                  }
-                  current++
-                }
-              "
-              >下一步
-            </a-button>
+            <a-button v-if="current < 2" type="primary" @click="handleNext">下一步</a-button>
             <a-button
               v-if="current === 2"
               type="primary"

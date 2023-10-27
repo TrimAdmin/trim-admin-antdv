@@ -27,8 +27,17 @@ const formRules = {
   }
 }
 
+async function validate() {
+  try {
+    await formRef.value?.validateFields()
+    return true
+  } catch (errorInfo) {
+    return false
+  }
+}
+
 defineExpose({
-  formRef
+  validate
 })
 </script>
 
