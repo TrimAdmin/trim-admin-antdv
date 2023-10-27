@@ -2,9 +2,14 @@
 import { scrollbarInstance } from '@/plugins'
 import { OverlayScrollbars } from 'overlayscrollbars'
 
-defineProps<{
-  showBackTop: boolean
-}>()
+withDefaults(
+  defineProps<{
+    showBackTop?: boolean
+  }>(),
+  {
+    showBackTop: true
+  }
+)
 
 const contentEl = shallowRef<HTMLDivElement>()
 const scrollTop = ref<number>(0)

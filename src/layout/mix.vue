@@ -7,7 +7,6 @@ import { headerHeight, siderWidth } from '@/hooks'
 import TopMixHeader from '@/layout/components/top-mix-header.vue'
 import NormalTab from './components/header/nav-tabs/normal-tab/index.vue'
 import CardTab from './components/header/nav-tabs/card-tab/index.vue'
-import Breadcrumbs from './components/header/breadcrumbs/index.vue'
 
 // 是否刷新路由
 const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)

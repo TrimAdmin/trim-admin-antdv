@@ -2,7 +2,7 @@
 import { ItemType, Modal } from 'ant-design-vue'
 import { headerHeight, useIcon } from '@/hooks'
 import { Key } from 'ant-design-vue/lib/_util/type'
-import { useConfigStoreHook, useUserStoreHook } from '@/store'
+import { useUserStoreHook } from '@/store'
 import MenuCollapse from './header/menu-collapse/index.vue'
 import GlobalSearch from './header/global-search/index.vue'
 import Refresh from './header/refresh/index.vue'

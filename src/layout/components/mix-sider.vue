@@ -7,7 +7,6 @@ import { ItemType } from 'ant-design-vue/es/menu/src/hooks/useItems'
 import { getChildRoutes, routesToMenu } from '@/router/utils.ts'
 
 const router = useRouter()
-const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
 const props = defineProps<{
   parentMenu: string
 }>()

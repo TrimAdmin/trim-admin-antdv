@@ -4,7 +4,6 @@ import { colorSchemeList, layoutList, routeAnimateList, tabStyleList } from '@/c
 import { getCurrentThemeColor } from '@/hooks'
 
 const open = ref<boolean>(false)
-const router = useRouter()
 const layout = computed<string>(() => useConfigStoreHook().config.theme.layout)
 const colorScheme = computed<string>(() => useConfigStoreHook().config.theme.colorScheme)
 const currentColor = computed<string>(() => getCurrentThemeColor())
