@@ -12,8 +12,6 @@ import removeConsole from 'vite-plugin-remove-console'
 import VueDevtools from 'vite-plugin-vue-devtools'
 // turbo-console
 import TurboConsole from 'vite-plugin-turbo-console'
-// mock
-import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
 // jsx
 import vueJsxPlugin from '@vitejs/plugin-vue-jsx'
 // svg loader
@@ -27,7 +25,6 @@ export const plugins = [
   vue(),
   svgLoader(),
   UnoCSS(),
-  mockDevServerPlugin(),
   vueJsxPlugin({
     transformOn: true,
     optimize: true

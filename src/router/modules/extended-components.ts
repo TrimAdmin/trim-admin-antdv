@@ -39,6 +39,15 @@ export default {
         title: t('menu.extended-components.regular-layout'),
         i18n: 'menu.extended-components.regular-layout'
       }
+    },
+    {
+      path: 'search-panel',
+      name: 'extended-components-search-panel',
+      component: () => import('@/views/extended-components/search-panel/index.vue'),
+      meta: {
+        title: t('menu.extended-components.search-panel'),
+        i18n: 'menu.extended-components.search-panel'
+      }
     }
   ]
 } as RouteRecordRaw

@@ -19,10 +19,13 @@ const props = withDefaults(
     maxHeight?: string
     // 只展开一次
     once?: boolean
+    // 是否需要展开动画
+    animated?: boolean
   }>(),
   {
     shadow: true,
-    rounded: true
+    rounded: true,
+    animated: true
   }
 )
 
@@ -51,6 +54,7 @@ onMounted(() => {
   <div
     ref="elRef"
     :class="`regular-layout flex flex-col relative
+      ${animated ? 'with-animate' : ''}
       ${transparent ? '' : 'with-bg'}
       ${shadow && !transparent ? 'with-shadow' : ''}
       ${rounded ? 'with-rounded' : ''}
@@ -81,7 +85,6 @@ onMounted(() => {
   margin: 16px;
   overflow: hidden;
   color: var(--trim-text-color);
-  transition: height 0.25s;
 
   .header {
     padding: 12px;
@@ -111,5 +114,9 @@ onMounted(() => {
 
 .btn-collapse {
   background: linear-gradient(to bottom, transparent 0%, var(--trim-bg-color) 100%);
+}
+
+.with-animate {
+  transition: height 0.25s ease;
 }
 </style>

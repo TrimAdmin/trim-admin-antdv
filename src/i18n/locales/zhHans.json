@@ -64,7 +64,8 @@
       "home": "扩展组件",
       "page-header": "页头",
       "fixed-footer": "固定页脚",
-      "regular-layout": "基础内容块"
+      "regular-layout": "基础内容块",
+      "search-panel": "搜索面板"
     },
     "extensions": {
       "home": "插件",
