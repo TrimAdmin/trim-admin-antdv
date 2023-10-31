@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { useUserStoreHook } from '@/store'
 import { getTimeSlotString } from '@/utils'
-import Card from './card.vue'
 
 const userInfo = computed<IUserInfo>(() => useUserStoreHook().userInfo)
 const timeSlot = computed<string>(() => getTimeSlotString())

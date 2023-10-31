@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import { ECOption } from '@/plugins'
 import { useECharts } from '@/hooks'
-import { useConfigStoreHook } from '@/store'
 
 const activeRadio = ref<string>('1')
 const categoryChartRef = shallowRef<HTMLDivElement>()
-const option = {
+const option: ECOption = {
   tooltip: {},
   legend: {
     orient: 'vertical',
@@ -15,7 +14,7 @@ const option = {
   series: [
     {
       type: 'pie',
-      roseType: true,
+      roseType: 'radius',
       data: [
         {
           name: '百度',
@@ -36,14 +35,7 @@ const option = {
       ]
     }
   ]
-} as ECOption
-
-watch(
-  () => useConfigStoreHook().darkTheme,
-  () => {
-    useECharts(categoryChartRef.value, option)
-  }
-)
+}
 
 onMounted(() => {
   useECharts(categoryChartRef.value, option)

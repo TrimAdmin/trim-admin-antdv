@@ -2,14 +2,12 @@
 import NormalHeader from './components/normal-header.vue'
 import NormalSider from './components/normal-sider.vue'
 import NormalFooter from '@/layout/components/footer.vue'
-import { useCommonStoreHook, useConfigStoreHook } from '@/store'
+import { useConfigStoreHook } from '@/store'
 import AnimatedRouterView from '@/layout/components/animated-router-view.vue'
 import { headerHeightWithTabs, siderWidth } from '@/hooks'
 import NormalTab from './components/header/nav-tabs/normal-tab/index.vue'
 import CardTab from './components/header/nav-tabs/card-tab/index.vue'
 
-// 是否刷新路由
-const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
 const collapsed = computed<boolean>(() => useConfigStoreHook().menuCollapsed)
 // 侧边栏暗色模式
 const menuDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.menuDarkMode)
@@ -24,7 +22,7 @@ const tabStyle = computed<string>(() => useConfigStoreHook().config.theme.tabSty
       <normal-sider />
     </a-layout-sider>
     <div class="z-[1000] fixed inset-0 w-full h-full invisible" />
-    <scroll-container v-if="!refreshing" class="trim-main-page">
+    <scroll-container class="trim-main-page">
       <a-layout-header>
         <normal-header />
         <card-tab v-if="tabStyle === 'card'" />

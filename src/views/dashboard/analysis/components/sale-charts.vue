@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { Dayjs } from 'dayjs'
-import { echarts, ECOption } from '@/plugins'
+import { ECOption } from '@/plugins'
 import { useConfigStoreHook } from '@/store'
 import { colorSchemeList } from '@/constants'
+import { useECharts } from '@/hooks'
 
 const activeKey = ref<number>(1)
 const optionList = ref<Array<string>>(['今日', '本周', '本月', '本季度', '全年'])
@@ -10,7 +11,6 @@ const currentOption = ref<string>(optionList.value[0])
 const timeRange = ref<[Dayjs, Dayjs]>()
 const saleChartRef = shallowRef<HTMLDivElement>()
 const saleChart = ref()
-const saleChartOption = ref<ECOption>()
 const xAxisList = ref<Array<string>>([])
 const yAxisList = ref<Array<number>>([])
 const primaryColor = computed<string>(
@@ -27,8 +27,7 @@ function initChart() {
   if (saleChart.value) {
     saleChart.value.dispose()
   }
-  saleChart.value = echarts.init(saleChartRef.value)
-  saleChartOption.value = {
+  const saleChartOption: ECOption = {
     color: [primaryColor.value],
     xAxis: {
       data: xAxisList.value,
@@ -77,8 +76,8 @@ function initChart() {
         data: yAxisList.value
       }
     ]
-  } as ECOption
-  saleChart.value.setOption(saleChartOption.value)
+  }
+  saleChart.value = useECharts(saleChartRef.value, saleChartOption)
 }
 
 function handleChange() {

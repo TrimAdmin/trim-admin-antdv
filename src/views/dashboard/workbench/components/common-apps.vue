@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import Card from './card.vue'
-
 const appList = ref<
   Array<{
     icon: string

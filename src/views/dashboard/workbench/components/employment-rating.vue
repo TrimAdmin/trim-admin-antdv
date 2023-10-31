@@ -1,41 +1,36 @@
 <script lang="ts" setup>
-import { echarts, ECOption } from '@/plugins'
-import Card from './card.vue'
+import { ECOption } from '@/plugins'
+import { useECharts } from '@/hooks'
 
 const waterChartRef = shallowRef<HTMLDivElement>()
-
-onMounted(() => {
-  const chart = echarts.init(waterChartRef.value)
-  const options = {
-    series: [
-      {
-        type: 'liquidFill',
-        radius: '90%',
-        shape: 'circle',
-        color: ['rgba(255, 135, 8, 1)', 'rgba(255, 135, 8, 0.4)'],
-        data: [0.4, 0.45],
-        outline: {
-          show: false
-        },
-        backgroundStyle: {
-          color: 'white',
-          borderColor: 'rgba(255, 135, 8, 1)',
-          borderWidth: 2
-        },
-        label: {
-          color: 'black',
-          fontSize: 20,
-          formatter: ({ value }: { value: number }) => {
-            return value * 100 + '分'
-          }
+const options: ECOption = {
+  series: [
+    {
+      type: 'liquidFill',
+      radius: '90%',
+      shape: 'circle',
+      color: ['rgba(255, 135, 8, 1)', 'rgba(255, 135, 8, 0.4)'],
+      data: [0.4, 0.45],
+      outline: {
+        show: false
+      },
+      backgroundStyle: {
+        color: 'transparent',
+        borderColor: 'rgba(255, 135, 8, 1)',
+        borderWidth: 2
+      },
+      label: {
+        fontSize: 20,
+        formatter: ({ value }) => {
+          return +value * 100 + '分'
         }
       }
-    ]
-  } as ECOption
-  chart.setOption(options)
-  window.addEventListener('resize', () => {
-    chart.resize()
-  })
+    }
+  ]
+}
+
+onMounted(() => {
+  useECharts(waterChartRef.value, options)
 })
 </script>
 

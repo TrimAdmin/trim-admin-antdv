@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import Card from './card.vue'
-
 const typeList = ref<Array<string>>(['新增人员', '离职人员'])
 const currentType = ref<string>(typeList.value[0])
 const peopleList = ref<

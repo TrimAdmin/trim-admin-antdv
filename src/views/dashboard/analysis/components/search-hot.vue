@@ -9,7 +9,7 @@ const aveChartRef = shallowRef<HTMLDivElement>()
 const primaryColor = computed<string>(
   () => colorSchemeList.filter((item) => item.scheme === useConfigStoreHook().config.theme.colorScheme)[0].primaryColor
 )
-const option1 = {
+const option1: ECOption = {
   color: primaryColor.value,
   grid: {
     bottom: 50,
@@ -33,9 +33,9 @@ const option1 = {
       areaStyle: {}
     }
   ]
-} as ECOption
+}
 
-const option2 = {
+const option2: ECOption = {
   color: primaryColor.value,
   grid: {
     bottom: 50,
@@ -44,7 +44,7 @@ const option2 = {
   },
   xAxis: {
     type: 'category',
-    value: [1, 2, 3, 4, 5],
+    data: [1, 2, 3, 4, 5],
     show: false
   },
   yAxis: {
@@ -59,15 +59,7 @@ const option2 = {
       areaStyle: {}
     }
   ]
-} as ECOption
-
-watch(
-  () => useConfigStoreHook().darkTheme,
-  () => {
-    useECharts(userChartRef.value, option1)
-    useECharts(aveChartRef.value, option2)
-  }
-)
+}
 
 onMounted(() => {
   useECharts(userChartRef.value, option1)

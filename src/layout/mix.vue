@@ -1,15 +1,13 @@
 <script lang="ts" setup>
 import MixSider from './components/mix-sider.vue'
 import NormalFooter from '@/layout/components/footer.vue'
-import { useCommonStoreHook, useConfigStoreHook } from '@/store'
+import { useConfigStoreHook } from '@/store'
 import AnimatedRouterView from '@/layout/components/animated-router-view.vue'
 import { headerHeight, siderWidth } from '@/hooks'
 import TopMixHeader from '@/layout/components/top-mix-header.vue'
 import NormalTab from './components/header/nav-tabs/normal-tab/index.vue'
 import CardTab from './components/header/nav-tabs/card-tab/index.vue'
 
-// 是否刷新路由
-const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
 // 侧边栏暗色模式
 const menuDarkMode = computed<boolean>(() => useConfigStoreHook().config.theme.menuDarkMode)
 
@@ -39,7 +37,7 @@ function handleCurrentChange(name: string) {
         >
           <mix-sider :parent-menu="currentMenu" />
         </a-layout-sider>
-        <scroll-container v-if="!refreshing" class="trim-main-content">
+        <scroll-container class="trim-main-content">
           <div class="fixed w-full z-[999]">
             <card-tab v-if="tabStyle === 'card'" />
             <normal-tab v-if="tabStyle === 'normal'" />

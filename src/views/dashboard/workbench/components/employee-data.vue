@@ -1,6 +1,4 @@
-<script lang="ts" setup>
-import Card from './card.vue'
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <Card title="员工数据">

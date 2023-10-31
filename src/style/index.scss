@@ -17,9 +17,10 @@ html, body {
 
 /* nprogress实例 */
 #nprogress {
+  z-index: 999 !important;
   /* 进度条颜色 */
   .bar {
-    background: var(--el-color-primary);
+    background: var(--antdv-color-primary) !important;
   }
 }
 
@@ -58,7 +59,7 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #1778ff;
+  background-color: var(--antdv-color-primary);
   border-radius: 4px;
 }
 
@@ -69,6 +70,7 @@ html, body {
 ::-webkit-scrollbar-corner {
   background-color: transparent;
 }
+
 [data-overlayscrollbars-viewport] {
   display: flex;
   flex-direction: column;

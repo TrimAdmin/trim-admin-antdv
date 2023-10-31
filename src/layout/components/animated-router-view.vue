@@ -2,6 +2,8 @@
 import { useCommonStoreHook, useConfigStoreHook } from '@/store'
 import { routeAnimateList } from '@/constants'
 
+// 是否刷新路由
+const refreshing = computed<boolean>(() => useCommonStoreHook().refreshing)
 // 路由动画
 const routeAnimateIn = computed<string>(
   () => routeAnimateList.filter((item) => item.value === useConfigStoreHook().config.theme.routeAnimate)[0]?.in || ''
@@ -23,7 +25,7 @@ const duration = computed<string>(
     <router-view v-slot="{ Component, route }" class="h-full">
       <transition :name="routeAnimateIn && routeAnimateOut && 'route-animate'" appear mode="out-in">
         <keep-alive :include="useCommonStoreHook().keepAliveList">
-          <component :is="Component" :key="route.fullPath" />
+          <component :is="Component" v-if="!refreshing" :key="route.fullPath" />
         </keep-alive>
       </transition>
     </router-view>

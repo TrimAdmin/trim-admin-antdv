@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { echarts, ECOption } from '@/plugins'
+import { ECOption } from '@/plugins'
+import { useECharts } from '@/hooks'
 
 const typeList = ref<Array<{ label: string; value: string }>>([
   {
@@ -66,29 +67,25 @@ const showDigit = ref<boolean>(true)
 const totalCount = ref<number>(2640)
 
 onMounted(() => {
-  initChart()
+  useECharts(weeklyPieChartRef.value, option)
   window.addEventListener('resize', () => {
     chart.value.resize()
   })
 })
 
-function initChart() {
-  chart.value = echarts.init(weeklyPieChartRef.value)
-  const option = {
-    color: colorList.value,
-    series: [
-      {
-        type: 'pie',
-        data: dataList.value,
-        clockWise: false,
-        radius: ['60%', '90%'],
-        label: {
-          show: false
-        }
+const option: ECOption = {
+  color: colorList.value,
+  series: [
+    {
+      type: 'pie',
+      data: dataList.value,
+      clockwise: false,
+      radius: ['60%', '90%'],
+      label: {
+        show: false
       }
-    ]
-  } as ECOption
-  chart.value.setOption(option)
+    }
+  ]
 }
 
 function handleRandomData() {
@@ -104,7 +101,7 @@ function handleRandomData() {
   totalCount.value = list.reduce((prev, curr) => prev + curr.value, 0)
   nextTick(() => {
     showDigit.value = true
-    initChart()
+    useECharts(weeklyPieChartRef.value, option)
   })
 }
 </script>
