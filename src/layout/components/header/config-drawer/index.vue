@@ -30,7 +30,7 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
 
 <template>
   <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">
-    <a-tooltip>
+    <a-tooltip destroy-tooltip-on-hide>
       <template #title>{{ $t('config.title') }}</template>
       <Icon
         :height="18"
@@ -63,7 +63,7 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
     <div class="text-center">
       <a-divider plain>{{ $t('config.layout') }}</a-divider>
       <div class="flex justify-around items-center" :style="{ '--theme-color': currentColor }">
-        <a-tooltip v-for="item in layoutList" :key="item.value">
+        <a-tooltip v-for="item in layoutList" :key="item.value" destroy-tooltip-on-hide>
           <div
             :style="layout === item.value ? { borderColor: currentColor } : { border: 'none' }"
             :class="`layout-${item.value} border-2 border-solid shadow-md dark:shadow-gray-600 w-16 h-12 rounded-2 transition hover:(cursor-pointer shadow-gray-400 dark:shadow-gray-500)`"
@@ -81,7 +81,7 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
     <div class="text-center">
       <a-divider plain>{{ $t('config.colorScheme') }}</a-divider>
       <div class="flex gap-2 justify-center">
-        <a-tooltip v-for="item in colorSchemeList" :key="item.scheme">
+        <a-tooltip v-for="item in colorSchemeList" :key="item.scheme" destroy-tooltip-on-hide>
           <div
             :style="{ backgroundColor: item.primaryColor }"
             class="h-6 w-6 leading-7 rounded-sm border-gray-200 border-2 border-solid cursor-pointer"

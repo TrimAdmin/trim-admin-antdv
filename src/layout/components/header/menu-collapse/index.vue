@@ -10,7 +10,7 @@ function handleCollapse() {
 
 <template>
   <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">
-    <a-tooltip>
+    <a-tooltip destroy-tooltip-on-hide>
       <template #title>
         {{ collapsed ? '展开菜单' : '折叠菜单' }}
       </template>

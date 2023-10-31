@@ -10,7 +10,7 @@ function toggleTheme() {
 
 <template>
   <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">
-    <a-tooltip>
+    <a-tooltip destroy-tooltip-on-hide>
       <template #title>
         {{ isDarkTheme ? '亮色模式' : '暗色模式' }}
       </template>

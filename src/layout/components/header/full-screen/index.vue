@@ -16,7 +16,7 @@ function handleExitFullScreen() {
 
 <template>
   <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">
-    <a-tooltip>
+    <a-tooltip destroy-tooltip-on-hide>
       <template #title>
         {{ isFullScreen ? '退出全屏' : '全屏' }}
       </template>

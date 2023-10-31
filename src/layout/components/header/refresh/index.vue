@@ -8,7 +8,7 @@ function handleRefresh() {
 
 <template>
   <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">
-    <a-tooltip>
+    <a-tooltip destroy-tooltip-on-hide>
       <template #title>刷新</template>
       <Icon
         :height="18"
