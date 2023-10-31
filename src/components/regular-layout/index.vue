@@ -21,6 +21,8 @@ const props = withDefaults(
     once?: boolean
     // 是否需要展开动画
     animated?: boolean
+    // 标题
+    title?: string
   }>(),
   {
     shadow: true,
@@ -46,6 +48,12 @@ onMounted(() => {
   if (props.maxHeight && (elRef.value?.offsetHeight || 0) >= +props.maxHeight.replace(/[^0-9]/g, '')) {
     elHeight.value = elRef.value?.offsetHeight + 'px'
     collapsed.value = true
+    // 监听窗口大小并更新展开后高度
+    window.addEventListener('resize', () => {
+      if (!collapsed.value) {
+        elHeight.value = elRef.value?.offsetHeight + 'px'
+      }
+    })
   }
 })
 </script>
@@ -63,6 +71,7 @@ onMounted(() => {
     `"
     :style="maxHeight && collapsed ? { height: maxHeight } : {}"
   >
+    <div v-if="title" class="title mx-4 pl-3 mt-4 text-lg">{{ title }}</div>
     <div v-if="slots.header" class="header">
       <slot name="header" />
     </div>
@@ -85,6 +94,11 @@ onMounted(() => {
   margin: 16px;
   overflow: hidden;
   color: var(--trim-text-color);
+
+  .title {
+    line-height: 1.2;
+    border-left: 4px solid var(--antdv-color-primary);
+  }
 
   .header {
     padding: 12px;

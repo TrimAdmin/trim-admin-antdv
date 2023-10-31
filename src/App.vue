@@ -18,13 +18,14 @@ import {
   tdesignDarkTheme,
   tdesignTheme
 } from '@/theme'
-import { useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
+import { useColorTokenStoreHook, useCommonStoreHook, useConfigStoreHook, useUserStoreHook } from '@/store'
 import { setTrimConfig } from '@/hooks'
 import trimConfig from '@/trim-config.ts'
 import dayjs from 'dayjs'
-import { theme } from 'ant-design-vue'
+import { legacyLogicalPropertiesTransformer, theme } from 'ant-design-vue'
 
-const antTheme = theme
+const { defaultAlgorithm, darkAlgorithm, defaultSeed } = theme
+
 const route = useRoute()
 const router = useRouter()
 const show = ref<boolean>(false)
@@ -93,12 +94,45 @@ watch(
     const htmlClass = document.getElementsByTagName('html')[0].classList
     if (newVal) {
       htmlClass.add('dark')
+      useColorTokenStoreHook().setColorToken(
+        defaultAlgorithm({
+          ...defaultSeed,
+          ...darkColorScheme.value.token
+        })
+      )
     } else {
       htmlClass.remove('dark')
+      useColorTokenStoreHook().setColorToken(
+        defaultAlgorithm({
+          ...defaultSeed,
+          ...colorScheme.value.token
+        })
+      )
     }
   },
   {
     immediate: true
+  }
+)
+
+watch(
+  () => [colorScheme.value, darkColorScheme.value],
+  () => {
+    if (useConfigStoreHook().darkTheme) {
+      useColorTokenStoreHook().setColorToken(
+        defaultAlgorithm({
+          ...defaultSeed,
+          ...darkColorScheme.value.token
+        })
+      )
+    } else {
+      useColorTokenStoreHook().setColorToken(
+        defaultAlgorithm({
+          ...defaultSeed,
+          ...colorScheme.value.token
+        })
+      )
+    }
   }
 )
 
@@ -116,18 +150,18 @@ router.isReady().then(async () => {
 </script>
 
 <template>
-  <a-config-provider
-    :auto-insert-space-in-button="false"
-    :locale="locale"
-    :theme="isDarkTheme ? { algorithm: antTheme.darkAlgorithm, ...darkColorScheme } : colorScheme"
-  >
-    <div v-if="show" class="relative h-full">
-      <component :is="route.meta.noLayout ? RouterView : Layout" />
-    </div>
-    <div v-else class="w-screen h-screen flex-c">
-      <loading loading />
-    </div>
-  </a-config-provider>
+  <a-style-provider :transformers="[legacyLogicalPropertiesTransformer]">
+    <a-config-provider
+      :auto-insert-space-in-button="false"
+      :locale="locale"
+      :theme="isDarkTheme ? { algorithm: darkAlgorithm, ...darkColorScheme } : colorScheme"
+    >
+      <div v-if="show" class="relative h-full">
+        <component :is="route.meta.noLayout ? RouterView : Layout" />
+      </div>
+      <div v-else class="w-screen h-screen flex-c">
+        <loading loading />
+      </div>
+    </a-config-provider>
+  </a-style-provider>
 </template>
-
-<style lang="scss" scoped></style>

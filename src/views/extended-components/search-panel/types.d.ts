@@ -1,7 +1,7 @@
-import { ValueType } from 'ant-design-vue/es/vc-cascader/Cascader'
-
 export type searchFormType = {
+  [index: string]: any
   key: string
-  departmentId: ValueType
-  roleId: ValueType
+  departmentId: Array<string | number>
+  roleId: Array<string | number>
+  status: number
 }

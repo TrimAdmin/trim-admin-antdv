@@ -3,7 +3,7 @@ import { departmentList } from '@/mock'
 import type { ValueType } from 'ant-design-vue/es/vc-cascader/Cascader'
 
 defineProps<{
-  modelValue: ValueType
+  modelValue: Array<string | number>
   disabled?: boolean
   placeholder?: string
 }>()

@@ -8,3 +8,4 @@ export default store
 export * from './modules/user'
 export * from './modules/config'
 export * from './modules/common'
+export * from './modules/colorToken'

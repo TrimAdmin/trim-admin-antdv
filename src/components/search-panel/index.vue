@@ -31,7 +31,8 @@ const formRef = shallowRef<FormInstance>()
 const collapsedHeight = ref<string>()
 const maxHeight = ref<string>()
 const currentHeight = ref<string>()
-const opened = ref<boolean>(!props.expand)
+// 是否收起
+const collapsed = ref<boolean>(!props.expand)
 
 onMounted(() => {
   collapsedHeight.value = normalRef.value?.offsetHeight + 'px'
@@ -41,6 +42,15 @@ onMounted(() => {
   } else {
     currentHeight.value = collapsedHeight.value
   }
+  window.addEventListener('resize', () => {
+    collapsedHeight.value = normalRef.value?.offsetHeight + 'px'
+    maxHeight.value = fullRef.value?.offsetHeight + 'px'
+    if (collapsed.value) {
+      currentHeight.value = collapsedHeight.value
+    } else {
+      currentHeight.value = maxHeight.value
+    }
+  })
 })
 
 const emits = defineEmits<{
@@ -61,8 +71,8 @@ function handleReset() {
 
 // 展开面板
 function handleExpand() {
-  opened.value = !opened.value
-  if (opened.value) {
+  collapsed.value = !collapsed.value
+  if (collapsed.value) {
     currentHeight.value = collapsedHeight.value
   } else {
     currentHeight.value = maxHeight.value
@@ -94,8 +104,8 @@ defineExpose<{
       </div>
       <div>
         <a-button type="link" class="flex-c" @click="handleExpand">
-          {{ opened ? '展开条件' : '收起条件' }}
-          <Icon class="ml-1" icon="ant-design:down-outlined" :class="opened ? '' : 'rotate-180'" />
+          {{ collapsed ? '展开条件' : '收起条件' }}
+          <Icon class="ml-1" icon="ant-design:down-outlined" :class="collapsed ? '' : 'rotate-180'" />
         </a-button>
       </div>
     </div>

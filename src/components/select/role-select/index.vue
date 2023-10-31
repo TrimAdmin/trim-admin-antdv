@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { roleList } from '@/mock'
-import type { ValueType } from 'ant-design-vue/es/vc-cascader/Cascader'
+import { SelectValue } from 'ant-design-vue/es/select'
 
 defineProps<{
-  modelValue: ValueType
+  modelValue: SelectValue
   disabled?: boolean
   placeholder?: string
 }>()
 
 const emits = defineEmits<{
-  'update:modelValue': [value: ValueType]
+  'update:modelValue': [value: SelectValue]
 }>()
 
-function handleChange(value: ValueType) {
+function handleChange(value: SelectValue) {
   // console.log(value)
   emits('update:modelValue', value)
 }
