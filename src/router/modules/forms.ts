@@ -9,7 +9,8 @@ export default {
   meta: {
     title: t('menu.forms.home'),
     icon: 'ant-design:form-outlined',
-    i18n: 'menu.forms.home'
+    i18n: 'menu.forms.home',
+    order: 1
   },
   children: [
     {

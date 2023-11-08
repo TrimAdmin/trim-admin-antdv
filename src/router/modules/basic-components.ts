@@ -10,7 +10,7 @@ export default {
   meta: {
     title: t('menu.basic-components.home'),
     icon: 'ant-design:appstore-outlined',
-    order: 1,
+    order: 3,
     i18n: 'menu.basic-components.home'
   },
   children: [

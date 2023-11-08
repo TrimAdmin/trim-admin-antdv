@@ -129,12 +129,10 @@ function handleTabAction(action: string, key: string) {
   border-bottom: 1px solid var(--trim-border-color-light);
 
   .icon-close {
-    --theme-color: v-bind(currentThemeColor);
-
     transition: background-color 0.25s;
 
     &:hover {
-      background-color: var(--theme-color);
+      background: var(--antdv-color-primary-bg-hover);
     }
   }
 }
@@ -172,7 +170,7 @@ function handleTabAction(action: string, key: string) {
 
 :deep(.ant-tabs-tab-remove) {
   margin-left: 0;
-  color: #1677ff;
+  color: var(--antdv-color-primary);
   transform: scale(0.8);
 }
 </style>

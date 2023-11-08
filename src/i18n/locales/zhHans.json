@@ -79,6 +79,12 @@
       "advanced": "高级表单",
       "step": "分步表单"
     },
+    "list" : {
+      "home": "列表页",
+      "dialog": "弹窗形式",
+      "new-tab": "新开标签页形式",
+      "drawer": "抽屉形式"
+    },
     "multi-nav": {
       "home": "多级菜单",
       "menu-1": "菜单1",

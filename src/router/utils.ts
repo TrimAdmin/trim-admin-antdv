@@ -1,9 +1,9 @@
 import { RouteParamsRaw, RouteRecordName, RouteRecordRaw, RouterOptions } from 'vue-router'
 import router from '@/router/index.ts'
-import { Key } from 'ant-design-vue/es/_util/type'
 import { useI18nHook, useIcon, useMessage } from '@/hooks'
 import { sortBy } from 'lodash'
 import { useCommonStoreHook } from '@/store'
+import { MenuItemType } from '@/types/common'
 
 // 自动从modules文件夹导入路由
 export function autoImportRoutes(): Array<RouteRecordRaw> {
@@ -23,13 +23,14 @@ export function autoImportRoutes(): Array<RouteRecordRaw> {
 }
 
 // 路由递归转换为菜单
-export function routesToMenu(routes: RouterOptions['routes']): Array<any> {
-  const tree: Array<any> = []
-  // console.log(routes)
+export function routesToMenu(routes: RouterOptions['routes']): Array<MenuItemType> {
+  const tree: Array<MenuItemType> = []
 
   routes.map((route) => {
     const node = { ...route }
     if (route.children && route.children.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       node.children = routesToMenu(route.children)
     }
     if (route.meta?.hideMenu) {
@@ -38,7 +39,7 @@ export function routesToMenu(routes: RouterOptions['routes']): Array<any> {
     tree.push({
       label: node.meta?.title,
       title: node.meta?.title,
-      key: node.name as unknown as Key,
+      key: node.name?.toString(),
       order: node.meta?.order,
       icon: node.meta?.icon && useIcon(node.meta.icon),
       children: node.children || undefined
@@ -61,7 +62,17 @@ export function getKeepAliveMenus() {
 // 生成菜单并排序
 export function generateMenus() {
   const menus = routesToMenu(router.options.routes)
-  return sortBy(menus, (item: RouteRecordRaw['meta']) => item?.order || 0)
+
+  function sort(menus: Array<MenuItemType>) {
+    return sortBy(menus, (item: MenuItemType) => {
+      if (item.children) {
+        item.children = sort(item.children)
+      }
+      return item?.order || 0
+    })
+  }
+
+  return sort(menus)
 }
 
 // 获取父级路由节点列表

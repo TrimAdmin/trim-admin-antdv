@@ -12,9 +12,9 @@ function handleChangeI18n(key: ITrimConfig['defaultI18n']) {
 </script>
 
 <template>
-  <div class="flex items-center hover:bg-gray-50 p-2 dark:hover:bg-slate-700">
+  <div class="flex items-center hover:ant-bg-primary p-2">
     <a-dropdown arrow placement="bottom">
-      <Icon :height="18" class="cursor-pointer hover:text-blue-500" icon="ooui:language" />
+      <Icon :height="18" class="cursor-pointer hover:ant-text-color-primary" icon="ooui:language" />
       <template #overlay>
         <a-menu
           v-model:selected-keys="selectedKeys"

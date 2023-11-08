@@ -29,12 +29,12 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
 </script>
 
 <template>
-  <div class="h-full flex items-center hover:bg-gray-50 px-2 dark:hover:bg-slate-700">
+  <div class="h-full flex items-center px-2 hover:ant-bg-primary">
     <a-tooltip destroy-tooltip-on-hide>
       <template #title>{{ $t('config.title') }}</template>
       <Icon
         :height="18"
-        class="cursor-pointer hover:text-blue-500"
+        class="cursor-pointer hover:ant-text-color-primary"
         icon="ant-design:setting-outlined"
         @click="handleDrawerOpen"
       />
@@ -65,7 +65,7 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
       <div class="flex justify-around items-center" :style="{ '--theme-color': currentColor }">
         <a-tooltip v-for="item in layoutList" :key="item.value" destroy-tooltip-on-hide>
           <div
-            :style="layout === item.value ? { borderColor: currentColor } : { border: 'none' }"
+            :style="layout === item.value ? { borderColor: 'var(--antdv-color-primary)' } : { border: 'none' }"
             :class="`layout-${item.value} border-2 border-solid shadow-md dark:shadow-gray-600 w-16 h-12 rounded-2 transition hover:(cursor-pointer shadow-gray-400 dark:shadow-gray-500)`"
             @click="handleLayout(item.value)"
           >
@@ -153,20 +153,20 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
 
   .header {
     grid-area: header;
-    background-color: var(--theme-color);
+    background-color: var(--antdv-color-primary);
     border-radius: 2px;
     opacity: 0.6;
   }
 
   .sider {
     grid-area: sider;
-    background-color: var(--theme-color);
+    background-color: var(--antdv-color-primary);
     border-radius: 2px;
   }
 
   .content {
     grid-area: content;
-    background-color: var(--theme-color);
+    background-color: var(--antdv-color-primary);
     border-radius: 2px;
     opacity: 0.3;
   }

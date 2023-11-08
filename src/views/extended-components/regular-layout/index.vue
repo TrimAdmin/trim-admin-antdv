@@ -17,6 +17,7 @@
         </template>
         有头部的内容块
       </regular-layout>
+      <regular-layout title="这是标题">来个标题</regular-layout>
       <regular-layout max-height="200px">
         <template #header>
           <div class="flex-bc">带展开并且可以多次操作</div>

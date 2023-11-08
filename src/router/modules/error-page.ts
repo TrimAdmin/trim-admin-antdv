@@ -11,7 +11,7 @@ export default {
     title: t('menu.error-page.home'),
     i18n: 'menu.error-page.home',
     icon: 'ant-design:appstore-outlined',
-    order: 5
+    order: 7
   },
   children: [
     {

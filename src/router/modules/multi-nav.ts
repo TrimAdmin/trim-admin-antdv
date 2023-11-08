@@ -9,7 +9,7 @@ export default {
   meta: {
     title: t('menu.multi-nav.home'),
     icon: 'ant-design:unordered-list-outlined',
-    order: 3,
+    order: 6,
     i18n: 'menu.multi-nav.home'
   },
   children: [

@@ -33,6 +33,36 @@ export default defineConfig({
     ['trim-text-color', { color: 'var(--trim-text-color)' }],
     ['trim-bg-color', { color: 'var(--trim-bg-color)' }],
     [
+      /^ant-text-color-([a-zA-Z]+)$/,
+      (match) => ({
+        color: `var(--antdv-color-${match[1]})`
+      })
+    ],
+    [
+      /^ant-text-color-([a-zA-Z]+)-hover$/,
+      (match) => ({
+        color: `var(--antdv-color-${match[1]}-text-hover)`
+      })
+    ],
+    [
+      /^ant-bg-([a-zA-Z]+)$/,
+      (match) => ({
+        'background-color': `var(--antdv-color-${match[1]}-bg)`
+      })
+    ],
+    [
+      /^ant-bg-([a-zA-Z]+)-hover$/,
+      (match) => ({
+        'background-color': `var(--antdv-color-${match[1]}-bg-hover)`
+      })
+    ],
+    [
+      /^ant-border-([a-zA-Z]+)$/,
+      (match) => ({
+        'border-color': `var(--antdv-color-${match[1]}-border)`
+      })
+    ],
+    [
       /^trim-border-(\d+)$/,
       (match) => ({
         border: `${match[1]}px solid var(--trim-border-color-light)`

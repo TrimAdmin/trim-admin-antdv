@@ -1,7 +1,7 @@
-import type { App, Directive } from 'vue'
+import type { App, Directive, DirectiveBinding } from 'vue'
 import { createVNode, defineComponent, h, reactive, render, VNode } from 'vue'
 
-import Loading from '@/components/loading/index.vue'
+import Loading from '@/components/internal/loading/index.vue'
 
 export type LoadingType = {
   tip?: string
@@ -70,8 +70,11 @@ export function createLoading(props?: Partial<LoadingType>, target?: HTMLElement
   }
 }
 
+/**
+ * 元素loading态指令
+ */
 const loadingDirective: Directive = {
-  mounted(el, binding) {
+  mounted(el, binding: DirectiveBinding<boolean>) {
     // console.log(binding.value)
     const tip = el.getAttribute('ant-loading-tip')
     const lightBackgroundColor = el.getAttribute('ant-loading-light-background')
@@ -84,7 +87,7 @@ const loadingDirective: Directive = {
         lightBackgroundColor: lightBackgroundColor || 'rgba(255, 255, 255, 0.25)',
         darkBackgroundColor: darkBackgroundColor || 'rgba(20, 20, 20, 0.25)',
         size: size || 'large',
-        loading: !!binding.value
+        loading: binding.value
       },
       fullscreen ? document.body : el
     )

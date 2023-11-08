@@ -95,7 +95,7 @@ watch(
     if (newVal) {
       htmlClass.add('dark')
       useColorTokenStoreHook().setColorToken(
-        defaultAlgorithm({
+        darkAlgorithm({
           ...defaultSeed,
           ...darkColorScheme.value.token
         })

@@ -71,7 +71,7 @@ onMounted(() => {
     `"
     :style="maxHeight && collapsed ? { height: maxHeight } : {}"
   >
-    <div v-if="title" class="title mx-4 pl-3 mt-4 text-lg">{{ title }}</div>
+    <div v-if="title" class="title mx-4 pl-3 mt-6 text-lg flex">{{ title }}</div>
     <div v-if="slots.header" class="header">
       <slot name="header" />
     </div>
@@ -97,7 +97,16 @@ onMounted(() => {
 
   .title {
     line-height: 1.2;
-    border-left: 4px solid var(--antdv-color-primary);
+
+    &::before {
+      display: block;
+      width: 4px;
+      height: 22px;
+      margin-right: 12px;
+      background-color: var(--antdv-color-primary);
+      border-radius: 4px;
+      content: '';
+    }
   }
 
   .header {

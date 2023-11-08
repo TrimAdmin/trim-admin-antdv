@@ -9,7 +9,7 @@ export default {
   meta: {
     title: t('menu.extended-components.home'),
     icon: 'ant-design:database-outlined',
-    order: 2,
+    order: 4,
     i18n: 'menu.advanced-components.home'
   },
   children: [

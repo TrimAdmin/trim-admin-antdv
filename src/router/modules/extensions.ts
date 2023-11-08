@@ -10,7 +10,7 @@ export default {
   meta: {
     title: t('menu.extensions.home'),
     icon: 'mdi:puzzle-edit',
-    order: 3,
+    order: 5,
     i18n: 'menu.extensions.home'
   },
   children: [
