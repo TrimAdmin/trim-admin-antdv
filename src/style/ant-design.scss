@@ -3,7 +3,16 @@
   margin-left: 8px;
 }
 
+// 按钮和表格之间间距16px
+.ant-btn + .ant-table-wrapper {
+  margin-top: 16px;
+}
+
 // 警告图标样式
 .modal-icon-warning {
   font-size: 24px;
+}
+
+.ant-modal .ant-modal-header {
+  margin-bottom: 16px;
 }

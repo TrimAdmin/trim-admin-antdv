@@ -61,8 +61,23 @@ function handleEdit(row: tableDataType) {
   })
 }
 
-function handleChangeValue(data: tableDataType) {
-  tableData.value[tableData.value.findIndex((item) => item.id === data.id)] = cloneDeep(data)
+function handleAdd() {
+  openDialog.value = true
+}
+
+function handleChangeValue(data: tableDataType, isEdit: boolean) {
+  if (isEdit) {
+    tableData.value[tableData.value.findIndex((item) => item.id === data.id)] = cloneDeep(data)
+  } else {
+    console.log(data)
+    const newData = cloneDeep(data)
+    newData.id = tableData.value.length + 1
+    tableData.value.unshift(newData)
+  }
+}
+
+function handleDelete(row: tableDataType) {
+  tableData.value = tableData.value.filter((item) => item.id !== row.id)
 }
 </script>
 
@@ -75,11 +90,14 @@ function handleChangeValue(data: tableDataType) {
           <a-input v-model:value="searchForm.username" />
         </a-form-item>
       </search-panel>
+      <a-button type="primary" @click="handleAdd">新增</a-button>
       <a-table :data-source="tableData" :columns="columns">
         <template #bodyCell="{ column, record }">
           <template v-if="column.key === 'operation'">
             <a-button type="link" @click="handleEdit(record as tableDataType)">编辑</a-button>
-            <a-button danger type="link">删除</a-button>
+            <a-popconfirm title="确认要删除吗？" @confirm="handleDelete(record as tableDataType)">
+              <a-button danger type="link">删除</a-button>
+            </a-popconfirm>
           </template>
         </template>
       </a-table>

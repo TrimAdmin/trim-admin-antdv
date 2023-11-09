@@ -1,21 +1,49 @@
 <script lang="ts" setup>
 import { CSSProperties } from 'vue'
+import { LegacyButtonType } from 'ant-design-vue/es/button/buttonTypes'
+import { ButtonProps } from 'ant-design-vue/lib'
+import { Icon } from '@iconify/vue'
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     open: boolean
-    title: string
+    title?: string
     maskClosable?: boolean
+    closable?: boolean
     centered?: boolean
+    initOnClose?: boolean
+    confirmLoading?: boolean
+    footer?: string
+    destroyOnClose?: boolean
+    keyboard?: boolean
+    mask?: boolean
+    width?: string | number
+    wrapClassName?: string
+    okText?: string
+    cancelText?: string
+    okType?: LegacyButtonType
+    okButtonProps?: ButtonProps
+    cancelButtonProps?: ButtonProps
+    maskStyle?: CSSProperties
+    bodyStyle?: CSSProperties
+    zIndex?: number
+    closeIcon?: string
   }>(),
   {
-    maskClosable: false
+    maskClosable: true,
+    initOnClose: true,
+    destroyOnClose: true,
+    keyboard: true,
+    mask: true,
+    closable: true,
+    closeIcon: 'ant-design:close-outlined'
   }
 )
 
 const emits = defineEmits<{
   cancel: []
   ok: []
+  afterClose: []
   'update:open': [value: boolean]
 }>()
 
@@ -68,26 +96,71 @@ watchEffect(() => {
 window.addEventListener('resize', () => {
   startedDrag.value = false
 })
+
+// 弹窗关闭时的回调函数
+function handleCancel() {
+  if (props.initOnClose) {
+    transformX.value = 0
+    transformY.value = 0
+  }
+  emits('update:open', false)
+  emits('cancel')
+}
+
+const slots = useSlots()
 </script>
 
 <template>
   <a-modal
-    centered
-    destroy-on-close
+    :centered="centered"
+    :destroy-on-close="destroyOnClose"
     :mask-closable="maskClosable"
     :open="open"
-    @cancel="emits('cancel')"
+    :width="width"
+    :wrap-class-name="wrapClassName"
+    :keyboard="keyboard"
+    :mask="mask"
+    :ok-text="okText"
+    :ok-type="okType"
+    :closable="closable"
+    :cancel-text="cancelText"
+    :cancel-button-props="cancelButtonProps"
+    :ok-button-prop="okButtonProps"
+    :mask-style="maskStyle"
+    :body-style="bodyStyle"
+    :footer="footer"
+    :z-index="zIndex"
+    :after-close="
+      () => {
+        emits('afterClose')
+      }
+    "
+    @cancel="handleCancel"
     @ok="emits('ok')"
-    @close="emits('update:open', false)"
   >
     <slot />
+    <template #closeIcon>
+      <Icon v-if="!slots.closeIcon" :icon="closeIcon" class="w-full h-full p-1" />
+      <slot name="closeIcon" />
+    </template>
     <template #title>
-      <div ref="el" class="select-none cursor-move">{{ title }}</div>
+      <!-- 没有使用title插槽时使用title参数，否则使用title -->
+      <div ref="el" class="select-none cursor-move">
+        <span v-if="!slots.title">{{ title }}</span>
+        <slot v-else name="title" />
+      </div>
     </template>
     <template #modalRender="{ originVNode }">
-      <div :style="transformStyle">
+      <div v-loading="confirmLoading" :style="transformStyle">
         <component :is="originVNode" />
       </div>
+    </template>
+    <template #footer>
+      <div v-if="(!footer || footer !== 'null') && !slots.footer">
+        <a-button @click="handleCancel">{{ $t('button.cancel') }}</a-button>
+        <a-button type="primary" @click="emits('ok')">{{ $t('button.ok') }}</a-button>
+      </div>
+      <slot v-else name="footer" />
     </template>
   </a-modal>
 </template>

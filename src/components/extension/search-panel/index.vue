@@ -115,7 +115,7 @@ defineExpose<{
     </a-form>
     <div :class="`flex-bc mt-4 px-4 transition transition-duration-300 h-16 ${!collapsed ? 'with-shadow' : ''}`">
       <div>
-        <a-button type="primary" @click="handleSearch">查询</a-button>
+        <a-button type="primary" ghost @click="handleSearch">查询</a-button>
         <a-button @click="handleReset">重置</a-button>
         <slot name="footer" />
       </div>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { cloneDeep } from 'lodash'
+import { FormInstance } from 'ant-design-vue'
 
 defineProps<{
   modelValue: boolean
@@ -15,12 +16,36 @@ type tableDataType = {
 
 const emits = defineEmits<{
   'update:modelValue': [value: boolean]
-  confirm: [value: tableDataType]
+  confirm: [value: tableDataType, isEdit: boolean]
 }>()
 
+const formRef = shallowRef<FormInstance>()
 const formData = reactive<tableDataType>({} as tableDataType)
+const isEdit = ref<boolean>(false)
+const loading = ref<boolean>(false)
+const formRules = {
+  name: [
+    {
+      required: true,
+      message: '请输入姓名'
+    }
+  ],
+  age: [
+    {
+      required: true,
+      message: '请输入年龄'
+    }
+  ],
+  address: [
+    {
+      required: true,
+      message: '请输入地址'
+    }
+  ]
+}
 
 function init(row: tableDataType) {
+  isEdit.value = true
   const data = cloneDeep(row)
   Object.keys(data).map((key) => {
     formData[key] = data[key]
@@ -31,42 +56,48 @@ defineExpose({
   init
 })
 
-function handleCancel() {
+function handleClose() {
+  isEdit.value = false
   emits('update:modelValue', false)
+  formRef.value?.resetFields()
+  Object.keys(formData).forEach((key) => {
+    formData[key] = undefined
+  })
 }
 
-function handleConfirm() {
-  emits('update:modelValue', false)
-  emits('confirm', formData)
+async function handleConfirm() {
+  if (await formRef.value?.validate()) {
+    loading.value = true
+    setTimeout(() => {
+      loading.value = false
+      emits('confirm', formData, isEdit.value)
+      handleClose()
+    }, 500)
+  }
 }
 </script>
 
 <template>
   <draggable-dialog
     centered
-    destroy-on-close
     :mask-closable="false"
     :open="modelValue"
-    title="编辑人员"
-    @cancel="handleCancel"
+    :title="isEdit ? '编辑人员' : '新增人员'"
+    :confirm-loading="loading"
+    @cancel="handleClose"
     @ok="handleConfirm"
   >
-    <a-form :model="formData">
-      <a-form-item label="姓名">
+    <a-form ref="formRef" :model="formData" :rules="formRules">
+      <a-form-item label="姓名" name="name">
         <a-input v-model:value="formData.name" />
       </a-form-item>
-      <a-form-item label="年龄">
+      <a-form-item label="年龄" name="age">
         <a-input v-model:value="formData.age" />
       </a-form-item>
-      <a-form-item label="住址">
+      <a-form-item label="住址" name="address">
         <a-input v-model:value="formData.address" />
       </a-form-item>
     </a-form>
-    <template #modalRender="{ originVNode }">
-      <div v-draggable>
-        <component :is="originVNode" />
-      </div>
-    </template>
   </draggable-dialog>
 </template>
 

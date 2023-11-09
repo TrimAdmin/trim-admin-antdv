@@ -46,22 +46,22 @@ onMounted(() => {
 <template>
   <div class="w-[500px] min-w-[500px] mx-auto relative">
     <a-typography-title :level="2">{{ t('message.login') }}</a-typography-title>
-    <a-form ref="loginFormRef" :model="loginFormModel">
-      <a-form-item :rules="loginFormRules.username" name="username">
+    <a-form ref="loginFormRef" :model="loginFormModel" :rules="loginFormRules">
+      <a-form-item name="username">
         <a-input
           v-model:value="loginFormModel.username"
           :placeholder="t('message.username-placeholder')"
           size="large"
         />
       </a-form-item>
-      <a-form-item :rules="loginFormRules.password" name="password">
+      <a-form-item name="password">
         <a-input-password
           v-model:value="loginFormModel.password"
           :placeholder="t('message.password-placeholder')"
           size="large"
         />
       </a-form-item>
-      <a-form-item :rules="loginFormRules.captcha" name="password">
+      <a-form-item name="password">
         <div class="flex">
           <a-input
             v-model:value="loginFormModel.captcha"
