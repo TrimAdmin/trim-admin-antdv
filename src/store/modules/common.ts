@@ -14,9 +14,11 @@ interface ICommonStoreState {
 export interface ITabObject {
   key: string
   title: string
+  query: any
   tabAffix: boolean
   i18n: string
   hideTab: boolean
+  icon?: string
 }
 
 const useCommonStore = defineStore('commonStore', {

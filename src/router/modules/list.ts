@@ -9,7 +9,7 @@ export default {
   redirect: { name: 'list-dialog' },
   meta: {
     title: t('menu.list.home'),
-    icon: 'ant-design:insert-row-above-outlined',
+    icon: 'material-symbols:event-list-outline',
     order: 2,
     i18n: 'menu.list.home'
   },

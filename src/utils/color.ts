@@ -1,3 +1,8 @@
+/**
+ * hex转rgba
+ * @param color 原始颜色
+ * @param alpha 透明度（小数）
+ */
 export function hexToRgba(color: string, alpha: number = 1): string {
   const rgx = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
   const hex = color.replace(rgx, function (_, r, g, b) {
@@ -13,6 +18,10 @@ export function hexToRgba(color: string, alpha: number = 1): string {
   return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')'
 }
 
+/**
+ * rgb转hex
+ * @param color 原始颜色rgb()
+ */
 export function rgbToHex(color: any): string {
   const r = (color & 0xff0000) >> 16
   const g = (color & 0x00ff00) >> 8

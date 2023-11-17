@@ -25,7 +25,7 @@ const props = withDefaults(
     title?: string
   }>(),
   {
-    shadow: true,
+    shadow: false,
     rounded: true,
     animated: true
   }

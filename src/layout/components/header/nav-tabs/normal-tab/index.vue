@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 import { ITabObject, useCommonStoreHook } from '@/store'
 import { Key } from 'ant-design-vue/es/_util/type'
-import { getCurrentThemeColor, useI18nHook } from '@/hooks'
+import { useI18nHook } from '@/hooks'
 
 const router = useRouter()
 const tabsList = computed<Array<ITabObject>>(() => useCommonStoreHook().tabsList)
 const currentTab = computed<string>(() => useCommonStoreHook().currentRouteName)
 const { t } = useI18nHook()
-const currentThemeColor = computed<string>(() => getCurrentThemeColor('rgba', 0.3))
 
 function handleChange(key: Key) {
   router.push({ name: key as string })
@@ -62,6 +61,14 @@ function handleTabAction(action: string, key: string) {
         <template #tab>
           <a-dropdown :trigger="['contextmenu']" placement="bottomLeft">
             <div class="flex items-center">
+              <Icon
+                v-if="item.icon"
+                :height="16"
+                :icon="item.icon as string"
+                inline
+                class="mr-1"
+                @click.stop="handleClose(item.key)"
+              />
               {{ item.i18n ? t(item.i18n) : item.title }}
               <div
                 v-if="!item.tabAffix"

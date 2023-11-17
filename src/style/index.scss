@@ -9,7 +9,8 @@ html, body {
 }
 
 .os-theme-dark .os-scrollbar-track .os-scrollbar-handle {
-  background-color: var(--trim-scrollbar-color);
+  background-color: var(--antdv-color-primary);
+  opacity: 0.75;
 }
 
 #app {

@@ -21,6 +21,7 @@ export const dashboardRoutes: Array<RouteRecordRaw> = [
         component: () => import('@/views/dashboard/workbench/index.vue'),
         meta: {
           title: t('menu.dashboard.workbench'),
+          icon: 'carbon:dashboard',
           i18n: 'menu.dashboard.workbench'
         }
       },
@@ -30,6 +31,7 @@ export const dashboardRoutes: Array<RouteRecordRaw> = [
         component: () => import('@/views/dashboard/analysis/index.vue'),
         meta: {
           title: t('menu.dashboard.analysis'),
+          icon: 'material-symbols:analytics-outline-rounded',
           i18n: 'menu.dashboard.analysis'
         }
       }

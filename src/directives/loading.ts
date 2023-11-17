@@ -1,4 +1,4 @@
-import type { App, Directive, DirectiveBinding } from 'vue'
+import type { Directive, DirectiveBinding } from 'vue'
 import { createVNode, defineComponent, h, reactive, render, VNode } from 'vue'
 
 import Loading from '@/components/internal/loading/index.vue'
@@ -103,10 +103,6 @@ const loadingDirective: Directive = {
   unmounted(el) {
     el?.instance?.close()
   }
-}
-
-export function setupLoadingDirective(app: App) {
-  app.directive('loading', loadingDirective)
 }
 
 export default loadingDirective

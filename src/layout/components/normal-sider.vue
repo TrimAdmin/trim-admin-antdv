@@ -35,23 +35,28 @@ function handleMenuChange(key: RouteRecordName) {
 </script>
 
 <template>
-  <div
-    v-if="!hideLogo"
-    :class="`sider-title ${
-      menuDarkMode ? 'text-white' : ''
-    } dark:text-white font-bold w-full flex items-center justify-center px-2`"
-  >
-    <img alt="logo" class="h-4/5 inline-block" src="@/assets/images/logo.png" />
-    <span v-if="!collapsed" class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2">{{ title }}</span>
-  </div>
-  <a-menu
-    :items="menus"
-    :open-keys="openKeys"
-    :selected-keys="defaultSelect"
-    :theme="menuDarkMode ? 'dark' : 'light'"
-    mode="inline"
-    @click="({ key }) => handleMenuChange(key as RouteRecordName)"
-  ></a-menu>
+  <scroll-container class="max-h-screen overflow-hidden" :show-back-top="false">
+    <div
+      v-if="!hideLogo"
+      :class="`sider-title ${
+        menuDarkMode ? 'text-white' : ''
+      } dark:text-white font-bold w-full flex items-center justify-center px-2`"
+    >
+      <img alt="logo" class="h-4/5 inline-block" src="@/assets/images/logo.png" />
+      <span v-if="!collapsed" class="overflow-hidden text-ellipsis whitespace-nowrap text-[18px] ml-2">
+        {{ title }}
+      </span>
+    </div>
+    <a-menu
+      :items="menus"
+      :open-keys="openKeys"
+      :selected-keys="defaultSelect"
+      :theme="menuDarkMode ? 'dark' : 'light'"
+      mode="inline"
+      class="ant-custom-menu-popup"
+      @click="({ key }) => handleMenuChange(key as RouteRecordName)"
+    ></a-menu>
+  </scroll-container>
   <div class="sider-placeholder"></div>
 </template>
 

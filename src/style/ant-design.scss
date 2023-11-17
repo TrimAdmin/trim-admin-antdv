@@ -16,3 +16,17 @@
 .ant-modal .ant-modal-header {
   margin-bottom: 16px;
 }
+
+// 子菜单样式
+.ant-custom-menu-popup {
+  .ant-menu-item, .ant-menu-submenu-title {
+    width: calc(100% - 16px);
+    min-height: 48px;
+    margin: 6px 8px;
+    line-height: 48px;
+
+    svg {
+      font-size: 20px !important;
+    }
+  }
+}

@@ -10,12 +10,12 @@ import i18n from '@/i18n'
 import { useTable } from '@/plugins'
 import 'uno.css'
 import 'virtual:unocss-devtools'
-import { setupLoadingDirective } from '@/directives'
+import { setupDirectives } from '@/directives'
 
 const app = createApp(App)
 app.use(router)
 app.use(store)
 app.use(i18n)
 app.use(useTable)
-setupLoadingDirective(app)
+setupDirectives(app)
 app.mount('#app')
