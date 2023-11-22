@@ -1,8 +1,9 @@
-import { cryptoMD5, message } from '@/utils'
+import { cryptoMD5 } from '@/utils'
 import store, { useCommonStoreHook } from '..'
 import router from '@/router'
 import { ItemType } from 'ant-design-vue'
 import { generateMenus } from '@/router/utils.ts'
+import { useMessage } from '@/hooks'
 
 interface IUserStoreState {
   isLogged: boolean
@@ -25,7 +26,7 @@ const useUserStore = defineStore('userStore', {
     async login(params: IUsernameLoginParams) {
       // 这里编写你自己的逻辑
       if (params.username !== 'admin' || params.password !== cryptoMD5('123456')) {
-        message.error('用户名或密码错误')
+        useMessage().message.error('用户名或密码错误')
         return
       }
       if (params.remember) {
@@ -33,7 +34,7 @@ const useUserStore = defineStore('userStore', {
       }
       this.isLogged = true
       this.token = cryptoMD5('access-token')
-      message.success('登录成功')
+      useMessage().message.success('登录成功')
       this.setUserInfo({
         username: 'admin',
         email: 'w729567588@163.com',

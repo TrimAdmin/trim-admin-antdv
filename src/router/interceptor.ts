@@ -1,7 +1,7 @@
 import { Router } from 'vue-router'
 import { useCommonStoreHook, useUserStoreHook } from '@/store'
-import { message } from '@/utils'
 import pluginNProgress from '@/plugins/nprogress.ts'
+import { useMessage } from '@/hooks'
 
 const routerInterceptor = (router: Router) => {
   router.beforeEach((to, from, next) => {
@@ -20,12 +20,12 @@ const routerInterceptor = (router: Router) => {
     }
     // 登录判断逻辑
     if (!to.meta.publicRoute && !useUserStoreHook().isLogged) {
-      message.error('未登录或登录过期')
+      useMessage().message.error('未登录或登录过期')
       next({ name: 'login' })
     }
     // 已经登录，返回上一级
     if (useUserStoreHook().isLogged && to.name === 'login') {
-      message.info('您已经登录过了')
+      useMessage().message.info('您已经登录过了')
       pluginNProgress.done()
       next({ name: from.name as string })
     }

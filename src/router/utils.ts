@@ -4,6 +4,7 @@ import { useI18nHook, useIcon, useMessage } from '@/hooks'
 import { sortBy } from 'lodash'
 import { useCommonStoreHook } from '@/store'
 import { MenuItemType } from '@/types/common'
+import { modal } from '@/utils'
 
 // 自动从modules文件夹导入路由
 export function autoImportRoutes(): Array<RouteRecordRaw> {
@@ -111,8 +112,9 @@ export function handleJumpTo(name: RouteRecordName, params?: RouteParamsRaw) {
 export function handleCloseTag(name: string, msg?: string) {
   const { t } = useI18nHook()
   if (msg) {
-    useMessage().createConfirm({
-      iconType: 'warning',
+    useMessage().modal.confirm({
+      type: 'warning',
+      centered: true,
       title: t('title.warning'),
       content: msg,
       onOk: () => {

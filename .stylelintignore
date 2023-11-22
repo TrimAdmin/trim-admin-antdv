@@ -7,6 +7,9 @@ index.html
 *.min.css
 *.js
 *.ts
+*.tsx
+*.jsx
 *.svg
 *.ttf
+*.json
 /src/style/odometer.scss

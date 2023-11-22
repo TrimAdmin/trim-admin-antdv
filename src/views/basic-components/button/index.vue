@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { useIcon } from '@/hooks'
-import { message } from '@/utils'
+import { useIcon, useMessage } from '@/hooks'
 
 function handleMenuClick(key: string) {
-  message.info(`您点击了：${key}`)
+  useMessage().message.info(`您点击了：${key}`)
 }
 </script>
 
@@ -23,7 +22,7 @@ function handleMenuClick(key: string) {
         </a-col>
         <a-col :span="12">
           <a-divider orientation="left" plain>幽灵按钮</a-divider>
-          <a-space class="bg-gray-300 px-4 py-2 w-full">
+          <a-space class="bg-gray-300 w-full px-4 py-2">
             <a-button ghost>默认按钮</a-button>
             <a-button ghost type="primary">主要按钮</a-button>
             <a-button ghost type="dashed">虚线按钮</a-button>
@@ -32,7 +31,7 @@ function handleMenuClick(key: string) {
         </a-col>
         <a-col :span="12">
           <a-divider orientation="left" plain>危险按钮</a-divider>
-          <a-space class="px-4 py-2 w-full">
+          <a-space class="w-full px-4 py-2">
             <a-button danger>默认按钮</a-button>
             <a-button danger type="primary">主要按钮</a-button>
             <a-button danger type="dashed">虚线按钮</a-button>

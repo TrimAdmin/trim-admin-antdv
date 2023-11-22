@@ -1,16 +1,11 @@
-import { defineConfig, presetAttributify, presetMini, presetWind, SourceCodeTransformer } from 'unocss'
+import { defineConfig, presetWind, SourceCodeTransformer } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
 
 export default defineConfig({
   presets: [
-    presetWind(),
-    presetMini({
+    presetWind({
       dark: 'class'
-    }),
-    presetAttributify({
-      prefix: 'un-',
-      prefixedOnly: true
     })
   ],
   transformers: [

@@ -1,9 +1,9 @@
 // axios封装的请求方法
 import { useCommonStoreHook, useUserStoreHook } from '@/store'
-import { message } from '@/utils'
 import axios, { AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import { EHttpResponseStatusCode } from '@/enums'
 import pluginNProgress from '@/plugins/nprogress.ts'
+import { useMessage } from '@/hooks'
 
 const http = axios.create({
   baseURL: import.meta.env.PROD ? import.meta.env.VITE_REQUEST_BASE_URL : '/proxyUrl',
@@ -25,7 +25,7 @@ http.interceptors.request.use(
   (err) => {
     useCommonStoreHook().setLoading(false)
     pluginNProgress.done()
-    message.error(err.msg)
+    useMessage().message.error(err.msg)
     return Promise.reject(err)
   }
 )
@@ -36,20 +36,20 @@ http.interceptors.response.use(
     useCommonStoreHook().setLoading(false)
     // 用户未登录或token过期
     if (res.data.success === false && res.data.code === EHttpResponseStatusCode.UNAUTHORIZED) {
-      message.error(res.data.msg)
+      useMessage().message.error(res.data.msg)
       useUserStoreHook().logout()
       // 接口报错
     } else if (res.data.success === false && res.data.code === EHttpResponseStatusCode.INTERNAL_SERVER_ERROR) {
-      message.error(res.data.msg)
+      useMessage().message.error(res.data.msg)
     }
     pluginNProgress.done()
     return res.data
   },
   (err) => {
     if (err.response.status === EHttpResponseStatusCode.NOT_FOUND) {
-      message.error('访问的接口不存在')
+      useMessage().message.error('访问的接口不存在')
     } else {
-      message.error(err.msg)
+      useMessage().message.error(err.msg)
     }
     pluginNProgress.done()
     return Promise.reject(err)

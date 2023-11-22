@@ -139,10 +139,6 @@ export function useMessage() {
       createInfoNotification,
       closeNotification
     },
-    createConfirm,
-    createSuccessModal,
-    createErrorModal,
-    createInfoModal,
-    createWarningModal
+    modal: Modal
   }
 }
