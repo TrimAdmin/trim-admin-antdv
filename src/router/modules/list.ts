@@ -32,7 +32,19 @@ export default {
         title: t('menu.list.new-tab'),
         i18n: 'menu.list.new-tab',
         order: 1
-      }
+      },
+      children: [
+        {
+          path: 'create',
+          name: 'list-new-tab-create',
+          component: () => import('@/views/basic-components/button/index.vue'),
+          meta: {
+            title: t('menu.list.new-tab-create'),
+            i18n: 'menu.list.new-tab-create',
+            hideMenu: true
+          }
+        }
+      ]
     },
     {
       path: 'drawer',

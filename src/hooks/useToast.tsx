@@ -129,7 +129,7 @@ function closeNotification(key: string) {
   return notification.close(key)
 }
 
-export function useMessage() {
+export function useToast() {
   return {
     message: Message,
     notification: {

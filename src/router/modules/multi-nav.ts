@@ -39,6 +39,15 @@ export default {
                 title: t('menu.multi-nav.menu-1-1-1'),
                 i18n: 'menu.multi-nav.menu-1-1-1'
               }
+            },
+            {
+              path: 'nav-1-1-2',
+              name: 'multi-nav-1-1-2',
+              component: () => import('@/views/multi-nav/nav-1/nav-1-1/nav-1-1-2/index.vue'),
+              meta: {
+                title: t('menu.multi-nav.menu-1-1-2'),
+                i18n: 'menu.multi-nav.menu-1-1-2'
+              }
             }
           ]
         },

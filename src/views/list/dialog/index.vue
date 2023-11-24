@@ -80,6 +80,7 @@ function handleChangeValue(data: tableDataType, isEdit: boolean) {
 
 function handleDelete(row: tableDataType) {
   originTableData.value = originTableData.value.filter((item) => item.id !== row.id)
+  tableData.value = originTableData.value
 }
 
 function handleSearch() {

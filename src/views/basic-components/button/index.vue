@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useIcon, useMessage } from '@/hooks'
+import { useIcon, useToast } from '@/hooks'
 
 function handleMenuClick(key: string) {
-  useMessage().message.info(`您点击了：${key}`)
+  useToast().message.info(`您点击了：${key}`)
 }
 </script>
 

@@ -2,7 +2,7 @@
 import { useUserStoreHook } from '@/store'
 import { cryptoMD5 } from '@/utils'
 import { toUpper } from 'lodash'
-import { useMessage } from '@/hooks'
+import { useToast } from '@/hooks'
 
 const { t } = useI18n()
 const loginFormRef = shallowRef()
@@ -27,7 +27,7 @@ async function handleLogin() {
   const values = await loginFormRef.value.validateFields()
   // console.log(loginFormModel)
   if (toUpper(loginFormModel.captcha) !== toUpper(captcha.value)) {
-    useMessage().message.error('验证码错误')
+    useToast().message.error('验证码错误')
     captchaRef.value.draw()
     return
   }

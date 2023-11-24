@@ -1,10 +1,9 @@
 import { RouteParamsRaw, RouteRecordName, RouteRecordRaw, RouterOptions } from 'vue-router'
 import router from '@/router/index.ts'
-import { useI18nHook, useIcon, useMessage } from '@/hooks'
+import { useI18nHook, useIcon, useToast } from '@/hooks'
 import { sortBy } from 'lodash'
 import { useCommonStoreHook } from '@/store'
 import { MenuItemType } from '@/types/common'
-import { modal } from '@/utils'
 
 // 自动从modules文件夹导入路由
 export function autoImportRoutes(): Array<RouteRecordRaw> {
@@ -30,9 +29,10 @@ export function routesToMenu(routes: RouterOptions['routes']): Array<MenuItemTyp
   routes.map((route) => {
     const node = { ...route }
     if (route.children && route.children.length > 0) {
+      const children = routesToMenu(route.children)
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      node.children = routesToMenu(route.children)
+      node.children = children && children.length ? children : undefined
     }
     if (route.meta?.hideMenu) {
       return
@@ -103,8 +103,9 @@ export function getChildRoutes(name: string) {
   return router.options.routes.filter((item) => item.name === name)[0].children || []
 }
 
-export function handleJumpTo(name: RouteRecordName, params?: RouteParamsRaw) {
-  router.push({ name, params }).then(() => {
+export function handleJumpTo(name: RouteRecordName, query?: RouteParamsRaw) {
+  console.log(name)
+  router.push({ name, query }).then(() => {
     useCommonStoreHook().setCurrentRouteName(name.toString())
   })
 }
@@ -112,7 +113,7 @@ export function handleJumpTo(name: RouteRecordName, params?: RouteParamsRaw) {
 export function handleCloseTag(name: string, msg?: string) {
   const { t } = useI18nHook()
   if (msg) {
-    useMessage().modal.confirm({
+    useToast().modal.confirm({
       type: 'warning',
       centered: true,
       title: t('title.warning'),
