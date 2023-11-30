@@ -49,6 +49,9 @@ dependencies:
   vxe-table:
     specifier: ^4.5.13
     version: 4.5.13(vue@3.3.8)(xe-utils@3.5.14)
+  vxe-table-plugin-antd:
+    specifier: ^3.1.0
+    version: 3.1.0(vxe-table@4.5.13)
   xe-utils:
     specifier: ^3.5.14
     version: 3.5.14
@@ -7528,6 +7531,14 @@ packages:
       '@vue/server-renderer': 3.3.8(vue@3.3.8)
       '@vue/shared': 3.3.8
       typescript: 5.3.2
+
+  /vxe-table-plugin-antd@3.1.0(vxe-table@4.5.13):
+    resolution: {integrity: sha512-+/utdMIjnh+bRKJQVnDdF2R4ULQmjF1p/rcAlZGT+aVjwpUztRgqis/W7QfKBQE0czzHkRriZxnWpwAEY0Fvrw==}
+    peerDependencies:
+      vxe-table: ^4.5.0
+    dependencies:
+      vxe-table: 4.5.13(vue@3.3.8)(xe-utils@3.5.14)
+    dev: false
 
   /vxe-table@4.5.13(vue@3.3.8)(xe-utils@3.5.14):
     resolution: {integrity: sha512-CKsyUhDYIcO4TSXoO0I2YVkKEWjQLUq24PN6MhmFmvyFRdfj80cgLZ4iEjihLieW4aRqPcLHqkw83hCAyzvO8w==}

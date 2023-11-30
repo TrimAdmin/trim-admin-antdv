@@ -62,7 +62,7 @@ export const siderWidth = computed<string | number>(() =>
       ? useTrimConfig().theme.siderWidth
       : useTrimConfig().theme.siderWidth + 'px'
     : // 侧边栏收缩宽度
-    typeof useTrimConfig().theme.siderWidthCollapse === 'string'
-    ? useTrimConfig().theme.siderWidthCollapse
-    : useTrimConfig().theme.siderWidthCollapse + 'px'
+      typeof useTrimConfig().theme.siderWidthCollapse === 'string'
+      ? useTrimConfig().theme.siderWidthCollapse
+      : useTrimConfig().theme.siderWidthCollapse + 'px'
 )

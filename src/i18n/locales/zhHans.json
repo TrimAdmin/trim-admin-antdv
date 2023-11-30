@@ -88,7 +88,8 @@
       "dialog": "弹窗形式",
       "new-tab": "新开标签页形式",
       "drawer": "抽屉形式",
-      "new-tab-add": "新增新开标签页形式"
+      "new-tab-create": "新开标签页形式新增",
+      "new-tab-update": "新开标签页形式编辑"
     },
     "multi-nav": {
       "home": "多级菜单",

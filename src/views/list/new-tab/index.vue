@@ -55,7 +55,7 @@ const columns = ref<Array<TableColumnType>>([
 ])
 
 function handleEdit(row: tableDataType) {
-  handleJumpTo('multi-nav-1-1-2', { id: row.id })
+  handleJumpTo('list-new-tab-update', { id: row.id })
 }
 
 function handleAdd() {
@@ -100,7 +100,7 @@ function handleReset() {
 
 <template>
   <div>
-    <page-header title="弹窗形式列表" subtitle="轻量表单的首选" />
+    <page-header title="新开标签页形式列表" subtitle="常见的表单交互逻辑" />
     <regular-layout>
       <search-panel :model="searchForm" absolute :expand="false" @search="handleSearch" @reset="handleReset">
         <a-form-item label="用户名">

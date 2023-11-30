@@ -49,7 +49,7 @@ function handleMenuChange(key: RouteRecordName) {
     </div>
     <a-menu
       :items="menus"
-      :open-keys="openKeys"
+      :open-keys="!collapsed ? openKeys : []"
       :selected-keys="defaultSelect"
       :theme="menuDarkMode ? 'dark' : 'light'"
       mode="inline"

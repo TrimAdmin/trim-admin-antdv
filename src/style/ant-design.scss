@@ -30,3 +30,12 @@
     }
   }
 }
+
+.ant-menu-inline-collapsed {
+  .ant-menu-item, .ant-menu-submenu-title {
+    height: 48px !important;
+    padding-left: calc(50% - 18px) !important;
+    line-height: 48px !important;
+  }
+}
+

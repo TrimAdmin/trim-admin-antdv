@@ -1,7 +1,16 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+withDefaults(
+  defineProps<{
+    align: 'start' | 'center' | 'end' | 'between' | 'evenly' | 'around'
+  }>(),
+  {
+    align: 'center'
+  }
+)
+</script>
 
 <template>
-  <div class="fixed-footer fixed bottom-0 z-[900] right-0 h-[64px] flex-c w-full">
+  <div :class="`fixed-footer px-4 fixed bottom-0 z-[900] right-0 h-[64px] flex items-center w-full justify-${align}`">
     <slot />
   </div>
 </template>

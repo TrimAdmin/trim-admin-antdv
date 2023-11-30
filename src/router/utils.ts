@@ -28,6 +28,9 @@ export function routesToMenu(routes: RouterOptions['routes']): Array<MenuItemTyp
 
   routes.map((route) => {
     const node = { ...route }
+    if (route.redirect && getParentRoutes(route.redirect.name).length > 1) {
+      node.name = route.redirect.name
+    }
     if (route.children && route.children.length > 0) {
       const children = routesToMenu(route.children)
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -105,7 +105,7 @@ function handleReset() {
 
 <template>
   <div>
-    <page-header title="弹窗形式列表" subtitle="轻量表单的首选" />
+    <page-header title="抽屉形式列表" subtitle="普通表单常用" />
     <regular-layout>
       <search-panel :model="searchForm" absolute :expand="false" @search="handleSearch" @reset="handleReset">
         <a-form-item label="用户名">

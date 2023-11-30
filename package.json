@@ -30,6 +30,7 @@
     "vue-draggable-plus": "^0.2.7",
     "vue-i18n": "^9.7.1",
     "vxe-table": "^4.5.13",
+    "vxe-table-plugin-antd": "^3.1.0",
     "xe-utils": "^3.5.14"
   },
   "packageManager": "pnpm@8.6.6",
