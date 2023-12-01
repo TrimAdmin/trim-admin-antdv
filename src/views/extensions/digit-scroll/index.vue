@@ -16,16 +16,13 @@ function generateRandom() {
         <a-button type="primary" @click="generateRandom">随机数字</a-button>
       </template>
     </page-header>
+    <a-alert banner class="mb-4" type="info">
+      <template #message>
+        组件位置：/src/components/extension/digit-scroll/index.vue，官方文档：
+        <a href="https://github.hubspot.com/odometer/" target="_blank">https://github.hubspot.com/odometer/</a>
+      </template>
+    </a-alert>
     <regular-layout transparent>
-      <a-alert banner class="mb-4" type="info">
-        <template #message>
-          组件位置：/src/components/digit-scroll/index.vue，官方文档：<a
-            href="https://github.hubspot.com/odometer/"
-            target="_blank"
-            >https://github.hubspot.com/odometer/</a
-          >
-        </template>
-      </a-alert>
       <a-card>
         <a-card-grid>
           <div>基础用法</div>

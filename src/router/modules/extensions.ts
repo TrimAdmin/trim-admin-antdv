@@ -40,6 +40,15 @@ export default {
         title: t('menu.extensions.vxe-table'),
         i18n: 'menu.extensions.vxe-table'
       }
+    },
+    {
+      path: 'qrcode',
+      name: 'extensions-qrcode',
+      component: () => import('@/views/extensions/qrcode/index.vue'),
+      meta: {
+        title: t('menu.extensions.qrcode'),
+        i18n: 'menu.extensions.qrcode'
+      }
     }
   ]
 } as RouteRecordRaw

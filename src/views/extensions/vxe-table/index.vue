@@ -113,6 +113,12 @@ onMounted(() => {
 <template>
   <div>
     <page-header title="Vxe Table基础示例" subtitle="高度定制化的表格组件，已封装列拖拽函数和适配暗色模式" />
+    <a-alert banner class="mb-4" type="info">
+      <template #message>
+        官方文档：
+        <a href="https://vxetable.cn" target="_blank"> https://vxetable.cn </a>
+      </template>
+    </a-alert>
     <regular-layout>
       <vxe-grid v-bind="gridOptions" ref="tableRef">
         <template #buttons>

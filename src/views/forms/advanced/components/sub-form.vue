@@ -63,7 +63,7 @@ function handleRemoveItem(index: number) {
     <template #extra>
       <a-button type="primary" @click="handleAddItem">新增一项</a-button>
     </template>
-    <a-table :columns="itemColumns" :data-source="formObj">
+    <a-table :columns="itemColumns" :data-source="formObj" :pagination="false">
       <template #bodyCell="{ column, index }">
         <template v-if="column.dataIndex === 'count'">
           <a-input-number
@@ -84,7 +84,6 @@ function handleRemoveItem(index: number) {
         </template>
       </template>
     </a-table>
-    {{ formObj }}
   </a-card>
 </template>
 
