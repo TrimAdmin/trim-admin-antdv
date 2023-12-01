@@ -1,5 +1,6 @@
-export * from './useToast.tsx'
+export * from './useToast'
 export * from './useTrimConfig'
 export * from './useIcon'
 export * from './useI18nHook'
 export * from './useECharts'
+export * from './useVxeTable'

@@ -2,8 +2,6 @@
 import { handleCloseTag } from '@/router/utils.ts'
 
 const route = useRoute()
-
-console.log(route.query)
 </script>
 
 <template>

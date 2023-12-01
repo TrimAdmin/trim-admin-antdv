@@ -1,4 +1,4 @@
-import { defineConfig, presetWind, SourceCodeTransformer } from 'unocss'
+import { defineConfig, presetIcons, presetWind, SourceCodeTransformer } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
 
@@ -6,6 +6,13 @@ export default defineConfig({
   presets: [
     presetWind({
       dark: 'class'
+    }),
+    presetIcons({
+      prefix: 'icon-',
+      collections: {
+        'ant-design': () => import('@iconify-json/ant-design/icons.json').then((i) => i.default)
+      },
+      warn: true
     })
   ],
   transformers: [

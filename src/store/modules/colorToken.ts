@@ -15,7 +15,7 @@ const useColorTokenStore = defineStore('colorToken', {
       this.colorToken = token
       // console.log(token)
       Object.entries(this.colorToken).map(([key, value]) => {
-        if (!key.includes('color')) return
+        // if (!key.includes('color')) return
         document.documentElement.style.setProperty(`--antdv-${camelToSnakeCase(key)}`, value.toString())
       })
     }

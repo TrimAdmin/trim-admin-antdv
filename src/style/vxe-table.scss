@@ -1,4 +1,7 @@
+@import 'vxe-table/styles/cssvar';
+
 :root {
+  // base
   --vxe-font-color: var(--antdv-color-text);
   --vxe-primary-color: var(--antdv-color-primary);
   --vxe-success-color: var(--antdv-color-success);
@@ -11,4 +14,78 @@
   --vxe-info-lighten-color: var(--antdv-color-info-hover);
   --vxe-warning-lighten-color: var(--antdv-color-warning-hover);
   --vxe-danger-lighten-color: var(--antdv-color-primary-hover);
+  // toolbar
+  --vxe-toolbar-panel-background-color: var(--antdv-color-bg);
+  // pager
+  --vxe-pager-background-color: var(--antdv-color-bg-elevated);
+  // table
+  --vxe-table-row-hover-background-color: var(--antdv-color-bg);
+  --vxe-table-border-color: var(--antdv-color-border-secondary);
+  --vxe-table-popup-border-color: var(--antdv-color-border);
+  // input
+  --vxe-input-background-color: var(--antdv-color-bg-elevated);
+  --vxe-input-border-color: var(--antdv-color-border);
+
+  --vxe-select-panel-background-color: var(--antdv-color-bg-elevated);
+  --vxe-select-option-hover-background-color: var(--antdv-color-bg);
+  // loading
+  --vxe-loading-background-color: var(--antdv-color-bg-mask);
+}
+
+.vxe-grid, .vxe-toolbar, .vxe-button, .vxe-pager {
+  background-color: transparent !important;
+}
+
+.vxe-checkbox--icon {
+  transition: 0.25s ease;
+}
+
+// select
+.vxe-select-option {
+  transition: 0.1s;
+}
+
+.vxe-select-option:not(.is--disabled).is--hover {
+  transition: 0.1s;
+  background-color: var(--antdv-color-primary-bg-hover) !important;
+}
+
+// toolbar
+.vxe-toolbar .vxe-custom--option-wrapper {
+  background-color: var(--antdv-color-bg-container) !important;
+}
+
+// table
+.vxe-table .vxe-table--render-wrapper .vxe-table--main-wrapper .vxe-table--header-wrapper .vxe-table--header {
+  background-color: #fafafa;
+  color: var(--antdv-color-text);
+}
+
+.vxe-table .vxe-table--render-wrapper .vxe-table--main-wrapper .vxe-table--body-wrapper .vxe-table--body .vxe-body--row {
+  background-color: white;
+  color: var(--antdv-color-text);
+}
+
+html.dark {
+  .vxe-table .vxe-table--render-wrapper .vxe-table--main-wrapper .vxe-table--header-wrapper .vxe-table--header {
+    background-color: #141414;
+    color: var(--antdv-color-text);
+  }
+
+  .vxe-table .vxe-table--render-wrapper .vxe-table--main-wrapper .vxe-table--body-wrapper .vxe-table--body .vxe-body--row {
+    background-color: #1d1d1d;
+    color: var(--antdv-color-text);
+  }
+
+  .vxe-pager {
+    .vxe-pager--prev-btn, .vxe-pager--next-btn {
+      &.is--disabled {
+        color: #606060;
+      }
+    }
+
+    .vxe-pager--prev-btn:not(.is--disabled):active, .vxe-pager--next-btn:not(.is--disabled):active {
+      background-color: #1d1d1d;
+    }
+  }
 }
