@@ -107,7 +107,7 @@ export function getChildRoutes(name: string) {
 }
 
 export function handleJumpTo(name: RouteRecordName, query?: RouteParamsRaw) {
-  console.log(name)
+  // console.log(name)
   router.push({ name, query }).then(() => {
     useCommonStoreHook().setCurrentRouteName(name.toString())
   })

@@ -1,7 +1,7 @@
 import type { ComposeOption } from 'echarts/core'
 import * as echarts from 'echarts/core'
-import type { BarSeriesOption, LineSeriesOption, PieSeriesOption } from 'echarts/charts'
-import { BarChart, LineChart, PieChart } from 'echarts/charts'
+import type { BarSeriesOption, LineSeriesOption, PieSeriesOption, GaugeSeriesOption } from 'echarts/charts'
+import { BarChart, LineChart, PieChart, GaugeChart } from 'echarts/charts'
 import type {
   DatasetComponentOption,
   GridComponentOption,
@@ -30,6 +30,7 @@ export type ECOption = ComposeOption<
   | DatasetComponentOption
   | PieSeriesOption
   | LegendComponentOption
+  | GaugeSeriesOption
 >
 
 // 注册必需的组件
@@ -45,7 +46,8 @@ echarts.use([
   PieChart,
   LabelLayout,
   UniversalTransition,
-  CanvasRenderer
+  CanvasRenderer,
+  GaugeChart
 ])
 
 export { echarts }

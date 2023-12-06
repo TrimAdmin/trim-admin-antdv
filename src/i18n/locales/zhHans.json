@@ -77,7 +77,8 @@
       "rich-editor": "富文本编辑器",
       "digit-scroll": "滚动数字",
       "vxe-table": "VXE Table",
-      "qrcode": "二维码"
+      "qrcode": "二维码",
+      "echarts": "ECharts"
     },
     "forms": {
       "home": "表单页",

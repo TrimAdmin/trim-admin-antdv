@@ -49,6 +49,15 @@ export default {
         title: t('menu.extensions.qrcode'),
         i18n: 'menu.extensions.qrcode'
       }
+    },
+    {
+      path: 'echarts',
+      name: 'extensions-echarts',
+      component: () => import('@/views/extensions/echarts/index.vue'),
+      meta: {
+        title: t('menu.extensions.echarts'),
+        i18n: 'menu.extensions.echarts'
+      }
     }
   ]
 } as RouteRecordRaw
