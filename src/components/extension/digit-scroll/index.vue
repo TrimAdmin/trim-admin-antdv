@@ -63,11 +63,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex items-center">
-    {{ prefix }}
+  <div class="inline-block line-height-none vertical-mid">
+    <span>{{ prefix }}</span>
     <slot name="prefix" />
     <span ref="digitRef" :class="valueClass" :style="valueStyle" />
-    {{ suffix }}
+    <span>{{ suffix }}</span>
     <slot name="suffix" />
   </div>
 </template>

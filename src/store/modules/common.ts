@@ -90,9 +90,6 @@ const useCommonStore = defineStore('commonStore', {
       if (this.currentRouteName !== key) {
         this.currentRouteName = this.tabsList[index - 1].key
         router.push({ name: this.tabsList[index - 1].key })
-      } else {
-        this.currentRouteName = this.tabsList[this.tabsList.length - 1].key
-        router.push({ name: this.tabsList[this.tabsList.length - 1].key })
       }
     },
     // 关闭右侧标签页
@@ -107,9 +104,6 @@ const useCommonStore = defineStore('commonStore', {
       if (this.currentRouteName !== key) {
         this.currentRouteName = this.tabsList[index].key
         router.push({ name: this.tabsList[index].key })
-      } else {
-        this.currentRouteName = this.tabsList[index - 1].key
-        router.push({ name: this.tabsList[index - 1].key })
       }
     },
     // 关闭所有标签页

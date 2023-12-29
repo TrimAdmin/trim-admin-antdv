@@ -57,7 +57,7 @@ function handleReset() {
       </search-panel>
     </regular-layout>
     <regular-layout title="隐藏展开/收起按钮">
-      <search-panel layout="horizontal" :model="searchForm" :expand="false" @reset="handleReset">
+      <search-panel layout="horizontal" :model="searchForm" :expand-btn="false" @reset="handleReset">
         <a-form-item label="用户名/工号">
           <a-input v-model:value="searchForm.key" placeholder="请输入用户名/工号" />
         </a-form-item>

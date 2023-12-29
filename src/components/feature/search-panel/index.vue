@@ -15,14 +15,14 @@ const props = withDefaults(
     // 是否absolute布局
     absolute?: boolean
     // 是否需要展开按钮
-    expand?: boolean
+    expandBtn?: boolean
     // 无背景
     transparent?: boolean
     // form model
     model: any
   }>(),
   {
-    expand: true,
+    expandBtn: true,
     defaultExpand: false,
     layout: 'inline',
     colon: false,
@@ -44,7 +44,7 @@ const collapsed = ref<boolean>(!props.defaultExpand)
 onMounted(() => {
   collapsedHeight.value = normalRef.value?.offsetHeight + 'px'
   maxHeight.value = fullRef.value?.offsetHeight + 'px'
-  handleCollapse(!props.defaultExpand && props.expand)
+  handleCollapse(!props.defaultExpand && props.expandBtn)
 
   window.addEventListener('resize', () => {
     collapsedHeight.value = normalRef.value?.offsetHeight + 'px'
@@ -119,7 +119,7 @@ defineExpose<{
         <a-button @click="handleReset">重置</a-button>
         <slot name="footer" />
       </div>
-      <div v-if="expand">
+      <div v-if="expandBtn">
         <a-button type="link" class="flex-c" @click="handleExpand">
           {{ collapsed ? '展开条件' : '收起条件' }}
           <Icon class="ml-1" icon="ant-design:down-outlined" :class="collapsed ? '' : 'rotate-180'" />

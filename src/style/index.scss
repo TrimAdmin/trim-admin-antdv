@@ -8,6 +8,9 @@
 html, body {
   overflow-x: hidden;
   background-color: var(--trim-bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  'Noto Color Emoji';
 }
 
 i {
@@ -17,7 +20,8 @@ i {
 
 .os-theme-dark .os-scrollbar-track .os-scrollbar-handle {
   background-color: var(--antdv-color-primary-hover);
-  opacity: 0.6;
+  opacity: 0.4;
+  width: 4px !important;
 
   &:hover {
     background-color: var(--antdv-color-primary);
