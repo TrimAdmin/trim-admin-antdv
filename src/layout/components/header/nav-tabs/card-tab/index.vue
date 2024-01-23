@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ITabObject, useCommonStoreHook } from '@/store'
 import { Key } from 'ant-design-vue/es/_util/type'
-import { getCurrentThemeColor, useI18nHook } from '@/hooks'
+import { useI18nHook } from '@/hooks'
 
 const router = useRouter()
 const tabsList = computed<Array<ITabObject>>(() => useCommonStoreHook().tabsList)

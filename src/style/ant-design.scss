@@ -38,3 +38,10 @@
     line-height: 48px !important;
   }
 }
+
+// 文件拖拽上传图标
+.ant-upload-drag-icon {
+  font-size: 48px;
+  color: var(--antdv-color-primary);
+  margin-bottom: 8px;
+}

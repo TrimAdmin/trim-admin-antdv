@@ -10,7 +10,7 @@ export default {
     title: t('menu.extended-components.home'),
     icon: 'ant-design:database-outlined',
     order: 4,
-    i18n: 'menu.advanced-components.home'
+    i18n: 'menu.extended-components.home'
   },
   children: [
     {
@@ -47,6 +47,15 @@ export default {
       meta: {
         title: t('menu.extended-components.search-panel'),
         i18n: 'menu.extended-components.search-panel'
+      }
+    },
+    {
+      path: 'file-upload',
+      name: 'extended-components-file-upload',
+      component: () => import('@/views/extended-components/file-upload/index.vue'),
+      meta: {
+        title: t('menu.extended-components.file-upload'),
+        i18n: 'menu.extended-components.file-upload'
       }
     }
   ]

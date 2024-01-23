@@ -41,13 +41,13 @@ interface ConfirmOptions {
 
 function getIcon(iconType: string) {
   if (iconType === 'warning') {
-    return <Icon icon='ant-design:info-circle-filled' class='modal-icon-warning' />
+    return <Icon icon="ant-design:info-circle-filled" class="modal-icon-warning" />
   } else if (iconType === 'success') {
-    return <Icon icon='ant-design:check-circle-filled' class='modal-icon-success' />
+    return <Icon icon="ant-design:check-circle-filled" class="modal-icon-success" />
   } else if (iconType === 'info') {
-    return <Icon icon='ant-design:info-circle-filled' class='modal-icon-info' />
+    return <Icon icon="ant-design:info-circle-filled" class="modal-icon-info" />
   } else {
-    return <Icon icon='ant-design:close-circle-filled' class='modal-icon-error' />
+    return <Icon icon="ant-design:close-circle-filled" class="modal-icon-error" />
   }
 }
 
@@ -139,6 +139,12 @@ export function useToast() {
       createInfoNotification,
       closeNotification
     },
-    modal: Modal
+    modal: {
+      createSuccessModal,
+      createErrorModal,
+      createWarningModal,
+      createInfoModal,
+      createConfirm
+    }
   }
 }

@@ -2,6 +2,7 @@
 import { useConfigStoreHook } from '@/store'
 import { colorSchemeList, layoutList, routeAnimateList, tabStyleList } from '@/constants'
 import { getCurrentThemeColor } from '@/hooks'
+import { SelectValue } from 'ant-design-vue/es/select'
 
 const open = ref<boolean>(false)
 const layout = computed<string>(() => useConfigStoreHook().config.theme.layout)
@@ -43,7 +44,7 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
   <a-drawer v-model:open="open" :body-style="{ padding: '0 16px' }" :title="$t('config.title')">
     <!-- 颜色模式 -->
     <div class="text-center">
-      <a-divider plain>{{ $t('config.darkMode') }}</a-divider>
+      <a-divider plain>{{ $t('config.dark-mode') }}</a-divider>
       <a-switch
         v-model:checked="useConfigStoreHook().darkTheme"
         :checked-children="$t('constant.dark')"
@@ -52,7 +53,7 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
     </div>
     <!-- 菜单颜色模式 -->
     <div class="text-center">
-      <a-divider plain>{{ $t('config.menuDarkMode') }}</a-divider>
+      <a-divider plain>{{ $t('config.menu-dark-mode') }}</a-divider>
       <a-switch
         v-model:checked="useConfigStoreHook().config.theme.menuDarkMode"
         :checked-children="$t('constant.dark')"
@@ -79,7 +80,7 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
     </div>
     <!-- 配色方案 -->
     <div class="text-center">
-      <a-divider plain>{{ $t('config.colorScheme') }}</a-divider>
+      <a-divider plain>{{ $t('config.color-scheme') }}</a-divider>
       <div class="flex gap-2 justify-center">
         <a-tooltip v-for="item in colorSchemeList" :key="item.scheme" destroy-tooltip-on-hide>
           <div
@@ -104,12 +105,12 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
       <a-divider plain>{{ $t('config.view') }}</a-divider>
       <!-- 标签页样式 -->
       <div class="flex justify-between items-center px-2 mb-4">
-        <div class="dark:text-white">{{ $t('config.tabStyle') }}</div>
+        <div class="dark:text-white">{{ $t('config.tab-style') }}</div>
         <a-segmented v-model:value="useConfigStoreHook().config.theme.tabStyle" :options="tabStyleList" />
       </div>
       <!-- 隐藏Logo -->
       <div class="flex justify-between items-center px-2 mb-4">
-        <div class="dark:text-white">{{ $t('config.hideLogo') }}</div>
+        <div class="dark:text-white">{{ $t('config.hide-logo') }}</div>
         <a-switch
           v-model:checked="useConfigStoreHook().config.theme.hideLogo"
           :checked-children="$t('constant.hide')"
@@ -118,7 +119,7 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
       </div>
       <!-- 隐藏面包屑 -->
       <div class="flex justify-between items-center px-2 mb-4">
-        <div class="dark:text-white">{{ $t('config.hideBreadcrumb') }}</div>
+        <div class="dark:text-white">{{ $t('config.hide-breadcrumb') }}</div>
         <a-switch
           v-model:checked="useConfigStoreHook().config.theme.hideBreadcrumb"
           :checked-children="$t('constant.hide')"
@@ -127,11 +128,11 @@ function handleLayout(layout: (typeof layoutList)[number]['value']) {
       </div>
       <!-- 路由动画 -->
       <div class="flex justify-between items-center px-2 mb-4">
-        <div class="dark:text-white">{{ $t('config.routerAnimate') }}</div>
+        <div class="dark:text-white">{{ $t('config.router-animate') }}</div>
         <a-select
           :value="useConfigStoreHook().config.theme.routeAnimate"
           class="w-[140px]"
-          @change="(value) => handleRouteAnimate(value as string)"
+          @change="(value: SelectValue) => handleRouteAnimate(value as string)"
         >
           <a-select-option v-for="item in routeAnimateList" :key="item.value" :value="item.value"
             >{{ item.label }}

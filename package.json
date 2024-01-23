@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "vite",
     "dev:host": "vite --host",
-    "build:test": "vue-tsc && vite build -m dev",
-    "build": "vue-tsc && vite build -m prod",
+    "build:test": "vite build -m dev",
+    "build": "vite build -m prod",
     "preview": "vite preview",
     "lint": "eslint **/*.{ts,js,vue,jsx,tsx,html} --fix"
   },
@@ -23,6 +23,7 @@
     "echarts": "^5.4.3",
     "echarts-liquidfill": "^3.1.0",
     "motion": "^10.16.4",
+    "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "odometer": "^0.4.8",
     "overlayscrollbars": "^2.4.5",

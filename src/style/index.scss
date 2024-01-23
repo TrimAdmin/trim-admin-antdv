@@ -51,6 +51,12 @@ img {
 *::after {
   box-sizing: border-box;
   padding: 0;
+  margin: 0;
+}
+
+p {
+  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 // 去除焦点在iconify图标上时的外边框

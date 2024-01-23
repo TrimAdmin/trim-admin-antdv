@@ -20,7 +20,7 @@ function handleChangeI18n(key: ITrimConfig['defaultI18n']) {
           v-model:selected-keys="selectedKeys"
           @click="({ key }) => handleChangeI18n(key as ITrimConfig['defaultI18n'])"
         >
-          <a-menu-item v-for="item in Object.entries(CI18n)" :key="item[0]">
+          <a-menu-item v-for="item in Object.entries(CI18n)" :key="item[0] as string">
             {{ item[1] }}
           </a-menu-item>
         </a-menu>

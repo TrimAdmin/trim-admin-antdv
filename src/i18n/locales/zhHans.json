@@ -3,13 +3,12 @@
     "dark": "黑暗",
     "light": "明亮",
     "hide": "隐藏",
-    "show": "显示",
-    "ok": "确认",
-    "cancel": "取消"
+    "show": "显示"
   },
   "button": {
     "cancel": "取消",
-    "ok": "确认"
+    "ok": "确认",
+    "click-upload": "点击上传"
   },
   "title": {
     "warning": "警告",
@@ -17,15 +16,15 @@
   },
   "config": {
     "title": "全局设置",
-    "colorScheme": "配色方案",
-    "darkMode": "颜色模式",
-    "menuDarkMode": "菜单颜色模式",
+    "color-scheme": "配色方案",
+    "dark-mode": "颜色模式",
+    "menu-dark-mode": "菜单颜色模式",
     "layout": "页面布局",
     "view": "页面显示",
-    "tabStyle": "标签页样式",
-    "hideLogo": "隐藏Logo",
-    "hideBreadcrumb": "隐藏面包屑",
-    "routerAnimate": "路由动画"
+    "tab-style": "标签页样式",
+    "hide-logo": "隐藏Logo",
+    "hide-breadcrumb": "隐藏面包屑",
+    "router-animate": "路由动画"
   },
   "message": {
     "login": "登录",
@@ -43,7 +42,9 @@
     "403": "您没有权限查看此页面",
     "404": "您所访问的页面走丢了",
     "500": "服务器出错啦！",
-    "cannot-drag-fixed": "固定列不可拖拽"
+    "cannot-drag-fixed": "固定列不可拖拽",
+    "click-or-drag-upload": "点击或将文件拖拽到此区域以上传",
+    "upload-hint": "请勿上传敏感文件或版权文件"
   },
   "menu": {
     "home": "首页",
@@ -74,7 +75,8 @@
       "page-header": "页头",
       "fixed-footer": "固定页脚",
       "regular-layout": "基础内容块",
-      "search-panel": "搜索面板"
+      "search-panel": "搜索面板",
+      "file-upload": "文件上传"
     },
     "extensions": {
       "home": "插件",
@@ -90,7 +92,7 @@
       "advanced": "高级表单",
       "step": "分步表单"
     },
-    "list" : {
+    "list": {
       "home": "列表页",
       "dialog": "弹窗形式",
       "new-tab": "新开标签页形式",

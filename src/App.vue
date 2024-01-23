@@ -140,8 +140,11 @@ useUserStoreHook().checkLogged()
 router.isReady().then(async () => {
   console.log('当前环境：' + import.meta.env.MODE)
   setTrimConfig()
+  const name = router.getRoutes().find((item) => item.name === useCommonStoreHook().currentRouteName)
+    ? useCommonStoreHook().currentRouteName
+    : 'not-found'
   // 刷新时跳转到刷新前的路由
-  await router.push({ name: useCommonStoreHook().currentRouteName })
+  await router.push({ name })
   useUserStoreHook().getMenuList()
   await nextTick(() => {
     show.value = true

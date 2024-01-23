@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { debounce } from 'lodash'
-import { useConfigStoreHook } from '@/store'
 import { lightTheme } from '@/theme'
 
 defineProps<{
